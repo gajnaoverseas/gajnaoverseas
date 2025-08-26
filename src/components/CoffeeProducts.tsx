@@ -157,7 +157,7 @@ export default function CoffeeProducts() {
                   transition={{ duration: 0.4, ease: "easeInOut" }}
                 >
                   <Image
-                    src="/coffee-beans/robusta.webp"
+                    src="/coffee-beans/Robusta.webp"
                     alt="Arabica Coffee"
                     width={225}
                     height={200}
