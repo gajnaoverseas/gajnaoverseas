@@ -8,7 +8,7 @@ import { FaLocationDot } from "react-icons/fa6";
 export default function Footer() {
   return (
     <footer className="bg-coffee-brown text-white py-16">
-      <div className="container mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between">
           {/* Logo and Tagline */}
           <div className="mb-6 md:mb-0">
@@ -18,8 +18,9 @@ export default function Footer() {
                 alt="Gaina Overseas Logo"
                 width={200}
                 height={200}
+                className="w-48 h-20 rounded-2xl p-2 bg-white"
               />
-              Gaina Overseas
+              {/* Gaina Overseas */}
             </Link>
             <p className="text-sm mb-4">
               In breath, find peace; in stillness, grow,

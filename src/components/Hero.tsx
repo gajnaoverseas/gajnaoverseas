@@ -2,17 +2,9 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import bannerData, { BannerSlide } from '../data/bannerData';
-import { BsFillCheckCircleFill } from "react-icons/bs";
 import { BiSolidCoffeeBean } from "react-icons/bi";
 import { useMediaQuery } from 'react-responsive';
-
-
-// SVG component for the check icon
-const CheckIcon = () => (
-  <div className="w-6 h-6 mt-1 mr-3">
-    <BsFillCheckCircleFill className='text-coffee-gold'/>
-  </div>
-);
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Coffee bean icon for the slide indicators
 const CoffeeBeanIcon = ({ active }: { active: boolean }) => (
@@ -63,59 +55,79 @@ export default function Hero() {
           }}
         >
           {/* Gradient overlay for better text visibility */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black opacity-70"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-70"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black opacity-20"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-20"></div>
         </div>
       ))}
       
-      <div className="container mx-auto px-4 py-20 relative z-10 h-full flex flex-col justify-between">
-        {/* Top section with title */}
-        <div className="flex">
-          <div className="md:w-1/2 w-full">
-            {/* Title with animation */}
-            <h1 className="lg:text-6xl text-4xl text-center lg:text-left font-serif font-semibold mb-6 text-coffee-gold">
-              {currentSlideData.title.split('\n').map((line, i) => (
-                <span key={i} className="block transition-all duration-500 animate-fadeIn">{line}</span>
-              ))}
+      <div className="container mx-auto px-4 py-20 relative z-10 h-full flex flex-col justify-center">
+        {/* Main content section */}
+        <div className="flex flex-col lg:flex-row lg:items-center">
+          <div className="lg:w-1/2 w-full mb-8 lg:mb-0">
+            {/* Title with enhanced animation */}
+            <h1 className="lg:text-6xl text-4xl text-center lg:text-left font-semibold mb-6 text-white">
+              <AnimatePresence mode="wait">
+                {currentSlideData.title.split('\n').map((line, i) => (
+                  <motion.span 
+                    key={`${currentSlide}-${i}`}
+                    className="block"
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -30 }}
+                    transition={{ 
+                      duration: 0.8, 
+                      delay: i * 0.2,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }}
+                  >
+                    {line}
+                  </motion.span>
+                ))}
+              </AnimatePresence>
             </h1>
-          </div>
-        </div>
-        
-        {/* Bottom section with points */}
-        <div className="flex lg:justify-end lg:items-center items-end lg:mt-0 mt-32">
-          <div className="md:w-1/2 w-full">
-            {/* Coffee bean icon above points */}
-            <div className="flex justify-center mb-4">
-              <div className="w-12 h-12">
-                <Image src="/coffee-bean.webp" alt="Coffee bean" width={48} height={48} className="opacity-80" />
-              </div>
-            </div>
             
-            {/* Points with animation */}
-            <div className="space-y-4 lg:ml-[16vw]">
-              {currentSlideData.points.map((point, index) => (
-                <div key={index} className="flex items-start animate-slideIn" style={{ animationDelay: `${index * 200}ms` }}>
-                  <CheckIcon />
-                  <p className="lg:text-2xl text-base">{point}</p>
-                </div>
-              ))}
-            </div>
+            {/* Description paragraph with right-to-left animation */}
+            <AnimatePresence mode="wait">
+              <motion.p 
+                key={`${currentSlide}-description`}
+                className="lg:text-xl text-lg text-center lg:text-left text-gray-200 leading-relaxed"
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: 0.4,
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }}
+              >
+                {currentSlideData.description}
+              </motion.p>
+            </AnimatePresence>
           </div>
         </div>
+
         
-        {/* Slide indicators */}
-        <div className="flex justify-center items-center my-8">
+        {/* Slide indicators with animation */}
+        {/* <motion.div 
+          className="flex justify-center items-center my-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1 }}
+        >
           {slides.map((_, index) => (
-            <button 
+            <motion.button 
               key={index} 
               onClick={() => goToSlide(index)}
               className="focus:outline-none mx-1"
               aria-label={`Go to slide ${index + 1}`}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               <CoffeeBeanIcon active={index === currentSlide} />
-            </button>
+            </motion.button>
           ))}
-        </div>
+        </motion.div> */}
       </div>
     </section>
   );

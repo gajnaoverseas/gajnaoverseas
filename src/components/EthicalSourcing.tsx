@@ -71,7 +71,7 @@ export default function EthicalSourcing() {
   return (
     <section ref={sectionRef} className=" relative z-10">
       {/* Ethical Sourcing Strip */}
-      <div className="max-w-7xl mx-auto px-4 py-16  ">
+      {/* <div className="max-w-7xl mx-auto px-4 py-16  ">
         
         <div className="">
           
@@ -85,27 +85,31 @@ export default function EthicalSourcing() {
             of farming communities
           </p>
         </div>
-      </div>
+      </div> */}
 
       {/* Registrations & Certifications */}
-      <div className="bg-[#E0F3C7]">
+      <div className="bg-white">
         <div className="max-w-7xl mx-auto px-4 py-16">
           <h2 className="text-5xl font-serif font-semibold mb-10 text-coffee-brown text-center fade-in-text">
             Registrations & Certifications
           </h2>
+
 
           <div
             ref={logosRef}
             className="flex flex-wrap justify-center items-center gap-8 mb-10"
           >
             {certificationsData.map((cert, index) => (
-              <div key={index} className="logo-item w-40 h-40 relative mx-4">
-                <Image
-                  src={cert.logo}
-                  alt={cert.alt}
-                  fill
-                  className="object-contain"
-                />
+              <div key={index} className="logo-item flex flex-col items-center mx-4">
+                <div className="w-40 h-40 relative mb-4">
+                  <Image
+                    src={cert.logo}
+                    alt={cert.alt}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <p className="text-center text-xs text-black max-w-72">{cert.desc}</p>
               </div>
             ))}
           </div>

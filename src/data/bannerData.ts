@@ -4,48 +4,64 @@ export interface BannerSlide {
   title: string;
   background: string;
   mobileBackground: string; // Mobile-specific background image
-  points: string[];
+  description: string; // Single paragraph description
 }
 
 const bannerData: BannerSlide[] = [
   {
-    title: "Indian Coffee is\nGrown in Shade",
-    background: "/banners/1.webp",
-    mobileBackground: "/banners/m1.webp",
-    points: [
-      "Maintain stable soil temperature and moisture levels",
-      "Protect the Coffee plants from extreme weather conditions",
-      "Improves soil fertility"
-    ]
+    title: "Shade Grown",
+    background: "/banners/b1.webp",
+    mobileBackground: "/banners/b1.webp", // Using same image for mobile for now
+    description: "Grown under India's forest canopy"
   },
   
   {
-    title: "Indian Coffee is\nHandpicked",
-    background: "/banners/2.webp",
-    mobileBackground: "/banners/m2.webp",
-    points: [
-      "Only the ripe coffee cherries are plucked, ensuring that each bean is of the highest quality"
-    ]
+    title: "Hand Picked",
+    background: "/banners/b8.webp", // Using placeholder until proper image is added
+    mobileBackground: "/banners/b8.webp",
+    description: "Handpicked on India's coffee slopes"
   },
   {
-    title: "Indian Coffee is\nSun-Dried",
-    background: "/banners/3.webp",
-    mobileBackground: "/banners/m3.webp",
-    points: [
-      "The slower, more natural drying process under the sun allows for better development of unique flavours and aromas in the coffee bean"
-    ]
+    title: "Sun Dried",
+    background: "/banners/b2.webp", // Using placeholder until proper image is added
+    mobileBackground: "/banners/b2.webp",       
+    description: "Sun-dried on open Indian patios"
   },
   {
-    title: "Intercropping in\nIndian Coffee Plantations",
-    background: "/banners/4.webp",
-    mobileBackground: "/banners/m4.webp",
-    points: [
-      "Reduces risk of crop failure",
-      "Improves soil health naturally",
-      "Controls pests and diseases",
-      "Increases income and sustainability"
-    ]
-  }
-];
+    title: "Intercropping",
+    background: "/banners/b3.webp", // Using placeholder until proper image is added
+    mobileBackground: "/banners/b3.webp",
+    description: "Intercropped with spices and fruits"
+   },
+   {
+    title: "High Grown (Above 1000m)",
+    background: "/banners/b4.webp", // Using placeholder until proper image is added
+    mobileBackground: "/banners/b4.webp",
+    description: "Mostly high grown at altitudes above 1000m"
+   },
+   {
+    title: "Diverse Ecosystem",
+    background: "/banners/b5.webp", // Using placeholder until proper image is added
+    mobileBackground: "/banners/b5.webp",
+    description: "Diverse ecosystem with rich flora and fauna"
+   },
+   {
+    title: "Eco-Friendly Techniques",
+    background: "/banners/b6.webp", // Using placeholder until proper image is added   
+    mobileBackground: "/banners/b6.webp",
+    description: "Eco-friendly cultivation techniques"
+   },
+   {
+    title: "Flavor Profile",
+    background: "/banners/b7.webp", // Using placeholder until proper image is added
+    mobileBackground: "/banners/b7.webp",
+    description: "Grown under India's forest canopy"
+   },
+   
+
+
+
+
+ ];
 
 export default bannerData;

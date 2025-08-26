@@ -37,7 +37,7 @@ export default function Header() {
               <Image
                 src="/logo.webp"
                 alt="Gaina Overseas Logo"
-                width={100}
+                width={150}
                 height={100}
                 className="lg:w-full lg:h-full w-52 h-full"
               />
@@ -48,6 +48,15 @@ export default function Header() {
               Exporter of Green coffee Beans of Indian Origin
             </h2>
           </nav>
+          <div>
+             <Image
+                src="/slogo.webp"
+                alt="Gaina Overseas Logo"
+                width={50}
+                height={50}
+                className="lg:w-full lg:h-full w-52 h-full"
+              />
+          </div>
           {/* Mobile Menu Button */}
           <button 
             className="md:hidden fixed right-4 top-4 text-white bg-coffee-brown rounded-full p-2 z-50"
@@ -77,12 +86,14 @@ export default function Header() {
               <Link href="/certificates" className="text-coffee-brown text-xl font-medium">Registrations & Certificates</Link>
               
               <div className="mt-8 pt-8 border-t border-gray-200 w-full">
-                <h2 className="text-2xl font-bold text-coffee-brown mb-4">Gaina Overseas</h2>
-                <Link href="/address" className="block text-coffee-brown text-lg my-4">Address</Link>
-                <Link href="/mobile" className="block text-coffee-brown text-lg my-4">Mobile</Link>
-                <Link href="/email" className="block text-coffee-brown text-lg my-4">Send us Email</Link>
-                <Link href="/message" className="block text-coffee-brown text-lg my-4">Send us Message</Link>
-                <Link href="/live-chat" className="block text-coffee-brown text-lg my-4">Live Chat</Link>
+                <h2 className="text-2xl font-bold text-coffee-brown mb-4">Physical Location</h2>
+                <Link href="/address" className="block text-coffee-brown text-lg my-4">Call Us</Link>
+                <Link href="/mobile" className="block text-coffee-brown text-lg my-4">Send Us Email</Link>
+                <Link href="/email" className="block text-coffee-brown text-lg my-4">Video Conferencing</Link>
+                <Link href="/message" className="block text-coffee-brown text-lg my-4">Quick Enquiry</Link>
+                <Link href="/live-chat" className="block text-coffee-brown text-lg my-4">Chat With Us</Link>
+                <Link href="/live-chat" className="block text-coffee-brown text-lg my-4">Send Us SMS</Link>
+
               </div>
             </div>
           </div>
@@ -95,25 +106,27 @@ export default function Header() {
               href="/coffee-grades"
               className="text-white hover:text-coffee-lightGreen"
             >
-              Gaina Overseas
+              Physical Location
             </Link>
             <Link href="/about" className="text-white hover:text-white">
-              Address
+              Call Us
             </Link>
             <Link href="/contact" className="text-white hover:text-white">
               Mobile
             </Link>
             <Link href="/trade" className="text-white hover:text-white">
-              Send us Email
+              Send Us Email
             </Link>
             <Link href="/certificates" className="text-white hover:text-white">
-              Send us Message
+              Video Conferencing
             </Link>
             <Link href="/contact">Quick Enquiry</Link>
-            <Link href="/trade">Live chat</Link>
+            <Link href="/trade">Chat With Us</Link>
+            <Link href="/trade">Send Us SMS</Link>
+
           </nav>
         </div>
-        <nav className="hidden md:flex justify-center space-x-8 py-3 font-semibold">
+        {/* <nav className="hidden md:flex justify-center space-x-8 py-3 font-semibold">
           <Link
             href="/coffee-grades"
             className="text-coffee-brown hover:text-coffee-lightGreen"
@@ -144,7 +157,7 @@ export default function Header() {
           >
             Registrations & Certificates
           </Link>
-        </nav>
+        </nav> */}
       </div>
     </header>
   );

@@ -8,18 +8,18 @@ export interface BenefitCard {
 
 const benefitsData: BenefitCard[] = [
   {
-    title: "On-the-Ground Sourcing Access",
-    description: "Connected to the roots of Indian coffee. We work directly with farmers, FPOs, and coffee curators across growing regions - giving us traceable access to high-quality lots and giving you better control at origin.",
+    title: "Indian Green Coffee, Selected for Roasters",
+    description: "Traceable lots from India’s key coffee-growing regions, chosen for quality, consistency, and roastability exactly what modern roasters demand.",
     image: "/cards/1.webp"
   },
   {
-    title: "Founder-Led, Detail-Driven",
-    description: "Connected to the roots of Indian coffee. We work directly with farmers, FPOs, and coffee curators across growing regions - giving us traceable access to high-quality lots and giving you better control at origin.",
+    title: "Grade-Specific Lots, Export-Ready",
+    description: "Every shipment is sorted, graded, and prepared to meet international specs whether you're sourcing for blends, single-origin roasts, or bulk contracts.",
     image: "/cards/2.webp"
   },
   {
-    title: "Packaging That Protects the Bean",
-    description: "Export-ready, Roaster-approved. We use moisture-safe liners, gas options, and roaster-friendly packaging that preserves freshness - so your green coffee lands exactly how it left us.",
+    title: "Efficient Packing, Documentation & Port Handling",
+    description: "From bagging to paperwork, our export operations are designed for speed, accuracy, and hassle-free clearance so your coffee arrives right, every time.",
     image: "/cards/3.webp"
   }
 ];

@@ -1,23 +1,27 @@
-import Header from '@/components/Header';
+
 import Hero from '@/components/Hero';
 import CoffeeProducts from '@/components/CoffeeProducts';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import EthicalSourcing from '@/components/EthicalSourcing';
+import Magazine from '@/components/Magazine';
+import SustainableCoffee from '@/components/SustainableCoffee';
 import KnowledgeHub from '@/components/KnowledgeHub';
 import Newsletter from '@/components/Newsletter';
-import Footer from '@/components/Footer';
+
 
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col relative">
-      <Header />
+     
       <Hero />
       <CoffeeProducts />
       <WhyChooseUs />
       <EthicalSourcing />
+      <Magazine />
+      <SustainableCoffee />
       <KnowledgeHub />
       <Newsletter />
-      <Footer />
+  
     </main>
   );
 }

@@ -56,9 +56,9 @@ export default function WhyChooseUs() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-[#E9B8A8] relative z-10">
+    <section ref={sectionRef} className="py-24 bg-[#E9B8A8] relative z-10 pb-28">
       
-      <div className="max-w-7xl mx-auto px-4 lg:h-[700px]">
+      <div className="max-w-7xl mx-auto px-4 lg:h-[800px]">
         <div className="text-center mb-12">
           <h2 className="text-5xl font-serif font-semibold mb-2 text-coffee-brown">
             Why Choose Gajna Overseas?
@@ -70,7 +70,7 @@ export default function WhyChooseUs() {
 
         <div ref={cardsRef} className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {benefitsData.map((benefit, index) => (
-            <div key={index} className="benefit-card relative pt-20 px-4 lg:h-[420px] group">
+            <div key={index} className="benefit-card relative pt-20 px-4 lg:h-[520px] w-full group">
               {/* Image positioned outside the card */}
               <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/3 w-72 h-72 z-20">
                 <div className="relative w-full h-full drop-shadow-xl transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:-translate-y-4">
@@ -84,10 +84,10 @@ export default function WhyChooseUs() {
               </div>
               
               {/* Card content */}
-              <div className="bg-[#572F22] rounded-2xl shadow-lg p-6 pt-44 pb-8 text-white mt-16 h-[430px] flex flex-col transition-all duration-500 ease-in-out group-hover:shadow-2xl">
+              <div className="bg-[#572F22] rounded-2xl shadow-lg p-6 pt-44 pb-8 text-white mt-16 h-[500px] flex flex-col transition-all duration-500 ease-in-out group-hover:shadow-2xl">
                 <h3 className="text-2xl font-serif mb-3">{benefit.title}</h3>
                 <div className="overflow-y-auto flex-grow pr-2">
-                  <p className="text-base">{benefit.description}</p>
+                  <p className="text-sm">{benefit.description}</p>
                 </div>
               </div>
             </div>
