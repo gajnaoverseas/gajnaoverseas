@@ -61,7 +61,7 @@ This sustainable approach has earned Indian coffee recognition in specialty mark
     date: "May 18, 2025",
     excerpt:
       "Learn about the unique Geographical Indication tagged coffees from different regions of India and what makes them special.",
-    featureImage: "/blog/feature/images/gi-tagged-coffees-of-india.webp",
+    featureImage: "/blog/feature/images/r.webp",
     content: `
 # GI Tagged Coffees of India
 
