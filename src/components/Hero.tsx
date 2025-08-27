@@ -43,21 +43,19 @@ export default function Hero() {
   const currentSlideData = slides[currentSlide];
 
   return (
-    <section className="relative bg-black text-white overflow-hidden h-[600px] z-0">
+    <section className="relative bg-black text-white overflow-hidden h-[120vh] z-0 mt-[-2vw]">
     
       {/* Background image with transition effect and gradient overlay */}
       {slides.map((slide, index) => (
         <div 
-          key={index}
-          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${index === currentSlide ? 'opacity-60' : 'opacity-0'}`}
-          style={{ 
-            backgroundImage: isMounted ? `url(${isMobile ? slide.mobileBackground : slide.background})` : 'none'
-          }}
-        >
-          {/* Gradient overlay for better text visibility */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black opacity-20"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-20"></div>
-        </div>
+  key={index}
+  className={`absolute inset-0 bg-no-repeat bg-center transition-opacity duration-1000 ${index === currentSlide ? 'opacity-80' : 'opacity-0'}`}
+  style={{ 
+    backgroundImage: isMounted ? `url(${isMobile ? slide.mobileBackground : slide.background})` : 'none',
+    backgroundSize: "100% 100%"
+  }}
+></div>
+
       ))}
       
       <div className="container mx-auto px-4 py-20 relative z-10 h-full flex flex-col justify-center">

@@ -72,7 +72,7 @@ export default function WhyChooseUs() {
           {benefitsData.map((benefit, index) => (
             <div key={index} className="benefit-card relative pt-8 px-4 lg:h-[400px] w-full group max-w-[330px] mx-auto">
               {/* Image positioned outside the card */}
-              <div className="absolute -top-20 left-1/2 transform -translate-x-1/2 -translate-y-1/3 w-44 h-full z-20">
+              <div className="absolute -top-24 left-1/2 transform -translate-x-1/2 -translate-y-1/3 w-44 h-full z-20">
                 <div className="relative w-full h-full drop-shadow-xl transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:-translate-y-4">
                   <Image
                     src={benefit.image}
@@ -84,7 +84,7 @@ export default function WhyChooseUs() {
               </div>
               
               {/* Card content */}
-              <div className="bg-[#572F22] rounded-2xl shadow-lg px-6 py-3 pt-36 pb-6 text-white mt-8 h-[385px] flex flex-col transition-all duration-500 ease-in-out group-hover:shadow-2xl">
+              <div className="bg-[#572F22] rounded-2xl shadow-lg px-6 py-3 pt-44 pb-6 text-white mt-8 h-[360px] flex flex-col transition-all duration-500 ease-in-out group-hover:shadow-2xl">
                 <h3 className="text-base font-serif mb-2">{benefit.title}</h3>
                 <div className="overflow-y-auto flex-grow pr-2">
                   <p className="text-[12px] italic">{benefit.description}</p>

@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between">
           {/* Logo and Tagline */}
           <div className="mb-6 md:mb-0">
-            <Link href="/" className="text-white font-bold text-2xl mb-2 block">
+            <Link href="/" className="text-white font-bold text-2xl mb-2 flex flex-row justify-center items-center">
               <Image
                 src="/logo.webp"
                 alt="Gaina Overseas Logo"
@@ -20,9 +20,16 @@ export default function Footer() {
                 height={200}
                 className="w-48 h-20 rounded-2xl p-2 bg-white"
               />
+              {/* <Image
+                src="/slogo.webp"
+                alt="Gaina Overseas Logo"
+                width={200}
+                height={200}
+                className="e"
+              /> */}
               {/* Gaina Overseas */}
             </Link>
-            <p className="text-sm mb-4">
+            <p className="text-sm my-4">
               In breath, find peace; in stillness, grow,
               <br />
               Through ancient roots and modern glow,
@@ -164,7 +171,7 @@ export default function Footer() {
                 <h3 className="font-medium  text-2xl">Mail Us</h3>
               <p className="flex items-center">
                 
-                mshrujofficial@gmail.com
+               info@gajnaoverseas.com
               </p>
               </div>
             </div>
@@ -172,14 +179,14 @@ export default function Footer() {
               <IoCall className="mr-2 text-4xl" />
               <div className="flex flex-col">
                 <h3 className="font-medium mb-2 text-2xl">Call Us</h3>
-                <p className="flex items-center">+91 99109 99168</p>
+                <p className="flex items-center">+91 9811789665</p>
               </div>
             </div>
             <div className="flex justify-start items-center flex-row">
               <FaLocationDot className="mr-2 text-4xl" />
               <div className="flex flex-col">
                 <h3 className="font-medium mb-2 text-2xl">Address</h3>
-                <p className="">Mumbai</p>
+                <p className="">505, Park Royal Apartments, <br/>GH-80, Sector -56, <br/>Gurugram, Haryana, India</p>
               </div>
             </div>
           </div>

@@ -8,15 +8,19 @@ export default function Header() {
 
   // Update body overflow style when mobile menu state changes
   useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
+    if (typeof window !== 'undefined') {
+      if (mobileMenuOpen) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'auto';
+      }
     }
     
     // Cleanup function to reset overflow when component unmounts
     return () => {
-      document.body.style.overflow = 'auto';
+      if (typeof window !== 'undefined') {
+        document.body.style.overflow = 'auto';
+      }
     };
   }, [mobileMenuOpen]);
 
@@ -37,9 +41,9 @@ export default function Header() {
               <Image
                 src="/logo.webp"
                 alt="Gaina Overseas Logo"
-                width={150}
+                width={180}
                 height={100}
-                className="lg:w-full lg:h-full w-52 h-full"
+                className="lg:w-full lg:h-full w-56 h-full"
               />
             </Link>
           </div>
@@ -75,55 +79,63 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="fixed inset-0 bg-white z-40 pt-16 md:hidden overflow-y-auto h-screen w-full">
-            <div className="flex flex-col items-center text-center space-y-6 p-4 min-h-screen pb-20 pt-12">
-              <h2 className="text-2xl font-bold text-coffee-brown mb-8">Our Coffee Grades</h2>
-              <Link href="/about" className="text-coffee-brown text-xl font-medium">About Us</Link>
-              <Link href="/contact" className="text-coffee-brown text-xl font-medium">Contact Us</Link>
-              <Link href="/trade" className="text-coffee-brown text-xl font-medium">Trade Enquiry</Link>
-              <Link href="/certificates" className="text-coffee-brown text-xl font-medium">Registrations & Certificates</Link>
-              
-              <div className="mt-8 pt-8 border-t border-gray-200 w-full">
-                <h2 className="text-2xl font-bold text-coffee-brown mb-4">Physical Location</h2>
-                <Link href="/address" className="block text-coffee-brown text-lg my-4">Call Us</Link>
-                <Link href="/mobile" className="block text-coffee-brown text-lg my-4">Send Us Email</Link>
-                <Link href="/email" className="block text-coffee-brown text-lg my-4">Video Conferencing</Link>
-                <Link href="/message" className="block text-coffee-brown text-lg my-4">Quick Enquiry</Link>
-                <Link href="/live-chat" className="block text-coffee-brown text-lg my-4">Chat With Us</Link>
-                <Link href="/live-chat" className="block text-coffee-brown text-lg my-4">Send Us SMS</Link>
-
-              </div>
+          <div className="absolute top-full left-0 bg-coffee-brown z-40 w-80 shadow-lg">
+            <div className="p-6">
+              <Link href="/products" className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200">Products</Link>
+              <Link href="/certificates" className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200">Registrations & Certificates</Link>
+              <Link href="/blog" className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200">Blogs</Link>
+              <Link href="/trade-enquiry" className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200">Trade Enquiry</Link>
+              <Link href="/about" className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200">About Us</Link>
+              <Link href="/become-supplier" className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200">Becomes a Supplier with us</Link>
+              <Link href="/careers" className="block text-white text-lg font-medium py-3 hover:text-amber-200">Careers</Link>
             </div>
           </div>
         )}
 
         {/* Desktop Navigation */}
         <div className="hidden md:block border-t border-gray-200">
-          <nav className="flex justify-center space-x-8 py-3 bg-coffee-brown text-white">
-            <Link
-              href="/coffee-grades"
-              className="text-white hover:text-coffee-lightGreen"
+          <nav className="flex items-center justify-between px-6 py-3 bg-coffee-brown text-white">
+            {/* Hamburger Menu Button */}
+            
+            
+            {/* Contact Links */}
+            <div className="flex justify-center items-center space-x-8 flex-1">
+              <button 
+              className="text-white hover:text-amber-200 p-2"
+              onClick={toggleMobileMenu}
+              aria-label="Toggle menu"
             >
-              Physical Location
-            </Link>
-            <Link href="/about" className="text-white hover:text-white">
-              Call Us
-            </Link>
-            <Link href="/contact" className="text-white hover:text-white">
-              Mobile
-            </Link>
-            <Link href="/trade" className="text-white hover:text-white">
-              Send Us Email
-            </Link>
-            <Link href="/certificates" className="text-white hover:text-white">
-              Video Conferencing
-            </Link>
-            <Link href="/contact">Quick Enquiry</Link>
-            <Link href="/trade">Chat With Us</Link>
-            <Link href="/trade">Send Us SMS</Link>
-
+              {mobileMenuOpen ? (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+              <span className="text-white font-medium">
+                Physical Location
+              </span>
+              <a href="tel:+919811789665" className="text-white hover:text-amber-200">
+                Call Us
+              </a>
+              <a href="tel:+919811789665" className="text-white hover:text-amber-200">
+                Mobile
+              </a>
+              <a href="mailto:info@gajnaoverseas.com" className="text-white hover:text-amber-200">
+                Send Us Email
+              </a>
+              <a href="https://meet.google.com/new" target="_blank" rel="noopener noreferrer" className="text-white hover:text-amber-200">
+                Video Conferencing
+              </a>
+              <a href="mailto:info@gajnaoverseas.com?subject=Quick Enquiry" className="text-white hover:text-amber-200">Quick Enquiry</a>
+              <a href="https://wa.me/919811789665" target="_blank" rel="noopener noreferrer" className="text-white hover:text-amber-200">Chat With Us</a>
+              <a href="sms:+919811789665" className="text-white hover:text-amber-200">Send Us SMS</a>
+            </div>
           </nav>
         </div>
         {/* <nav className="hidden md:flex justify-center space-x-8 py-3 font-semibold">

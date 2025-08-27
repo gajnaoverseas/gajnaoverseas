@@ -87,7 +87,7 @@ export default function CoffeeProducts() {
                   transition={{ duration: 0.4, ease: "easeInOut" }}
                 >
                   <Image
-                    src="/coffee-beans/arabica.webp"
+                    src="/coffee-beans/arabica.png"
                     alt="Arabica Coffee"
                     width={200}
                     height={200}
@@ -100,14 +100,14 @@ export default function CoffeeProducts() {
                   className="bg-[#7D4B3C] text-white px-6 py-4 rounded-2xl w-full shadow-lg mt-[-80px] relative overflow-hidden"
                   variants={{
                     initial: { height: "200px" },
-                    hover: { height: "340px" },
+                    hover: { height: "300px" },
                   }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
                 >
                   <div className="text-center pt-12 h-full flex flex-col justify-start">
                     {/* Title */}
                     <motion.h3
-                      className="text-3xl font-serif mb-3"
+                      className="text-3xl font-serif mt-3"
                       variants={{
                         initial: { y: 0 },
                         hover: { y: -10 },
@@ -119,7 +119,7 @@ export default function CoffeeProducts() {
 
                     {/* Description - hidden initially, visible on hover */}
                     <motion.p
-                      className="text-base mb-3 px-2 leading-relaxed"
+                      className="text-base mb-3 px-2 leading-relaxed text-left"
                       variants={{
                         initial: { opacity: 0, y: 20 },
                         hover: { opacity: 1, y: 0 },
@@ -130,9 +130,12 @@ export default function CoffeeProducts() {
                         delay: 0.1,
                       }}
                     >
-                      Slightly smaller than Arabica Rounder Shape Grows at lower
-                      altitudes Higher caffeine content than Arabica Has a
-                      straight cut in the middle Earthy and slightly bitter
+                      • Slightly larger than Robusta<br/>
+                      • Elliptical-shaped beans<br/>
+                      • Grown at higher altitudes<br/>
+                      • Higher acidity compared to Robusta<br/>
+                      • Distinctive S-shaped cut in the center<br/>
+                      • Known for elegant, fruity aroma
                     </motion.p>
                   </div>
                 </motion.div>
@@ -190,7 +193,7 @@ export default function CoffeeProducts() {
                   <div className="text-center pt-12  flex flex-col justify-start">
                     {/* Title */}
                     <motion.h3
-                      className="text-3xl font-serif mb-3"
+                      className="text-3xl font-serif mt-5"
                       variants={{
                         initial: { y: 0 },
                         hover: { y: -10 },
@@ -202,7 +205,7 @@ export default function CoffeeProducts() {
 
                     {/* Description - hidden initially, visible on hover */}
                     <motion.p
-                      className="text-base mb-3 px-2 leading-relaxed"
+                      className="text-base mb-3 px-2 leading-relaxed text-left"
                       variants={{
                         initial: { opacity: 0, y: 20 },
                         hover: { opacity: 1, y: 0 },
@@ -213,9 +216,12 @@ export default function CoffeeProducts() {
                         delay: 0.1,
                       }}
                     >
-                      Slightly Larger than Robusta Elliptical Shape Grows at
-                      higher altitudes Higher acidity than Robusta Has an
-                      S-shaped cut in the middle 
+                      • Slightly smaller than Arabica<br/>
+                      • Rounder-shaped beans<br/>
+                      • Grown at lower altitudes<br/>
+                      • Higher caffeine content than Arabica<br/>
+                      • Features a straight cut in the center<br/>
+                      • Earthy, slightly bitter flavor profile
                     </motion.p>
                   </div>
                 </motion.div>
@@ -226,7 +232,7 @@ export default function CoffeeProducts() {
                 href="/coffee/robusta"
                 className="inline-block py-3 px-6 border border-coffee-gold text-black font-medium rounded-full hover:bg-coffee-gold hover:text-coffee-brown transition duration-300 text-sm"
               >
-                Explore Indian Grade Arabica
+                Explore Indian Grade Robusta
               </Link>
             </div>
           </div>
