@@ -152,7 +152,7 @@ export default function Footer() {
                   className="hover:text-coffee-gold"
                 >
                   For coffee suppliers
-                  <br /> ( Become a coffee supplier with us.)
+                  <br /> (Become a coffee supplier with us)
                 </Link>
               </li>
             </ul>
