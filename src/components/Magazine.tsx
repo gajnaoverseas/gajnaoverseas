@@ -200,35 +200,35 @@ export default function Magazine() {
           </div>
         </div>
 
-        {/* Cover Card (Front) */}
-        <motion.div
-          className="absolute inset-0 w-full h-full rounded-lg shadow-lg overflow-hidden bg-white"
-          animate={{
-            x: (hoveredIndex === index || (clickedIndex === index && window.innerWidth < 1024)) ? "-100%" : "0%"
-          }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-        >
-          <Image
-            src={magazine.src}
-            alt={magazine.title}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
-          />
-          
-          {/* Title overlay when not hovered */}
-          <motion.div
-            className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2 rounded-b-lg"
-            animate={{
-              opacity: (hoveredIndex === index || (clickedIndex === index && window.innerWidth < 1024)) ? 0 : 1
-            }}
-            transition={{ duration: 0.3 }}
-          >
-            {/* <h3 className="text-white text-xs font-medium text-center">
-              {magazine.title}
-            </h3> */}
-          </motion.div>
-        </motion.div>
+        {/* Title overlay when not hovered - positioned behind */}
+                <motion.div
+                  className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2 rounded-b-lg z-10"
+                  animate={{
+                    opacity: (hoveredIndex === index || (clickedIndex === index && window.innerWidth < 1024)) ? 0 : 1
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {/* <h3 className="text-white text-xs font-medium text-center">
+                    {magazine.title}
+                  </h3> */}
+                </motion.div>
+
+                {/* Cover Card (Front) */}
+                <motion.div
+                  className="absolute inset-0 w-full h-full rounded-lg shadow-lg overflow-hidden bg-white z-20"
+                  animate={{
+                    x: (hoveredIndex === index || (clickedIndex === index && window.innerWidth < 1024)) ? "-100%" : "0%"
+                  }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                >
+                  <Image
+                    src={magazine.src}
+                    alt={magazine.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
+                  />
+                </motion.div>
       </div>
     </motion.div>
   ))}
@@ -271,35 +271,35 @@ export default function Magazine() {
                   </div>
                 </div>
 
-                {/* Cover Card (Front) */}
-                <motion.div
-                  className="absolute inset-0 w-full h-full rounded-lg shadow-lg overflow-hidden bg-white"
-                  animate={{
-                    x: (hoveredIndex === (index + 10) || (clickedIndex === (index + 10) && window.innerWidth < 1024)) ? "-100%" : "0%"
-                  }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                >
-                  <Image
-                    src={magazine.src}
-                    alt={magazine.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
-                  />
-                  
-                  {/* Title overlay when not hovered */}
-                  <motion.div
-                    className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2 rounded-b-lg"
-                    animate={{
-                      opacity: (hoveredIndex === (index + 10) || (clickedIndex === (index + 10) && window.innerWidth < 1024)) ? 0 : 1
-                    }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {/* <h3 className="text-white text-xs font-medium text-center">
-                      {magazine.title}
-                    </h3> */}
-                  </motion.div>
-                </motion.div>
+                {/* Title overlay when not hovered - positioned behind */}
+                 <motion.div
+                   className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2 rounded-b-lg z-10"
+                   animate={{
+                     opacity: (hoveredIndex === (index + 10) || (clickedIndex === (index + 10) && window.innerWidth < 1024)) ? 0 : 1
+                   }}
+                   transition={{ duration: 0.3 }}
+                 >
+                   {/* <h3 className="text-white text-xs font-medium text-center">
+                     {magazine.title}
+                   </h3> */}
+                 </motion.div>
+
+                 {/* Cover Card (Front) */}
+                 <motion.div
+                   className="absolute inset-0 w-full h-full rounded-lg shadow-lg overflow-hidden bg-white z-20"
+                   animate={{
+                     x: (hoveredIndex === (index + 10) || (clickedIndex === (index + 10) && window.innerWidth < 1024)) ? "-100%" : "0%"
+                   }}
+                   transition={{ duration: 0.5, ease: "easeInOut" }}
+                 >
+                   <Image
+                     src={magazine.src}
+                     alt={magazine.title}
+                     fill
+                     className="object-cover"
+                     sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
+                   />
+                 </motion.div>
               </div>
             </motion.div>
           ))}

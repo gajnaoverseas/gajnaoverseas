@@ -102,7 +102,7 @@ export default function EthicalSourcing() {
 
           <div
             ref={logosRef}
-            className="flex flex-wrap justify-center items-center gap-8 mb-10"
+            className="grid grid-cols-2 md:grid-cols-5 gap-6 mb-10 max-w-6xl mx-auto"
           >
             {certificationsData.map((cert, index) => (
               <div key={index} className="logo-item flex flex-col items-center mx-4">
@@ -127,7 +127,7 @@ export default function EthicalSourcing() {
                         currentIndex: 0
                       });
                     }}
-                    className="bg-transparent text-coffee-brown text-xs hover:bg-amber-700 transition-colors duration-300 underline cursor-pointer"
+                    className="bg-transparent text-coffee-brown text-xs transition-colors duration-300 underline cursor-pointer"
                     type="button"
                   >
                     View Certificate{cert.certificateImages.length > 1 ? 's' : ''}
