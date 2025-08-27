@@ -108,10 +108,7 @@ export default function Footer() {
                   Product
                 </Link>
               </li>
-              <li className="flex items-center">
-                <FaCheck className="mr-2" />
-        
-              </li>
+              
               <li className="flex items-center">
                 <FaCheck className="mr-2" />
                 <Link href="/trade-enquire" className="hover:text-coffee-gold">
