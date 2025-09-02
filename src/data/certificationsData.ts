@@ -11,12 +11,28 @@ export interface Certification {
 
 const certificationsData: Certification[] = [
   {
-    name: "Coffee Board of India",
+    name: "Coffee Board ",
     logo: "/logos/1.webp",
     alt: "Coffee Board of India logo",
-    desc: "Certificate of Participation, VIKRAYAM, Coffee Entrepreneurship, Registration cum membership certificate",
+    desc: "Registration-Cum-Membership Certificate",
     hasViewButton: true,
-    certificateImages: ["/certificates/Certificate1.webp", "/certificates/Certificate2.webp", "/certificates/Certificate3.webp"],
+    certificateImages: ["/certificates/Certificate1.webp",],
+  },
+  {
+    name: "Coffee Board",
+    logo: "/logos/1.webp",
+    alt: "Indian Coffee Association logo",
+    desc: "Coffee Entrepreneurship Certificate of Participation",
+    hasViewButton: true,
+    certificateImages: ["/certificates/Certificate2.webp"],
+  },
+  {
+    name: "Coffee Board",
+    logo: "/logos/1.webp",
+    alt: "Indian Coffee Association logo",
+    desc: "Coffee Exporter’s Training Programme",
+    hasViewButton: true,
+    certificateImages: ["/certificates/Certificate3.webp"],
   },
   {
     name: "Federation of Indian Export Organizations",
