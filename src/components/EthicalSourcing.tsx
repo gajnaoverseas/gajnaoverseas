@@ -101,16 +101,16 @@ export default function EthicalSourcing() {
 
       {/* Registrations & Certifications */}
       <div className="bg-white">
-        <div className="max-w-7xl mx-auto px-4 py-16">
+        <div className="max-w-7xl mx-auto px-4 py-8">
           <h2 className="text-5xl font-serif font-semibold mb-10 text-coffee-brown text-center fade-in-text">
             Registrations & Certifications
           </h2>
 
-          <div ref={logosRef} className="mb-10 max-w-6xl mx-auto">
+          <div ref={logosRef} className="mb-2 max-w-6xl mx-auto">
             <Carousel className="w-full">
               <CarouselContent className="-ml-2 md:-ml-4">
                 {certificationsData.map((cert, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/6">
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/5">
                     <div className="flex flex-col items-center">
                       {/* Card Box with equal height */}
                       <div className="logo-item flex flex-col items-center justify-between mx-0 border-2 border-coffee-brown shadow-lg rounded-2xl p-4 h-60 w-full">
@@ -122,6 +122,9 @@ export default function EthicalSourcing() {
                             className="object-contain"
                           />
                         </div>
+                        <h3 className="text-center text-sm text-black font-bold line-clamp-3">
+                          {cert.title}
+                        </h3>
                         <p className="text-center text-xs text-black max-w-72 mb-3 line-clamp-3">
                           {cert.desc}
                         </p>

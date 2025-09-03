@@ -49,7 +49,7 @@ export default function CoffeeProducts() {
     };
   }, []);
   return (
-    <section ref={sectionRef} className="py-16 bg-white relative z-10">
+    <section ref={sectionRef} className="py-8 bg-white relative z-10">
       <Image
         src="/blog-bg.webp"
         alt="Knowledge Hub Background"
