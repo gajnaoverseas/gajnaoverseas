@@ -123,6 +123,15 @@ const certificationsData: Certification[] = [
     certificateImages: ["/certificates/Certificate7.webp"],
     title: "Income Tax Department",
   },
+   {
+    name: "Coffee Board",
+    logo: "/logos/1.webp",
+    alt: "Indian Coffee Association logo",
+    title: "Coffee Board",
+    desc: "Training Programme On Coffee Roasting & Brewing",
+    hasViewButton: true,
+    certificateImages: ["/certificates/Certificate8.webp"],
+  },
 ];
 
 export default certificationsData;
