@@ -80,9 +80,9 @@ export default function CoffeeProducts() {
                   className="relative z-20 mt-6 flex-shrink-0 h-[200px] flex items-center justify-center"
                 >
                   <Image
-                    src="/coffee-beans/arabica.png"
+                    src="/coffee-beans/arabica.webp"
                     alt="Arabica Coffee"
-                    width={150}
+                    width={270}
                     height={200}
                     className="mb-4"
                   />
@@ -138,7 +138,7 @@ export default function CoffeeProducts() {
                   <Image
                     src="/coffee-beans/Robusta.webp"
                     alt="Robusta Coffee"
-                    width={170}
+                    width={270}
                     height={200}
                     className="mb-4"
                   />

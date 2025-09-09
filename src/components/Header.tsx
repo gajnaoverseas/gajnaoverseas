@@ -96,7 +96,7 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <div className="hidden md:block border-t border-gray-200">
-          <nav className="flex items-center justify-between px-6 py-1 bg-black text-white">
+          <nav className="flex items-center justify-between px-6 py-1 bg-[#434d35] text-white">
             {/* Hamburger Menu Button */}
             
             

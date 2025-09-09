@@ -17,7 +17,7 @@ export default function Home() {
       <CoffeeProducts />
       {/* <WhyChooseUs /> */}
       <EthicalSourcing />
-      <Magazine />
+      {/* <Magazine /> */}
       <SustainableCoffee />
       <KnowledgeHub />
       {/* <Newsletter /> */}
