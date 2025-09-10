@@ -108,9 +108,9 @@ export default function EthicalSourcing() {
 
           <div ref={logosRef} className="mb-2 max-w-6xl mx-auto">
             <Carousel className="w-full">
-              <CarouselContent className="-ml-2 md:-ml-4">
+              <CarouselContent className="-ml-2 md:-ml-4 ">
                 {certificationsData.map((cert, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/5">
+                  <CarouselItem key={index} className="pl-2 md:pl-4 px-10 md:basis-1/3 lg:basis-1/5">
                     <div className="flex flex-col items-center">
                       {/* Card Box with equal height */}
                       <div className="logo-item flex flex-col items-center justify-between mx-0 border-2 border-coffee-brown shadow-lg rounded-2xl p-4 h-60 w-full">
@@ -154,8 +154,8 @@ export default function EthicalSourcing() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="-left-4 lg:-left-12" />
-              <CarouselNext className="-right-4 lg:-right-12" />
+              <CarouselPrevious className="-left-2 lg:-left-12" />
+              <CarouselNext className="-right-2 lg:-right-12 " />
             </Carousel>
           </div>
 

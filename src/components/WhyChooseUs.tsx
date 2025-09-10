@@ -114,7 +114,7 @@ export default function WhyChooseUs() {
               height={124}
             />
           </div>
-          <div className="absolute right-8 md:right-96 md:-bottom-36 -bottom-56 w-12 h-12 md:w-16 md:h-16 ">
+          <div className="absolute right-8 md:right-96 md:-bottom-36 -bottom-60 w-12 h-12 md:w-16 md:h-16 ">
             <Image
               src="/r-quotes.webp"
               alt="Quote Icon"
