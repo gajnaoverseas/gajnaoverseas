@@ -22,278 +22,436 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
     };
 
     if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
     }
-
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen, onClose]);
 
   // Group products by category and variety
-  const arabicaProducts = allProducts.filter(product => product.variety === 'Arabica');
-  const robustaProducts = allProducts.filter(product => product.variety === 'Robusta');
+  const arabicaProducts = allProducts.filter((product) => product.variety === "Arabica");
+  const robustaProducts = allProducts.filter((product) => product.variety === "Robusta");
+
+  // Static grades list based on Figma to ensure ALL grades are visible in the mega menu
+  const slugMap: Record<string, string> = {
+    "Plantation PB": "plantation-pb",
+    "Plantation A": "plantation-a",
+    "Plantation B": "plantation-b",
+    "Plantation C": "plantation-c",
+  };
+
+  // Fallback: generate a URL-friendly slug from a grade name so each item can have its own page
+  const slugifyGrade = (name: string) =>
+    name
+      .toLowerCase()
+      .replace(/&/g, "and")
+      .replace(/[^a-z0-9\s-]/g, "") // remove special chars
+      .trim()
+      .replace(/\s+/g, "-");
+
+  type GradeGroup = {
+    title: string; // Section, e.g., Commercial Grades
+    blocks: Array<{
+      heading: string; // Arabica | Robusta
+      groups: Array<{
+        subheading: string; // e.g., Washed Arabica Plantation
+        variety: "Arabica" | "Robusta";
+        items: string[];
+      }>;
+    }>;
+  };
+
+  const gradesData: GradeGroup[] = [
+    {
+      title: "Commercial Grades",
+      blocks: [
+        {
+          heading: "Arabica",
+          groups: [
+            {
+              subheading: "Washed Arabica Plantation",
+              variety: "Arabica",
+              items: [
+                "Plantation A",
+                "Plantation B",
+                "Plantation C",
+                "Plantation Blacks",
+                "Plantation Bits",
+                "Plantation Bulk",
+              ],
+            },
+            {
+              subheading: "Unwashed Arabica Cherry",
+              variety: "Arabica",
+              items: [
+                "Arabica Cherry PB",
+                "Arabica Cherry AB",
+                "Arabica Cherry C",
+                "Arabica Cherry Blacks/Brown",
+                "Arabica Cherry Bits",
+                "Arabica Cherry Bulk",
+              ],
+            },
+          ],
+        },
+        {
+          heading: "Robusta",
+          groups: [
+            {
+              subheading: "Washed Robusta Parchment",
+              variety: "Robusta",
+              items: [
+                "Robusta Parchment PB",
+                "Robusta Parchment AB",
+                "Robusta Parchment C",
+                "Robusta Parchment Blacks/Browns",
+                "Robusta Parchment Bits",
+                "Robusta Parchment Bulk",
+              ],
+            },
+            {
+              subheading: "Unwashed Robusta Cherry",
+              variety: "Robusta",
+              items: [
+                "Robusta Cherry PB",
+                "Robusta Cherry AB",
+                "Robusta Cherry C",
+                "Robusta Cherry Blacks/Browns",
+                "Robusta Cherry Bits",
+                "Robusta Cherry Bulk",
+                "Robusta Cherry Clean Bulk",
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Premium Grades",
+      blocks: [
+        {
+          heading: "Arabica",
+          groups: [
+            {
+              subheading: "Washed Arabica Plantation",
+              variety: "Arabica",
+              items: ["Plantation AA", "Plantation PB Bold"],
+            },
+            {
+              subheading: "Unwashed Arabica Cherry",
+              variety: "Arabica",
+              items: ["Arabica Cherry AA", "Arabica Cherry AB", "Arabica Cherry PB Bold"],
+            },
+          ],
+        },
+        {
+          heading: "Robusta",
+          groups: [
+            {
+              subheading: "Washed Robusta Parchment",
+              variety: "Robusta",
+              items: ["Robusta Parchment A", "Robusta Parchment PB  Bold"],
+            },
+            {
+              subheading: "Unwashed Robusta Cherry",
+              variety: "Robusta",
+              items: ["Robusta Cherry AA", "Robusta Cherry A", "Robusta Cherry PB  Bold"],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Specialty Grades",
+      blocks: [
+        {
+          heading: "Arabica",
+          groups: [
+            {
+              subheading: "Washed Arabica",
+              variety: "Arabica",
+              items: ["Mysore Nuggets Extra bold- Washed"],
+            },
+            {
+              subheading: "Arabica Cherry",
+              variety: "Arabica",
+              items: [
+                "Monsooned Malabar AAA -  Unwashed",
+                "Monsooned Malabar AA -  unwashed",
+                "Monsooned Malabar arabica Triage -  Unwashed",
+              ],
+            },
+          ],
+        },
+        {
+          heading: "Robusta",
+          groups: [
+            {
+              subheading: "Robusta Parchment",
+              variety: "Robusta",
+              items: ["Robusta Kaapi Royale- Washed Coffee"],
+            },
+            {
+              subheading: "Robusta Cherry",
+              variety: "Robusta",
+              items: [
+                "Monsooned Malabar Robusta PR-  Unwashed",
+                "Monsooned Malabar Robusta Triage -  Unwashed",
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Miscellaneous Grades",
+      blocks: [
+        {
+          heading: "",
+          groups: [
+            {
+              subheading: "",
+              variety: "Arabica",
+              items: [
+                "Liberia Bulk (Bulk Coffee from Liberia)",
+                "Excelsia Bulk (Bulk Coffee from Excelsia)",
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ];
 
   if (!isOpen) return null;
 
+  // ✅ Mobile version
   if (isMobile) {
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 z-auto">
-        <div 
+      <div className="fixed inset-0 bg-black bg-opacity-50 z-[9998]">
+        <div
           ref={menuRef}
           className="absolute top-0 left-0 w-full bg-white shadow-lg max-h-screen overflow-y-auto"
         >
           <div className="p-6">
             {/* Header */}
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-serif text-[#562F23]">Our Products</h2>
-              <button 
-                onClick={onClose}
-                className="p-2 hover:bg-gray-100 rounded-full"
-                aria-label="Close menu"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
+
 
             {/* All Products Link */}
-            <Link 
-              href="/products" 
+            <Link
+              href="/products"
               onClick={onClose}
               className="block w-full text-left p-4 mb-4 bg-[#E1A694] text-[#562F23] rounded-lg font-semibold hover:bg-[#d19a85] transition-colors"
             >
               View All Products →
             </Link>
 
-            {/* Arabica Products */}
-            {arabicaProducts.length > 0 && (
-              <div className="mb-8">
-                <h3 className="text-lg font-semibold text-[#562F23] mb-4 border-b border-gray-200 pb-2">
-                  Arabica Coffee
-                </h3>
-                <div className="space-y-3">
-                  {arabicaProducts.map((product) => (
-                    <Link
-                      key={product.slug}
-                      href={`/products/${product.slug}`}
-                      onClick={onClose}
-                      className="flex items-center p-3 hover:bg-gray-50 rounded-lg transition-colors"
-                    >
-                      <div className="w-12 h-12 relative mr-3 flex-shrink-0">
-                        <Image
-                          src={product.heroImage}
-                          alt={product.name}
-                          fill
-                          className="object-cover rounded"
-                        />
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-[#562F23]">{product.name}</h4>
-                        <p className="text-sm text-gray-600">{product.subtitle}</p>
-                      </div>
-                    </Link>
-                  ))}
+            {/* Full grade list per Figma */}
+            <div className="space-y-8">
+              {gradesData.map((section) => (
+                <div key={section.title} className="mb-2">
+                  <h3 className="text-lg font-semibold text-[#562F23] mb-4">{section.title}</h3>
+                  {/* Special layout for Miscellaneous */}
+                  {section.title === "Miscellaneous Grades" ? (
+                    <div>
+                      {(section.blocks[0]?.groups || []).map((g, i) => (
+                        <div key={i} className="mt-2">
+                          {g.subheading ? (
+                            <p className="text-sm text-[#7D4B3C] font-medium mb-1">{g.subheading}</p>
+                          ) : null}
+                          <ol className="list-decimal pl-5 space-y-1">
+                            {g.items.map((name) => {
+                              const slug = slugMap[name] || slugifyGrade(name);
+                              const href = `/products/${slug}`;
+                              return (
+                                <li key={name}>
+                                  <Link href={href} onClick={onClose} className="text-sm text-[#562F23] hover:text-[#7D4B3C]">
+                                    {name}
+                                  </Link>
+                                </li>
+                              );
+                            })}
+                          </ol>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      {section.blocks.map((block, idx) => (
+                        <div key={idx}>
+                          {block.heading ? (
+                            <h4 className="text-base font-semibold text-[#562F23]">{block.heading}</h4>
+                          ) : null}
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                            {block.groups.map((g, gIdx) => (
+                              <div key={gIdx}>
+                                {g.subheading ? (
+                                  <p className="text-sm text-[#7D4B3C] font-medium mb-1">{g.subheading}</p>
+                                ) : null}
+                                <ol className="list-decimal pl-5 space-y-1">
+                                  {g.items.map((name) => {
+                                    const slug = slugMap[name] || slugifyGrade(name);
+                                    const href = `/products/${slug}`;
+                                    return (
+                                      <li key={name}>
+                                        <Link href={href} onClick={onClose} className="text-sm text-[#562F23] hover:text-[#7D4B3C]">
+                                          {name}
+                                        </Link>
+                                      </li>
+                                    );
+                                  })}
+                                </ol>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </div>
-            )}
-
-            {/* Robusta Products */}
-            {robustaProducts.length > 0 && (
-              <div className="mb-8">
-                <h3 className="text-lg font-semibold text-[#562F23] mb-4 border-b border-gray-200 pb-2">
-                  Robusta Coffee
-                </h3>
-                <div className="space-y-3">
-                  {robustaProducts.map((product) => (
-                    <Link
-                      key={product.slug}
-                      href={`/products/${product.slug}`}
-                      onClick={onClose}
-                      className="flex items-center p-3 hover:bg-gray-50 rounded-lg transition-colors"
-                    >
-                      <div className="w-12 h-12 relative mr-3 flex-shrink-0">
-                        <Image
-                          src={product.heroImage}
-                          alt={product.name}
-                          fill
-                          className="object-cover rounded"
-                        />
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-[#562F23]">{product.name}</h4>
-                        <p className="text-sm text-gray-600">{product.subtitle}</p>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Quick Links */}
-            <div className="border-t border-gray-200 pt-6">
-              <h3 className="text-lg font-semibold text-[#562F23] mb-4">Quick Links</h3>
-              <div className="space-y-2">
-                <Link 
-                  href="/trade-enquiry" 
-                  onClick={onClose}
-                  className="block p-3 text-[#562F23] hover:bg-gray-50 rounded-lg transition-colors"
-                >
-                  Trade Enquiry
-                </Link>
-                <Link 
-                  href="/certificates" 
-                  onClick={onClose}
-                  className="block p-3 text-[#562F23] hover:bg-gray-50 rounded-lg transition-colors"
-                >
-                  Certificates
-                </Link>
-              </div>
+              ))}
             </div>
+            {/* Legacy mobile product previews disabled per Figma spec */}
+            {false && arabicaProducts.length > 0 && (
+               <div className="mb-8">
+                 <h3 className="text-lg font-semibold text-[#562F23] mb-4 border-b border-gray-200 pb-2">
+                   Arabica Coffee
+                 </h3>
+                 <div className="space-y-3">
+                   {arabicaProducts.map((product) => (
+                     <Link
+                       key={product.slug}
+                       href={`/products/${product.slug}`}
+                       onClick={onClose}
+                       className="flex items-center p-3 hover:bg-gray-50 rounded-lg transition-colors"
+                     >
+                       <div className="w-10 h-10 relative mr-3 flex-shrink-0">
+                         <Image
+                           src={product.heroImage}
+                           alt={`${product.name} thumbnail`}
+                           fill
+                           className="object-cover rounded-full ring-1 ring-gray-200"
+                         />
+                       </div>
+                       <div>
+                         <h4 className="font-medium text-[#562F23]">{product.name}</h4>
+                         <p className="text-sm text-gray-600">{product.subtitle}</p>
+                       </div>
+                     </Link>
+                   ))}
+                 </div>
+               </div>
+             )}
+ 
+             {/* Robusta Products */}
+            {false && robustaProducts.length > 0 && (
+               <div className="mb-8">
+                 <h3 className="text-lg font-semibold text-[#562F23] mb-4 border-b border-gray-200 pb-2">
+                   Robusta Coffee
+                 </h3>
+                 <div className="space-y-3">
+                   {robustaProducts.map((product) => (
+                     <Link
+                       key={product.slug}
+                       href={`/products/${product.slug}`}
+                       onClick={onClose}
+                       className="flex items-center p-3 hover:bg-gray-50 rounded-lg transition-colors"
+                     >
+                       <div className="w-12 h-12 relative mr-3 flex-shrink-0">
+                         <Image
+                           src={product.heroImage}
+                           alt={product.name}
+                           fill
+                           className="object-cover rounded"
+                         />
+                       </div>
+                       <div>
+                         <h4 className="font-medium text-[#562F23]">{product.name}</h4>
+                         <p className="text-sm text-gray-600">{product.subtitle}</p>
+                       </div>
+                     </Link>
+                   ))}
+                 </div>
+               </div>
+             )}
           </div>
         </div>
       </div>
     );
   }
 
-  // Desktop version
+  // ✅ Desktop version
   return (
-    <div className="absolute top-full left-0 w-full bg-white shadow-lg border-t border-gray-200 z-[150] hidden md:block">
+    <div className="absolute top-full translate-x-[-15%] w-screen md:w-[90vw] max-h-[80vh] overflow-y-auto bg-white shadow-lg border-t border-gray-200 z-[9999] hidden md:block">
       <div ref={menuRef} className="max-w-7xl mx-auto p-8">
         <div className="grid grid-cols-12 gap-8">
-          {/* Left Column - Categories */}
-          <div className="col-span-3">
-            <h3 className="text-xl font-serif text-[#562F23] mb-6">Product Categories</h3>
-            <div className="space-y-4">
-              <Link 
-                href="/products" 
-                onClick={onClose}
-                className="block p-4 bg-[#E1A694] text-[#562F23] rounded-lg font-semibold hover:bg-[#d19a85] transition-colors"
-              >
-                <div className="flex items-center justify-between">
-                  <span>All Products</span>
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
-                <p className="text-sm mt-1 opacity-80">Browse our complete collection</p>
-              </Link>
-              
-              <div className="p-4 border border-gray-200 rounded-lg hover:border-[#E1A694] transition-colors">
-                <h4 className="font-semibold text-[#562F23] mb-2">Arabica Coffee</h4>
-                <p className="text-sm text-gray-600 mb-3">Premium high-altitude grown coffee beans</p>
-                <div className="text-sm text-[#7D4B3C]">
-                  {arabicaProducts.length} varieties available
-                </div>
-              </div>
-              
-              <div className="p-4 border border-gray-200 rounded-lg hover:border-[#E1A694] transition-colors">
-                <h4 className="font-semibold text-[#562F23] mb-2">Robusta Coffee</h4>
-                <p className="text-sm text-gray-600 mb-3">Strong, full-bodied coffee beans</p>
-                <div className="text-sm text-[#7D4B3C]">
-                  {robustaProducts.length} varieties available
-                </div>
-              </div>
-            </div>
-          </div>
+
 
           {/* Middle Column - Arabica Products */}
-          <div className="col-span-4">
-            <h3 className="text-xl font-serif text-[#562F23] mb-6">Arabica Varieties</h3>
-            <div className="grid grid-cols-1 gap-4">
-              {arabicaProducts.map((product) => (
-                <Link
-                  key={product.slug}
-                  href={`/products/${product.slug}`}
-                  onClick={onClose}
-                  className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-[#E1A694] hover:shadow-md transition-all group"
-                >
-                  <div className="w-16 h-16 relative mr-4 flex-shrink-0">
-                    <Image
-                      src={product.heroImage}
-                      alt={product.name}
-                      fill
-                      className="object-cover rounded-lg"
-                    />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="font-semibold text-[#562F23] group-hover:text-[#7D4B3C] transition-colors">
-                      {product.name}
-                    </h4>
-                    <p className="text-sm text-gray-600 mb-1">{product.subtitle}</p>
-                    <p className="text-xs text-[#7D4B3C]">{product.category}</p>
-                  </div>
-                  <svg className="w-5 h-5 text-gray-400 group-hover:text-[#7D4B3C] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Right Column - Robusta Products & Quick Links */}
-          <div className="col-span-5">
-            <div className="grid grid-cols-1 gap-8">
-              {/* Robusta Products */}
-              {robustaProducts.length > 0 && (
-                <div>
-                  <h3 className="text-xl font-serif text-[#562F23] mb-6">Robusta Varieties</h3>
-                  <div className="grid grid-cols-1 gap-4">
-                    {robustaProducts.map((product) => (
-                      <Link
-                        key={product.slug}
-                        href={`/products/${product.slug}`}
-                        onClick={onClose}
-                        className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-[#E1A694] hover:shadow-md transition-all group"
-                      >
-                        <div className="w-16 h-16 relative mr-4 flex-shrink-0">
-                          <Image
-                            src={product.heroImage}
-                            alt={product.name}
-                            fill
-                            className="object-cover rounded-lg"
-                          />
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-[#562F23] group-hover:text-[#7D4B3C] transition-colors">
-                            {product.name}
-                          </h4>
-                          <p className="text-sm text-gray-600 mb-1">{product.subtitle}</p>
-                          <p className="text-xs text-[#7D4B3C]">{product.category}</p>
-                        </div>
-                        <svg className="w-5 h-5 text-gray-400 group-hover:text-[#7D4B3C] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </Link>
+          {/* Replaced the middle and right columns with the full grade matrix based on Figma */}
+          <div className="col-span-12">
+            {gradesData.map((section) => (
+              <div key={section.title} className="mb-10">
+                <h3 className="text-2xl font-serif text-[#562F23] mb-4">{section.title}</h3>
+                {section.title === "Miscellaneous Grades" ? (
+                  <div className="bg-white">
+                    {(section.blocks[0]?.groups || []).map((g, i) => (
+                      <div key={i} className="mb-4">
+                        {g.subheading ? (
+                          <p className="text-sm text-[#7D4B3C] font-medium mb-1">{g.subheading}</p>
+                        ) : null}
+                        <ol className="list-decimal pl-5 space-y-1 text-sm text-[#562F23]">
+                          {g.items.map((name) => {
+                            const slug = slugMap[name];
+                            const href = slug ? `/products/${slug}` : "/products";
+                            return (
+                              <li key={name}>
+                                <Link href={href} onClick={onClose} className="hover:text-[#7D4B3C]">
+                                  {name}
+                                </Link>
+                              </li>
+                            );
+                          })}
+                        </ol>
+                      </div>
                     ))}
                   </div>
-                </div>
-              )}
-
-              {/* Quick Links */}
-              <div>
-                <h3 className="text-xl font-serif text-[#562F23] mb-6">Quick Actions</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  <Link 
-                    href="/trade-enquiry" 
-                    onClick={onClose}
-                    className="p-4 bg-[#7D4B3C] text-white rounded-lg hover:bg-[#6e4236] transition-colors text-center"
-                  >
-                    <div className="text-sm font-semibold">Trade Enquiry</div>
-                    <div className="text-xs opacity-80 mt-1">Get a quote</div>
-                  </Link>
-                  <Link 
-                    href="/certificates" 
-                    onClick={onClose}
-                    className="p-4 border-2 border-[#7D4B3C] text-[#7D4B3C] rounded-lg hover:bg-[#7D4B3C] hover:text-white transition-colors text-center"
-                  >
-                    <div className="text-sm font-semibold">Certificates</div>
-                    <div className="text-xs opacity-80 mt-1">View credentials</div>
-                  </Link>
-                </div>
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {section.blocks.map((block, idx) => (
+                      <div key={idx} className="lg:col-span-2">
+                        {block.heading ? (
+                          <h4 className="font-semibold text-[#562F23] mb-1">{block.heading}</h4>
+                        ) : null}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                          {block.groups.map((g, gIdx) => (
+                            <div key={gIdx}>
+                              {g.subheading ? (
+                                <p className="text-sm text-[#7D4B3C] font-medium mb-1">{g.subheading}</p>
+                              ) : null}
+                              <ol className="list-decimal pl-5 space-y-1 text-sm text-[#562F23]">
+                                {g.items.map((name) => {
+                                  const slug = slugMap[name] || slugifyGrade(name);
+                                  const href = `/products/${slug}`;
+                                  return (
+                                    <li key={name}>
+                                      <Link href={href} onClick={onClose} className="hover:text-[#7D4B3C]">
+                                        {name}
+                                      </Link>
+                                    </li>
+                                  );
+                                })}
+                              </ol>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
