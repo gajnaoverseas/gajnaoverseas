@@ -47,7 +47,7 @@ export default function Hero() {
   const currentSlideData = slides[currentSlide];
 
   return (
-    <section className="relative bg-black text-white overflow-hidden lg:h-[100vh] h-[60vh] z-0 ">
+    <section className="relative bg-black text-white overflow-hidden lg:h-[100vh] h-[80vh] z-0 ">
       {/* Background image with transition effect and gradient overlay */}
       {slides.map((slide, index) => (
         <div
@@ -68,7 +68,7 @@ export default function Hero() {
 
       <div className="container mx-auto px-4 py-16 md:py-20 relative z-10 h-full flex flex-col justify-center">
                   {/* Header text with responsive design */}
-          <div className="absolute top-4  lg:-right-10 right-12 px-4 lg:px-10">
+          <div className="absolute md:top-48 top-28  lg:-right-10 right-12 px-4 lg:px-10">
             <div className="relative flex items-center justify-center">
               {/* Heading pill */}
               <h1 className="lg:text-lg text-xs sm:text-sm font-bold py-2 md:py-3 px-3 lg:px-6 bg-white text-center text-[#61714D] rounded-full whitespace-nowrap">

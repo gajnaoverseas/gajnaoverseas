@@ -29,7 +29,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white sticky top-0 z-50 overflow-hidden">
+    <header className="bg-white fixed w-[100vw]  top-0 z-[100] overflow-hidden shadow-sm">
       <div className="">
         {/* Header */}
         <div className="flex justify-between lg:justify-center lg:gap-20 items-center py-3 md:py-4 px-4 md:px-6">

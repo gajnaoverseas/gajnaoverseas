@@ -1,18 +1,16 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import benefitsData from "../data/benefitsData";
 
 export default function WhyChooseUs() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
     // Register the ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
-    
+
     // Create a timeline for the animation
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -22,31 +20,48 @@ export default function WhyChooseUs() {
         toggleActions: "play none none none",
       },
     });
-    
-    // Get all card elements and images
-    const cards = cardsRef.current?.querySelectorAll('.benefit-card > div:last-child');
-    const imageContainers = cardsRef.current?.querySelectorAll('.benefit-card > div:first-child');
-    
-    if (cards && imageContainers) {
-      // Set initial state for all elements
-      gsap.set(imageContainers, { y: -30, opacity: 0 });
-      gsap.set(cards, { y: 30, opacity: 0 });
-      
-      // Add animations to the timeline - first animate images coming down
-      tl.to(
-        imageContainers,
-        { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: "back.out(1.7)" },
-        0
-      )
-      // Then animate cards sliding up
-      .to(
-        cards,
-        { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: "power3.out" },
-        0.4
-      );
+
+    // Get all elements to animate
+    const title = sectionRef.current?.querySelector(".main-title");
+    const quote = sectionRef.current?.querySelector(".quote-text");
+    const cards = sectionRef.current?.querySelectorAll(".feature-card");
+    const lines = sectionRef.current?.querySelectorAll(".connecting-line");
+
+    if (title && quote && cards && lines) {
+      // Set initial state
+      gsap.set(title, { y: -30, opacity: 0 });
+      gsap.set(quote, { y: 30, opacity: 0 });
+      gsap.set(cards, { y: 50, opacity: 0 });
+      gsap.set(lines, { scaleX: 0, opacity: 0 });
+
+      // Add animations to the timeline
+      tl.to(title, { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, 0)
+        .to(quote, { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, 0.2)
+        .to(
+          cards,
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "back.out(1.7)",
+          },
+          0.4
+        )
+        .to(
+          lines,
+          {
+            scaleX: 1,
+            opacity: 1,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "power2.out",
+          },
+          0.8
+        );
     }
-    
-    // Clean up the animation when the component unmounts
+
+    // Clean up
     return () => {
       if (tl.scrollTrigger) {
         tl.scrollTrigger.kill();
@@ -55,46 +70,119 @@ export default function WhyChooseUs() {
     };
   }, []);
 
+  const features = [
+    {
+      title: "Coffee Sourcing\nwith Origin Access",
+      subtitle: "Deep-rooted relationships.\nDirect from the source",
+      description:
+        "We collaborate closely with Coffee Estate Owners, FPOs, and Curing Works across India's diverse Coffee growing regions.",
+      icon: "/why-choose-us/sourcing-icon.png",
+    },
+    {
+      title: "Intelligent Packaging That\nPreserves Quality",
+      subtitle: "We have a deep understanding\nof coffee-packaging",
+      description:
+        "Our packaging solutions are designed with deep category knowledge — moisture-safe liners, eco-conscious options, and roaster-friendly formats that safeguard bean integrity and aroma across long hauls.",
+      icon: "/why-choose-us/packaging-icon.png",
+    },
+    {
+      title: "Seamless Coffee\nExports, End-to-End",
+      subtitle: "We're expert in logistics and\nCoffee Export documentation",
+      description:
+        "We streamline the entire export journey, managing logistics, documentation, and compliance with expertise. Gajna Overseas ensures your green beans reach global markets, hassle-free.",
+      icon: "/why-choose-us/export-icon.png",
+    },
+  ];
+
   return (
-    <section ref={sectionRef} className="py-24 bg-[#E9B8A8] relative z-10 pb-28">
-      
-      <div className="max-w-7xl mx-auto px-4 lg:h-[600px]">
-        <div className="text-center mb-12">
-          <h2 className="text-5xl font-serif font-semibold mb-2 text-coffee-brown">
+    <section ref={sectionRef} className="py-16 bg-[#E1A694] relative z-10">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Title */}
+        <div className="text-center mb-16">
+          <h2 className="main-title text-4xl md:text-6xl font-serif text-[#562F23] mb-8">
             Why Choose Gajna Overseas?
           </h2>
-          <p className="text-coffee-brown text-lg max-w-3xl mx-auto">
-            From classic espressos to innovative seasonal blends, our menu has something for every coffee lover.
+        </div>
+
+        {/* Quote Icons */}
+        <div className="relative mb-12">
+          <div className="absolute left-8 md:left-16 -top-16 w-12 h-12 md:w-16 md:h-16 ">
+            <Image
+              src="/l-quotes.webp"
+              alt="Quote Icon"
+              width={120}
+              height={124}
+            />
+          </div>
+          <div className="absolute right-8 md:right-96 md:-bottom-36 -bottom-56 w-12 h-12 md:w-16 md:h-16 ">
+            <Image
+              src="/r-quotes.webp"
+              alt="Quote Icon"
+              width={124}
+              height={124}
+            />
+          </div>
+        </div>
+
+        {/* Quote Text */}
+        <div className="text-center mb-16">
+          <p className="quote-text text-lg md:text-xl text-black max-w-5xl mx-auto leading-relaxed font-serif italic">
+            By choosing Gajna Overseas, you choose an expert in Coffee Sourcing,
+            Coffee Packaging, Coffee Logistics, and Green Coffee Export. Our
+            focus is singular — exporting Indian green coffee beans. No
+            distractions. No diversions. Just quality-driven, trade-ready
+            coffee.
           </p>
         </div>
 
-        <div ref={cardsRef} className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {benefitsData.map((benefit, index) => (
-            <div key={index} className="benefit-card relative pt-8 px-4 lg:h-[400px] w-full group max-w-[330px] mx-auto">
-              {/* Image positioned outside the card */}
-              <div className="absolute -top-24 left-1/2 transform -translate-x-1/2 -translate-y-1/3 w-44 h-full z-20">
-                <div className="relative w-full h-full drop-shadow-xl transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:-translate-y-4">
-                  <Image
-                    src={benefit.image}
-                    alt={benefit.title}
-                    fill
-                    className="object-contain"
-                  />
+        {/* Features Grid */}
+        <div className="relative">
+          <div className="grid md:grid-cols-3 gap-8 md:gap-12 max-w-6xl mx-auto relative">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="feature-card text-center relative z-10"
+              >
+                {/* Title and Subtitle */}
+                <div className="mb-6">
+                  <h3 className="text-lg md:text-xl font-bold text-[#562F23] mb-3 whitespace-pre-line">
+                    {feature.title}
+                  </h3>
+                  <p className="text-base md:text-lg text-[#562F23] whitespace-pre-line">
+                    {feature.subtitle}
+                  </p>
                 </div>
+                {/* Icon Circle */}
+                <div className="relative mx-auto mb-8 z-20">
+                  <div className="w-32 h-32 md:w-40 md:h-40 bg-[#FFF0D6] rounded-full flex items-center justify-center mx-auto relative">
+                    <div className="w-28 h-28 md:w-36 md:h-36 relative">
+                      <Image
+                        src={feature.icon}
+                        alt={feature.title}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Description */}
+                <p className="text-sm md:text-base text-black leading-relaxed max-w-xs mx-auto">
+                  {feature.description}
+                </p>
               </div>
-              
-              {/* Card content */}
-              <div className="bg-[#572F22] rounded-2xl shadow-lg px-6 py-3 pt-44 pb-6 text-white mt-8 h-[360px] flex flex-col transition-all duration-500 ease-in-out group-hover:shadow-2xl">
-                <h3 className="text-base font-serif mb-2">{benefit.title}</h3>
-                <div className="overflow-y-auto flex-grow pr-2">
-                  <p className="text-[12px] italic">{benefit.description}</p>
-                </div>
+            ))}
+
+            {/* Connecting Lines */}
+            <div className="hidden md:block absolute top-56 left-1/2 transform -translate-x-1/2 w-full max-w-7xl z-0">
+              <div className="relative">
+                <div className="absolute top-0 left-1/4 w-1/4 h-0 border-t-2 border-dashed border-[#7D4B3C]"></div>
+                <div className="absolute top-0 right-1/4 w-1/4 h-0 border-t-2 border-dashed border-[#7D4B3C]"></div>
               </div>
             </div>
-          ))}
+          </div>
         </div>
-        </div>
-
+      </div>
     </section>
   );
 }

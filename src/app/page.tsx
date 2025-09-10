@@ -1,7 +1,7 @@
 
 import Hero from '@/components/Hero';
 import CoffeeProducts from '@/components/CoffeeProducts';
-// import WhyChooseUs from '@/components/WhyChooseUs';
+import WhyChooseUs from '@/components/WhyChooseUs';
 import EthicalSourcing from '@/components/EthicalSourcing';
 import Magazine from '@/components/Magazine';
 import SustainableCoffee from '@/components/SustainableCoffee';
@@ -11,11 +11,12 @@ import KnowledgeHub from '@/components/KnowledgeHub';
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col relative">
+    <main className="min-h-screen flex flex-col">
      
       <Hero />
+     
       <CoffeeProducts />
-      {/* <WhyChooseUs /> */}
+       <WhyChooseUs />
       <EthicalSourcing />
       {/* <Magazine /> */}
       <SustainableCoffee />
