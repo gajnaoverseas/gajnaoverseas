@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import MegaMenu from "@/components/MegaMenu";
 import { allProducts } from "@/data/products";
+import { ChevronDown } from "lucide-react";
+
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Header() {
@@ -32,7 +34,10 @@ export default function Header() {
         <div className="flex justify-between lg:justify-center lg:gap-20 items-center py-3 md:py-4 px-4 md:px-6">
           {/* Logo */}
           <div className="flex items-center justify-center flex-col">
-            <Link href="/" className="text-xl font-bold text-coffee-brown flex items-center">
+            <Link
+              href="/"
+              className="text-xl font-bold text-coffee-brown flex items-center"
+            >
               <Image
                 src="/logo.webp"
                 alt="Gaina Overseas Logo"
@@ -68,12 +73,34 @@ export default function Header() {
             aria-label="Toggle mobile menu"
           >
             {mobileMenuOpen ? (
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
             )}
           </button>
@@ -83,10 +110,10 @@ export default function Header() {
         {mobileMenuOpen && (
           <div className="absolute top-full left-0 bg-coffee-brown z-40 w-80 shadow-lg">
             <div className="p-6">
-+             {/* Language switcher (mobile) */}
-+             <div className="mb-4 bg-white rounded-lg p-3">
-+               <LanguageSwitcher />
-+             </div>
+              + {/* Language switcher (mobile) */}+{" "}
+              <div className="mb-4 bg-white rounded-lg p-3">
+                + <LanguageSwitcher />+{" "}
+              </div>
               <button
                 onClick={() => {
                   setMobileMegaMenuOpen(true);
@@ -95,24 +122,42 @@ export default function Header() {
                 className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 w-full text-left"
               >
                 Products
+              
               </button>
-
-              <Link href="/certificates" className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200">
+              <Link
+                href="/certificates"
+                className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200"
+              >
                 Registrations & Certificates
               </Link>
-              <Link href="/blog" className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200">
+              <Link
+                href="/blog"
+                className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200"
+              >
                 Blogs
               </Link>
-              <Link href="/trade-enquiry" className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200">
+              <Link
+                href="/trade-enquiry"
+                className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200"
+              >
                 Trade Enquiry
               </Link>
-              <Link href="/about" className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200">
+              <Link
+                href="/about"
+                className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200"
+              >
                 About Us
               </Link>
-              <Link href="/become-supplier" className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200">
+              <Link
+                href="/become-supplier"
+                className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200"
+              >
                 Become a Supplier with us
               </Link>
-              <Link href="/careers" className="block text-white text-lg font-medium py-3 hover:text-amber-200">
+              <Link
+                href="/careers"
+                className="block text-white text-lg font-medium py-3 hover:text-amber-200"
+              >
                 Careers
               </Link>
             </div>
@@ -124,13 +169,43 @@ export default function Header() {
           <nav className="flex items-center justify-between px-6 py-1 bg-[#434d35] text-white">
             <div className="flex justify-center items-center space-x-8 flex-1">
               <span className="text-white font-medium">Physical Location</span>
-              <a href="tel:+919811789665" className="hover:text-amber-200">Call Us</a>
-              <a href="tel:+919811789665" className="hover:text-amber-200">Mobile</a>
-              <a href="mailto:info@gajnaoverseas.com" className="hover:text-amber-200">Send Us Email</a>
-              <a href="https://meet.google.com/new" target="_blank" rel="noopener noreferrer" className="hover:text-amber-200">Video Conferencing</a>
-              <a href="mailto:info@gajnaoverseas.com?subject=Quick Enquiry" className="hover:text-amber-200">Quick Enquiry</a>
-              <a href="https://wa.me/919811789665" target="_blank" rel="noopener noreferrer" className="hover:text-amber-200">Chat With Us</a>
-              <a href="sms:+919811789665" className="hover:text-amber-200">Send Us SMS</a>
+              <a href="tel:+919811789665" className="hover:text-amber-200">
+                Call Us
+              </a>
+              <a href="tel:+919811789665" className="hover:text-amber-200">
+                Mobile
+              </a>
+              <a
+                href="mailto:info@gajnaoverseas.com"
+                className="hover:text-amber-200"
+              >
+                Send Us Email
+              </a>
+              <a
+                href="https://meet.google.com/new"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-amber-200"
+              >
+                Video Conferencing
+              </a>
+              <a
+                href="mailto:info@gajnaoverseas.com?subject=Quick Enquiry"
+                className="hover:text-amber-200"
+              >
+                Quick Enquiry
+              </a>
+              <a
+                href="https://wa.me/919811789665"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-amber-200"
+              >
+                Chat With Us
+              </a>
+              <a href="sms:+919811789665" className="hover:text-amber-200">
+                Send Us SMS
+              </a>
             </div>
             <div className="pl-6">
               <LanguageSwitcher />
@@ -143,15 +218,18 @@ export default function Header() {
           <div className="flex justify-center items-center gap-10 py-1">
             {/* Products - open mega menu on hover/focus */}
             <div
-              className="relative"
+              className="relative "
               onMouseEnter={() => setMegaMenuOpen(true)}
               onMouseLeave={() => setMegaMenuOpen(false)}
               onFocus={() => setMegaMenuOpen(true)}
               onBlur={() => setMegaMenuOpen(false)}
             >
-              <Link href="/products" className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors">
+              <Link
+                href="/products"
+                className=" text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors flex flex-row"
+              >
                 Products
-            
+                  <ChevronDown className="text-coffee-brown " />
               </Link>
               {megaMenuOpen && (
                 <MegaMenu
@@ -162,12 +240,42 @@ export default function Header() {
               )}
             </div>
 
-            <Link href="/certificates" className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors">Registrations & Certificates</Link>
-            <Link href="/blog" className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors">Blogs</Link>
-            <Link href="/trade-enquiry" className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors">Trade Enquiry</Link>
-            <Link href="/about" className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors">About Us</Link>
-            <Link href="/become-supplier" className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors">Become a Supplier with us</Link>
-            <Link href="/careers" className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors">Careers</Link>
+            <Link
+              href="/certificates"
+              className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors"
+            >
+              Registrations & Certificates
+            </Link>
+            <Link
+              href="/blog"
+              className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors"
+            >
+              Blogs
+            </Link>
+            <Link
+              href="/trade-enquiry"
+              className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors"
+            >
+              Trade Enquiry
+            </Link>
+            <Link
+              href="/about"
+              className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors"
+            >
+              About Us
+            </Link>
+            <Link
+              href="/become-supplier"
+              className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors"
+            >
+              Become a Supplier with us
+            </Link>
+            <Link
+              href="/careers"
+              className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors"
+            >
+              Careers
+            </Link>
           </div>
         </nav>
 
