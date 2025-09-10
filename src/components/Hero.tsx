@@ -47,7 +47,7 @@ export default function Hero() {
   const currentSlideData = slides[currentSlide];
 
   return (
-    <section className="relative bg-black text-white overflow-hidden lg:h-[100vh] h-[80vh] z-0 ">
+    <section className="relative bg-black text-white overflow-hidden lg:h-[100vh] md:h-[90vh] h-[80vh] z-0 ">
       {/* Background image with transition effect and gradient overlay */}
       {slides.map((slide, index) => (
         <div
@@ -91,7 +91,7 @@ export default function Hero() {
         <div className="flex flex-col lg:flex-row lg:items-center mt-16 md:mt-0">
           <div className="lg:w-1/2 w-full mb-8 lg:mb-0 px-2 md:px-0">
             {/* Title with enhanced animation */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center lg:text-left font-serif font-semibold mb-4 md:mb-6 text-white leading-tight">
+            <h2 className=" text-5xl lg:text-6xl text-center lg:text-left font-serif font-bold mb-4 md:mb-6 text-white leading-tight">
               <AnimatePresence mode="wait">
                 {currentSlideData.title.split("\n").map((line, i) => (
                   <motion.span
@@ -116,7 +116,7 @@ export default function Hero() {
             <AnimatePresence mode="wait">
               <motion.p
                 key={`${currentSlide}-description`}
-                className="text-base sm:text-lg md:text-xl text-center lg:text-left text-gray-200 leading-relaxed px-2 md:px-0"
+                className="text-lg md:text-xl text-center lg:text-left text-gray-200 font-semibold leading-relaxed px-2 md:px-0"
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}

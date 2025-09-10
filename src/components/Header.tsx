@@ -2,9 +2,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import MegaMenu from "@/components/MegaMenu";
+import { allProducts } from "@/data/products";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const [mobileMegaMenuOpen, setMobileMegaMenuOpen] = useState(false);
 
   // Update body overflow style when mobile menu state changes
   useEffect(() => {
@@ -29,7 +33,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white fixed w-[100vw]  top-0 z-[100] overflow-hidden shadow-sm">
+    <header className="bg-white fixed w-[100vw]  top-0 z-[9999] overflow-hidden shadow-sm">
       <div className="">
         {/* Header */}
         <div className="flex justify-between lg:justify-center lg:gap-20 items-center py-3 md:py-4 px-4 md:px-6">
@@ -79,11 +83,19 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Dropdown Menu */}
+        {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
           <div className="absolute top-full left-0 bg-coffee-brown z-40 w-80 shadow-lg">
             <div className="p-6">
-              <Link href="/products" className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200">Products</Link>
+              <button 
+                onClick={() => {
+                  setMobileMegaMenuOpen(true);
+                  setMobileMenuOpen(false);
+                }}
+                className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 w-full text-left"
+              >
+                Products
+              </button>
               <Link href="/certificates" className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200">Registrations & Certificates</Link>
               <Link href="/blog" className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200">Blogs</Link>
               <Link href="/trade-enquiry" className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200">Trade Enquiry</Link>
@@ -138,17 +150,171 @@ export default function Header() {
             </div>
           </nav>
         </div>
-        <nav className="hidden md:flex justify-center space-x-8  font-semibold">
+        <nav className="hidden md:flex justify-center space-x-8 font-semibold relative">
           <div className="flex justify-center items-center gap-10 py-1">
-              <Link href="/products" className="block text-black text-sm font-medium ">Products</Link>
-              <Link href="/certificates" className="block text-black text-sm font-medium ">Registrations & Certificates</Link>
-              <Link href="/blog" className="block text-black text-sm font-medium ">Blogs</Link>
-              <Link href="/trade-enquiry" className="block text-black text-sm font-medium ">Trade Enquiry</Link>
-              <Link href="/about" className="block text-black text-sm font-medium">About Us</Link>
-              <Link href="/become-supplier" className="block text-black text-sm font-medium ">Becomes a Supplier with us</Link>
-              <Link href="/careers" className="block text-black text-sm font-medium  ">Careers</Link>
+              <div 
+                className="relative"
+                onMouseEnter={() => setMegaMenuOpen(true)}
+                onMouseLeave={() => setMegaMenuOpen(false)}
+              >
+                <Link href="/products" className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors py-2">
+                  Products
+                  <svg className="inline-block w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </Link>
+                {megaMenuOpen && (
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-screen bg-white shadow-lg border-t border-gray-200 z-[9999]">
+                  <div className="max-w-7xl mx-auto p-8">
+                    <div className="grid grid-cols-12 gap-8">
+                      {/* Left Column - Categories */}
+                      <div className="col-span-3">
+                        <h3 className="text-xl font-serif text-[#562F23] mb-6">Product Categories</h3>
+                        <div className="space-y-4">
+                          <Link 
+                            href="/products" 
+                            className="block p-4 bg-[#E1A694] text-[#562F23] rounded-lg font-semibold hover:bg-[#d19a85] transition-colors"
+                          >
+                            <div className="flex items-center justify-between">
+                              <span>All Products</span>
+                              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </div>
+                            <p className="text-sm mt-1 opacity-80">Browse our complete collection</p>
+                          </Link>
+                          
+                          <div className="p-4 border border-gray-200 rounded-lg hover:border-[#E1A694] transition-colors">
+                            <h4 className="font-semibold text-[#562F23] mb-2">Arabica Coffee</h4>
+                            <p className="text-sm text-gray-600 mb-3">Premium high-altitude grown coffee beans</p>
+                            <div className="text-sm text-[#7D4B3C]">
+                              {allProducts.filter(p => p.variety === 'Arabica').length} varieties available
+                            </div>
+                          </div>
+                          
+                          <div className="p-4 border border-gray-200 rounded-lg hover:border-[#E1A694] transition-colors">
+                            <h4 className="font-semibold text-[#562F23] mb-2">Robusta Coffee</h4>
+                            <p className="text-sm text-gray-600 mb-3">Strong, full-bodied coffee beans</p>
+                            <div className="text-sm text-[#7D4B3C]">
+                              {allProducts.filter(p => p.variety === 'Robusta').length} varieties available
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Middle Column - Arabica Products */}
+                      <div className="col-span-4">
+                        <h3 className="text-xl font-serif text-[#562F23] mb-6">Arabica Varieties</h3>
+                        <div className="grid grid-cols-1 gap-4">
+                          {allProducts.filter(p => p.variety === 'Arabica').map((product) => (
+                            <Link
+                              key={product.slug}
+                              href={`/products/${product.slug}`}
+                              className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-[#E1A694] hover:shadow-md transition-all group"
+                            >
+                              <div className="w-16 h-16 relative mr-4 flex-shrink-0">
+                                <Image
+                                  src={product.heroImage}
+                                  alt={product.name}
+                                  fill
+                                  className="object-cover rounded-lg"
+                                />
+                              </div>
+                              <div className="flex-1">
+                                <h4 className="font-semibold text-[#562F23] group-hover:text-[#7D4B3C] transition-colors">
+                                  {product.name}
+                                </h4>
+                                <p className="text-sm text-gray-600 mb-1">{product.subtitle}</p>
+                                <p className="text-xs text-[#7D4B3C]">{product.category}</p>
+                              </div>
+                              <svg className="w-5 h-5 text-gray-400 group-hover:text-[#7D4B3C] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Right Column - Robusta Products & Quick Links */}
+                      <div className="col-span-5">
+                        <div className="grid grid-cols-1 gap-8">
+                          {/* Robusta Products */}
+                          {allProducts.filter(p => p.variety === 'Robusta').length > 0 && (
+                            <div>
+                              <h3 className="text-xl font-serif text-[#562F23] mb-6">Robusta Varieties</h3>
+                              <div className="grid grid-cols-1 gap-4">
+                                {allProducts.filter(p => p.variety === 'Robusta').map((product) => (
+                                  <Link
+                                    key={product.slug}
+                                    href={`/products/${product.slug}`}
+                                    className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-[#E1A694] hover:shadow-md transition-all group"
+                                  >
+                                    <div className="w-16 h-16 relative mr-4 flex-shrink-0">
+                                      <Image
+                                        src={product.heroImage}
+                                        alt={product.name}
+                                        fill
+                                        className="object-cover rounded-lg"
+                                      />
+                                    </div>
+                                    <div className="flex-1">
+                                      <h4 className="font-semibold text-[#562F23] group-hover:text-[#7D4B3C] transition-colors">
+                                        {product.name}
+                                      </h4>
+                                      <p className="text-sm text-gray-600 mb-1">{product.subtitle}</p>
+                                      <p className="text-xs text-[#7D4B3C]">{product.category}</p>
+                                    </div>
+                                    <svg className="w-5 h-5 text-gray-400 group-hover:text-[#7D4B3C] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                    </svg>
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Quick Links */}
+                          <div>
+                            <h3 className="text-xl font-serif text-[#562F23] mb-6">Quick Actions</h3>
+                            <div className="grid grid-cols-2 gap-4">
+                              <Link 
+                                href="/trade-enquiry" 
+                                className="p-4 bg-[#7D4B3C] text-white rounded-lg hover:bg-[#6e4236] transition-colors text-center"
+                              >
+                                <div className="text-sm font-semibold">Trade Enquiry</div>
+                                <div className="text-xs opacity-80 mt-1">Get a quote</div>
+                              </Link>
+                              <Link 
+                                href="/certificates" 
+                                className="p-4 border-2 border-[#7D4B3C] text-[#7D4B3C] rounded-lg hover:bg-[#7D4B3C] hover:text-white transition-colors text-center"
+                              >
+                                <div className="text-sm font-semibold">Certificates</div>
+                                <div className="text-xs opacity-80 mt-1">View credentials</div>
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                   </div>
+                )}
+              </div>
+              <Link href="/certificates" className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors">Registrations & Certificates</Link>
+              <Link href="/blog" className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors">Blogs</Link>
+              <Link href="/trade-enquiry" className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors">Trade Enquiry</Link>
+              <Link href="/about" className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors">About Us</Link>
+              <Link href="/become-supplier" className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors">Becomes a Supplier with us</Link>
+              <Link href="/careers" className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors">Careers</Link>
             </div>
         </nav>
+        
+        {/* Mobile MegaMenu */}
+        <MegaMenu 
+          isOpen={mobileMegaMenuOpen} 
+          onClose={() => setMobileMegaMenuOpen(false)} 
+          isMobile={true}
+        />
       </div>
     </header>
   );
