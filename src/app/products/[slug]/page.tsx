@@ -31,7 +31,7 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
       </section>
 
       {/* Related products */}
-      {related.length ? (
+      {/* {related.length ? (
         <section className="max-w-6xl mx-auto px-4 pb-12">
           <h3 className="text-4xl font-semibold  text-[#562F23] mb-6">{product.groupTitle || 'Related Products'}</h3>
           <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-6">
@@ -49,7 +49,7 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
             ))}
           </div>
         </section>
-      ) : null}
+      ) : null} */}
     </main>
   );
 }
