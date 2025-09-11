@@ -194,16 +194,16 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
             {
               subheading: "Washed Arabica",
               variety: "Arabica",
-              items: ["Mysore Nuggets Extra bold- Washed"],
+              items: ["Mysore Nuggets Extra bold"],
             },
             {
               subheading: "Arabica Cherry",
               variety: "Arabica",
               items: [
-                "Monsooned Malabar AAA -  Unwashed",
-                "Monsooned Malabar AA -  unwashed",
-                "Monsooned Malabar A -  unwashed",
-                "Monsooned Malabar arabica Triage -  Unwashed",
+                "Monsooned Malabar AAA",
+                "Monsooned Malabar AA",
+                "Monsooned Malabar A",
+                "Monsooned Malabar arabica Triage",
               ],
             },
           ],
@@ -214,14 +214,14 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
             {
               subheading: "Robusta Parchment",
               variety: "Robusta",
-              items: ["Robusta Kaapi Royale- Washed Coffee"],
+              items: ["Robusta Kaapi Royale"],
             },
             {
               subheading: "Robusta Cherry",
               variety: "Robusta",
               items: [
-                "Monsooned Malabar Robusta PR -  Unwashed",
-                "Monsooned Malabar Robusta Triage -  Unwashed",
+                "Monsooned Malabar Robusta PR ",
+                "Monsooned Malabar Robusta Triage ",
               ],
             },
           ],
@@ -260,7 +260,16 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
         >
           <div className="p-6">
             {/* Header */}
-
+            <div className="bg-gradient-to-r from-[#7D4B3C] to-[#61714D] text-white p-4 mb-6 rounded-lg flex items-center justify-center">
+              <Image
+                src="/slogo.webp"
+                alt="Gajna Logo"
+                width={40}
+                height={40}
+                className="w-10 h-10 mr-3"
+              />
+              <h2 className="text-xl font-bold text-center">Our Coffee Grades</h2>
+            </div>
 
             {/* All Products Link */}
             <Link
@@ -275,7 +284,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
             <div className="space-y-8">
               {gradesData.map((section) => (
                 <div key={section.title} className="mb-2">
-                  <h3 className="text-lg font-semibold text-[#562F23] mb-4">{section.title}</h3>
+                  <h3 className="text-lg font-semibold text-red-700 mb-4 text-center">{section.title}</h3>
                   {/* Special layout for Miscellaneous */}
                   {section.title === "Miscellaneous Grades" ? (
                     <div>
@@ -305,13 +314,13 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
                       {section.blocks.map((block, idx) => (
                         <div key={idx}>
                           {block.heading ? (
-                            <h4 className="text-base font-semibold text-[#562F23]">{block.heading}</h4>
+                            <h4 className="text-base font-semibold text-green-700 text-center mb-2">{block.heading}</h4>
                           ) : null}
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
                             {block.groups.map((g, gIdx) => (
                               <div key={gIdx}>
                                 {g.subheading ? (
-                                  <p className="text-sm text-[#7D4B3C] font-medium mb-1">{g.subheading}</p>
+                                  <p className="text-sm text-green-600 font-medium mb-1 text-center">{g.subheading}</p>
                                 ) : null}
                                 <ol className="list-decimal pl-5 space-y-1">
                                   {g.items.map((name) => {
@@ -407,17 +416,27 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
 
   // ✅ Desktop version
   return (
-    <div className="absolute top-full w-[70vw]  max-h-[80vh] overflow-y-auto bg-white shadow-lg border-t border-gray-200 z-[9999] hidden md:block">
+    <div className="absolute top-full w-[80vw]  max-h-[80vh] overflow-y-auto bg-white shadow-lg border-t border-gray-200 z-[9999] hidden md:block">
       <div ref={menuRef} className="max-w-7xl mx-auto p-8">
+        {/* Header */}
+        <div className="shadow-2xl text-coffee-brown p-4 mb-6 rounded-lg flex items-center w-[70%] mx-auto  justify-center">
+          <Image
+            src="/logos/1.webp"
+            alt="Gajna Logo"
+            width={40}
+            height={40}
+            className="w-10 h-10 mr-3"
+          />
+          <h2 className="text-2xl font-bold text-center">Classification of Indian Coffee by Coffee board of India</h2>
+        </div>
+        
         <div className="grid grid-cols-12 gap-8">
-
-
           {/* Middle Column - Arabica Products */}
           {/* Replaced the middle and right columns with the full grade matrix based on Figma */}
           <div className="col-span-12">
             {gradesData.map((section) => (
               <div key={section.title} className="mb-10">
-                <h3 className="text-2xl font-serif text-[#562F23] mb-4">{section.title}</h3>
+                <h3 className="text-2xl font-serif text-red-700 mb-4 text-center">{section.title}</h3>
                 {section.title === "Miscellaneous Grades" ? (
                   <div className="bg-white">
                     {(section.blocks[0]?.groups || []).map((g, i) => (
@@ -446,21 +465,21 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
                     {section.blocks.map((block, idx) => (
                       <div key={idx} className="lg:col-span-2">
                         {block.heading ? (
-                          <h4 className="font-semibold text-[#562F23] mb-1">{block.heading}</h4>
+                          <h4 className="font-semibold text-coffee-brown mb-1 text-center">{block.heading}</h4>
                         ) : null}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                           {block.groups.map((g, gIdx) => (
                             <div key={gIdx}>
                               {g.subheading ? (
-                                <p className="text-sm text-[#7D4B3C] font-medium mb-1">{g.subheading}</p>
+                                <p className="text-sm text-green-700 font-semibold mb-1 text-center">{g.subheading}</p>
                               ) : null}
-                              <ol className="list-decimal pl-5 space-y-1 text-sm text-[#562F23]">
+                              <ol className="list-decimal pl-20 space-y-1 text-sm text-[#562F23]">
                                 {g.items.map((name) => {
                                   const slug = slugMap[name] || slugifyGrade(name);
                                   const href = `/products/${slug}`;
                                   return (
                                     <li key={name}>
-                                      <Link href={href} onClick={onClose} className="hover:text-[#7D4B3C]">
+                                      <Link href={href} onClick={onClose} className="hover:text-[#7D4B3C] text-xs">
                                         {name}
                                       </Link>
                                     </li>

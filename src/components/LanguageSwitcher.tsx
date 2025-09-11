@@ -28,6 +28,7 @@ const LANGUAGES: Lang[] = [
   { code: "it", label: "Italiano", emoji: "🇮🇹" },
   { code: "pt", label: "Português", emoji: "🇵🇹" },
   { code: "ar", label: "العربية", emoji: "🇸🇦" },
+  { code: "ar", label: "العربية (الأردن)", emoji: "🇯🇴" },
   { code: "ru", label: "Русский", emoji: "🇷🇺" },
   { code: "zh-CN", label: "简体中文", emoji: "🇨🇳" },
   { code: "ja", label: "日本語", emoji: "🇯🇵" },

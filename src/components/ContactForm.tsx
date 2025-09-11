@@ -3,13 +3,27 @@ import { useState } from "react";
 import { z } from "zod";
 import { contactFormSchema, type ContactFormInput } from "@/lib/validation";
 
-export default function ContactForm() {
+type ContactFormProps = {
+  initial?: Partial<ContactFormInput>;
+  submitLabel?: string;
+  onSuccess?: () => void;
+  isModal?: boolean;
+};
+
+export default function ContactForm({ initial, submitLabel = "Send Message", onSuccess, isModal = false }: ContactFormProps) {
   const [values, setValues] = useState<ContactFormInput>({
     name: "",
     email: "",
     subject: "",
     message: "",
+    phone: "",
+    country: "",
+    linkedin: "",
+    product: "",
+    grade: "",
+    quantity: undefined,
     consent: false,
+    ...(initial as any),
   } as ContactFormInput);
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -63,7 +77,8 @@ export default function ContactForm() {
         throw new Error(json.error || "Submission failed");
       }
       setStatus("success");
-      setValues({ name: "", email: "", subject: "", message: "", consent: false } as ContactFormInput);
+      setValues({ name: "", email: "", subject: "", message: "", phone: "", country: "", linkedin: "", product: "", grade: "", quantity: undefined, consent: false } as ContactFormInput);
+      onSuccess?.();
     } catch (err: any) {
       setServerError(err.message || "Something went wrong");
       setStatus("error");
@@ -72,32 +87,108 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <label className="block text-sm font-medium text-gray-700">Name</label>
-        <input
-          type="text"
-          name="name"
-          value={values.name}
-          onChange={handleChange}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-600 focus:ring-amber-600"
-          placeholder="Your name"
-          required
-        />
-        {errors.name && <p className="text-sm text-red-600 mt-1">{errors.name}</p>}
+      {/* Product Enquiry Context (when provided) */}
+      {(values.product || values.grade) && (
+        <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4">
+          <h3 className="text-sm font-medium text-amber-800 mb-2">Product Enquiry</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+            {values.product && (
+              <div>
+                <span className="text-amber-700 font-medium">Product:</span>
+                <p className="text-amber-900">{values.product}</p>
+              </div>
+            )}
+            {values.grade && (
+              <div>
+                <span className="text-amber-700 font-medium">Grade:</span>
+                <p className="text-amber-900">{values.grade}</p>
+              </div>
+            )}
+            <div>
+              <label className="block text-amber-700 font-medium mb-1">Quantity (MT)</label>
+              <input
+                type="number"
+                name="quantity"
+                value={values.quantity || ""}
+                onChange={handleChange}
+                className="w-full px-3 py-1 border border-amber-300 rounded focus:border-amber-500 focus:ring-amber-500"
+                placeholder="0"
+                min="0"
+                step="1"
+              />
+              {errors.quantity && <p className="text-sm text-red-600 mt-1">{errors.quantity}</p>}
+            </div>
+          </div>
+        </div>
+      )}
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Name</label>
+          <input
+            type="text"
+            name="name"
+            value={values.name}
+            onChange={handleChange}
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-600 focus:ring-amber-600"
+            placeholder="Your name"
+            required
+          />
+          {errors.name && <p className="text-sm text-red-600 mt-1">{errors.name}</p>}
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Email</label>
+          <input
+            type="email"
+            name="email"
+            value={values.email}
+            onChange={handleChange}
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-600 focus:ring-amber-600"
+            placeholder="you@example.com"
+            required
+          />
+          {errors.email && <p className="text-sm text-red-600 mt-1">{errors.email}</p>}
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Phone</label>
+          <input
+            type="tel"
+            name="phone"
+            value={values.phone || ""}
+            onChange={handleChange}
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-600 focus:ring-amber-600"
+            placeholder="+91 98117 89665"
+          />
+          {errors.phone && <p className="text-sm text-red-600 mt-1">{errors.phone}</p>}
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Country</label>
+          <input
+            type="text"
+            name="country"
+            value={values.country || ""}
+            onChange={handleChange}
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-600 focus:ring-amber-600"
+            placeholder="India"
+          />
+          {errors.country && <p className="text-sm text-red-600 mt-1">{errors.country}</p>}
+        </div>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">Email</label>
+        <label className="block text-sm font-medium text-gray-700">LinkedIn</label>
         <input
-          type="email"
-          name="email"
-          value={values.email}
+          type="url"
+          name="linkedin"
+          value={values.linkedin || ""}
           onChange={handleChange}
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-600 focus:ring-amber-600"
-          placeholder="you@example.com"
-          required
+          placeholder="https://www.linkedin.com/in/username"
         />
-        {errors.email && <p className="text-sm text-red-600 mt-1">{errors.email}</p>}
+        {errors.linkedin && <p className="text-sm text-red-600 mt-1">{errors.linkedin}</p>}
       </div>
 
       <div>
@@ -148,7 +239,7 @@ export default function ContactForm() {
         disabled={status === "submitting"}
         className="w-full rounded-full bg-[#61714D] px-6 py-3 text-white font-medium hover:bg-[#4D5A3E] transition-colors disabled:opacity-70"
       >
-        {status === "submitting" ? "Sending..." : "Send Message"}
+        {status === "submitting" ? "Sending..." : submitLabel}
       </button>
 
       {status === "success" && (

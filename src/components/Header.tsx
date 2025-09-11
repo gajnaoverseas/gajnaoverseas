@@ -3,8 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import MegaMenu from "@/components/MegaMenu";
+import ContactForm from "@/components/ContactForm";
 import { allProducts } from "@/data/products";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
@@ -12,6 +13,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [mobileMegaMenuOpen, setMobileMegaMenuOpen] = useState(false);
+  const [quickEnquiryOpen, setQuickEnquiryOpen] = useState(false);
 
   // Prevent page scroll when mobile menu open
   useEffect(() => {
@@ -68,7 +70,7 @@ export default function Header() {
 
           {/* Mobile Menu Button (visible on md down) */}
           <button
-            className="md:hidden fixed right-4 top-4 text-white bg-coffee-brown rounded-full p-2 z-50"
+            className="md:hidden fixed right-4 top-4 text-white bg-coffee-brown rounded-lg p-2 z-50"
             onClick={toggleMobileMenu}
             aria-label="Toggle mobile menu"
           >
@@ -110,9 +112,9 @@ export default function Header() {
         {mobileMenuOpen && (
           <div className="absolute top-full left-0 bg-coffee-brown z-40 w-80 shadow-lg">
             <div className="p-6">
-              + {/* Language switcher (mobile) */}+{" "}
+              {/* Language switcher (mobile) */}
               <div className="mb-4 bg-white rounded-lg p-3">
-                + <LanguageSwitcher />+{" "}
+                <LanguageSwitcher />
               </div>
               <button
                 onClick={() => {
@@ -166,18 +168,25 @@ export default function Header() {
 
         {/* Desktop Top Info Bar */}
         <div className="hidden md:block border-t border-gray-200">
-          <nav className="flex items-center justify-between px-6 py-1 bg-[#434d35] text-white">
-            <div className="flex justify-center items-center space-x-8 flex-1">
-              <span className="text-white font-medium">Physical Location</span>
-              <a href="tel:+919811789665" className="hover:text-amber-200">
+          <nav className="flex items-center justify-between px-6 py-2 bg-[#434d35]">
+            <div className="flex justify-center items-center space-x-3 flex-1">
+              <a
+                href="https://maps.google.com/?q=Gajna+Overseas"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
+              >
+                Visit Us
+              </a>
+              <a href="tel:+919811789665" className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors">
                 Call Us
               </a>
-              <a href="tel:+919811789665" className="hover:text-amber-200">
+              <a href="tel:+919811789665" className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors">
                 Mobile
               </a>
               <a
                 href="mailto:info@gajnaoverseas.com"
-                className="hover:text-amber-200"
+                className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 Send Us Email
               </a>
@@ -185,30 +194,30 @@ export default function Header() {
                 href="https://meet.google.com/new"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-amber-200"
+                className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 Video Conferencing
               </a>
-              <a
-                href="mailto:info@gajnaoverseas.com?subject=Quick Enquiry"
-                className="hover:text-amber-200"
+              <button
+                onClick={() => setQuickEnquiryOpen(true)}
+                className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 Quick Enquiry
-              </a>
+              </button>
               <a
                 href="https://wa.me/919811789665"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-amber-200"
+                className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 Chat With Us
               </a>
-              <a href="sms:+919811789665" className="hover:text-amber-200">
+              <a href="sms:+919811789665" className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors">
                 Send Us SMS
               </a>
               <Link
                 href="/contact"
-                className="hover:text-amber-200"
+                className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 Contact Us
               </Link>
@@ -232,7 +241,7 @@ export default function Header() {
             >
               <Link
                 href="/products"
-                className=" text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors flex flex-row"
+                className=" text-black text-base font-medium hover:text-[#7D4B3C] transition-colors flex flex-row"
               >
                 Products
                   <ChevronDown className="text-coffee-brown " />
@@ -248,37 +257,37 @@ export default function Header() {
 
             <Link
               href="/certificates"
-              className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors"
+              className="block text-black text-base font-medium hover:text-[#7D4B3C] transition-colors"
             >
               Registrations & Certificates
             </Link>
             <Link
               href="/blog"
-              className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors"
+              className="block text-black text-base font-medium hover:text-[#7D4B3C] transition-colors"
             >
               Blogs
             </Link>
             <Link
               href="/trade-enquiry"
-              className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors"
+              className="block text-black text-base font-medium hover:text-[#7D4B3C] transition-colors"
             >
               Trade Enquiry
             </Link>
             <Link
               href="/about"
-              className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors"
+              className="block text-black text-base font-medium hover:text-[#7D4B3C] transition-colors"
             >
               About Us
             </Link>
             <Link
-              href="/become-supplier"
-              className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors"
+              href="/Become-supplier"
+              className="block text-black text-base font-medium hover:text-[#7D4B3C] transition-colors"
             >
               Become a Supplier with us
             </Link>
             <Link
               href="/careers"
-              className="block text-black text-sm font-medium hover:text-[#7D4B3C] transition-colors"
+              className="block text-black text-base font-medium hover:text-[#7D4B3C] transition-colors"
             >
               Careers
             </Link>
@@ -291,6 +300,32 @@ export default function Header() {
           onClose={() => setMobileMegaMenuOpen(false)}
           isMobile={true}
         />
+
+        {/* Quick Enquiry Modal */}
+        {quickEnquiryOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 z-[10000] flex items-center justify-center p-4">
+            <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+              <div className="flex items-center justify-between p-6 border-b">
+                <h2 className="text-xl font-semibold text-gray-900">Quick Enquiry</h2>
+                <button
+                  onClick={() => setQuickEnquiryOpen(false)}
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                  aria-label="Close modal"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+              <div className="p-6">
+                <ContactForm
+                  initial={{ subject: "Quick Enquiry" }}
+                  submitLabel="Send Enquiry"
+                  onSuccess={() => setQuickEnquiryOpen(false)}
+                  isModal={true}
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );
