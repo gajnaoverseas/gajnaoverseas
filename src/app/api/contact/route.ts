@@ -38,25 +38,44 @@ export async function POST(req: NextRequest) {
 
   const baseStyles = `
     <style>
-      body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; color: #111827; margin: 0; padding: 0; background-color: #f9fafb; }
-      .email-wrapper { background-color: #f9fafb; padding: 40px 20px; }
-      .container { max-width: 640px; margin: 0 auto; background-color: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-      .header { background: linear-gradient(135deg, #7D4B3C 0%, #61714D 100%); color: white; padding: 30px 20px; text-align: center; }
-      .logo { width: 80px; height: 80px; margin: 0 auto 15px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-      .brand { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
-      .tagline { font-size: 14px; opacity: 0.9; }
-      .content { padding: 30px; }
-      .greeting { font-size: 18px; font-weight: 600; color: #1f2937; margin-bottom: 20px; }
-      .section { margin-bottom: 25px; }
-      .section-title { font-size: 16px; font-weight: 600; color: #7D4B3C; margin-bottom: 15px; border-bottom: 2px solid #f3f4f6; padding-bottom: 8px; }
-      .row { margin-bottom: 12px; display: flex; }
-      .label { color: #6b7280; font-size: 13px; font-weight: 500; min-width: 120px; }
-      .value { font-size: 15px; color: #1f2937; flex: 1; }
-      .product-enquiry { background: #fef3c7; border: 1px solid #f59e0b; border-radius: 8px; padding: 20px; margin: 20px 0; }
-      .product-title { color: #92400e; font-weight: 600; font-size: 16px; margin-bottom: 12px; }
-      .footer { background: #f9fafb; color: #6b7280; font-size: 12px; text-align: center; padding: 20px; }
-      .divider { height: 1px; background: #e5e7eb; margin: 20px 0; }
-      @media (max-width: 600px) { .container { margin: 10px; } .content { padding: 20px; } .row { flex-direction: column; } .label { min-width: auto; margin-bottom: 4px; } }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #1a1a1a; margin: 0; padding: 0; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); line-height: 1.6; }
+      .email-wrapper { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 40px 20px; min-height: 100vh; }
+      .container { max-width: 680px; margin: 0 auto; background: #ffffff; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 1px solid #e1e5e9; }
+      .header { background: linear-gradient(135deg, #7D4B3C 0%, #8B5A3C 25%, #61714D 75%, #4A5D3A 100%); color: white; padding: 40px 30px; text-align: center; position: relative; }
+      .header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="coffee" patternUnits="userSpaceOnUse" width="20" height="20"><circle cx="10" cy="10" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23coffee)"/></svg>') repeat; }
+      .logo { width: 90px; height: 90px; margin: 0 auto 20px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(0,0,0,0.15); position: relative; z-index: 1; }
+      .brand { font-size: 28px; font-weight: 700; margin-bottom: 8px; text-shadow: 0 2px 4px rgba(0,0,0,0.1); position: relative; z-index: 1; }
+      .tagline { font-size: 16px; opacity: 0.95; font-weight: 300; position: relative; z-index: 1; }
+      .content { padding: 40px 30px; background: #ffffff; }
+      .greeting { font-size: 20px; font-weight: 600; color: #2d3748; margin-bottom: 25px; text-align: center; }
+      .section { margin-bottom: 30px; background: #f8fafc; border-radius: 12px; padding: 25px; border-left: 4px solid #7D4B3C; }
+      .section-title { font-size: 18px; font-weight: 700; color: #7D4B3C; margin-bottom: 20px; display: flex; align-items: center; }
+      .section-title::before { content: '📋'; margin-right: 10px; font-size: 20px; }
+      .row { margin-bottom: 15px; display: flex; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid #e2e8f0; }
+      .row:last-child { border-bottom: none; }
+      .label { color: #64748b; font-size: 14px; font-weight: 600; min-width: 140px; text-transform: uppercase; letter-spacing: 0.5px; }
+      .value { font-size: 16px; color: #1e293b; flex: 1; font-weight: 500; }
+      .product-enquiry { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 2px solid #f59e0b; border-radius: 15px; padding: 25px; margin: 25px 0; position: relative; }
+      .product-enquiry::before { content: '☕'; position: absolute; top: -10px; left: 20px; background: #f59e0b; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+      .product-title { color: #92400e; font-weight: 700; font-size: 18px; margin-bottom: 15px; margin-left: 30px; }
+      .footer { background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%); color: #64748b; font-size: 14px; text-align: center; padding: 30px; border-top: 1px solid #e2e8f0; }
+      .footer-brand { font-weight: 700; color: #7D4B3C; font-size: 16px; margin-bottom: 10px; }
+      .footer-contact { margin-top: 15px; }
+      .footer-contact a { color: #7D4B3C; text-decoration: none; font-weight: 600; }
+      .divider { height: 2px; background: linear-gradient(90deg, #7D4B3C 0%, #61714D 100%); margin: 25px 0; border-radius: 1px; }
+      .highlight { background: linear-gradient(135deg, #7D4B3C 0%, #61714D 100%); color: white; padding: 3px 8px; border-radius: 6px; font-weight: 600; }
+      @media (max-width: 600px) { 
+        .container { margin: 10px; border-radius: 15px; } 
+        .content { padding: 25px 20px; } 
+        .section { padding: 20px 15px; } 
+        .row { flex-direction: column; padding: 10px 0; } 
+        .label { min-width: auto; margin-bottom: 5px; font-size: 13px; } 
+        .value { font-size: 15px; } 
+        .header { padding: 30px 20px; } 
+        .brand { font-size: 24px; } 
+        .tagline { font-size: 14px; } 
+      }
     </style>
   `;
 
@@ -101,9 +120,13 @@ export async function POST(req: NextRequest) {
           </div>` : ''}
         </div>
         <div class="footer">
-          <p>This email was sent automatically from your Gajna Overseas website.</p>
-          <p>📧 info@gajnaoverseas.com | 📞 +91 9811789665</p>
-        </div>
+           <div class="footer-brand">Gajna Overseas</div>
+           <p>This email was sent automatically from your website</p>
+           <div class="footer-contact">
+             <p>📧 <a href="mailto:info@gajnaoverseas.com">info@gajnaoverseas.com</a> | 📞 <a href="tel:+919811789665">+91 9811789665</a></p>
+             <p style="margin-top: 10px; font-size: 12px; opacity: 0.8;">Coffee Export Excellence Since Inception</p>
+           </div>
+         </div>
       </div>
     </div>`;
 
@@ -146,10 +169,14 @@ export async function POST(req: NextRequest) {
           </div>
         </div>
         <div class="footer">
-          <p><strong>Gajna Overseas</strong> - Your Trusted Coffee Export Partner</p>
-          <p>📧 info@gajnaoverseas.com | 📞 +91 9811789665</p>
-          <p style="margin-top: 10px; font-size: 11px;">If you didn't send this enquiry, please ignore this email.</p>
-        </div>
+           <div class="footer-brand">Gajna Overseas</div>
+           <p><span class="highlight">Your Trusted Coffee Export Partner</span></p>
+           <div class="footer-contact">
+             <p>📧 <a href="mailto:info@gajnaoverseas.com">info@gajnaoverseas.com</a> | 📞 <a href="tel:+919811789665">+91 9811789665</a></p>
+             <p style="margin-top: 15px; font-size: 12px; opacity: 0.8;">Premium Indian Coffee Beans • Direct from Source • Global Export Excellence</p>
+             <p style="margin-top: 10px; font-size: 11px; opacity: 0.6;">If you didn't send this enquiry, please ignore this email.</p>
+           </div>
+         </div>
       </div>
     </div>`;
 

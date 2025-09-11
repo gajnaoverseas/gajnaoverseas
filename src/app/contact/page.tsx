@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Phone, Mail, MapPin, Linkedin, Instagram, Facebook, MessageCircle, Send, Youtube,  } from "lucide-react";
 import { BsWhatsapp } from "react-icons/bs";
-import ContactForm from "@/components/ContactForm";
+import GeneralContactForm from "@/components/GeneralContactForm";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -103,7 +103,7 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <ContactForm />
+            <GeneralContactForm />
           </motion.div>
         </div>
       </section>

@@ -1,18 +1,65 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { z } from "zod";
 import toast, { Toaster } from 'react-hot-toast';
-import { contactFormSchema, type ContactFormInput } from "@/lib/validation";
 
-type ContactFormProps = {
-  initial?: Partial<ContactFormInput>;
+// Simplified schema for general contact forms (no product/grade fields)
+const generalContactSchema = z.object({
+  name: z
+    .string({ message: "Name is required" })
+    .min(2, "Name must be at least 2 characters")
+    .max(100, "Name must be at most 100 characters"),
+  email: z
+    .string({ message: "Email is required" })
+    .email("Please enter a valid email address"),
+  subject: z
+    .string({ message: "Subject is required" })
+    .min(3, "Subject must be at least 3 characters")
+    .max(150, "Subject must be at most 150 characters"),
+  message: z
+    .string({ message: "Message is required" })
+    .min(10, "Message must be at least 10 characters")
+    .max(5000, "Message is too long"),
+  phone: z
+    .string()
+    .trim()
+    .min(7, "Phone number seems too short")
+    .max(20, "Phone number seems too long")
+    .regex(/^[+\d\s().-]+$/, "Please enter a valid phone number")
+    .optional(),
+  country: z
+    .string()
+    .trim()
+    .min(2, "Country must be at least 2 characters")
+    .max(100, "Country must be at most 100 characters")
+    .optional(),
+  postalCode: z
+    .string()
+    .trim()
+    .min(3, "Postal code must be at least 3 characters")
+    .max(20, "Postal code must be at most 20 characters")
+    .regex(/^[A-Za-z0-9\s-]+$/, "Please enter a valid postal code")
+    .optional(),
+  linkedin: z
+    .string()
+    .url("Please enter a valid LinkedIn profile URL")
+    .optional(),
+  consent: z.boolean().refine(val => val === true, {
+    message: "You must consent to data processing"
+  }),
+});
+
+type GeneralContactInput = z.infer<typeof generalContactSchema>;
+
+type GeneralContactFormProps = {
+  initial?: Partial<GeneralContactInput>;
   submitLabel?: string;
   onSuccess?: () => void;
   isModal?: boolean;
 };
 
-export default function ContactForm({ initial, submitLabel = "Send Message", onSuccess, isModal = false }: ContactFormProps) {
-  const [values, setValues] = useState<ContactFormInput>({
+export default function GeneralContactForm({ initial, submitLabel = "Send Message", onSuccess, isModal = false }: GeneralContactFormProps) {
+  const [values, setValues] = useState<GeneralContactInput>({
     name: "",
     email: "",
     subject: "",
@@ -21,12 +68,9 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
     country: "",
     postalCode: "",
     linkedin: "",
-    product: "",
-    grade: "",
-    quantity: undefined,
     consent: false,
     ...(initial as any),
-  } as ContactFormInput);
+  } as GeneralContactInput);
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -34,7 +78,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
 
   // Add validation feedback on field blur
   const handleBlur = (fieldName: string) => {
-    const fieldValue = values[fieldName as keyof ContactFormInput];
+    const fieldValue = values[fieldName as keyof GeneralContactInput];
     if (!fieldValue && ['name', 'email', 'subject', 'message', 'consent'].includes(fieldName)) {
       setErrors(prev => ({ ...prev, [fieldName]: 'This field is required' }));
     } else if (errors[fieldName]) {
@@ -52,24 +96,8 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
     }));
   };
 
-  const validate = (data: ContactFormInput) => {
-    // For product enquiry forms, make product and grade required
-    const isProductEnquiry = initial?.product || initial?.grade;
-    
-    let result;
-    if (isProductEnquiry) {
-      // Create a schema with required product and grade fields
-      const productEnquirySchema = contactFormSchema.merge(
-        z.object({
-          product: z.string().min(1, "Product is required"),
-          grade: z.string().min(1, "Grade is required")
-        })
-      );
-      result = productEnquirySchema.safeParse(data);
-    } else {
-      result = contactFormSchema.safeParse(data);
-    }
-    
+  const validate = (data: GeneralContactInput) => {
+    const result = generalContactSchema.safeParse(data);
     if (!result.success) {
       const fieldErrors: Record<string, string> = {};
       const fl = result.error.flatten();
@@ -89,9 +117,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
           phone: 'Phone',
           country: 'Country',
           postalCode: 'Postal Code',
-          linkedin: 'LinkedIn',
-          product: 'Product',
-          grade: 'Grade'
+          linkedin: 'LinkedIn'
         };
         return fieldNames[field] || field;
       });
@@ -126,14 +152,21 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('General form submission started', { values, isModal });
+    
     setStatus("submitting");
     setServerError(null);
 
-    const payload: ContactFormInput = { ...values };
+    const payload: GeneralContactInput = { ...values };
+    console.log('General form payload prepared:', payload);
+    
     if (!validate(payload)) {
+      console.log('General form validation failed');
       setStatus("error");
       return;
     }
+    
+    console.log('General form validation passed, sending request');
 
     try {
       const res = await fetch("/api/contact", {
@@ -141,12 +174,18 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
+      
+      console.log('General form response received:', res.status, res.statusText);
       const json = await res.json();
+      console.log('General form response JSON:', json);
+      
       if (!res.ok || !json.success) {
         throw new Error(json.error || "Submission failed");
       }
+      
+      console.log('General form submitted successfully');
       setStatus("success");
-      setValues({ name: "", email: "", subject: "", message: "", phone: "", country: "", postalCode: "", linkedin: "", product: "", grade: "", quantity: undefined, consent: false } as ContactFormInput);
+      setValues({ name: "", email: "", subject: "", message: "", phone: "", country: "", postalCode: "", linkedin: "", consent: false } as GeneralContactInput);
       
       // Show success toast
       toast.success('✅ Message sent successfully! We\'ll get back to you soon.', {
@@ -161,6 +200,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
       
       onSuccess?.();
     } catch (err: any) {
+      console.error('General form submission error:', err);
       setServerError(err.message || "Something went wrong");
       setStatus("error");
       
@@ -179,41 +219,6 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      {/* Product Enquiry Context (when provided) */}
-      {(values.product || values.grade) && (
-        <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4">
-          <h3 className="text-sm font-medium text-amber-800 mb-2">Product Enquiry</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
-            {values.product && (
-              <div>
-                <span className="text-amber-700 font-medium">Product:</span>
-                <p className="text-amber-900">{values.product}</p>
-              </div>
-            )}
-            {values.grade && (
-              <div>
-                <span className="text-amber-700 font-medium">Grade:</span>
-                <p className="text-amber-900">{values.grade}</p>
-              </div>
-            )}
-            <div>
-              <label className="block text-amber-700 font-medium mb-1">Quantity (MT)</label>
-              <input
-                type="number"
-                name="quantity"
-                value={values.quantity || ""}
-                onChange={handleChange}
-                className="w-full px-3 py-1 border border-amber-300 rounded focus:border-amber-500 focus:ring-amber-500"
-                placeholder="0"
-                min="0"
-                step="1"
-              />
-              {errors.quantity && <p className="text-sm text-red-600 mt-1">{errors.quantity}</p>}
-            </div>
-          </div>
-        </div>
-      )}
-      
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-700">

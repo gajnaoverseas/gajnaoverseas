@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import MegaMenu from "@/components/MegaMenu";
-import ContactForm from "@/components/ContactForm";
+import GeneralContactForm from "@/components/GeneralContactForm";
 import { allProducts } from "@/data/products";
 import { ChevronDown, X } from "lucide-react";
 
@@ -316,7 +316,7 @@ export default function Header() {
                 </button>
               </div>
               <div className="p-6">
-                <ContactForm
+                <GeneralContactForm
                   initial={{ subject: "Quick Enquiry" }}
                   submitLabel="Send Enquiry"
                   onSuccess={() => setQuickEnquiryOpen(false)}
