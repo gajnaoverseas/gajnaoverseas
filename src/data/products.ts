@@ -72,8 +72,10 @@ export const products: Record<string, Product> = {
       { label: "Processing", value: "Washed Arabica – 'Plantation'" },
       {
         label: "Sieve Standards",
-        value:
-          "Minimum 90% by weight retention on a sieve with round holes of 6.6mm. Not more than 1.5% by weight shall pass through a sieve with round holes of 6.00mm",
+        value:[
+          "Minimum 90% by weight retention on a sieve with round holes of 6.6mm.",
+          "Not more than 1.5% by weight shall pass through a sieve with round holes of 6.00mm."
+          ].join("\n"),
       },
       { label: "Garbling Status", value: "Clean Garbled" },
       { label: "Tolerance", value: "PB: 2% by weight | Triage: 2% by weight" },
@@ -95,8 +97,10 @@ export const products: Record<string, Product> = {
       { label: "Processing", value: "Washed Arabica – 'Plantation'" },
       {
         label: "Sieve Standards",
-        value:
-          "Minimum 75% by weight retention on sieve with round holes of 6.00mm (Screen 15). Not more than 1.5% by weight shall pass through a sieve with round holes of 5.50mm (Screen 14).",
+        value: [
+          "Minimum 75% by weight retention on sieve with round holes of 6.00mm (Screen 15)",
+          "Not more than 1.5% by weight shall pass through a sieve with round holes of 5.50mm (Screen 14)"
+        ].join("\n"),
       },
       { label: "Garbling Status", value: "Clean Garbled" },
       { label: "Tolerance", value: "PB: 2% by weight | Triage: 3% by weight" },
@@ -118,8 +122,10 @@ export const products: Record<string, Product> = {
       { label: "Processing", value: "Washed Arabica – 'Plantation'" },
       {
         label: "Sieve Standards",
-        value:
-          "Minimum 75% by weight retention on a sieve with round holes of 5.50mm (Screen 14). 100% by weight shall stand on a sieve with round holes of 5.00mm (Screen 13)",
+        value: [
+          "Minimum 75% by weight retention on a sieve with round holes of 5.50mm (Screen 14)",
+          "100% by weight shall stand on a sieve with round holes of 5.00mm (Screen 13)"
+        ].join("\n"),
       },
       {
         label: "May include",
@@ -140,9 +146,12 @@ export const products: Record<string, Product> = {
     category: "Commercial Grade",
     variety: "Arabica",
     specs: [
+      { label: "Category", value: "Commercial Grade" },
+      { label: "Coffee Type", value: "Arabica" },
+      { label: "Processing", value: "Washed Arabica – 'Plantation'" },
       {
         label: "Sieve Standards",
-        value: "100% by weight retention on a sieve with round holes of 5.00mm (Screen 13).",
+        value: "100% by weight retention on a sieve with round holes of 5.00mm (Screen 13)",
       },
       {
         label: "May include",
@@ -167,6 +176,9 @@ export const products: Record<string, Product> = {
     category: "Commercial Grade",
     variety: "Arabica",
     specs: [
+      { label: "Category", value: "Commercial Grade" },
+      { label: "Coffee Type", value: "Arabica" },
+      { label: "Processing", value: "Washed Arabica – 'Plantation'" },
       {
         label: "Sieve Standards",
         value:
@@ -191,6 +203,9 @@ export const products: Record<string, Product> = {
     category: "Commercial Grade",
     variety: "Arabica",
     specs: [
+      { label: "Category", value: "Commercial Grade" },
+      { label: "Coffee Type", value: "Arabica" },
+      { label: "Processing", value: "Washed Arabica – 'Plantation'" },
       { label: "Grading", value: "Ungraded" },
       { label: "Presence of Blacks/Browns/Bits", value: "Shall not contain more than 2% by weight" },
     ],
@@ -232,7 +247,10 @@ export const products: Record<string, Product> = {
       { label: "Processing", value: "Unwashed Arabica Cherry" },
       {
         label: "Sieve Standards",
-        value: "Minimum 90% by weight retention on a sieve with round holes of 6.00mm (Screen 15). Not more than 1.5% by weight shall pass through a sieve with round holes of 5.50mm (Screen 14)."
+        value: [
+          "Minimum 90% by weight retention on a sieve with round holes of 6.00mm (Screen 15)",
+          "Not more than 1.5% by weight shall pass through a sieve with round holes of 5.50mm (Screen 14)"
+        ].join("\n"),
       },
       { label: "Garbling Status", value: "Clean Garbled" },
       { label: "Tolerance", value: "PB: 2% by weight | Triage: 3% by weight" },
@@ -254,7 +272,10 @@ export const products: Record<string, Product> = {
       { label: "Processing", value: "Unwashed Arabica Cherry" },
       {
         label: "Sieve Standards",
-        value: "Minimum 75% by weight retention on a sieve with round holes of 5.50mm (Screen 14). 100% by weight shall stand on a sieve with round holes of 5.00mm (Screen 13)."
+        value: [
+          "Minimum 75% by weight retention on a sieve with round holes of 5.50mm (Screen 14)",
+          "100% by weight shall stand on a sieve with round holes of 5.00mm (Screen 13)"
+        ].join("\n"),
       },
       {
         label: "May include",

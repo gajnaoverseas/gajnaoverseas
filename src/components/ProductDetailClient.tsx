@@ -130,8 +130,8 @@ export default function ProductDetailClient({ product }: Props) {
             // Render special tolerance block once at the correct position
             if (i === toleranceBlockAt && tolData) {
               return (
-                <div key="tolerance-block" className="px-4 py-3 ">
-                  <div className="text-base  text-gray-700 mb-2">Tolerance</div>
+                <div key="tolerance-block" className="px-4 py-3 flex justify-between items-center">
+                  <div className="text-base text-gray-700 mb-2">Tolerance</div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="flex flex-col">
                       <span className="text-gray-600 text-sm">
@@ -165,9 +165,27 @@ export default function ProductDetailClient({ product }: Props) {
                 className="flex items-start justify-between gap-4 px-4 py-2 text-sm"
               >
                 <span className="text-gray-600">{s.label}</span>
-                <span className="text-gray-900 font-medium text-right max-w-[60%]">
-                  {s.value}
-                </span>
+                {s.label === "Sieve Standards" ? (
+                  <div className="text-right max-w-[70%]">
+                    <div className="flex items-start justify-start">
+                      <div className="text-gray-900 font-medium text-left">
+                        {typeof s.value === 'string' && s.value.includes('\n') 
+                          ? s.value.split('\n').map((point, idx) => (
+                              <div key={idx} className="flex items-start mb-1 last:mb-0">
+                                <span className="mr-2">•</span>
+                                <span>{point.trim()}</span>
+                              </div>
+                            ))
+                          : <span>{s.value}</span>
+                        }
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <span className="text-gray-900 font-medium text-left max-w-[48%]">
+                    {s.value}
+                  </span>
+                )}
               </div>
             );
           })}
