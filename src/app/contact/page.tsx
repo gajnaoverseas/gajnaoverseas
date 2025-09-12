@@ -160,9 +160,9 @@ export default function ContactPage() {
 
             <Link
               href="/contact"
-              className="p-6 h-[150px] md:h-[20vh] w-full md:w-[40vw] bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+              className="p-6 h-[150px] md:h-[20vh] w-full md:w-[40vw]  bg-green-700 border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
             >
-              <h1 className="text-4xl md:text-7xl leading-tight font-bold text-[#562F23] text-center font-serif">
+              <h1 className="text-4xl md:text-7xl leading-tight font-bold text-white text-center font-serif">
                 Contact Us
               </h1>
             </Link>
@@ -239,7 +239,7 @@ export default function ContactPage() {
                       <h4 className="font-semibold text-gray-800">
                         Company Name
                       </h4>
-                      <p className="text-gray-600">Gajna Overseas Pvt Ltd</p>
+                      <p className="text-gray-600">Gajna Overseas Private Limited</p>
                     </div>
                   </div>
 
@@ -297,6 +297,10 @@ export default function ContactPage() {
                     </div>
                   </div>
                 </div>
+              </div>
+
+              <div className="bg-white rounded-2xl p-8 shadow-lg font-semibold text-xl">
+                Corporate Identity Number (CIN): 
               </div>
 
               {/* Connect With Us */}

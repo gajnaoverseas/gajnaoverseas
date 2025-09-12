@@ -75,21 +75,21 @@ export default function WhyChooseUs() {
       title: "Coffee Sourcing\nwith Origin Access",
       subtitle: "Deep-rooted relationships.\nDirect from the source",
       description:
-        "We collaborate closely with Coffee Estate Owners, FPOs, and Curing Works across India's diverse Coffee growing regions.",
+        "We collaborate closely with Coffee Estate Owners, FPOs, and Coffee Curing Works across India's diverse Coffee growing regions.",
       icon: "/why-choose-us/sourcing-icon.png",
     },
     {
       title: "Intelligent Packaging That\nPreserves Quality",
       subtitle: "We have a deep understanding\nof coffee-packaging",
       description:
-        "Our packaging solutions are designed with deep category knowledge — moisture-safe liners, eco-conscious options, and roaster-friendly formats that safeguard bean integrity and aroma across long hauls.",
+        "Our packaging solutions are designed with deep category knowledge — moisture-safe liners and eco-conscious options and  formats that safeguard bean integrity and aroma across long hauls.",
       icon: "/why-choose-us/packaging-icon.png",
     },
     {
       title: "Seamless Coffee\nExports, End-to-End",
       subtitle: "We're expert in logistics and\nCoffee Export documentation",
       description:
-        "We streamline the entire export journey, managing logistics, documentation, and compliance with expertise. Gajna Overseas ensures your green beans reach global markets, hassle-free.",
+        "We streamline the entire export journey, managing logistics, documentation, and compliance with expertise. Gajna Overseas ensures your green beans reach you hassle-free.",
       icon: "/why-choose-us/export-icon.png",
     },
   ];
@@ -128,10 +128,7 @@ export default function WhyChooseUs() {
         <div className="text-center mb-16">
           <p className="quote-text text-lg md:text-xl text-black max-w-5xl mx-auto leading-relaxed font-serif italic">
             By choosing Gajna Overseas, you choose an expert in Coffee Sourcing,
-            Coffee Packaging, Coffee Logistics, and Green Coffee Export. Our
-            focus is singular — exporting Indian green coffee beans. No
-            distractions. No diversions. Just quality-driven, trade-ready
-            coffee.
+            Coffee Packaging, Coffee Logistics, and documentation of Green Coffee Export. 
           </p>
         </div>
 

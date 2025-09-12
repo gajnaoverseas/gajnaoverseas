@@ -397,7 +397,7 @@ export default function GeneralContactForm({
           onChange={handleChange}
           onBlur={handleBlur}
           className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-opacity-50 ${errors.subject ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'}`}
-          placeholder="What is your enquiry about?"
+          placeholder="Your Query..."
         />
         {errors.subject && <p className="mt-1 text-sm text-red-600">{errors.subject}</p>}
       </div>
@@ -415,7 +415,7 @@ export default function GeneralContactForm({
           onChange={handleChange}
           onBlur={handleBlur}
           className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-opacity-50 ${errors.message ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'}`}
-          placeholder="Please provide details about your enquiry..."
+          placeholder="Explain your enquiry in details..."
         />
         {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
       </div>

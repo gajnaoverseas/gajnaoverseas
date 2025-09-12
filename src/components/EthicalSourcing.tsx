@@ -81,7 +81,7 @@ export default function EthicalSourcing() {
   }, []);
 
   return (
-    <section ref={sectionRef} className=" relative z-10">
+    <section ref={sectionRef} className=" relative z-10 py-16">
       {/* Ethical Sourcing Strip */}
       {/* <div className="max-w-7xl mx-auto px-4 py-16  ">
         
@@ -100,9 +100,9 @@ export default function EthicalSourcing() {
       </div> */}
 
       {/* Registrations & Certifications */}
-      <div className="bg-white">
+      <div className="bg-white border-t-2 border-coffee-brown pt-6">
         <div className="max-w-7xl mx-auto px-4 py-8">
-          <h2 className="text-5xl font-serif font-semibold mb-10 text-coffee-brown text-center fade-in-text">
+         <h2 className="main-title text-center text-4xl md:text-6xl font-serif text-[#562F23] mb-20">
             Registrations & Certifications
           </h2>
 
@@ -143,7 +143,7 @@ export default function EthicalSourcing() {
                                images: cert.certificateImages!,
                              });
                             }}
-                            className="my-5 bg-transparent text-coffee-brown text-xs transition-colors duration-300 underline cursor-pointer"
+                            className="my-5 bg-[#434d35] p-1 rounded-lg text-white text-xs transition-colors duration-300 underline cursor-pointer"
                             type="button"
                           >
                             View Certificate

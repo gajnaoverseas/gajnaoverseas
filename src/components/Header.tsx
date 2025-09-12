@@ -52,7 +52,7 @@ export default function Header() {
 
           {/* Center Title (hidden on small) */}
           <nav className="hidden md:block flex-1 text-center">
-            <h2 className="text-lg md:text-2xl lg:text-3xl  font-serif text-coffee-brown">
+            <h2 className="text-lg md:text-2xl lg:text-4xl font-semibold font-serif text-coffee-brown">
               Exporter of Green Coffee Beans of Indian Origin
             </h2>
           </nav>
@@ -155,12 +155,7 @@ export default function Header() {
               >
                 Become a Supplier with us
               </Link>
-              <Link
-                href="/careers"
-                className="block text-white text-lg font-medium py-3 hover:text-amber-200"
-              >
-                Careers
-              </Link>
+              
             </div>
           </div>
         )}
@@ -241,10 +236,10 @@ export default function Header() {
             >
               <Link
                 href="/products"
-                className=" text-black text-base font-medium hover:text-[#7D4B3C] transition-colors flex flex-row"
+                className=" text-black text-base font-medium  hover:bg-coffee-brown hover:text-white hover:pl-[12px] hover:rounded-lg transition-colors flex flex-row"
               >
                 Products
-                <ChevronDown className="text-coffee-brown " />
+                <ChevronDown className="text-coffee-brown hover:text-white " />
               </Link>
               {megaMenuOpen && (
                 <MegaMenu
@@ -257,35 +252,35 @@ export default function Header() {
 
             <Link
               href="/certificates"
-              className="block text-black text-base font-medium hover:text-[#7D4B3C] transition-colors"
+              className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
             >
               Registrations & Certificates
             </Link>
             <Link
               href="/blog"
-              className="block text-black text-base font-medium hover:text-[#7D4B3C] transition-colors"
+              className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
             >
               Blogs
             </Link>
             <Link
               href="/trade-enquiry"
-              className="block text-black text-base font-medium hover:text-[#7D4B3C] transition-colors"
+              className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
             >
               Trade Enquiry
             </Link>
             <Link
               href="/about"
-              className="block text-black text-base font-medium hover:text-[#7D4B3C] transition-colors"
+              className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
             >
               About Us
             </Link>
             <Link
               href="/Become-supplier"
-              className="block text-black text-base font-medium hover:text-[#7D4B3C] transition-colors"
+              className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
             >
               Become a Supplier with us
             </Link>
-            <Link href="/contact" className="block text-black text-base font-medium hover:text-[#7D4B3C] transition-colors">
+            <Link href="/contact" className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors">
               Contact Us
             </Link>
           </div>

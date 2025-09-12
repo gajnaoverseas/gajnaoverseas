@@ -49,7 +49,7 @@ export default function CoffeeProducts() {
     };
   }, []);
   return (
-    <section ref={sectionRef} className="py-8 bg-white relative z-10">
+    <section ref={sectionRef} className="py-16 pb-24 bg-white relative z-10 border border-coffee-brown">
       <Image
         src="/blog-bg.webp"
         alt="Knowledge Hub Background"
@@ -58,10 +58,10 @@ export default function CoffeeProducts() {
       />
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-5xl font-serif font-semibold mb-2 text-[#562F23]">
+           <h2 className="main-title text-4xl md:text-6xl font-serif text-[#562F23] mb-8">
             Explore Our Coffees
           </h2>
-          <p className="text-black">Our 2 core offerings</p>
+          <p className="text-black text-xl font-semibold mt-[3vw] mb-[-3vw]">Our 2 core offerings</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -117,7 +117,7 @@ export default function CoffeeProducts() {
                 className="inline-block py-3 px-6 border border-coffee-gold text-black font-medium rounded-full hover:bg-coffee-gold hover:text-coffee-brown transition duration-300 text-sm cursor-pointer"
                 style={{ pointerEvents: 'auto' }}
               >
-                Explore Indian Grade Arabica
+                Explore Indian Arabica Grades
               </Link>
             </div>
           </div>
@@ -178,7 +178,7 @@ export default function CoffeeProducts() {
                 className="inline-block py-3 px-6 border border-coffee-gold text-black font-medium rounded-full hover:bg-coffee-gold hover:text-coffee-brown transition duration-300 text-sm cursor-pointer"
                 style={{ pointerEvents: 'auto' }}
               >
-                Explore Indian Grade Robusta
+                Explore Indian  Robusta Grades
               </Link>
             </div>
           </div>

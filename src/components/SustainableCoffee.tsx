@@ -6,13 +6,10 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function SustainableCoffee() {
   return (
-    <section className="py-16 bg-gradient-to-br from-amber-900 to-amber-800 text-white relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-[url('/coffee-plants.svg')] bg-repeat bg-opacity-5"></div>
-      </div>
+    <section className="py-28  bg-gradient-to-br from-amber-900 to-amber-800 text-white relative overflow-hidden">
 
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
+
+      <div className="max-w-7xl mx-auto px-4 relative z-10 mt-[-4vw]">
         {/* Header */}
         <motion.div
           className="text-center mb-12"
@@ -50,15 +47,15 @@ export default function SustainableCoffee() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           >
             <div>
-              <h2 className="lg:text-6xl text-4xl font-serif font-semibold mb-4 text-amber-100">
-                Sustainable Coffee Cultivation in India
+              <h2 className="lg:text-7xl text-4xl font-serif  mb-4  text-amber-100">
+                Sustainable  Cultivation 
               </h2>
               <p className="text-lg leading-relaxed my-4 text-white">
                 The Coffees of India are grown in a symbiotic relationship with
                 their environment. They are grown in natural forests, without
                 cutting down shade trees
               </p>
-              <p className="text-lg leading-relaxed text-black opacity-90 p-4 bg-[#F9C977] lg:ml-[-6vw] ml-0 rounded-xl overflow-hidden">
+              <p className="text-lg leading-relaxed text-black opacity-90 p-4 bg-[#F9C977]  rounded-xl overflow-hidden">
                 In all Indian coffee estates, our coffees are grown under a
                 two-tier mixed shade canopy. Some of these shade trees produce
                 fruits and vegetables, which become an additional source of
@@ -66,12 +63,12 @@ export default function SustainableCoffee() {
                 habitat for birds, insects and animals. 
               </p>
               <p className="text-lg leading-relaxed my-4 text-white">
-                At Araku Valley, a region in the Indian state of Andhra Pradesh,
+                At Araku Valley, a coffee growing region in the Indian state of Andhra Pradesh,
                 coffee cultivation has given new life to once-barren hills.
                 Coffee estates have replaced the earlier custom of shifting
                 cultivation, which had left these Hills denuded
               </p>
-              <p className="text-lg leading-relaxed text-black opacity-90 p-4 bg-[#F9C977] lg:ml-[-6vw] ml-0 rounded-xl overflow-hidden">
+              <p className="text-lg leading-relaxed text-black opacity-90 p-4 bg-[#F9C977]  rounded-xl overflow-hidden">
                 In India, the coffee estates also provide a livelihood to
                 economically marginalised individuals by offering local tribes a
                 sustainable income. The coffee estates also provide healthcare,
