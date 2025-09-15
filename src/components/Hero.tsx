@@ -46,7 +46,7 @@ export default function Hero() {
   const currentSlideData = slides[currentSlide];
 
   return (
-    <section className="relative bg-black text-white overflow-hidden lg:h-[100vh] md:h-[90vh] h-[80vh] z-0 ">
+    <section className="relative bg-black text-white overflow-hidden lg:h-[140vh] md:h-[90vh] h-[80vh] z-0 ">
       {/* Background image with transition effect and gradient overlay */}
       {slides.map((slide, index) => (
         <div

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import MegaMenu from "@/components/MegaMenu";
 import GeneralContactForm from "@/components/GeneralContactForm";
+import  SupplierRegistrationModal from "@/components/SupplierRegistrationModal";
 import { allProducts } from "@/data/products";
 import { ChevronDown, X } from "lucide-react";
 
@@ -14,6 +15,7 @@ export default function Header() {
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [mobileMegaMenuOpen, setMobileMegaMenuOpen] = useState(false);
   const [quickEnquiryOpen, setQuickEnquiryOpen] = useState(false);
+  const [supplierModalOpen, setSupplierModalOpen] = useState(false);
 
   // Prevent page scroll when mobile menu open
   useEffect(() => {
@@ -138,6 +140,12 @@ export default function Header() {
                 Blogs
               </Link>
               <Link
+                href="/gallery"
+                className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200"
+              >
+                Gallery
+              </Link>
+              <Link
                 href="/trade-enquiry"
                 className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200"
               >
@@ -149,12 +157,12 @@ export default function Header() {
               >
                 About Us
               </Link>
-              <Link
-                href="/become-supplier"
-                className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200"
+              <button
+                onClick={() => setSupplierModalOpen(true)}
+                className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 w-full text-left"
               >
                 Become a Supplier with us
-              </Link>
+              </button>
               
             </div>
           </div>
@@ -253,7 +261,7 @@ export default function Header() {
             </div>
 
             <Link
-              href="/registrations"
+              href="/certificates"
               className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
             >
               Registrations & Certificates
@@ -263,6 +271,12 @@ export default function Header() {
               className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
             >
               Blogs
+            </Link>
+            <Link
+              href="/gallery"
+              className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
+            >
+              Gallery
             </Link>
             <Link
               href="/trade-enquiry"
@@ -276,12 +290,12 @@ export default function Header() {
             >
               About Us
             </Link>
-            <Link
-              href="/Become-supplier"
+            <button
+              onClick={() => setSupplierModalOpen(true)}
               className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
             >
               Become a Supplier with us
-            </Link>
+            </button>
             <Link href="/contact" className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors">
               Contact Us
             </Link>
@@ -322,6 +336,12 @@ export default function Header() {
             </div>
           </div>
         )}
+        
+        {/* Supplier Registration Modal */}
+        <SupplierRegistrationModal 
+          isOpen={supplierModalOpen} 
+          onClose={() => setSupplierModalOpen(false)} 
+        />
       </div>
     </header>
   );

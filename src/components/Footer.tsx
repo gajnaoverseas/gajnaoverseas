@@ -6,7 +6,7 @@ import { IoCall } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
 import { Linkedin } from "lucide-react";
 import { BsWhatsapp } from "react-icons/bs";
-import { motion } from "framer-motion";
+// Removed framer-motion import to fix createContext error
 
 export default function Footer() {
   return (
@@ -52,12 +52,7 @@ export default function Footer() {
             </div> */}
             
            <div className="flex justify-center md:justify-start space-x-4">
-  <motion.div 
-    className="text-center mb-16"
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8 }}
-  >
+  <div className="text-center mb-16">
     <div className="flex justify-center space-x-2 flex-wrap gap-2">
       {[
         { icon: 'linkedin', component: Linkedin, href: 'https://www.linkedin.com/in/priyaviratsingh/' },
@@ -65,24 +60,19 @@ export default function Footer() {
       ].map((social, index) => {
         const IconComponent = social.component;
         return (
-          <motion.a
+          <a
             key={social.icon}
-            href={social.href} // ✅ use actual link
-            target="_blank"    // ✅ open in new tab
-            rel="noopener noreferrer" // ✅ security best practice
+            href={social.href}
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-14 h-14 bg-coffee-brown hover:bg-amber-700 rounded-full flex items-center justify-center text-white transition-all duration-300 shadow-lg"
-            whileHover={{ scale: 1.1, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
           >
             <IconComponent className="w-6 h-6" />
-          </motion.a>
+          </a>
         );
       })}
     </div>
-  </motion.div>
+  </div>
 </div>
 
           </div>
