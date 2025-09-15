@@ -128,7 +128,7 @@ export default function Header() {
                 Products
               </button>
               <Link
-                href="/certificates"
+                href="/registrations"
                 className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200"
               >
                 Registrations & Certificates
