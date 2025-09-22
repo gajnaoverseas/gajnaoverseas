@@ -43,6 +43,7 @@ const TradeEnquiryModal: React.FC<TradeEnquiryModalProps> = ({ isOpen, onClose }
   const [currentStep, setCurrentStep] = useState(1);
   const [captchaValue, setCaptchaValue] = useState<string | null>(null);
   const [captchaError, setCaptchaError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string[]>>({});
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [formData, setFormData] = useState<FormData>({
     // Company Details
@@ -75,70 +76,100 @@ const TradeEnquiryModal: React.FC<TradeEnquiryModalProps> = ({ isOpen, onClose }
   });
 
   const handleInputChange = (field: keyof FormData, value: string) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }));
+    setFormData(prev => ({ ...prev, [field]: value }));
+    // Clear field error when user starts typing
+    if (fieldErrors[field]) {
+      setFieldErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[field];
+        return newErrors;
+      });
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validate captcha
+    // Validate reCAPTCHA
     if (!captchaValue) {
-      setCaptchaError('Please verify that you are not a robot');
+      setCaptchaError('Please complete the reCAPTCHA verification');
       return;
-    } else {
-      setCaptchaError(null);
     }
     
     try {
-      // Here you would typically send the form data to your API
-      // including the captcha token for server-side verification
       const submissionData = {
         ...formData,
         captchaToken: captchaValue
       };
       
-      console.log('Form submitted:', submissionData);
-      alert('Trade enquiry submitted successfully!');
+      // Log the data being sent for debugging
+      console.log('Submitting trade enquiry data:', submissionData);
       
-      // Reset form and captcha
-      setFormData({
-        companyName: '',
-        companyAddress: '',
-        countryName: '',
-        companyPhone: '',
-        companyFax: '',
-        companyMobile: '',
-        companyEmail: '',
-        companyWebsite: '',
-        companyLinkedIn: '',
-        contactName: '',
-        contactLinkedIn: '',
-        contactMobile: '',
-        contactEmail: '',
-        coffeeGrade: '',
-        hsnCode: '',
-        estimatedQuantity: '',
-        packagingRequirements: '',
-        portOfLoading: '',
-        portOfDispatch: '',
-        preshipmentAgency: '',
-        preshipmentRequirements: '',
-        deliveryDuration: '',
+      const response = await fetch('/api/trade-enquiry', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData),
       });
       
+      const result = await response.json();
+      console.log('API response:', result);
+      
+      if (response.ok && result.success) {
+        alert('Trade enquiry submitted successfully! We will contact you soon.');
+        
+        // Reset form and captcha
+        setFormData({
+          companyName: '',
+          companyAddress: '',
+          countryName: '',
+          companyPhone: '',
+          companyFax: '',
+          companyMobile: '',
+          companyEmail: '',
+          companyWebsite: '',
+          companyLinkedIn: '',
+          contactName: '',
+          contactLinkedIn: '',
+          contactMobile: '',
+          contactEmail: '',
+          coffeeGrade: '',
+          hsnCode: '',
+          estimatedQuantity: '',
+          packagingRequirements: '',
+          portOfLoading: '',
+          portOfDispatch: '',
+          preshipmentAgency: '',
+          preshipmentRequirements: '',
+          deliveryDuration: ''
+        });
+        
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
+        }
+        setCaptchaValue('');
+        setCaptchaError('');
+        setFieldErrors({});
+        setCurrentStep(1);
+        onClose();
+      } else {
+        // Handle validation errors
+        if (result.issues && result.issues.fieldErrors) {
+          setFieldErrors(result.issues.fieldErrors);
+        }
+        throw new Error(result.error || 'Failed to submit trade enquiry');
+      }
+    } catch (error) {
+      console.error('Error submitting trade enquiry:', error);
+      alert('Error submitting trade enquiry. Please check the highlighted fields and try again.');
+      
+      // Reset reCAPTCHA on error so user can try again
       if (recaptchaRef.current) {
         recaptchaRef.current.reset();
       }
       setCaptchaValue(null);
-      setCurrentStep(1);
-      
-      onClose();
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('Error submitting form. Please try again.');
+      setCaptchaError(null);
     }
   };
 
@@ -154,7 +185,7 @@ const TradeEnquiryModal: React.FC<TradeEnquiryModalProps> = ({ isOpen, onClose }
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 ">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl lg:max-h-[90vh] max-h-[70vh] overflow-y-auto lg:overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl lg:max-h-[90vh] max-h-[70vh] overflow-y-auto ">
         {/* Header */}
         <div className="bg-gradient-to-r from-green-700 to-green-800 text-white p-6 relative  ">
           <button
@@ -193,7 +224,7 @@ const TradeEnquiryModal: React.FC<TradeEnquiryModalProps> = ({ isOpen, onClose }
         </div>
 
         {/* Form Content */}
-        <div className="p-6 overflow-y-auto lg:max-h-[60vh]">
+        <div className="p-6 overflow-y-auto lg:max-h-[90vh]">
           <form onSubmit={handleSubmit}>
             {/* Step 1: Company Details */}
             {currentStep === 1 && (
@@ -296,9 +327,16 @@ const TradeEnquiryModal: React.FC<TradeEnquiryModalProps> = ({ isOpen, onClose }
                       required
                       value={formData.companyEmail}
                       onChange={(e) => handleInputChange('companyEmail', e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${
+                        fieldErrors.companyEmail ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                      }`}
                       placeholder="Company email ID"
                     />
+                    {fieldErrors.companyEmail && (
+                      <p className="mt-1 text-sm text-red-600">
+                        {fieldErrors.companyEmail[0]}
+                      </p>
+                    )}
                   </div>
                   
                   <div>
@@ -328,26 +366,7 @@ const TradeEnquiryModal: React.FC<TradeEnquiryModalProps> = ({ isOpen, onClose }
                   </div>
                 </div>
 
-                {/* reCAPTCHA */}
-                <div className="flex flex-col items-center mt-8">
-                  <ReCAPTCHA
-                    ref={recaptchaRef}
-                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
-                    onChange={(value) => {
-                      setCaptchaValue(value);
-                      setCaptchaError(null);
-                    }}
-                    onExpired={() => {
-                      setCaptchaValue(null);
-                      setCaptchaError("CAPTCHA has expired, please verify again");
-                    }}
-                    onErrored={() => {
-                      setCaptchaError("Error loading CAPTCHA, please refresh the page");
-                    }}
-                  />
-                  {captchaError && <p className="mt-2 text-sm text-red-600">{captchaError}</p>}
-                  <p className="text-xs text-gray-500 mt-2">This site is protected by reCAPTCHA.</p>
-                </div>
+
               </div>
             )}
 
@@ -550,6 +569,27 @@ const TradeEnquiryModal: React.FC<TradeEnquiryModalProps> = ({ isOpen, onClose }
                       placeholder="Describe your pre-shipment requirements in detail"
                     />
                   </div>
+                </div>
+
+                {/* reCAPTCHA */}
+                <div className="flex flex-col items-center mt-8">
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                    onChange={(value) => {
+                      setCaptchaValue(value);
+                      setCaptchaError(null);
+                    }}
+                    onExpired={() => {
+                      setCaptchaValue(null);
+                      setCaptchaError("CAPTCHA has expired, please verify again");
+                    }}
+                    onErrored={() => {
+                      setCaptchaError("Error loading CAPTCHA, please refresh the page");
+                    }}
+                  />
+                  {captchaError && <p className="mt-2 text-sm text-red-600">{captchaError}</p>}
+                  <p className="text-xs text-gray-500 mt-2">This site is protected by reCAPTCHA.</p>
                 </div>
               </div>
             )}
