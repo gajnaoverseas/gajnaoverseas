@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import MegaMenu from "@/components/MegaMenu";
 import GeneralContactForm from "@/components/GeneralContactForm";
 import  SupplierRegistrationModal from "@/components/SupplierRegistrationModal";
-import TradeEnquiryModal from "@/components/TradeEnquiryModal";
+
 // import { allProducts } from "@/data/products";
 import { ChevronDown, X } from "lucide-react";
 
@@ -17,7 +17,6 @@ export default function Header() {
   const [mobileMegaMenuOpen, setMobileMegaMenuOpen] = useState(false);
   const [quickEnquiryOpen, setQuickEnquiryOpen] = useState(false);
   const [supplierModalOpen, setSupplierModalOpen] = useState(false);
-  const [tradeEnquiryOpen, setTradeEnquiryOpen] = useState(false);
 
   // Prevent page scroll when mobile menu open
   useEffect(() => {
@@ -148,15 +147,12 @@ export default function Header() {
                 Gallery
               </Link>
            
-              <button
-                onClick={() => {
-                  setTradeEnquiryOpen(true);
-                  setMobileMenuOpen(false);
-                }}
-                className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 w-full text-left"
+              <Link
+                href="/trade-enquiry"
+                className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200"
               >
                 Trade Enquiry
-              </button>
+              </Link>
               <Link
                 href="/about"
                 className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200"
@@ -280,12 +276,12 @@ export default function Header() {
               Gallery
             </Link>
 
-            <button
-              onClick={() => setTradeEnquiryOpen(true)}
+            <Link
+              href="/trade-enquiry"
               className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
             >
               Trade Enquiry 
-            </button>
+            </Link>
             <Link
               href="/about"
               className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
@@ -343,12 +339,6 @@ export default function Header() {
         <SupplierRegistrationModal 
           isOpen={supplierModalOpen} 
           onClose={() => setSupplierModalOpen(false)} 
-        />
-        
-        {/* Trade Enquiry Modal */}
-        <TradeEnquiryModal
-          isOpen={tradeEnquiryOpen}
-          onClose={() => setTradeEnquiryOpen(false)}
         />
       </div>
     </header>
