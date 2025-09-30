@@ -4,11 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import MegaMenu from "@/components/MegaMenu";
 import GeneralContactForm from "@/components/GeneralContactForm";
-import  SupplierRegistrationModal from "@/components/SupplierRegistrationModal";
-
-// import { allProducts } from "@/data/products";
 import { ChevronDown, X } from "lucide-react";
-
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { usePathname } from "next/navigation";
 
@@ -17,6 +13,7 @@ export default function Header() {
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [mobileMegaMenuOpen, setMobileMegaMenuOpen] = useState(false);
   const [quickEnquiryOpen, setQuickEnquiryOpen] = useState(false);
+  // Removed supplierModalOpen state
   const [supplierModalOpen, setSupplierModalOpen] = useState(false);
 
   // Prevent page scroll when mobile menu open
@@ -155,7 +152,7 @@ export default function Header() {
               >
                 Gallery
               </Link>
-           
+
               <Link
                 href="/trade-enquiry"
                 className={`block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 ${isActivePath("/trade-enquiry") ? "text-amber-200" : ""}`}
@@ -168,7 +165,7 @@ export default function Header() {
               >
                 About Us
               </Link>
-              <Link 
+              <Link
                 href="/contact"
                 className={`block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 ${isActivePath("/contact") ? "text-amber-200" : ""}`}
               >
@@ -180,7 +177,7 @@ export default function Header() {
               >
                 Become a Supplier with us
               </button>
-              
+
             </div>
           </div>
         )}
@@ -223,7 +220,7 @@ export default function Header() {
               >
                 Video Conferencing
               </Link>
-              
+
               <Link
                 href="https://wa.me/919811789665"
                 target="_blank"
@@ -295,7 +292,7 @@ export default function Header() {
               href="/trade-enquiry"
               className="block text-black text-xl font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
             >
-              Trade Enquiry 
+              Trade Enquiry
             </Link>
             <Link
               href="/about"
@@ -303,12 +300,13 @@ export default function Header() {
             >
               About Us
             </Link>
-            <button
-              onClick={() => setSupplierModalOpen(true)}
-              className="block text-black text-xl font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
+            <Link
+              href="/coffee-suppliers"
+              className={`block text-black no-underline text-lg font-medium py-3  hover:text-amber-200 hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors ${isActivePath("/coffee-suppliers") ? "text-amber-200" : ""}`}
             >
               Become a Supplier with us
-            </button>
+            </Link>
+
             <Link href="/contact" className={`block text-xl text-base font-medium px-2 rounded-lg transition-colors hover:bg-coffee-brown hover:text-white ${isActivePath("/contact") ? "bg-coffee-brown text-white" : ""}`}>
               Contact Us
             </Link>
@@ -349,12 +347,8 @@ export default function Header() {
             </div>
           </div>
         )}
+
         
-        {/* Supplier Registration Modal */}
-        <SupplierRegistrationModal 
-          isOpen={supplierModalOpen} 
-          onClose={() => setSupplierModalOpen(false)} 
-        />
       </div>
     </header>
   );

@@ -169,7 +169,7 @@ export default function AboutUs() {
       <section ref={introRef} className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="flex flex-col lg:flex-row-reverse gap-12 items-center">
               <div className="space-y-6">
                 <h2 className="text-4xl font-semibold text-coffee-brown mb-6 font-serif">
                   Introduction
@@ -245,8 +245,8 @@ export default function AboutUs() {
         </section> */}
 
       {/* Vision, Mission & Core Values Section */}
-      <section ref={visionRef} className="py-16 bg-coffee-brown text-white">
-        <div className="container mx-auto px-4">
+      <section ref={visionRef} className="py-16 bg-[#7B2A0F] text-white">
+        <div className="container mx-auto px-4 bg-[#7B2A0F]">
           <div className="max-w-6xl mx-auto text-center">
             <h2 className="text-4xl font-semibold mb-12 font-serif">
               Vision, Mission & Core Values of Gajna Overseas
@@ -256,7 +256,7 @@ export default function AboutUs() {
             <div className="grid lg:grid-cols-2 gap-8 mb-16">
               {/* Vision Card - Featured */}
               <div className="lg:col-span-2 relative overflow-hidden text-left">
-                <div className="bg-gradient-to-br from-amber-600/20 to-orange-700/20 backdrop-blur-sm border border-white/20 rounded-2xl p-10 shadow-2xl">
+                <div className=" border border-white/20 rounded-2xl p-10 shadow-2xl">
                   <div className="flex items-center mb-6">
                     
                     <h3 className="text-4xl font-bold text-white fonts">Our Vision</h3>
@@ -349,46 +349,7 @@ export default function AboutUs() {
               </div>
             </div>
 
-            {/* Interactive Infographic Section */}
-            <div className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-3xl p-12 shadow-2xl">
-              <div className="text-center mb-12">
-                <h3 className="text-4xl font-bold text-white mb-4 font-serif">Our Journey in Numbers</h3>
-                <p className="text-xl text-white/80 mt-10 lg:mt-0">Visualizing our commitment to excellence</p>
-              </div>
-              
-              <div className="grid md:grid-cols-3 gap-8">
-                <div className="text-center group">
-                  <div className="w-24 h-24 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <h4 className="text-2xl font-bold text-white mb-2">Global Reach</h4>
-                  <p className="text-white/80">Expanding our presence across international markets</p>
-                </div>
-                
-                <div className="text-center group">
-                  <div className="w-24 h-24 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <h4 className="text-2xl font-bold text-white mb-2">Quality Assurance</h4>
-                  <p className="text-white/80">Certified by Coffee Board of India standards</p>
-                </div>
-                
-                <div className="text-center group">
-                  <div className="w-24 h-24 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                  </div>
-                  <h4 className="text-2xl font-bold text-white mb-2">Trusted Partners</h4>
-                  <p className="text-white/80">Building lasting relationships with farmers and clients</p>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </section>
@@ -398,7 +359,7 @@ export default function AboutUs() {
       <div className="container mx-auto px-4 ">
         <div className="max-w-6xl mx-auto ">
           <h2 className="text-4xl font-bold text-coffee-brown text-center mb-12 ">
-            Our Business Partners
+            Our Partners
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8 ">

@@ -10,22 +10,22 @@ export const metadata = {
 export default function ArabicaPage() {
   // Filter and categorize Arabica products
   const arabicaProducts = allProducts.filter(product => product.variety === "Arabica");
-  
+
   // Group by category
   const commercialGrade = arabicaProducts.filter(p => p.category === "Commercial Grade");
   const premiumGrade = arabicaProducts.filter(p => p.category === "Premium Grade");
   const specialtyGrade = arabicaProducts.filter(p => p.category === "Specialty Coffee");
-  
+
   // Further group commercial grade by processing type
   const plantationGrades = commercialGrade.filter(p => p.specs.some(spec => spec.value.includes("Plantation")));
   const cherryGrades = commercialGrade.filter(p => p.specs.some(spec => spec.value.includes("Cherry")));
-  
+
   // Premium Arabica split by processing
-  const premiumWashed = premiumGrade.filter(p => 
+  const premiumWashed = premiumGrade.filter(p =>
     (p.subtitle && p.subtitle.includes("Washed Arabica Plantation")) ||
     p.specs.some(spec => spec.label === "Processing" && spec.value.includes(" Washed Arabica Plantation"))
   );
-  const premiumUnwashed = premiumGrade.filter(p => 
+  const premiumUnwashed = premiumGrade.filter(p =>
     (p.subtitle && p.subtitle.includes("Unwashed Arabica Cherry")) ||
     p.specs.some(spec => spec.label === "Processing" && spec.value.includes("Unwashed Arabica Cherry"))
   );
@@ -37,22 +37,22 @@ export default function ArabicaPage() {
         <div className="absolute inset-0 bg-black/20"></div>
 
 
-        
+
         <div className="relative max-w-7xl mx-auto px-4 text-center text-white">
           <div className="mb-8">
-            <Image 
-              src="/coffee-beans/arabica.webp" 
-              alt="Arabica Coffee Bean" 
-              width={120} 
-              height={120} 
+            <Image
+              src="/coffee-beans/arabica.webp"
+              alt="Arabica Coffee Bean"
+              width={120}
+              height={120}
               className="mx-auto mb-6 mt-28 rounded-full shadow-2xl border-4 border-white/30"
             />
           </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-amber-200 to-white bg-clip-text text-transparent">
-           Indian Arabica Coffee Grades
+            Indian Arabica Coffee Grades
           </h1>
-         
-          
+
+          <p className="text-xl text-white/90 max-w-3xl mx-auto">Classification and Grading of Indian Coffee as per coffee board of India</p>
         </div>
       </section>
 
@@ -67,17 +67,17 @@ export default function ArabicaPage() {
 
             </div> */}
             <div className="p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl shadow-lg">
-               <div className="text-sm text-gray-600 mb-4"><span className="font-semibold">Arabica - </span>Commercial Grades</div>
+              <div className="text-sm text-gray-600 mb-4"><span className="font-semibold">Arabica - </span>Commercial Grades</div>
               <div className="text-3xl font-bold text-coffee-brown mb-2">{commercialGrade.length}</div>
 
             </div>
             <div className="p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl shadow-lg">
-               <div className="text-sm text-gray-600 mb-4"><span className="font-semibold">Arabica - </span>Premium Grades</div>
+              <div className="text-sm text-gray-600 mb-4"><span className="font-semibold">Arabica - </span>Premium Grades</div>
               <div className="text-3xl font-bold text-coffee-brown mb-2">{premiumGrade.length}</div>
 
             </div>
             <div className="p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl shadow-lg">
-               <div className="text-sm text-gray-600 mb-4"><span className="font-semibold">Arabica - </span>Specialty Grades</div>
+              <div className="text-sm text-gray-600 mb-4"><span className="font-semibold">Arabica - </span>Specialty Grades</div>
               <div className="text-3xl font-bold text-coffee-brown mb-2">{specialtyGrade.length}</div>
 
             </div>
@@ -89,10 +89,10 @@ export default function ArabicaPage() {
       {plantationGrades.length > 0 && (
         <section className="py-16 bg-gradient-to-r from-amber-50 to-orange-50">
           <div className="max-w-7xl mx-auto px-4">
-                     <h2 className="text-5xl font-bold text-center text-red-500 mb-10">Arabica - Commercial Grades </h2>
+            <h2 className="text-5xl font-bold text-center text-red-500 mb-10">Arabica - Commercial Grades </h2>
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-coffee-brown mb-4">Washed Arabica (Plantation) </h2>
-                <p className="text-lg text-[#15803D] max-w-3xl mx-auto">
+              <p className="text-lg text-[#15803D] max-w-3xl mx-auto">
                 The grade designations of Commercial Washed Arabica Coffees are :
               </p>
             </div>
@@ -100,7 +100,7 @@ export default function ArabicaPage() {
               {plantationGrades.map((product) => (
                 <Link key={product.slug} href={`/products/${product.slug}`}>
                   <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-amber-100">
-                    
+
                     <div className="p-6">
                       <h3 className="text-xl font-bold text-coffee-brown mb-2 group-hover:text-amber-600 transition-colors">
                         {product.name}
@@ -143,8 +143,8 @@ export default function ArabicaPage() {
               {cherryGrades.map((product) => (
                 <Link key={product.slug} href={`/products/${product.slug}`}>
                   <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-green-100">
-   
-                      
+
+
                     <div className="p-6">
                       <h3 className="text-xl font-bold text-coffee-brown mb-2 group-hover:text-green-600 transition-colors">
                         {product.name}
@@ -176,7 +176,7 @@ export default function ArabicaPage() {
       {/* Premium Grade */}
       {premiumGrade.length > 0 && (
         <section className="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
-                      <h2 className="text-5xl font-bold text-center text-red-500 mb-10">Premium Arabica Grades </h2>
+          <h2 className="text-5xl font-bold text-center text-red-500 mb-10">Premium Arabica Grades </h2>
           <div className="max-w-7xl mx-auto px-4">
             {/* Manual Washed Arabica (Plantation) - fallback */}
             {premiumWashed.length === 0 && (
@@ -184,7 +184,7 @@ export default function ArabicaPage() {
                 <div className="text-center mb-8">
                   <h2 className="text-3xl font-bold text-coffee-brown mb-2">Washed Arabica (Plantation)</h2>
                   <p className="text-lg text-[#15803D] max-w-3xl mx-auto">
-                  The grade designations of Premium Washed Arabica Coffees are :
+                    The grade designations of Premium Washed Arabica Coffees are :
                   </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -250,7 +250,7 @@ export default function ArabicaPage() {
                 <div className="text-center mb-8">
                   <h2 className="text-3xl font-bold text-coffee-brown mb-2"> Washed Arabica (Plantation)</h2>
                   <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                   The grade designations of Premium Unwashed Arabica Coffees are :
+                    The grade designations of Premium Unwashed Arabica Coffees are :
                   </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -290,7 +290,7 @@ export default function ArabicaPage() {
                 <div className="text-center mt-12 mb-8">
                   <h2 className="text-3xl font-bold text-coffee-brown mb-2">Unwashed Arabica (Cherry)</h2>
                   <p className="text-lg   text-[#15803D] max-w-3xl mx-auto">
-                   The grade designations of Premium Unwashed Arabica Coffees are :
+                    The grade designations of Premium Unwashed Arabica Coffees are :
                   </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -334,7 +334,7 @@ export default function ArabicaPage() {
             <div className="text-center mb-12">
               <h2 className="text-5xl font-bold text-red-500 mb-4">Specialty Arabica Grades</h2>
               <p className="text-lg text-[#15803D] max-w-3xl mx-auto">
-              The grade designations of Specialty Arabica Grades are :
+                The grade designations of Specialty Arabica Grades are :
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -373,10 +373,10 @@ export default function ArabicaPage() {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-coffee-brown to-amber-800 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-         
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            
-             <Link href="/products" className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-red-900 transition-colors">
+
+            <Link href="/products" className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-red-900 transition-colors">
               View All Indian Coffee Grades
             </Link>
           </div>

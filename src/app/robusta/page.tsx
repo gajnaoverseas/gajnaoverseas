@@ -47,7 +47,7 @@ export default function RobustaPage() {
             Indian Robusta Coffee Grades
           </h1>
 
-
+    <p className="text-xl text-white/90 max-w-3xl mx-auto">Classification and Grading of Indian Coffee as per coffee board of India</p>
         </div>
       </section>
 
