@@ -212,37 +212,37 @@ export default function AboutUs() {
       </section>
 
       {/* Mentors Section */}
-      <section ref={mentorsRef} className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto text-center">
-            <h2 className="text-4xl font-semibold text-coffee-brown mb-12 font-serif">
-              Mentors at Coffee Board of India
-            </h2>
-            <div className="grid md:grid-cols-5 gap-8">
-              {mentors.map((mentor) => (
-                <div
-                  key={mentor.id}
-                  className="bg-gray-50 p-6 rounded-lg shadow-md"
-                >
-                  <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-2 border-gray-300">
-                    <Image
-                      src={mentor.img}
-                      alt={mentor.name}
-                      width={96}
-                      height={96}
-                      className="object-cover w-full h-full"
-                    />
+        {/* <section ref={mentorsRef} className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto text-center">
+              <h2 className="text-4xl font-semibold text-coffee-brown mb-12 font-serif">
+                Mentors at Coffee Board of India
+              </h2>
+              <div className="grid md:grid-cols-5 gap-8">
+                {mentors.map((mentor) => (
+                  <div
+                    key={mentor.id}
+                    className="bg-gray-50 p-6 rounded-lg shadow-md"
+                  >
+                    <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-2 border-gray-300">
+                      <Image
+                        src={mentor.img}
+                        alt={mentor.name}
+                        width={96}
+                        height={96}
+                        className="object-cover w-full h-full"
+                      />
+                    </div>
+                    <h3 className="font-semibold text-gray-800 mb-2">
+                      {mentor.name}
+                    </h3>
+                    <p className="text-sm text-gray-600">{mentor.org}</p>
                   </div>
-                  <h3 className="font-semibold text-gray-800 mb-2">
-                    {mentor.name}
-                  </h3>
-                  <p className="text-sm text-gray-600">{mentor.org}</p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section> */}
 
       {/* Vision, Mission & Core Values Section */}
       <section ref={visionRef} className="py-16 bg-coffee-brown text-white">

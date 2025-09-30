@@ -86,7 +86,7 @@ export default function RobustaPage() {
           <div className="max-w-7xl mx-auto px-4">
             <h2 className="text-5xl font-bold text-center text-red-500 mb-10">Robusta Commercial Grades </h2>
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-coffee-brown mb-4">Washed Robusta</h2>
+              <h2 className="text-4xl font-bold text-coffee-brown mb-4">Washed Robusta (Parchment)</h2>
               <p className="text-lg text-[#15803D] max-w-3xl mx-auto">
                 The grade designations of Commercial Washed Robusta Coffees are :
               </p>
@@ -130,7 +130,7 @@ export default function RobustaPage() {
           <div className="max-w-7xl mx-auto px-4">
 
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-coffee-brown mb-4">Unwashed Robusta </h2>
+              <h2 className="text-4xl font-bold text-coffee-brown mb-4">Unwashed Robusta (Cherry)</h2>
               <p className="text-lg text-[#15803D] max-w-3xl mx-auto">
                 The grade designations of Commercial Unwashed Robusta Coffees are :
               </p>
@@ -220,9 +220,9 @@ export default function RobustaPage() {
             {premiumWashed.length > 0 && (
               <>
                 <div className="text-center mb-8">
-                  <h2 className="text-3xl font-bold text-coffee-brown mb-2">Premium Washed Robusta (Parchment)</h2>
+                  <h2 className="text-3xl font-bold text-coffee-brown mb-2">Washed Robusta (Parchment)</h2>
                   <p className="text-lg text-[#15803D] max-w-3xl mx-auto">
-                   The grade designations of Premium  Unwashed Robusta Coffees are :
+                   The grade designations of Premium  Washed Robusta Coffees are :
                   </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -260,7 +260,7 @@ export default function RobustaPage() {
             {premiumUnwashed.length > 0 && (
               <>
                 <div className="text-center mt-12 mb-8">
-                  <h2 className="text-3xl font-bold text-coffee-brown mb-2">Premium Unwashed Robusta (Cherry)</h2>
+                  <h2 className="text-3xl font-bold text-coffee-brown mb-2">Unwashed Robusta (Cherry)</h2>
                   <p className="text-lg text-[#15803D]  max-w-3xl mx-auto">
                     The grade designations of Premium Unwashed Robusta Coffees are :
                   </p>
@@ -304,9 +304,9 @@ export default function RobustaPage() {
         <section className="py-16 bg-gradient-to-r from-teal-50 to-cyan-50">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-coffee-brown mb-4"> Robusta Specialty Grades</h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Exceptional single-origin and specialty processed Robusta varieties for unique flavor profiles and premium applications.
+              <h2 className="text-5xl font-bold text-red-500 mb-4"> Specialty Robusta  Grades</h2>
+              <p className="text-lg text-[#15803D] max-w-3xl mx-auto">
+                The grade designations of Specialty Robusta Coffees are :
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -346,16 +346,11 @@ export default function RobustaPage() {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-red-900 to-orange-800 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Source Premium Robusta Coffee?</h2>
-          <p className="text-xl mb-8 text-orange-100">
-            Contact us for detailed specifications, pricing, and availability of our Robusta coffee grades.
-          </p>
+          
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-red-900 px-8 py-4 rounded-full font-semibold hover:bg-orange-50 transition-colors">
-              Get Quote
-            </Link>
+           
             <Link href="/products" className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-red-900 transition-colors">
-              View All Products
+              View All Indian Coffee Grades
             </Link>
           </div>
         </div>
