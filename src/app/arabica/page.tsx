@@ -19,6 +19,16 @@ export default function ArabicaPage() {
   // Further group commercial grade by processing type
   const plantationGrades = commercialGrade.filter(p => p.specs.some(spec => spec.value.includes("Plantation")));
   const cherryGrades = commercialGrade.filter(p => p.specs.some(spec => spec.value.includes("Cherry")));
+  
+  // Premium Arabica split by processing
+  const premiumWashed = premiumGrade.filter(p => 
+    (p.subtitle && p.subtitle.includes("Washed Arabica Plantation")) ||
+    p.specs.some(spec => spec.label === "Processing" && spec.value.includes(" Washed Arabica Plantation"))
+  );
+  const premiumUnwashed = premiumGrade.filter(p => 
+    (p.subtitle && p.subtitle.includes("Unwashed Arabica Cherry")) ||
+    p.specs.some(spec => spec.label === "Processing" && spec.value.includes("Unwashed Arabica Cherry"))
+  );
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-coffee-light">
@@ -49,12 +59,13 @@ export default function ArabicaPage() {
       {/* Stats Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div className="p-6 bg-gradient-to-br from-amber-50 to-amber-100 rounded-2xl shadow-lg">
+          <h2 className="text-4xl font-bold text-center text-coffee-brown mb-12">Categories of Indian Arabica Coffee</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
+            {/* <div className="p-6 bg-gradient-to-br from-amber-50 to-amber-100 rounded-2xl shadow-lg">
                <div className="text-sm text-gray-600 mb-4"><span className="font-semibold">Arabica - </span>Total Grades </div>
               <div className="text-3xl font-bold text-coffee-brown mb-2">{arabicaProducts.length}</div>
 
-            </div>
+            </div> */}
             <div className="p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl shadow-lg">
                <div className="text-sm text-gray-600 mb-4"><span className="font-semibold">Arabica - </span>Commercial Grades</div>
               <div className="text-3xl font-bold text-coffee-brown mb-2">{commercialGrade.length}</div>
@@ -66,7 +77,7 @@ export default function ArabicaPage() {
 
             </div>
             <div className="p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl shadow-lg">
-               <div className="text-sm text-gray-600 mb-4"><span className="font-semibold">Arabica - </span>Specialty Coffees</div>
+               <div className="text-sm text-gray-600 mb-4"><span className="font-semibold">Arabica - </span>Specialty Grades</div>
               <div className="text-3xl font-bold text-coffee-brown mb-2">{specialtyGrade.length}</div>
 
             </div>
@@ -167,41 +178,151 @@ export default function ArabicaPage() {
         <section className="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
                       <h2 className="text-5xl font-bold text-center text-red-500 mb-10">Premium Arabica Grades </h2>
           <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-coffee-brown mb-4">Premium Arabica Grades</h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Superior quality Arabica varieties with enhanced processing and stricter quality standards.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {premiumGrade.map((product) => (
-                <Link key={product.slug} href={`/products/${product.slug}`}>
-                  <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-blue-100">
-
-                    <div className="p-6">
-                      <h3 className="text-2xl font-bold text-coffee-brown mb-2 group-hover:text-blue-600 transition-colors">
-                        {product.name}
-                      </h3>
-                      <p className="text-sm text-gray-600 mb-4">{product.subtitle}</p>
-                      <div className="space-y-2">
-                        {product.specs.slice(0, 3).map((spec, index) => (
-                          <div key={index} className="text-xs">
-                            <span className="font-medium text-gray-700">{spec.label}:</span>
-                            <span className="text-gray-600 ml-1">{spec.value.length > 60 ? spec.value.substring(0, 60) + '...' : spec.value}</span>
+            {/* Manual Washed Arabica (Plantation) - fallback */}
+            {premiumWashed.length === 0 && (
+              <>
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl font-bold text-coffee-brown mb-2">Washed Arabica (Plantation)</h2>
+                  <p className="text-lg text-[#15803D] max-w-3xl mx-auto">
+                  The grade designations of Premium Washed Arabica Coffees are :
+                  </p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  <Link href="/products/plantation-aa">
+                    <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-blue-100">
+                      <div className="p-6">
+                        <h3 className="text-2xl font-bold text-coffee-brown mb-2 group-hover:text-blue-600 transition-colors">
+                          Plantation AA
+                        </h3>
+                        <p className="text-sm text-gray-600 mb-4">Washed Arabica Plantation</p>
+                        <div className="space-y-2">
+                          <div className="text-xs">
+                            <span className="font-medium text-gray-700">Processing:</span>
+                            <span className="text-gray-600 ml-1">Washed Arabica Plantation</span>
                           </div>
-                        ))}
-                      </div>
-                      <div className="mt-4 flex items-center justify-between">
-                        <span className="text-sm font-medium text-blue-600">View Details</span>
-                        <svg className="w-4 h-4 text-blue-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
+                          <div className="text-xs">
+                            <span className="font-medium text-gray-700">Category:</span>
+                            <span className="text-gray-600 ml-1">Premium Grade</span>
+                          </div>
+                        </div>
+                        <div className="mt-4 flex items-center justify-between">
+                          <span className="text-sm font-medium text-blue-600">View Details</span>
+                          <svg className="w-4 h-4 text-blue-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
+                  </Link>
+
+                  <Link href="/products/plantation-pb-bold">
+                    <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-blue-100">
+                      <div className="p-6">
+                        <h3 className="text-2xl font-bold text-coffee-brown mb-2 group-hover:text-blue-600 transition-colors">
+                          Plantation PB Bold
+                        </h3>
+                        <p className="text-sm text-gray-600 mb-4">Washed Arabica Plantation</p>
+                        <div className="space-y-2">
+                          <div className="text-xs">
+                            <span className="font-medium text-gray-700">Processing:</span>
+                            <span className="text-gray-600 ml-1">Washed Arabica Plantation</span>
+                          </div>
+                          <div className="text-xs">
+                            <span className="font-medium text-gray-700">Category:</span>
+                            <span className="text-gray-600 ml-1">Premium Grade</span>
+                          </div>
+                        </div>
+                        <div className="mt-4 flex items-center justify-between">
+                          <span className="text-sm font-medium text-blue-600">View Details</span>
+                          <svg className="w-4 h-4 text-blue-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              </>
+            )}
+            {/* Washed Premium Arabica (Plantation) */}
+            {premiumWashed.length > 0 && (
+              <>
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl font-bold text-coffee-brown mb-2"> Washed Arabica (Plantation)</h2>
+                  <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                   The grade designations of Premium Unwashed Arabica Coffees are :
+                  </p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {premiumWashed.map((product) => (
+                    <Link key={product.slug} href={`/products/${product.slug}`}>
+                      <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-blue-100">
+                        <div className="p-6">
+                          <h3 className="text-2xl font-bold text-coffee-brown mb-2 group-hover:text-blue-600 transition-colors">
+                            {product.name}
+                          </h3>
+                          <p className="text-sm text-gray-600 mb-4">{product.subtitle}</p>
+                          <div className="space-y-2">
+                            {product.specs.slice(0, 3).map((spec, index) => (
+                              <div key={index} className="text-xs">
+                                <span className="font-medium text-gray-700">{spec.label}:</span>
+                                <span className="text-gray-600 ml-1">{spec.value.length > 60 ? spec.value.substring(0, 60) + '...' : spec.value}</span>
+                              </div>
+                            ))}
+                          </div>
+                          <div className="mt-4 flex items-center justify-between">
+                            <span className="text-sm font-medium text-blue-600">View Details</span>
+                            <svg className="w-4 h-4 text-blue-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {/* Unwashed Premium Arabica (Cherry) */}
+            {premiumUnwashed.length > 0 && (
+              <>
+                <div className="text-center mt-12 mb-8">
+                  <h2 className="text-3xl font-bold text-coffee-brown mb-2">Unwashed Arabica (Cherry)</h2>
+                  <p className="text-lg   text-[#15803D] max-w-3xl mx-auto">
+                   The grade designations of Premium Unwashed Arabica Coffees are :
+                  </p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {premiumUnwashed.map((product) => (
+                    <Link key={product.slug} href={`/products/${product.slug}`}>
+                      <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-blue-100">
+                        <div className="p-6">
+                          <h3 className="text-2xl font-bold text-coffee-brown mb-2 group-hover:text-blue-600 transition-colors">
+                            {product.name}
+                          </h3>
+                          <p className="text-sm text-gray-600 mb-4">{product.subtitle}</p>
+                          <div className="space-y-2">
+                            {product.specs.slice(0, 3).map((spec, index) => (
+                              <div key={index} className="text-xs">
+                                <span className="font-medium text-gray-700">{spec.label}:</span>
+                                <span className="text-gray-600 ml-1">{spec.value.length > 60 ? spec.value.substring(0, 60) + '...' : spec.value}</span>
+                              </div>
+                            ))}
+                          </div>
+                          <div className="mt-4 flex items-center justify-between">
+                            <span className="text-sm font-medium text-blue-600">View Details</span>
+                            <svg className="w-4 h-4 text-blue-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </section>
       )}

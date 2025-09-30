@@ -18,7 +18,11 @@ export default function RobustaPage() {
 
   // Further group commercial grade by processing type
   const parchmentGrades = commercialGrade.filter(p => p.specs.some(spec => spec.value.includes("Parchment")));
-  const cherryGrades = commercialGrade.filter(p => p.specs.some(spec => spec.value.includes("Cherry")) && !p.specs.some(spec => spec.value.includes("Parchment")));
+  const cherryGrades = commercialGrade.filter(p => p.specs.some(spec => spec.value.includes("Cherry")));
+
+  // Premium Robusta split by processing
+  const premiumWashed = premiumGrade.filter(p => p.specs.some(spec => spec.label === "Processing" && spec.value.includes("Washed Robusta Parchment")));
+  const premiumUnwashed = premiumGrade.filter(p => p.specs.some(spec => spec.label === "Processing" && spec.value.includes("Unwashed Robusta Cherry")));
   const otherCommercial = commercialGrade.filter(p => !p.specs.some(spec => spec.value.includes("Parchment")) && !p.specs.some(spec => spec.value.includes("Cherry")));
 
   return (
@@ -50,12 +54,13 @@ export default function RobustaPage() {
       {/* Stats Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div className="p-6 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl shadow-lg">
+          <h2 className="text-4xl font-bold text-center text-coffee-brown mb-12">Categories of Indian Robusta Coffee</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
+            {/* <div className="p-6 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl shadow-lg">
               <div className="text-sm text-gray-600 mb-4"><span className="font-semibold">Robusta - </span>Total Grades </div>
               <div className="text-3xl font-bold text-coffee-brown mb-2">{robustaProducts.length}</div>
 
-            </div>
+            </div> */}
             <div className="p-6 bg-gradient-to-br from-red-50 to-red-100 rounded-2xl shadow-lg">
 
               <div className="text-sm text-gray-600 mb-4"><span className="font-semibold">Robusta - </span>Commercial Grades</div>
@@ -208,44 +213,88 @@ export default function RobustaPage() {
 
       {/* Premium Grade */}
       {premiumGrade.length > 0 && (
-        <section className="py-16 bg-gradient-to-r from-indigo-50 to-purple-50">
-                      <h2 className="text-5xl font-bold text-center text-red-500 mb-10">Robusta Premium Grades </h2>
+        <section className="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-coffee-brown mb-4">Premium Robusta Grades</h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Superior quality Robusta varieties with enhanced processing and stricter quality standards.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {premiumGrade.map((product) => (
-                <Link key={product.slug} href={`/products/${product.slug}`}>
-                  <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-indigo-100">
-
-                    <div className="p-6">
-                      <h3 className="text-2xl font-bold text-coffee-brown mb-2 group-hover:text-indigo-600 transition-colors">
-                        {product.name}
-                      </h3>
-                      <p className="text-sm text-gray-600 mb-4">{product.subtitle}</p>
-                      <div className="space-y-2">
-                        {product.specs.slice(0, 3).map((spec, index) => (
-                          <div key={index} className="text-xs">
-                            <span className="font-medium text-gray-700">{spec.label}:</span>
-                            <span className="text-gray-600 ml-1">{spec.value.length > 60 ? spec.value.substring(0, 60) + '...' : spec.value}</span>
+                      <h2 className="text-5xl font-bold text-center text-red-500 mb-10">Robusta Premium Grades </h2>
+            {/* Washed Premium Robusta (Parchment) */}
+            {premiumWashed.length > 0 && (
+              <>
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl font-bold text-coffee-brown mb-2">Premium Washed Robusta (Parchment)</h2>
+                  <p className="text-lg text-[#15803D] max-w-3xl mx-auto">
+                   The grade designations of Premium  Unwashed Robusta Coffees are :
+                  </p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {premiumWashed.map((product) => (
+                    <Link key={product.slug} href={`/products/${product.slug}`}>
+                      <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-blue-100">
+                        <div className="p-6">
+                          <h3 className="text-2xl font-bold text-coffee-brown mb-2 group-hover:text-blue-600 transition-colors">
+                            {product.name}
+                          </h3>
+                          <p className="text-sm text-gray-600 mb-4">{product.subtitle}</p>
+                          <div className="space-y-2">
+                            {product.specs.slice(0, 3).map((spec, index) => (
+                              <div key={index} className="text-xs">
+                                <span className="font-medium text-gray-700">{spec.label}:</span>
+                                <span className="text-gray-600 ml-1">{spec.value.length > 60 ? spec.value.substring(0, 60) + '...' : spec.value}</span>
+                              </div>
+                            ))}
                           </div>
-                        ))}
+                          <div className="mt-4 flex items-center justify-between">
+                            <span className="text-sm font-medium text-blue-600">View Details</span>
+                            <svg className="w-4 h-4 text-blue-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </div>
+                        </div>
                       </div>
-                      <div className="mt-4 flex items-center justify-between">
-                        <span className="text-sm font-medium text-indigo-600">View Details</span>
-                        <svg className="w-4 h-4 text-indigo-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
+                    </Link>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {/* Unwashed Premium Robusta (Cherry) */}
+            {premiumUnwashed.length > 0 && (
+              <>
+                <div className="text-center mt-12 mb-8">
+                  <h2 className="text-3xl font-bold text-coffee-brown mb-2">Premium Unwashed Robusta (Cherry)</h2>
+                  <p className="text-lg text-[#15803D]  max-w-3xl mx-auto">
+                    The grade designations of Premium Unwashed Robusta Coffees are :
+                  </p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {premiumUnwashed.map((product) => (
+                    <Link key={product.slug} href={`/products/${product.slug}`}>
+                      <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-blue-100">
+                        <div className="p-6">
+                          <h3 className="text-2xl font-bold text-coffee-brown mb-2 group-hover:text-blue-600 transition-colors">
+                            {product.name}
+                          </h3>
+                          <p className="text-sm text-gray-600 mb-4">{product.subtitle}</p>
+                          <div className="space-y-2">
+                            {product.specs.slice(0, 3).map((spec, index) => (
+                              <div key={index} className="text-xs">
+                                <span className="font-medium text-gray-700">{spec.label}:</span>
+                                <span className="text-gray-600 ml-1">{spec.value.length > 60 ? spec.value.substring(0, 60) + '...' : spec.value}</span>
+                              </div>
+                            ))}
+                          </div>
+                          <div className="mt-4 flex items-center justify-between">
+                            <span className="text-sm font-medium text-blue-600">View Details</span>
+                            <svg className="w-4 h-4 text-blue-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
+                    </Link>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </section>
       )}
@@ -255,7 +304,7 @@ export default function RobustaPage() {
         <section className="py-16 bg-gradient-to-r from-teal-50 to-cyan-50">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-coffee-brown mb-4">Specialty Robusta Coffees</h2>
+              <h2 className="text-4xl font-bold text-coffee-brown mb-4"> Robusta Specialty Grades</h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                 Exceptional single-origin and specialty processed Robusta varieties for unique flavor profiles and premium applications.
               </p>
@@ -267,7 +316,7 @@ export default function RobustaPage() {
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-500 to-cyan-500"></div>
 
                     <div className="p-6">
-                      <h3 className="text-2xl font-bold text-coffee-brown mb-2 group-hover:text-teal-600 transition-colors">
+                      <h3 className="text-xl font-bold text-coffee-brown mb-2 group-hover:text-teal-600 transition-colors">
                         {product.name}
                       </h3>
                       <p className="text-sm text-gray-600 mb-4">{product.subtitle}</p>
