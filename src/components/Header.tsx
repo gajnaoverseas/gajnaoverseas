@@ -10,6 +10,7 @@ import  SupplierRegistrationModal from "@/components/SupplierRegistrationModal";
 import { ChevronDown, X } from "lucide-react";
 
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,6 +30,14 @@ export default function Header() {
       }
     };
   }, [mobileMenuOpen]);
+
+  // Add pathname-based active state helper
+  const pathname = usePathname();
+  const isActivePath = (paths: string | string[]): boolean => {
+    const current = pathname ?? "";
+    const list = Array.isArray(paths) ? paths : [paths];
+    return list.some((p) => current === p || current.startsWith(`${p}/`));
+  };
 
   const toggleMobileMenu = () => setMobileMenuOpen((s) => !s);
 
@@ -124,38 +133,38 @@ export default function Header() {
                   setMobileMegaMenuOpen(true);
                   setMobileMenuOpen(false);
                 }}
-                className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 w-full text-left"
+                className={`block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 w-full text-left ${isActivePath(["/products", "/arabica", "/robusta"]) ? "text-amber-200" : ""}`}
               >
                 Products
               </button>
               <Link
                 href="/registrations"
-                className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200"
+                className={`block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 ${isActivePath("/registrations") ? "text-amber-200" : ""}`}
               >
                 Registrations & Certificates
               </Link>
               <Link
                 href="/blog"
-                className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200"
+                className={`block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 ${isActivePath("/blog") ? "text-amber-200" : ""}`}
               >
                 Blogs
               </Link>
               <Link
                 href="/gallery"
-                className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200"
+                className={`block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 ${isActivePath("/gallery") ? "text-amber-200" : ""}`}
               >
                 Gallery
               </Link>
            
               <Link
                 href="/trade-enquiry"
-                className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200"
+                className={`block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 ${isActivePath("/trade-enquiry") ? "text-amber-200" : ""}`}
               >
                 Trade Enquiry
               </Link>
               <Link
                 href="/about"
-                className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200"
+                className={`block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 ${isActivePath("/about") ? "text-amber-200" : ""}`}
               >
                 About Us
               </Link>
@@ -172,7 +181,7 @@ export default function Header() {
 
         {/* Desktop Top Info Bar */}
         <div className="hidden md:block border-t border-gray-200">
-          <nav className="flex items-center justify-center px-6 py-2 bg-[#434d35]">
+          <nav className="flex items-center justify-center px-6 py-1 bg-[#434d35]">
             <div className="flex flex-wrap justify-center items-center gap-2 lg:gap-4 xl:gap-6 font-semibold max-w-7xl mx-auto">
               <Link
                 href="https://maps.google.com/?q=Gajna+Overseas"
@@ -243,7 +252,7 @@ export default function Header() {
             >
               <Link
                 href="/products"
-                className=" text-black text-base font-medium  hover:bg-coffee-brown hover:text-white hover:pl-[12px] hover:rounded-lg transition-colors flex flex-row"
+                className=" text-black text-xl font-medium  hover:bg-coffee-brown hover:text-white hover:pl-[12px] hover:rounded-lg transition-colors flex flex-row"
               >
                 Products
                 <ChevronDown className="text-coffee-brown hover:text-white " />
@@ -259,42 +268,42 @@ export default function Header() {
 
             <Link
               href="/registrations"
-              className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
+              className="block text-black text-xl font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
             >
               Registrations & Certificates
             </Link>
             <Link
               href="/blog"
-              className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
+              className="block text-black text-xl font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
             >
               Blogs
             </Link>
             <Link
               href="/gallery"
-              className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
+              className="block text-black text-xl font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
             >
               Gallery
             </Link>
 
             <Link
               href="/trade-enquiry"
-              className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
+              className="block text-black text-xl font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
             >
               Trade Enquiry 
             </Link>
             <Link
               href="/about"
-              className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
+              className="block text-black text-xl font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
             >
               About Us
             </Link>
             <button
               onClick={() => setSupplierModalOpen(true)}
-              className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
+              className="block text-black text-xl font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors"
             >
               Become a Supplier with us
             </button>
-            <Link href="/contact" className="block text-black text-base font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors">
+            <Link href="/contact" className={`block text-xl text-base font-medium px-2 rounded-lg transition-colors hover:bg-coffee-brown hover:text-white ${isActivePath("/contact") ? "bg-coffee-brown text-white" : ""}`}>
               Contact Us
             </Link>
           </div>

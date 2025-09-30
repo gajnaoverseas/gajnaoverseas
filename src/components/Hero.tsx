@@ -64,8 +64,8 @@ export default function Hero() {
       ))}
 
       {/* Heading pill */}
-      <div className="absolute md:top-56 top-28 text-center bg-white w-[100vw] text-coffee-brown">
-      <h2 className=" main-title text-4xl md:text-6xl font-serif  mb-6 mt-4">
+      <div className="absolute md:top-48 top-28 left-1/2 -translate-x-1/2 z-20  text-coffee-brown text-center">
+      <h2 className=" text-4xl md:text-3xl font-serif text-center w-[500px] bg-white rounded-full border border-black mb-6 mt-4">
         Uniqueness of Indian Coffee Bean
       </h2>
       </div>
