@@ -39,11 +39,9 @@ export default function ArabicaPage() {
             />
           </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-amber-200 to-white bg-clip-text text-transparent">
-            Arabica Coffee
+           Indian Arabica Coffee Grades
           </h1>
-          <p className="text-xl md:text-2xl mb-4 text-amber-100 max-w-4xl mx-auto leading-relaxed">
-            Discover India&apos;s finest Arabica coffee grades - from commercial plantation varieties to premium specialty coffees
-          </p>
+         
           
         </div>
       </section>
@@ -53,20 +51,24 @@ export default function ArabicaPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div className="p-6 bg-gradient-to-br from-amber-50 to-amber-100 rounded-2xl shadow-lg">
+               <div className="text-sm text-gray-600 mb-4"><span className="font-semibold">Arabica - </span>Total Grades </div>
               <div className="text-3xl font-bold text-coffee-brown mb-2">{arabicaProducts.length}</div>
-              <div className="text-sm text-gray-600">Total Grades</div>
+
             </div>
             <div className="p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl shadow-lg">
+               <div className="text-sm text-gray-600 mb-4"><span className="font-semibold">Arabica - </span>Commercial Grades</div>
               <div className="text-3xl font-bold text-coffee-brown mb-2">{commercialGrade.length}</div>
-              <div className="text-sm text-gray-600">Commercial Grades</div>
+
             </div>
             <div className="p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl shadow-lg">
+               <div className="text-sm text-gray-600 mb-4"><span className="font-semibold">Arabica - </span>Premium Grades</div>
               <div className="text-3xl font-bold text-coffee-brown mb-2">{premiumGrade.length}</div>
-              <div className="text-sm text-gray-600">Premium Grades</div>
+
             </div>
             <div className="p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl shadow-lg">
+               <div className="text-sm text-gray-600 mb-4"><span className="font-semibold">Arabica - </span>Specialty Coffees</div>
               <div className="text-3xl font-bold text-coffee-brown mb-2">{specialtyGrade.length}</div>
-              <div className="text-sm text-gray-600">Specialty Coffees</div>
+
             </div>
           </div>
         </div>
@@ -76,10 +78,11 @@ export default function ArabicaPage() {
       {plantationGrades.length > 0 && (
         <section className="py-16 bg-gradient-to-r from-amber-50 to-orange-50">
           <div className="max-w-7xl mx-auto px-4">
+                     <h2 className="text-5xl font-bold text-center text-red-500 mb-10">Arabica - Commercial Grades </h2>
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-coffee-brown mb-4">Washed Arabica - Plantation Grades</h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Clean garbled, washed Arabica varieties processed using the wet method for superior quality and consistency.
+              <h2 className="text-4xl font-bold text-coffee-brown mb-4">Washed Arabica </h2>
+                <p className="text-lg text-[#15803D] max-w-3xl mx-auto">
+                The grade designations of Commercial Washed Arabica Coffees are :
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -120,9 +123,9 @@ export default function ArabicaPage() {
         <section className="py-16 bg-gradient-to-r from-green-50 to-emerald-50">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-coffee-brown mb-4">Unwashed Arabica - Cherry Grades</h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Natural processed Arabica varieties with distinctive flavor profiles from the dry processing method.
+              <h2 className="text-4xl font-bold text-coffee-brown mb-4">Unwashed Arabica </h2>
+              <p className="text-lg text-[#15803D] max-w-3xl mx-auto">
+                The grade designations of Commercial Unwashed Arabica Coffees are :
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -162,6 +165,7 @@ export default function ArabicaPage() {
       {/* Premium Grade */}
       {premiumGrade.length > 0 && (
         <section className="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
+                      <h2 className="text-5xl font-bold text-center text-red-500 mb-10">Premium Arabica Grades </h2>
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-coffee-brown mb-4">Premium Arabica Grades</h2>

@@ -168,6 +168,12 @@ export default function Header() {
               >
                 About Us
               </Link>
+              <Link 
+                href="/contact"
+                className={`block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 ${isActivePath("/contact") ? "text-amber-200" : ""}`}
+              >
+                Contact Us
+              </Link>
               <button
                 onClick={() => setSupplierModalOpen(true)}
                 className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 w-full text-left"
@@ -197,12 +203,12 @@ export default function Header() {
               >
                 Call Us
               </Link>
-              <Link
+              {/* <Link
                 href="tel:+919811789665"
                 className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 Mobile
-              </Link>
+              </Link> */}
               <Link
                 href="mailto:info@gajnaoverseas.com"
                 className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"

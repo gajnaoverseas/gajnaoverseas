@@ -10,12 +10,12 @@ export const metadata = {
 export default function RobustaPage() {
   // Filter and categorize Robusta products
   const robustaProducts = allProducts.filter(product => product.variety === "Robusta");
-  
+
   // Group by category
   const commercialGrade = robustaProducts.filter(p => p.category === "Commercial Grade");
   const premiumGrade = robustaProducts.filter(p => p.category === "Premium Grade");
   const specialtyGrade = robustaProducts.filter(p => p.category === "Specialty Coffee");
-  
+
   // Further group commercial grade by processing type
   const parchmentGrades = commercialGrade.filter(p => p.specs.some(spec => spec.value.includes("Parchment")));
   const cherryGrades = commercialGrade.filter(p => p.specs.some(spec => spec.value.includes("Cherry")) && !p.specs.some(spec => spec.value.includes("Parchment")));
@@ -28,23 +28,21 @@ export default function RobustaPage() {
         <div className="absolute inset-0 bg-black/20"></div>
 
 
-        
+
         <div className="relative max-w-7xl mt-36 mx-auto px-4 text-center text-white">
           <div className="mb-8">
-            <Image 
-              src="/coffee-beans/robusta.webp" 
-              alt="Robusta Coffee Bean" 
-              width={120} 
-              height={120} 
+            <img
+              src="/coffee-beans/robusta.webp"
+              alt="Robusta Coffee Bean"
+              width={120}
+              height={120}
               className="mx-auto mb-6 rounded-full shadow-2xl border-4 border-white/30"
             />
           </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-orange-200 to-white bg-clip-text text-transparent">
-            Robusta Coffee
+            Indian Robusta Coffee Grades
           </h1>
-          <p className="text-xl md:text-2xl mb-4 text-orange-100 max-w-4xl mx-auto leading-relaxed">
-            Discover India&apos;s robust Robusta coffee grades - from commercial parchment varieties to premium specialty coffees
-          </p>
+
 
         </div>
       </section>
@@ -54,20 +52,24 @@ export default function RobustaPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div className="p-6 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl shadow-lg">
+              <div className="text-sm text-gray-600 mb-4"><span className="font-semibold">Robusta - </span>Total Grades </div>
               <div className="text-3xl font-bold text-coffee-brown mb-2">{robustaProducts.length}</div>
-              <div className="text-sm text-gray-600">Total Grades</div>
+
             </div>
             <div className="p-6 bg-gradient-to-br from-red-50 to-red-100 rounded-2xl shadow-lg">
+
+              <div className="text-sm text-gray-600 mb-4"><span className="font-semibold">Robusta - </span>Commercial Grades</div>
               <div className="text-3xl font-bold text-coffee-brown mb-2">{commercialGrade.length}</div>
-              <div className="text-sm text-gray-600">Commercial Grades</div>
             </div>
             <div className="p-6 bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-2xl shadow-lg">
+
+              <div className="text-sm text-gray-600 mb-4"><span className="font-semibold">Robusta - </span>Premium Grades</div>
               <div className="text-3xl font-bold text-coffee-brown mb-2">{premiumGrade.length}</div>
-              <div className="text-sm text-gray-600">Premium Grades</div>
             </div>
             <div className="p-6 bg-gradient-to-br from-pink-50 to-pink-100 rounded-2xl shadow-lg">
+
+              <div className="text-sm text-gray-600 mb-4"><span className="font-semibold">Robusta - </span>Specialty Grades</div>
               <div className="text-3xl font-bold text-coffee-brown mb-2">{specialtyGrade.length}</div>
-              <div className="text-sm text-gray-600">Specialty Coffees</div>
             </div>
           </div>
         </div>
@@ -77,10 +79,11 @@ export default function RobustaPage() {
       {parchmentGrades.length > 0 && (
         <section className="py-16 bg-gradient-to-r from-orange-50 to-red-50">
           <div className="max-w-7xl mx-auto px-4">
+            <h2 className="text-5xl font-bold text-center text-red-500 mb-10">Robusta Commercial Grades </h2>
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-coffee-brown mb-4">Washed Robusta - Parchment Grades</h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Clean washed Robusta varieties processed using the wet method for enhanced quality and reduced bitterness.
+              <h2 className="text-4xl font-bold text-coffee-brown mb-4">Washed Robusta</h2>
+              <p className="text-lg text-[#15803D] max-w-3xl mx-auto">
+                The grade designations of Commercial Washed Robusta Coffees are :
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -120,10 +123,11 @@ export default function RobustaPage() {
       {cherryGrades.length > 0 && (
         <section className="py-16 bg-gradient-to-r from-red-50 to-pink-50">
           <div className="max-w-7xl mx-auto px-4">
+
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-coffee-brown mb-4">Unwashed Robusta - Cherry Grades</h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Natural processed Robusta varieties with full-bodied flavor and distinctive earthy characteristics.
+              <h2 className="text-4xl font-bold text-coffee-brown mb-4">Unwashed Robusta </h2>
+              <p className="text-lg text-[#15803D] max-w-3xl mx-auto">
+                The grade designations of Commercial Unwashed Robusta Coffees are :
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -173,7 +177,7 @@ export default function RobustaPage() {
               {otherCommercial.map((product) => (
                 <Link key={product.slug} href={`/products/${product.slug}`}>
                   <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-yellow-100">
-                
+
                     <div className="p-6">
                       <h3 className="text-xl font-bold text-coffee-brown mb-2 group-hover:text-yellow-600 transition-colors">
                         {product.name}
@@ -205,6 +209,7 @@ export default function RobustaPage() {
       {/* Premium Grade */}
       {premiumGrade.length > 0 && (
         <section className="py-16 bg-gradient-to-r from-indigo-50 to-purple-50">
+                      <h2 className="text-5xl font-bold text-center text-red-500 mb-10">Robusta Premium Grades </h2>
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold text-coffee-brown mb-4">Premium Robusta Grades</h2>
@@ -216,7 +221,7 @@ export default function RobustaPage() {
               {premiumGrade.map((product) => (
                 <Link key={product.slug} href={`/products/${product.slug}`}>
                   <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-indigo-100">
-               
+
                     <div className="p-6">
                       <h3 className="text-2xl font-bold text-coffee-brown mb-2 group-hover:text-indigo-600 transition-colors">
                         {product.name}
@@ -260,7 +265,7 @@ export default function RobustaPage() {
                 <Link key={product.slug} href={`/products/${product.slug}`}>
                   <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-teal-100 relative">
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-500 to-cyan-500"></div>
-                   
+
                     <div className="p-6">
                       <h3 className="text-2xl font-bold text-coffee-brown mb-2 group-hover:text-teal-600 transition-colors">
                         {product.name}

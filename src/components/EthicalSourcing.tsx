@@ -131,7 +131,7 @@ export default function EthicalSourcing() {
                       </div>
 
                       {/* View Certificate Button (outside border box) */}
-                      {cert.hasViewButton &&
+                      {/* {cert.hasViewButton &&
                         cert.certificateImages &&
                         cert.certificateImages.length > 0 && (
                           <button
@@ -143,14 +143,16 @@ export default function EthicalSourcing() {
                                images: cert.certificateImages!,
                              });
                             }}
-                            className="my-5 bg-[#434d35] p-1 rounded-lg text-white text-xs transition-colors duration-300 underline cursor-pointer"
+                            className="my-5 bg-[#15803D] p-1 rounded-lg text-white text-xs transition-colors duration-300 underline cursor-pointer"
                             type="button"
                           >
                             View Certificate
                             {cert.certificateImages.length > 1 ? "s" : ""}
                           </button>
-                        )}
+                        )} */}
+                       
                     </div>
+                     
                   </CarouselItem>
                 ))}
               </CarouselContent>
@@ -159,11 +161,11 @@ export default function EthicalSourcing() {
             </Carousel>
           </div>
 
-          {/* <div className="text-center">
-            <Link href="/certifications" className="certificates-button hover:shadow-xl bg-[#61714D] text-white px-8 py-3 rounded-full hover:bg-[#4D5A3E] transition-colors duration-300">
-              Click to view certificates
+          <div className="text-center mt-8">
+            <Link href="/registrations" className="certificates-button hover:shadow-xl bg-[#15803D] text-white px-6 py-1  rounded-full hover:bg-[#4D5A3E] transition-colors duration-300">
+              Click to view registrations
             </Link>
-          </div> */}
+          </div>
         </div>
       </div>
 

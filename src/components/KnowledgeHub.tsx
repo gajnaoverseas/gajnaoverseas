@@ -101,7 +101,7 @@ export default function KnowledgeHub() {
         </div>
         
         <div ref={buttonRef} className="text-center">
-          <Link href="/blog" className="inline-block bg-[#61714D] text-white px-8 py-3 rounded-full hover:bg-[#4D5A3E] transition-colors duration-300">
+          <Link href="/blog" className="inline-block bg-[#15803D]  text-white px-6 py-1 rounded-full hover:bg-[#4D5A3E] transition-colors duration-300">
             Explore Our Blogs
           </Link>
         </div>
