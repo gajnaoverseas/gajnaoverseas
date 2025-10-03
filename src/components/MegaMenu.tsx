@@ -258,6 +258,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
           ref={menuRef}
           className="absolute top-0 left-0 w-full bg-white shadow-lg max-h-screen overflow-y-auto"
         >
+          
           <div className="p-4">
             {/* Header */}
             <div className="bg-gradient-to-r from-[#7D4B3C] to-[#61714D] text-white p-3 mb-4 rounded-lg flex items-center justify-center">
