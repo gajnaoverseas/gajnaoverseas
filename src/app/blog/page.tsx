@@ -25,7 +25,7 @@ export default function BlogPage() {
                   src={post.featureImage} 
                   alt={post.title} 
                   fill 
-                  className="object-cover"
+                  className="object-contain"
                 />
               </div>
               <div className="p-6">

@@ -85,7 +85,7 @@ export default function KnowledgeHub() {
                   src={post.featureImage} 
                   alt={post.title} 
                   fill 
-                  className="object-cover"
+                  className="object-contain bg-white rounded-t-2xl"
                 />
               </div>
               <div className="p-6">
