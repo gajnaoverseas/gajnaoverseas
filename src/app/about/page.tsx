@@ -191,7 +191,7 @@ export default function AboutUs() {
                   industry.
                 </p>
               </div>
-              
+
               <div className="flex justify-center flex-col items-center">
                 <Image
                   src="/about/owner1.webp"
@@ -352,7 +352,6 @@ export default function AboutUs() {
                 </div>
               </div>
             </div>
-
 
           </div>
         </div>
