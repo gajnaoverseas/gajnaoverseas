@@ -612,7 +612,7 @@ export default function ContactPage() {
               Find Us Here
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Visit our office located in the heart of Gurugram, Haryana. We're easily accessible and ready to welcome you.
+              Visit our office located in the heart of Gurugram, Haryana. We&apos;re easily accessible and ready to welcome you.
             </p>
           </motion.div>
 
