@@ -1,16 +1,26 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { BsWhatsapp } from "react-icons/bs";
 import Link from "next/link";
 import { Mail, MapPin, MessageCircle, Phone, Smartphone, Video } from "lucide-react";
+import CertificateViewer from "./CertificateViewer";
 
 export default function RegistrationCertification() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const certificatesRef = useRef<HTMLDivElement>(null);
+  const [viewerOpen, setViewerOpen] = useState(false);
+  const [viewerImages, setViewerImages] = useState<string[]>([]);
+  const [viewerTitle, setViewerTitle] = useState<string>("");
+
+  const openViewer = (images: string[], title: string) => {
+    setViewerImages(images);
+    setViewerTitle(title);
+    setViewerOpen(true);
+  };
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -480,6 +490,12 @@ export default function RegistrationCertification() {
               Coffee Board of India
             </h4>
             <p className="text-white text-sm">Exporter Registration</p>
+            <button
+              className="mt-3 inline-block bg-emerald-600 text-white px-4 py-2 rounded-full hover:bg-emerald-500"
+              onClick={() => openViewer(["/certificates/Certificate1.webp"], "Coffee Board of India — Exporter Registration")}
+            >
+              View Certificate
+            </button>
           </div>
 
                     {/* Coffee Board of India - Certificate 2 */}
@@ -497,6 +513,12 @@ export default function RegistrationCertification() {
               Coffee Board of India
             </h4>
             <p className="text-white text-sm">Exporter Registration</p>
+            <button
+              className="mt-3 inline-block bg-emerald-600 text-white px-4 py-2 rounded-full hover:bg-emerald-500"
+              onClick={() => openViewer(["/certificates/Certificate4.webp"], "Coffee Board of India — Exporter Registration")}
+            >
+              View Certificate
+            </button>
           </div>
                     {/* APEDA - Certificate 3 */}
           <div className="text-center">
@@ -514,6 +536,12 @@ export default function RegistrationCertification() {
               Agricultural & Processed Food Products Export Development
               Authority
             </p>
+            <button
+              className="mt-3 inline-block bg-emerald-600 text-white px-4 py-2 rounded-full hover:bg-emerald-500"
+              onClick={() => openViewer(["/certificates/Certificate5.webp"], "APEDA — Registration Certificate")}
+            >
+              View Certificate
+            </button>
           </div>
 
           
@@ -532,6 +560,12 @@ export default function RegistrationCertification() {
             <p className="text-white text-sm">
               Trade Promotion Council of India
             </p>
+            <button
+              className="mt-3 inline-block bg-emerald-600 text-white px-4 py-2 rounded-full hover:bg-emerald-500"
+              onClick={() => openViewer(["/certificates/Certificate6.webp"], "TPCI — Membership/Registration")}
+            >
+              View Certificate
+            </button>
           </div>
 
           {/* APEDA - Certificate 2 */}
@@ -550,6 +584,12 @@ export default function RegistrationCertification() {
               Agricultural & Processed Food Products Export Development
               Authority
             </p>
+            <button
+              className="mt-3 inline-block bg-emerald-600 text-white px-4 py-2 rounded-full hover:bg-emerald-500"
+              onClick={() => openViewer(["/certificates/Certificate2.webp"], "APEDA — Certificate")}
+            >
+              View Certificate
+            </button>
           </div>
 
           {/* TPCI - Certificate 3 */}
@@ -567,6 +607,12 @@ export default function RegistrationCertification() {
             <p className="text-white text-sm">
               Trade Promotion Council of India
             </p>
+            <button
+              className="mt-3 inline-block bg-emerald-600 text-white px-4 py-2 rounded-full hover:bg-emerald-500"
+              onClick={() => openViewer(["/certificates/Certificate3.webp"], "TPCI — Certificate")}
+            >
+              View Certificate
+            </button>
           </div>
 
           {/* Row 2 */}
@@ -576,6 +622,13 @@ export default function RegistrationCertification() {
 
         </div>
       </div>
+      {viewerOpen && (
+        <CertificateViewer
+          images={viewerImages}
+          title={viewerTitle}
+          onClose={() => setViewerOpen(false)}
+        />
+      )}
     </section>
   );
 }
