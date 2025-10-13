@@ -449,7 +449,6 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
         
         <div className="grid grid-cols-12 gap-8">
           {/* Middle Column - Arabica Products */}
-          {/* Replaced the middle and right columns with the full grade matrix based on Figma */}
           <div className="col-span-12">
             {gradesData.map((section) => (
               <div key={section.title} className="mb-10">
