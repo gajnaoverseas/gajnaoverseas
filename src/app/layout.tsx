@@ -3,6 +3,7 @@ import { DM_Sans, Lora, Playfair_Display } from "next/font/google";
 import clsx from "clsx";
 import "./globals.css";
 import ClientWrapper from "@/components/ClientWrapper";
+import { Analytics } from "@vercel/analytics/next"
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -42,6 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`relative ${lora.variable} ${playfair.variable}`}>
       <body className={clsx(dmSans.className, "antialiased bg-white")}>
+        <Analytics />
         <ClientWrapper>
           {children}
         </ClientWrapper>
