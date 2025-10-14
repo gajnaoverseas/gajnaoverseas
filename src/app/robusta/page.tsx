@@ -42,6 +42,7 @@ export default function RobustaPage() {
               height={120}
               className="mx-auto mb-6 rounded-full shadow-2xl border-4 border-white/30"
             />
+            
           </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-orange-200 to-white bg-clip-text text-transparent">
             Indian Robusta Coffee Grades
