@@ -68,7 +68,7 @@ export default function RegistrationCertification() {
 
   return (
     <section ref={sectionRef} className="bg-gray-50 ">
-      {/* Responsive Registration & Certification Layout */}
+      {/* Responsive Registrations & Certificates Layout */}
       <section className="py-8 sm:py-12 lg:py-16 mt-20 sm:mt-32 lg:mt-40 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Mobile Layout (sm and below) */}
@@ -157,13 +157,18 @@ export default function RegistrationCertification() {
                   height={60}
                   className="w-10 h-12 object-contain"
                 />
+                <div>
                 <Image
                   src="/registration/10.webp"
                   alt="Certificate 2"
                   width={1200}
                   height={100}
-                  className="w-[6vw] h-[7vw] object-contain rounded-2xl"
+                  className="w-[4vw] h-[5vw] object-contain rounded-2xl"
                 />
+                <p className="text-center text-xs text-black">
+                  Directorate of Plant Protection, Quarantine & Storage
+                </p>
+                </div>
               </div>
             </div>
           </div>
@@ -203,7 +208,7 @@ export default function RegistrationCertification() {
               {/* Middle Row - Title */}
               <div className="col-span-3 bg-green-700 border-2 border-gray-300 rounded-lg p-8 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 <h1 className="text-3xl md:text-4xl font-bold text-white text-center font-serif">
-                  Registration & Certification
+                  Registrations & Certificates
                 </h1>
               </div>
 
@@ -259,13 +264,18 @@ export default function RegistrationCertification() {
                   height={100}
                   className="w-14 h-16 object-contain"
                 />
+                <div>
                 <Image
                   src="/registration/10.webp"
                   alt="Certificate 2"
                   width={1200}
                   height={100}
-                  className="w-[10vw] h-[10vw] object-contain rounded-2xl"
+                  className="w-[4vw] h-[5vw] object-contain rounded-2xl"
                 />
+                <p className="text-center text-xs text-black">
+                  Directorate of Plant Protection, Quarantine & Storage
+                </p>
+                </div>
               </div>
             </div>
           </div>
@@ -307,33 +317,41 @@ export default function RegistrationCertification() {
                   />
                 </div>
                 <div className="p-6 h-[20vh] w-[20vw] bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
-                  <Image
+                   <div className="flex justify-center items-center flex-col">
+                <Image
+                  src="/registration/10.webp"
+                  alt="Certificate 2"
+                  width={1200}
+                  height={100}
+                  className="w-[4vw] h-[5vw] object-contain rounded-2xl"
+                />
+                <p className="text-center text-xs text-black">
+                  Directorate of Plant Protection, Quarantine & Storage
+                </p>
+                </div>
+                </div>
+              </div>
+
+              <div className="p-6 h-[20vh] w-[40vw] bg-green-700 border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <h1 className="text-4xl xl:text-6xl leading-tight font-bold text-white text-center font-serif">
+                  Registrations & Certificates
+                </h1>
+              </div>
+
+              <div className="h-[20vh] w-[40vw] bg-white border-2 border-gray-300 rounded-lg flex flex-row justify-center items-center gap-10 hover:shadow-xl transition-all duration-300 hover:scale-105">
+               
+               
+               
+                 <Image
                     src="/registration/ccri.webp"
                     alt="CCRI Certificate"
                     width={1200}
                     height={100}
                     className="w-[7vw] h-[7vw] object-contain"
                   />
-                </div>
-              </div>
-
-              <div className="p-6 h-[20vh] w-[40vw] bg-green-700 border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <h1 className="text-4xl xl:text-6xl leading-tight font-bold text-white text-center font-serif">
-                  Registration & Certification
-                </h1>
-              </div>
-
-              <div className="h-[20vh] w-[40vw] bg-white border-2 border-gray-300 rounded-lg flex flex-row justify-center items-center gap-10 hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <Image
+                   <Image
                   src="/registration/1.webp"
                   alt="Certificate 1"
-                  width={1200}
-                  height={100}
-                  className="w-[8vw] h-[8vw] object-contain"
-                />
-                <Image
-                  src="/registration/4.webp"
-                  alt="Certificate 4"
                   width={1200}
                   height={100}
                   className="w-[8vw] h-[8vw] object-contain"
@@ -345,12 +363,12 @@ export default function RegistrationCertification() {
                   height={100}
                   className="w-[6vw] h-[7vw] object-contain"
                 />
-                <Image
-                  src="/registration/10.webp"
-                  alt="Certificate 2"
+                 <Image
+                  src="/registration/4.webp"
+                  alt="Certificate 4"
                   width={1200}
                   height={100}
-                  className="w-[6vw] h-[7vw] object-contain rounded-2xl"
+                  className="w-[8vw] h-[8vw] object-contain"
                 />
               </div>
             </div>

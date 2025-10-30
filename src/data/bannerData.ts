@@ -8,12 +8,7 @@ export interface BannerSlide {
 }
 
 const bannerData: BannerSlide[] = [
-     {
-    title: "Diverse Ecosystem",
-    background: "/banners/b9.webp", // Using placeholder until proper image is added
-    mobileBackground: "/banners/b5.webp",
-    description: "Diverse ecosystem with rich flora and fauna"
-   },
+
   {
     title: "Shade Grown",
     background: "/banners/b1.webp",
@@ -46,11 +41,18 @@ const bannerData: BannerSlide[] = [
     description: "Mostly high grown at altitudes above 1000m"
    },
 
+
    {
     title: "Eco-Friendly Techniques",
     background: "/banners/b6.webp", // Using placeholder until proper image is added   
     mobileBackground: "/banners/b6.webp",
     description: "Eco-friendly cultivation techniques"
+   },
+     {
+    title: "Diverse Ecosystem",
+    background: "/banners/b9.webp", // Using placeholder until proper image is added
+    mobileBackground: "/banners/b5.webp",
+    description: "Diverse ecosystem with rich flora and fauna"
    },
    {
     title: "Dense Beans",

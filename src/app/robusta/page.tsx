@@ -131,7 +131,7 @@ export default function RobustaPage() {
           <div className="max-w-7xl mx-auto px-4">
 
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-coffee-brown mb-4">Unwashed Robusta (Cherry)</h2>
+              <h2 className="text-4xl font-bold text-coffee-brown mb-4">Unwashed Robusta (Robusta Cherry)</h2>
               <p className="text-lg text-[#15803D] max-w-3xl mx-auto">
                 The grade designations of Commercial Unwashed Robusta Coffees are :
               </p>
@@ -350,8 +350,8 @@ export default function RobustaPage() {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
            
-            <Link href="/products" className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-red-900 transition-colors">
-              View All Indian Coffee Grades
+            <Link href="/arabica" className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-red-900 transition-colors">
+              Explore Indian Arabica Grades
             </Link>
           </div>
         </div>

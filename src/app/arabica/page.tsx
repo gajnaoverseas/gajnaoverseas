@@ -115,7 +115,7 @@ export default function ArabicaPage() {
                         ))}
                       </div>
                       <div className="mt-4 flex items-center justify-between">
-                        <span className="text-sm font-medium text-amber-600">View Details</span>
+                        <span className="text-sm font-medium text-amber-600">View Specifications</span>
                         <svg className="w-4 h-4 text-amber-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
@@ -134,7 +134,7 @@ export default function ArabicaPage() {
         <section className="py-16 bg-gradient-to-r from-green-50 to-emerald-50">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-coffee-brown mb-4">Unwashed Arabica (Cherry) </h2>
+              <h2 className="text-4xl font-bold text-coffee-brown mb-4">Unwashed Arabica (Arabica Cherry) </h2>
               <p className="text-lg text-[#15803D] max-w-3xl mx-auto">
                 The grade designations of Commercial Unwashed Arabica Coffees are :
               </p>
@@ -159,7 +159,7 @@ export default function ArabicaPage() {
                         ))}
                       </div>
                       <div className="mt-4 flex items-center justify-between">
-                        <span className="text-sm font-medium text-green-600">View Details</span>
+                        <span className="text-sm font-medium text-green-600">View Specifications</span>
                         <svg className="w-4 h-4 text-green-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
@@ -206,7 +206,7 @@ export default function ArabicaPage() {
                           </div>
                         </div>
                         <div className="mt-4 flex items-center justify-between">
-                          <span className="text-sm font-medium text-blue-600">View Details</span>
+                          <span className="text-sm font-medium text-blue-600">View Specifications</span>
                           <svg className="w-4 h-4 text-blue-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
@@ -233,7 +233,7 @@ export default function ArabicaPage() {
                           </div>
                         </div>
                         <div className="mt-4 flex items-center justify-between">
-                          <span className="text-sm font-medium text-blue-600">View Details</span>
+                          <span className="text-sm font-medium text-blue-600">View Specifications</span>
                           <svg className="w-4 h-4 text-blue-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
@@ -271,7 +271,7 @@ export default function ArabicaPage() {
                             ))}
                           </div>
                           <div className="mt-4 flex items-center justify-between">
-                            <span className="text-sm font-medium text-blue-600">View Details</span>
+                            <span className="text-sm font-medium text-blue-600">View Specifications</span>
                             <svg className="w-4 h-4 text-blue-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
@@ -311,7 +311,7 @@ export default function ArabicaPage() {
                             ))}
                           </div>
                           <div className="mt-4 flex items-center justify-between">
-                            <span className="text-sm font-medium text-blue-600">View Details</span>
+                            <span className="text-sm font-medium text-blue-600">View Specifications</span>
                             <svg className="w-4 h-4 text-blue-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
@@ -356,7 +356,7 @@ export default function ArabicaPage() {
                         ))}
                       </div>
                       <div className="mt-4 flex items-center justify-between">
-                        <span className="text-sm font-medium text-purple-600">View Details</span>
+                        <span className="text-sm font-medium text-purple-600">View Specifications</span>
                         <svg className="w-4 h-4 text-purple-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
@@ -376,8 +376,8 @@ export default function ArabicaPage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
 
-            <Link href="/products" className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-red-900 transition-colors">
-              View All Indian Coffee Grades
+            <Link href="/robusta" className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-red-900 transition-colors">
+             Explore Indian Robusta Grades
             </Link>
           </div>
         </div>

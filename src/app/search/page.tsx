@@ -11,6 +11,22 @@ export const revalidate = 0;
 const categories = [...new Set(allProducts.map(p => p.category))] as string[];
 const varieties = [...new Set(allProducts.map(p => p.variety))] as string[];
 
+// Normalize category strings to the canonical values used in product data
+const normalizeCategory = (category?: string): string => {
+  if (!category) return "";
+  const c = category.toLowerCase().trim();
+  if (c.includes("commercial grade")) return "Commercial Grade";
+  if (c.includes("commercial grades")) return "Commercial Grade";
+  if (c.includes("premium grade")) return "Premium Grade";
+  if (c.includes("premium grades")) return "Premium Grade";
+  if (c.includes("specialty coffee")) return "Specialty Coffee";
+  if (c.includes("specialty coffees")) return "Specialty Coffee";
+  if (c.includes("miscellaneous grade")) return "Miscellaneous Grade";
+  if (c.includes("miscellaneous grades")) return "Miscellaneous Grade";
+  // Fallback: title case original
+  return category;
+};
+
 // Extract processing methods from specs
 const getProcessingMethod = (product: Product): string => {
   const processingSpec = product.specs.find(spec => spec.label === "Processing");
@@ -62,7 +78,7 @@ const isActive = (
   selected: { category?: string; variety?: string; processing?: string }
 ) => {
   return (
-    (current.category || "") === (selected.category || "") &&
+    normalizeCategory(current.category) === normalizeCategory(selected.category) &&
     (current.variety || "") === (selected.variety || "") &&
     (current.processing || "") === (selected.processing || "")
   );
@@ -74,7 +90,7 @@ export default function SearchCoffeeGradesPage({ searchParams }: { searchParams:
   // Filter products based on query parameters and search term
   const filteredProducts = allProducts.filter(product => {
     // Filter by category
-    if (searchParams.category && product.category !== searchParams.category) {
+    if (searchParams.category && normalizeCategory(product.category) !== normalizeCategory(searchParams.category)) {
       return false;
     }
     

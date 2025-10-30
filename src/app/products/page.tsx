@@ -24,11 +24,11 @@ const quickFilterRows: Array<
 > = [
   [
     { label: "All Arabica Commercial Grades", params: { category: "Commercial Grade", variety: "Arabica" } },
-    { label: "Washed Arabica - Commercial Grade", params: { category: "Commercial Grade", variety: "Arabica", processing: "Washed Arabica" } },
-    { label: "Unwashed Arabica - Commercial Grade", params: { category: "Commercial Grade", variety: "Arabica", processing: "Unwashed Arabica" } },
+    { label: "Washed Arabica - Commercial Grades", params: { category: "Commercial Grade", variety: "Arabica", processing: "Washed Arabica" } },
+    { label: "Unwashed Arabica - Commercial Grades", params: { category: "Commercial Grade", variety: "Arabica", processing: "Unwashed Arabica" } },
     { label: "All Arabica Premium Grades", params: { category: "Premium Grade", variety: "Arabica" } },
-    { label: "Washed Arabica - Premium Grade", params: { category: "Premium Grade", variety: "Arabica", processing: "Washed Arabica" } },
-    { label: "Unwashed Arabica - Premium Grade", params: { category: "Premium Grade", variety: "Arabica", processing: "Unwashed Arabica" } },
+    { label: "Washed Arabica - Premium Grades", params: { category: "Premium Grade", variety: "Arabica", processing: "Washed Arabica" } },
+    { label: "Unwashed Arabica - Premium Grades", params: { category: "Premium Grade", variety: "Arabica", processing: "Unwashed Arabica" } },
     { label: "Arabica Specialty Grades", params: { category: "Specialty Coffee", variety: "Arabica" } },
   ],
   [

@@ -90,11 +90,11 @@ export default function CertificateViewer({ images, initialIndex = 0, onClose, t
   };
 
   return (
-    <div className="fixed inset-0 z-[10001] bg-black/80">
+    <div className="fixed inset-0 z-[10001] bg-black">
       <div className="absolute inset-0 flex">
         {/* Semi-transparent thumbnail overlay for both mobile and desktop */}
         {showSidebar && (
-          <aside className="absolute left-0 top-10 z-40 h-full w-44  md:w-56 lg:w-80 bg-black/70 backdrop-blur-sm border-r border-white/20 overflow-y-auto">
+          <aside className="absolute left-0 top-10 z-40 h-full w-44  md:w-56 lg:w-80 bg-black backdrop-blur-sm border-r border-white/20 overflow-y-auto">
             <div className="p-2 space-y-2">
               <div className="flex justify-end mb-2 sm:hidden">
                 <button
@@ -132,7 +132,7 @@ export default function CertificateViewer({ images, initialIndex = 0, onClose, t
         {/* Main viewer area - now takes full width */}
         <div className="flex-1 min-w-0 h-full flex flex-col w-full">
           {/* Toolbar (static, unaffected by zoom) */}
-          <div className="flex items-center justify-between px-3 sm:px-4 py-2 bg-black/50 border-b border-white/10">
+          <div className="flex items-center justify-between px-3 sm:px-4 py-2 bg-black border-b border-white/10">
             <div className="flex items-center gap-3 text-white">
               {/* <span className="md:hidden flex text-sm sm:text-base font-semibold line-clamp-1">{title || "Certificate"}</span> */}
               {/* <span className="text-xs sm:text-sm opacity-80">Page {index + 1} of {images.length}</span> */}

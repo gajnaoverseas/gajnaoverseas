@@ -86,7 +86,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
 
   const gradesData: GradeGroup[] = [
     {
-      title: "Commercial Grades",
+      title: " A) Commercial Grades",
       blocks: [
         {
           heading: "Arabica",
@@ -151,7 +151,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
       ],
     },
     {
-      title: "Premium Grades",
+      title: "B) Premium Grades",
       blocks: [
         {
           heading: "Arabica",
@@ -186,7 +186,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
       ],
     },
     {
-      title: "Specialty Grades",
+      title: "C) Specialty Grades",
       blocks: [
         {
           heading: "Arabica",
@@ -229,7 +229,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
       ],
     },
     {
-      title: "Miscellaneous Grades",
+      title: "D) Miscellaneous Grades",
       blocks: [
         {
           heading: "",
@@ -285,7 +285,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
             <div className="space-y-6">
               {gradesData.map((section) => (
                 <div key={section.title} className="bg-gray-50 rounded-lg p-4">
-                  <h3 className="text-base font-bold text-red-700 mb-3 text-center border-b border-red-200 pb-2">
+                  <h3 className="text-base font-bold text-red-700 mb-3 text-center  border-b border-red-200 pb-2">
                     {section.title}
                   </h3>
                   
@@ -481,7 +481,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
                     {section.blocks.map((block, idx) => (
                       <div key={idx} className="lg:col-span-2">
                         {block.heading ? (
-                          <h4 className="font-semibold text-coffee-brown mb-1 text-center">{block.heading}</h4>
+                          <h4 className="font-semibold text-coffee-brown mb-1 text-wider text-center">{block.heading}</h4>
                         ) : null}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                           {block.groups.map((g, gIdx) => (

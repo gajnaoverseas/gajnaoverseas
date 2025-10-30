@@ -127,16 +127,36 @@ export default function WhyChooseUs() {
         {/* Quote Text */}
         <div className="text-center mb-10">
           <p className=" text-lg md:text-xl mt-[-3vw] pb-4 text-black max-w-5xl mx-auto leading-relaxed font-serif italic font-semibold">
-  By choosing Gajna Overseas, you choose an expert in:
-</p>
-          <p className="quote-text text-lg md:text-xl text-black max-w-5xl mx-auto leading-relaxed font-serif italic flex flex-wrap gap-10 justify-center">
-            <span>•Coffee Sourcing</span>
-           
-            <span>•Coffee Packaging</span>
-           
-            <span>•Coffee Logistics</span>
-          
-            <span>•Documentation of Green Coffee Export</span>
+            By choosing Gajna Overseas, you choose an expert in:
+          </p>
+          <p className="quote-text text-lg md:text-xl text-black max-w-7xl mx-auto leading-relaxed font-serif italic flex flex-wrap gap-10 justify-center">
+            <span className="px-2 rounded-full">
+              <span className="w-20 h-20 rounded-full text-2xl text-coffee-white inline-block bg-cover bg-center bg-no-repeat relative bg-[url('/coffee-beans/tri.webp')]">
+                <p className="mt-[20px] ml-5 font-bold text-[#445138] text-center">1</p>
+              </span>
+              <span className="mr-10 align-middle">Coffee Sourcing</span>
+            </span>
+
+            <span className="px-2 rounded-full">
+              <span className="w-20 h-20 rounded-full text-2xl text-coffee-white inline-block bg-cover bg-center bg-no-repeat relative bg-[url('/coffee-beans/tri.webp')]">
+                <p className="mt-[20px] ml-5 font-bold text-[#445138] text-center">2</p>
+              </span>
+              <span className="mr-10 align-middle">Coffee Packaging</span>
+            </span>
+
+            <span className="px-2 rounded-full">
+              <span className="w-20 h-20 rounded-full text-2xl text-coffee-white inline-block bg-cover bg-center bg-no-repeat relative bg-[url('/coffee-beans/tri.webp')]">
+                <p className="mt-[20px] ml-5 font-bold text-[#445138] text-center">3</p>
+              </span>
+              <span className="mr-10 align-middle">Coffee Logistics</span>
+            </span>
+
+            <span className="px-2 rounded-full mt-[-2vw]">
+              <span className="w-20 h-20 rounded-full text-2xl text-coffee-white inline-block bg-cover bg-center bg-no-repeat relative bg-[url('/coffee-beans/tri.webp')]">
+                <p className="mt-[20px] ml-5 font-bold text-[#445138] text-center">4</p>
+              </span>
+              <span className="mr-10 align-middle">Documentation of Green Coffee Export</span>
+            </span> 
           </p>
 
 
