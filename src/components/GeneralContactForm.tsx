@@ -8,6 +8,7 @@ import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import { contactFormSchema } from '@/lib/validation';
 import { CountryDropdown } from '@/components/CountryDropdown';
+import { SearchableCountrySelect } from '@/components/SearchableCountrySelect';
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -259,12 +260,13 @@ export default function GeneralContactForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-3xl mx-auto">
+    <div className=''>
+    <form onSubmit={handleSubmit} className="space-y-6 max-w-3xl mx-auto ">
       {/* First Name and Last Name (side by side) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
         <div>
           <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
-            First Name *
+            First Name <span className="text-red-500">*</span>
           </label>
           <input
             type="text"
@@ -281,7 +283,7 @@ export default function GeneralContactForm({
         
         <div>
           <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
-            Last Name *
+            Last Name <span className="text-red-500">*</span>
           </label>
           <input
             type="text"
@@ -300,7 +302,7 @@ export default function GeneralContactForm({
       {/* Email */}
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-          Email Address *
+          Email Address <span className="text-red-500">*</span>
         </label>
         <input
           type="email"
@@ -318,14 +320,15 @@ export default function GeneralContactForm({
       {/* Phone Number with Country Code */}
       <div>
         <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-          Phone Number *
+          Phone Number <span className="text-red-500">*</span>
         </label>
         <PhoneInput
           international
-          countryCallingCodeEditable={false}
+          countryCallingCodeEditable={true}
           defaultCountry="US"
           value={values.phone}
           onChange={handlePhoneChange}
+          countrySelectComponent={SearchableCountrySelect}
           className={`w-full ${errors.phone ? 'phone-input-error' : ''}`}
           style={{
             '--PhoneInputCountryFlag-height': '1em',
@@ -336,14 +339,15 @@ export default function GeneralContactForm({
       </div>
 
       {/* Country with Searchable Dropdown */}
-      <div>
-        <label htmlFor="country" className="block text-sm font-medium text-gray-700 mb-1">
-          Country *
+      <div className=''>
+        <label htmlFor="country" className="block text-sm  font-medium text-gray-700 mb-1">
+          Country <span className="text-red-500">*</span>
         </label>
         <CountryDropdown 
           selectedCountry={values.country}
           onSelectCountry={handleCountrySelect}
           error={!!errors.country}
+          
         />
         {errors.country && <p className="mt-1 text-sm text-red-600">{errors.country}</p>}
       </div>
@@ -351,7 +355,7 @@ export default function GeneralContactForm({
       {/* Postal/Zip Code */}
       <div>
         <label htmlFor="postalCode" className="block text-sm font-medium text-gray-700 mb-1">
-          Postal/Zip Code *
+          Postal/Zip Code <span className="text-red-500">*</span>
         </label>
         <input
           type="text"
@@ -369,7 +373,7 @@ export default function GeneralContactForm({
       {/* LinkedIn ID */}
       <div>
         <label htmlFor="linkedin" className="block text-sm font-medium text-gray-700 mb-1">
-          LinkedIn Profile URL *
+          LinkedIn Profile URL <span className="text-red-500">*</span>
         </label>
         <input
           type="url"
@@ -379,13 +383,13 @@ export default function GeneralContactForm({
           onChange={handleChange}
           onBlur={handleBlur}
           className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-opacity-50 ${errors.linkedin ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'}`}
-          placeholder="https://www.linkedin.com/in/priyaviratsingh/"
+          placeholder="URL of your LinkedIn profile"
         />
         {errors.linkedin && <p className="mt-1 text-sm text-red-600">{errors.linkedin}</p>}
       </div>
 
       {/* Subject */}
-      <div>
+      {/* <div>
         <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
           Subject *
         </label>
@@ -400,12 +404,12 @@ export default function GeneralContactForm({
           placeholder="Your Query..."
         />
         {errors.subject && <p className="mt-1 text-sm text-red-600">{errors.subject}</p>}
-      </div>
+      </div> */}
 
       {/* Message */}
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-          Message *
+          Message <span className="text-red-500">*</span>
         </label>
         <textarea
           id="message"
@@ -494,5 +498,6 @@ export default function GeneralContactForm({
         </div>
       )}
     </form>
+    </div>
   );
 }

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import MegaMenu from "@/components/MegaMenu";
 import GeneralContactForm from "@/components/GeneralContactForm";
-import { ChevronDown, X } from "lucide-react";
+import { ChevronDown, X, Search } from "lucide-react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { usePathname } from "next/navigation";
 
@@ -61,7 +61,7 @@ export default function Header() {
 
           {/* Center Title (hidden on small) */}
           <nav className="hidden md:block flex-1 text-center">
-            <h2 className="text-lg md:text-2xl lg:text-4xl font-semibold font-serif text-coffee-brown">
+            <h2 className="text-lg md:text-2xl lg:text-4xl tracking-wide  font-semibold font-serif text-coffee-brown" style={{ wordSpacing: "4px" }}>
               Exporter of Green Coffee Beans of Indian Origin
             </h2>
           </nav>
@@ -125,6 +125,14 @@ export default function Header() {
               <div className="mb-4 bg-white rounded-lg p-3">
                 <LanguageSwitcher />
               </div>
+              {/* Search Coffee Grades (mobile) */}
+              <Link
+                href="/search"
+                className={`flex items-center gap-2 text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 ${isActivePath("/search") ? "text-amber-200" : ""}`}
+              >
+                <Search size={18} />
+                Search Coffee Grades
+              </Link>
               <button
                 onClick={() => {
                   setMobileMegaMenuOpen(true);
@@ -177,6 +185,15 @@ export default function Header() {
               >
                 Become a Supplier with us
               </button>
+              <button
+                onClick={() => {
+                  setQuickEnquiryOpen(true);
+                  setMobileMenuOpen(false);
+                }}
+                className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 w-full text-left"
+              >
+                Quick Enquiry
+              </button>
 
             </div>
           </div>
@@ -185,7 +202,7 @@ export default function Header() {
         {/* Desktop Top Info Bar */}
         <div className="hidden md:block border-t border-gray-200">
           <nav className="flex items-center justify-center px-6 py-1 bg-[#15803D]">
-            <div className="flex flex-wrap justify-center items-center gap-2 lg:gap-4 xl:gap-6 font-semibold max-w-7xl mx-auto">
+            <div className="flex flex-wrap justify-center items-center gap-2 lg:gap-4 xl:gap-6 font-semibold max-w-8xl mx-auto">
               <Link
                 href="https://maps.google.com/?q=Gajna+Overseas"
                 target="_blank"
@@ -235,10 +252,25 @@ export default function Header() {
               >
                 Send Us SMS
               </Link>
-              <div className="ml-2">
-                <LanguageSwitcher />
-              </div>
+              <button
+                onClick={() => setQuickEnquiryOpen(true)}
+                className="px-3 py-1 bg-white text-[#374151] border border-white rounded-lg text-xs hover:bg-white/80 transition-colors"
+              >
+                Quick Enquiry
+              </button>
+
+              <LanguageSwitcher />
+              {/* Search Coffee Grades (desktop) */}
+              <Link
+                href="/search"
+                className={`flex items-center gap-1 bg-[#F9C977] rounded-lg px-2 py-1 text-coffee-brown hover:text-amber-700 transition-colors ${isActivePath("/search") ? "text-amber-700" : ""}`}
+              >
+                <Search size={16} />
+                <span className="text-sm">Search Coffee Grades</span>
+              </Link>
             </div>
+
+
           </nav>
         </div>
 
@@ -247,24 +279,22 @@ export default function Header() {
           <div className="flex justify-center items-center gap-10 py-1">
             {/* Products - open mega menu on hover/focus */}
             <div
-              className="relative "
+              className=""
               onMouseEnter={() => setMegaMenuOpen(true)}
-              onMouseLeave={() => setMegaMenuOpen(false)}
-              onFocus={() => setMegaMenuOpen(true)}
-              onBlur={() => setMegaMenuOpen(false)}
             >
-              <Link
-                href="/products"
-                className={`text-xl font-medium hover:bg-coffee-brown hover:text-white hover:pl-[12px] hover:rounded-lg transition-colors flex flex-row ${isActivePath(["/products", "/arabica", "/robusta"]) ? "bg-coffee-brown text-white pl-[12px] rounded-lg" : "text-black"}`}
+              <button
+                className={`text-xl font-medium hover:bg-coffee-brown hover:text-white hover:pl-[12px] hover:rounded-lg transition-colors flex flex-row items-center ${isActivePath(["/products", "/arabica", "/robusta"]) ? "bg-coffee-brown text-white pl-[12px] rounded-lg" : "text-black"}`}
+                onClick={() => setMegaMenuOpen(!megaMenuOpen)}
               >
                 Products
-                <ChevronDown className={`${isActivePath(["/products", "/arabica", "/robusta"]) ? "text-white" : "text-coffee-brown hover:text-white"}`} />
-              </Link>
+                <ChevronDown className={`ml-1 ${isActivePath(["/products", "/arabica", "/robusta"]) ? "text-white" : "text-coffee-brown hover:text-white"}`} />
+              </button>
               {megaMenuOpen && (
                 <MegaMenu
                   isOpen={megaMenuOpen}
                   onClose={() => setMegaMenuOpen(false)}
                   isMobile={false}
+                  
                 />
               )}
             </div>
@@ -307,8 +337,8 @@ export default function Header() {
               Become a Supplier with us
             </Link>
 
-            <Link 
-              href="/contact" 
+            <Link
+              href="/contact"
               className={`block text-xl font-medium px-2 rounded-lg transition-colors hover:bg-coffee-brown hover:text-white ${isActivePath("/contact") ? "bg-coffee-brown text-white" : "text-black"}`}
             >
               Contact Us
@@ -328,9 +358,13 @@ export default function Header() {
           <div className="fixed inset-0 bg-black bg-opacity-50 z-[10000] flex items-center justify-center p-4">
             <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
               <div className="flex items-center justify-between p-6 border-b">
-                <h2 className="text-xl font-semibold text-gray-900">
-                  Quick Enquiry
-                </h2>
+                <Image src="/logo.webp" alt="Gajna Overseas Private Limited" width={100} height={50} />
+                <div className="flex flex-col justify-center items-center text-center">
+                  <h2 className="text-xl font-semibold text-gray-900">
+                    Gajna Overseas Private Limited
+                  </h2>
+                  <p>Exporter of Green Coffee Beans of Indian Origin</p>
+                </div>
                 <button
                   onClick={() => setQuickEnquiryOpen(false)}
                   className="text-gray-400 hover:text-gray-600 transition-colors"
@@ -339,7 +373,7 @@ export default function Header() {
                   <X className="w-6 h-6" />
                 </button>
               </div>
-              <div className="p-6">
+              <div className="p-6 bg-[#15803D]/20">
                 <GeneralContactForm
                   initial={{ subject: "Quick Enquiry" }}
                   submitLabel="Send Enquiry"
@@ -351,7 +385,7 @@ export default function Header() {
           </div>
         )}
 
-        
+
       </div>
     </header>
   );

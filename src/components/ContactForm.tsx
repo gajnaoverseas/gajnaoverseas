@@ -7,6 +7,7 @@ import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import { contactFormSchema, type ContactFormInput } from "@/lib/validation";
 import { CountryDropdown } from "@/components/CountryDropdown";
+import { SearchableCountrySelect } from "@/components/SearchableCountrySelect";
 
 type ContactFormProps = {
   initial?: Partial<ContactFormInput>;
@@ -344,6 +345,8 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
                 setErrors((prev) => ({ ...prev, phone: "" }));
               }
             }}
+            countrySelectComponent={SearchableCountrySelect}
+            countryCallingCodeEditable={true}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-600 focus:ring-amber-600"
           />
           {errors.phone && <p className="text-sm text-red-600 mt-1">{errors.phone}</p>}

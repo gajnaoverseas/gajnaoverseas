@@ -253,10 +253,10 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
   // ✅ Mobile version
   if (isMobile) {
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 z-[9998]">
+      <div className="fixed inset-0 bg-black bg-opacity-50 z-[9998] ">
         <div
           ref={menuRef}
-          className="absolute top-0 left-0 w-full bg-white shadow-lg max-h-screen overflow-y-auto"
+          className="absolute top-0 left-0 w-full bg-white shadow-lg max-h-screen overflow-y-auto border-t-2 border-[#562F23]"
         >
           
           <div className="p-4">
@@ -433,16 +433,16 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
 
   // ✅ Desktop version
   return (
-    <div className="absolute top-full w-[80vw]  max-h-[80vh] overflow-y-auto bg-white shadow-lg  border-2 border-black z-[9999] rounded-2xl hidden md:block">
+    <div className="absolute left-1/2 -translate-x-[57%] top-full w-[90vw] md:w-[80vw] max-h-[75vh] overflow-y-auto bg-white shadow-xl border border-[#562F23] ring-1 ring-[#562F23]/20 z-[9999] rounded-2xl hidden md:block">
       <div ref={menuRef} className="max-w-7xl mx-auto p-8">
         {/* Header */}
-        <div className="shadow-2xl text-coffee-brown p-4 mb-6 rounded-lg flex items-center border border-black  w-[70%] mx-auto  justify-center">
+        <div className="shadow-2xl text-coffee-brown p-4 mb-6 rounded-lg flex items-center border border-black  w-[85%] mx-auto  justify-center">
           <Image
             src="/logos/1.webp"
             alt="Gajna Logo"
             width={40}
             height={40}
-            className="w-10 h-10 mr-3"
+            className="w-20 h-24 mr-3"
           />
           <h2 className="text-2xl font-bold text-center">Classification and Grading of Indian Coffees as per the Coffee Board of India</h2>
         </div>
