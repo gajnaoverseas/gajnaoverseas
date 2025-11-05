@@ -1,26 +1,142 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { Document, Page, pdfjs } from "react-pdf";
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  "pdfjs-dist/build/pdf.worker.min.js",
+  import.meta.url
+).toString();
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { BsWhatsapp } from "react-icons/bs";
 import Link from "next/link";
 import { Mail, MapPin, MessageCircle, Phone, Smartphone, Video } from "lucide-react";
-import CertificateViewer from "./CertificateViewer";
+// PDF certificates served from /public/certificates
+const PDF_CERTIFICATES = [
+  {
+    title: "Apeda RCMC",
+    subtitle: "Agricultural & Processed Food Products Export Development Authority",
+    file: "/certificates/Apeda RCMC.pdf",
+  },
+  {
+    title: "MSME Certificate",
+    subtitle: "Ministry of MSME — Udyam Registration",
+    available: false,
+  },
+  {
+    title: "Coffee Board RCMC",
+    subtitle: "Coffee Board of India",
+    file: "/certificates/RCMC - Coffee Board.pdf",
+  },
+  {
+    title: "GST Registration Certificate",
+    subtitle: "GSTIN Certificate",
+    file: "/certificates/GST-Registration-Certificate.pdf",
+  },
+  {
+    title: "Import Export Code",
+    subtitle: "IEC",
+    file: "/certificates/IEC-GajnaOverseas(OPC)PrivateLimited.pdf",
+  },
+  {
+    title: "Coffee Entrepreneurship — Certificate of Participation",
+    subtitle: "Coffee Board of India",
+    file: "/certificates/Coffee Entrepreneurship - Certificate of Participation By Coffee Board Of India.pdf",
+  },
+  {
+    title: "Coffee Exporters Training Programme (Vikrayam)",
+    subtitle: "Certificate of Participation",
+    file: "/certificates/Certificate - Coffee Exporters Training Programme.pdf",
+  },
+  {
+    title: "Coffee Roasting & Brewing Programme (Kaapi Shastra)",
+    subtitle: "Training Program",
+    file: "/certificates/Kaapi Shastra - Training Program on Coffee Roasting Brewing..pdf",
+  },
+  {
+    title: "Certificate of Incorporation of Gajna Overseas",
+    subtitle: "MCA Registrar of Companies",
+    file: "/certificates/CERTIFICATE-OF-INCORPORATION.pdf",
+  },
+  {
+    title: "PAN — Gajna Overseas",
+    subtitle: "Permanent Account Number",
+    file: "/certificates/PAN - Gajna Overseas (OPC) Private Limited.pdf",
+  },
+];
+
+/**
+ * Render a clean first-page preview of a PDF without browser toolbar.
+ * Automatically fits the page to the card width for better legibility.
+ */
+function PdfCard({
+  cert,
+}: {
+  cert: { title: string; subtitle: string; file?: string };
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState<number>(360);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver((entries) => {
+      const w = entries[0]?.contentRect.width ?? el.clientWidth;
+      // Fit to card width; center canvas so extra space is balanced
+      setWidth(Math.floor(w));
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  return (
+    <div className="text-center">
+      <div ref={containerRef} className="bg-white rounded-2xl p-2 md:p-2 mb-4 shadow-lg flex justify-center mx-auto max-w-[480px]">
+        {cert.file ? (
+          <Document
+            file={cert.file}
+            loading={<div className="w-full max-w-[480px] aspect-[3/4] flex items-center justify-center text-gray-500">Loading preview…</div>}
+          >
+            <Page
+              pageNumber={1}
+              renderTextLayer={false}
+              renderAnnotationLayer={false}
+              className="mx-auto"
+              width={width}
+            />
+          </Document>
+        ) : (
+          <div className="relative w-full max-w-[480px] aspect-[3/4] rounded-lg border border-dashed border-gray-300 flex items-center justify-center">
+            <p className="text-gray-600 text-sm">Not available right now</p>
+          </div>
+        )}
+
+      </div>
+      <h4 className="text-white font-bold text-lg mb-1">{cert.title}</h4>
+      <p className="text-white text-sm">{cert.subtitle}</p>
+      {cert.file ? (
+        <Link
+          href={encodeURI(cert.file)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 inline-block bg-emerald-600 text-white px-4 py-2 rounded-full hover:bg-emerald-500"
+        >
+          View Certificate
+        </Link>
+      ) : (
+        <span className="mt-3 inline-block bg-gray-400 text-white px-4 py-2 rounded-full cursor-not-allowed">
+          Not Available
+        </span>
+      )}
+    </div>
+  );
+}
 
 export default function RegistrationCertification() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const certificatesRef = useRef<HTMLDivElement>(null);
-  const [viewerOpen, setViewerOpen] = useState(false);
-  const [viewerImages, setViewerImages] = useState<string[]>([]);
-  const [viewerTitle, setViewerTitle] = useState<string>("");
-
-  const openViewer = (images: string[], title: string) => {
-    setViewerImages(images);
-    setViewerTitle(title);
-    setViewerOpen(true);
-  };
+  // Removed image viewer state; PDFs will open directly in a new tab.
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -135,7 +251,7 @@ export default function RegistrationCertification() {
               </div>
 
               {/* Row 4 - Bottom certificates in a single row */}
-              <div className="col-span-2 bg-white border-2 border-gray-300 rounded-lg p-4 flex justify-center items-center gap-6 hover:shadow-lg transition-shadow duration-300">
+              <div className="lg:col-span-2  bg-white border-2 border-gray-300 rounded-lg p-4 flex justify-center items-center gap-6 hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/1.webp"
                   alt="Certificate 1"
@@ -158,16 +274,16 @@ export default function RegistrationCertification() {
                   className="w-10 h-12 object-contain"
                 />
                 <div>
-                <Image
-                  src="/registration/10.webp"
-                  alt="Certificate 2"
-                  width={1200}
-                  height={100}
-                  className="w-[4vw] h-[5vw] object-contain rounded-2xl"
-                />
-                <p className="text-center text-xs text-black">
-                  Directorate of Plant Protection, Quarantine & Storage
-                </p>
+                  <Image
+                    src="/registration/10.webp"
+                    alt="Certificate 2"
+                    width={1200}
+                    height={100}
+                    className="w-[4vw] h-[5vw] object-contain rounded-2xl"
+                  />
+                  <p className="text-center text-xs text-black">
+                    Directorate of Plant Protection, Quarantine & Storage
+                  </p>
                 </div>
               </div>
             </div>
@@ -265,16 +381,16 @@ export default function RegistrationCertification() {
                   className="w-14 h-16 object-contain"
                 />
                 <div>
-                <Image
-                  src="/registration/10.webp"
-                  alt="Certificate 2"
-                  width={1200}
-                  height={100}
-                  className="w-[4vw] h-[5vw] object-contain rounded-2xl"
-                />
-                <p className="text-center text-xs text-black">
-                  Directorate of Plant Protection, Quarantine & Storage
-                </p>
+                  <Image
+                    src="/registration/10.webp"
+                    alt="Certificate 2"
+                    width={1200}
+                    height={100}
+                    className="w-[4vw] h-[5vw] object-contain rounded-2xl"
+                  />
+                  <p className="text-center text-xs text-black">
+                    Directorate of Plant Protection, Quarantine & Storage
+                  </p>
                 </div>
               </div>
             </div>
@@ -317,18 +433,18 @@ export default function RegistrationCertification() {
                   />
                 </div>
                 <div className="p-6 h-[20vh] w-[20vw] bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
-                   <div className="flex justify-center items-center flex-col">
-                <Image
-                  src="/registration/10.webp"
-                  alt="Certificate 2"
-                  width={1200}
-                  height={100}
-                  className="w-[4vw] h-[5vw] object-contain rounded-2xl"
-                />
-                <p className="text-center text-xs text-black">
-                  Directorate of Plant Protection, Quarantine & Storage
-                </p>
-                </div>
+                  <div className="flex justify-center items-center flex-col">
+                    <Image
+                      src="/registration/10.webp"
+                      alt="Certificate 2"
+                      width={1200}
+                      height={100}
+                      className="w-[4vw] h-[5vw] object-contain rounded-2xl"
+                    />
+                    <p className="text-center text-xs text-black">
+                      Directorate of Plant Protection, Quarantine & Storage
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -339,17 +455,17 @@ export default function RegistrationCertification() {
               </div>
 
               <div className="h-[20vh] w-[40vw] bg-white border-2 border-gray-300 rounded-lg flex flex-row justify-center items-center gap-10 hover:shadow-xl transition-all duration-300 hover:scale-105">
-               
-               
-               
-                 <Image
-                    src="/registration/ccri.webp"
-                    alt="CCRI Certificate"
-                    width={1200}
-                    height={100}
-                    className="w-[7vw] h-[7vw] object-contain"
-                  />
-                   <Image
+
+
+
+                <Image
+                  src="/registration/ccri.webp"
+                  alt="CCRI Certificate"
+                  width={1200}
+                  height={100}
+                  className="w-[7vw] h-[7vw] object-contain"
+                />
+                <Image
                   src="/registration/1.webp"
                   alt="Certificate 1"
                   width={1200}
@@ -363,7 +479,7 @@ export default function RegistrationCertification() {
                   height={100}
                   className="w-[6vw] h-[7vw] object-contain"
                 />
-                 <Image
+                <Image
                   src="/registration/4.webp"
                   alt="Certificate 4"
                   width={1200}
@@ -485,155 +601,25 @@ export default function RegistrationCertification() {
         ref={certificatesRef}
         className="bg-coffee-brown  shadow-lg p-8 mt-[-2vw]"
       >
-        <div className="text-center py-10">
-          <h3 className="text-4xl  font-bold text-white mb-4">
-            Registrations & Quality Assurance
-          </h3>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Row 1 */}
-          {/* Coffee Board of India - Certificate 1 */}
-          <div className="text-center">
-            <div className="bg-white rounded-2xl p-4 mb-4 shadow-lg">
-              <Image
-                src="/certificates/Certificate1.webp"
-                alt="Coffee Board Certificate 1"
-                width={280}
-                height={350}
-                className="w-full h-auto object-contain rounded-lg"
-              />
-            </div>
-            <h4 className="text-white font-bold text-lg mb-2">
-              Coffee Board of India
-            </h4>
-            <p className="text-white text-sm">Exporter Registration</p>
-            <button
-              className="mt-3 inline-block bg-emerald-600 text-white px-4 py-2 rounded-full hover:bg-emerald-500"
-              onClick={() => openViewer(["/certificates/Certificate1.webp"], "Coffee Board of India — Exporter Registration")}
-            >
-              View Certificate
-            </button>
-          </div>
-
-          {/* Coffee Board of India - Certificate 2 */}
-          <div className="text-center">
-            <div className="bg-white rounded-2xl p-4 mb-4 shadow-lg">
-              <Image
-                src="/certificates/Certificate4.webp"
-                alt="Coffee Board Certificate 2"
-                width={280}
-                height={350}
-                className="w-full h-auto object-contain rounded-lg"
-              />
-            </div>
-            <h4 className="text-white font-bold text-lg mb-2">
-              Coffee Board of India
-            </h4>
-            <p className="text-white text-sm">Exporter Registration</p>
-            <button
-              className="mt-3 inline-block bg-emerald-600 text-white px-4 py-2 rounded-full hover:bg-emerald-500"
-              onClick={() => openViewer(["/certificates/Certificate4.webp"], "Coffee Board of India — Exporter Registration")}
-            >
-              View Certificate
-            </button>
-          </div>
-          {/* APEDA - Certificate 3 */}
-          <div className="text-center">
-            <div className="bg-white rounded-2xl p-4 mb-4 shadow-lg">
-              <Image
-                src="/certificates/Certificate5.webp"
-                alt="APEDA Certificate 2"
-                width={280}
-                height={320}
-                className="w-full h-auto object-contain rounded-lg"
-              />
-            </div>
-            <h4 className="text-white font-bold text-lg mb-2">APEDA</h4>
-            <p className="text-white text-sm">
-              Agricultural & Processed Food Products Export Development
-              Authority
-            </p>
-            <button
-              className="mt-3 inline-block bg-emerald-600 text-white px-4 py-2 rounded-full hover:bg-emerald-500"
-              onClick={() => openViewer(["/certificates/Certificate5.webp"], "APEDA — Registration Certificate")}
-            >
-              View Certificate
-            </button>
-          </div>
 
 
-          {/* TPCI - Certificate 4 */}
-          <div className="text-center">
-            <div className="bg-white rounded-2xl p-4 mb-4 shadow-lg">
-              <Image
-                src="/certificates/Certificate6.webp"
-                alt="TPCI Certificate 2"
-                width={280}
-                height={350}
-                className="w-full h-auto object-contain rounded-lg"
-              />
-            </div>
-            <h4 className="text-white font-bold text-lg mb-2">TPCI</h4>
-            <p className="text-white text-sm">
-              Trade Promotion Council of India
-            </p>
-            <button
-              className="mt-3 inline-block bg-emerald-600 text-white px-4 py-2 rounded-full hover:bg-emerald-500"
-              onClick={() => openViewer(["/certificates/Certificate6.webp"], "TPCI — Membership/Registration")}
-            >
-              View Certificate
-            </button>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {PDF_CERTIFICATES.map((cert) => (
+            <PdfCard key={cert.title} cert={cert} />
+          ))}
+          {/* React-PDF previews inserted above; legacy image blocks removed */}
+
+          {/* Legacy image block removed */}
+          {/* Legacy image block removed */}
+
+
+          {/* Legacy image block removed */}
 
 
 
-          {/* APEDA - Certificate 2 */}
-          <div className="text-center">
-            <div className="bg-white rounded-2xl p-4 mb-4 shadow-lg">
-              <Image
-                src="/certificates/Certificate2.webp"
-                alt="APEDA Certificate"
-                width={280}
-                height={350}
-                className="w-full h-auto object-contain rounded-lg"
-              />
-            </div>
-            <h4 className="text-white font-bold text-lg mb-2">APEDA</h4>
-            <p className="text-white text-sm">
-              Agricultural & Processed Food Products Export Development
-              Authority
-            </p>
-            <button
-              className="mt-3 inline-block bg-emerald-600 text-white px-4 py-2 rounded-full hover:bg-emerald-500"
-              onClick={() => openViewer(["/certificates/Certificate2.webp"], "APEDA — Certificate")}
-            >
-              View Certificate
-            </button>
-          </div>
+          {/* Legacy image block removed */}
 
-          {/* AIC - Certificate 3 */}
-          <div className="text-center">
-            <div className="bg-white rounded-2xl p-4 mb-4 shadow-lg">
-              <Image
-                src="/certificates/Certificate3.webp"
-                alt="TPCI Certificate"
-                width={280}
-                height={300}
-                className="w-full h-[300px] object-contain rounded-lg"
-              />
-            </div>
-            <h4 className="text-white font-bold text-lg mb-2">AIC</h4>
-            <p className="text-white text-sm">
-              Central Coffee Research Institute
-            </p>
-            <button
-              className="mt-3 inline-block bg-emerald-600 text-white px-4 py-2 rounded-full hover:bg-emerald-500"
-              onClick={() => openViewer(["/certificates/Certificate3.webp"], "TPCI — Certificate")}
-            >
-              View Certificate
-            </button>
-          </div>
+          {/* Legacy image block removed */}
 
           {/* Row 2 */}
 
@@ -642,13 +628,7 @@ export default function RegistrationCertification() {
 
         </div>
       </div>
-      {viewerOpen && (
-        <CertificateViewer
-          images={viewerImages}
-          title={viewerTitle}
-          onClose={() => setViewerOpen(false)}
-        />
-      )}
+      {/* PDFs open directly; image viewer removed */}
     </section>
   );
 }

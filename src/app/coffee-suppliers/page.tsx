@@ -160,6 +160,24 @@ const supplierFormSchema = z.object({
   surveyNumber: z.string().optional(),
   address: z.string().optional(),
 
+  // Certifications & Organic (Estate Owner + FPO)
+  certifications: z
+    .array(
+      z.enum([
+        "UTZ Certified",
+        "Rainforest Alliance",
+        "Fairtrade",
+        "Birdfriendly",
+        "Nespresso AAA",
+        "Starbucks C.A.F.E",
+        "4C",
+        "Any Other",
+      ])
+    )
+    .optional(),
+  otherCertificationName: z.string().optional(),
+  isOrganic: z.enum(["Yes", "No"]).optional(),
+
   // FPO
   fpoName: z.string().optional(),
   fpoAddress: z.string().optional(),
@@ -211,6 +229,10 @@ export default function CoffeeSuppliersPage() {
 
     fullName: "",
     aadharCardNumber: "",
+
+    certifications: [] as string[],
+    otherCertificationName: "",
+    isOrganic: "",
   });
 
   const handleChange = (
@@ -228,6 +250,20 @@ export default function CoffeeSuppliersPage() {
     setUserType(newUserType);
     setFormValues((prev) => ({ ...prev, userType: newUserType }));
     setErrors({});
+  };
+
+  const handleCertificationToggle = (cert: string, checked: boolean) => {
+    setFormValues((prev) => {
+      const current = Array.isArray(prev.certifications) ? prev.certifications : [];
+      let next = current;
+      if (checked) {
+        if (!current.includes(cert)) next = [...current, cert];
+      } else {
+        next = current.filter((c) => c !== cert);
+      }
+      return { ...prev, certifications: next };
+    });
+    if (errors.certifications) setErrors((prev) => ({ ...prev, certifications: "" }));
   };
 
   const validateForm = () => {
@@ -309,8 +345,25 @@ export default function CoffeeSuppliersPage() {
     toast.loading("Submitting your registration...");
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const res = await fetch("/api/supplier-registration", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formValues,
+          // ensure userType stays in sync
+          userType,
+        }),
+      });
+
+      const data = await res.json();
       toast.dismiss();
+      if (!res.ok || !data.ok) {
+        const message = data?.issues?.[0]?.message || data?.message || "Failed to submit registration.";
+        toast.error(message);
+        setFormStatus("error");
+        return;
+      }
+
       toast.success("Registration submitted successfully! Thank you for your interest.");
       setFormStatus("success");
       // Reset form
@@ -334,6 +387,9 @@ export default function CoffeeSuppliersPage() {
         contactPerson: "",
         fullName: "",
         aadharCardNumber: "",
+        certifications: [],
+        otherCertificationName: "",
+        isOrganic: "",
       });
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -613,6 +669,61 @@ export default function CoffeeSuppliersPage() {
                   <p className="mt-1 text-sm text-red-600">{errors.address}</p>
                 )}
               </div>
+
+              {/* Certifications */}
+              <div className="pt-2">
+                <p className="text-sm font-medium text-gray-700">Which of the following certifications do you have?</p>
+                <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {["UTZ Certified","Rainforest Alliance","Fairtrade","Birdfriendly","Nespresso AAA","Starbucks C.A.F.E","4C","Any Other"].map((cert) => (
+                    <label key={cert} className="inline-flex items-center space-x-2">
+                      <input
+                        type="checkbox"
+                        checked={Array.isArray(formValues.certifications) && formValues.certifications.includes(cert)}
+                        onChange={(e) => handleCertificationToggle(cert, e.target.checked)}
+                        className="h-4 w-4 text-coffee-brown border-gray-300 rounded"
+                      />
+                      <span className="text-sm text-gray-700">{cert}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {/* Any Other Certification Name */}
+              {Array.isArray(formValues.certifications) && formValues.certifications.includes("Any Other") && (
+                <div>
+                  <label htmlFor="otherCertificationName" className="block text-sm font-medium text-gray-700">
+                    Any Other - Name of the other Certified Coffee
+                  </label>
+                  <input
+                    type="text"
+                    id="otherCertificationName"
+                    name="otherCertificationName"
+                    value={formValues.otherCertificationName}
+                    onChange={handleChange}
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-coffee-brown focus:border-coffee-brown"
+                  />
+                </div>
+              )}
+
+              {/* Organic */}
+              <div>
+                <p className="text-sm font-medium text-gray-700">Is your coffee grown under Organic?</p>
+                <div className="mt-2 flex items-center space-x-6">
+                  {(["Yes","No"] as const).map((opt) => (
+                    <label key={opt} className="inline-flex items-center space-x-2">
+                      <input
+                        type="radio"
+                        name="isOrganic"
+                        value={opt}
+                        checked={formValues.isOrganic === opt}
+                        onChange={handleChange}
+                        className="h-4 w-4 text-coffee-brown border-gray-300"
+                      />
+                      <span className="text-sm text-gray-700">{opt}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
             </>
           )}
 
@@ -688,6 +799,61 @@ export default function CoffeeSuppliersPage() {
                 {errors.memberName && (
                   <p className="mt-1 text-sm text-red-600">{errors.memberName}</p>
                 )}
+              </div>
+
+              {/* Certifications */}
+              <div className="pt-2">
+                <p className="text-sm font-medium text-gray-700">Which of the following certifications do you have?</p>
+                <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {["UTZ Certified","Rainforest Alliance","Fairtrade","Birdfriendly","Nespresso AAA","Starbucks C.A.F.E","4C","Any Other"].map((cert) => (
+                    <label key={cert} className="inline-flex items-center space-x-2">
+                      <input
+                        type="checkbox"
+                        checked={Array.isArray(formValues.certifications) && formValues.certifications.includes(cert)}
+                        onChange={(e) => handleCertificationToggle(cert, e.target.checked)}
+                        className="h-4 w-4 text-coffee-brown border-gray-300 rounded"
+                      />
+                      <span className="text-sm text-gray-700">{cert}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {/* Any Other Certification Name */}
+              {Array.isArray(formValues.certifications) && formValues.certifications.includes("Any Other") && (
+                <div>
+                  <label htmlFor="otherCertificationName" className="block text-sm font-medium text-gray-700">
+                    Any Other - Name of the other Certified Coffee
+                  </label>
+                  <input
+                    type="text"
+                    id="otherCertificationName"
+                    name="otherCertificationName"
+                    value={formValues.otherCertificationName}
+                    onChange={handleChange}
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-coffee-brown focus:border-coffee-brown"
+                  />
+                </div>
+              )}
+
+              {/* Organic */}
+              <div>
+                <p className="text-sm font-medium text-gray-700">Is your coffee grown under Organic?</p>
+                <div className="mt-2 flex items-center space-x-6">
+                  {(["Yes","No"] as const).map((opt) => (
+                    <label key={opt} className="inline-flex items-center space-x-2">
+                      <input
+                        type="radio"
+                        name="isOrganic"
+                        value={opt}
+                        checked={formValues.isOrganic === opt}
+                        onChange={handleChange}
+                        className="h-4 w-4 text-coffee-brown border-gray-300"
+                      />
+                      <span className="text-sm text-gray-700">{opt}</span>
+                    </label>
+                  ))}
+                </div>
               </div>
             </>
           )}

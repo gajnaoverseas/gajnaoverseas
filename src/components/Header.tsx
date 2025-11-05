@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import MegaMenu from "@/components/MegaMenu";
 import GeneralContactForm from "@/components/GeneralContactForm";
-import { ChevronDown, X, Search } from "lucide-react";
+import { ChevronDown, X, Search, Phone, Mail, MessageCircle } from "lucide-react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { usePathname } from "next/navigation";
 
@@ -115,6 +115,67 @@ export default function Header() {
               </svg>
             )}
           </button>
+        </div>
+
+        {/* Mobile Quick Actions: replicate desktop communication channels with exact text */}
+        <div className="md:hidden border-t border-gray-200 bg-[#15803D]">
+          <nav className="flex items-center gap-2 px-4 py-2 overflow-x-auto">
+            <Link
+              href="https://maps.google.com/?q=Gajna+Overseas"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 whitespace-nowrap"
+              aria-label="Visit Us"
+            >
+              Visit Us
+            </Link>
+            <Link
+              href="tel:+919811789665"
+              className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 whitespace-nowrap"
+              aria-label="Call Us"
+            >
+              Call Us
+            </Link>
+            <Link
+              href="mailto:info@gajnaoverseas.com"
+              className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 whitespace-nowrap"
+              aria-label="Send Us Email"
+            >
+              Send Us Email
+            </Link>
+            <Link
+              href="https://meet.google.com/new"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 whitespace-nowrap"
+              aria-label="Video Conferencing"
+            >
+              Video Conferencing
+            </Link>
+            <Link
+              href="https://wa.me/919811789665"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 whitespace-nowrap"
+              aria-label="Chat With Us"
+            >
+              Chat With Us
+            </Link>
+            <Link
+              href="sms:+919811789665"
+              className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 whitespace-nowrap"
+              aria-label="Send Us SMS"
+            >
+              Send Us SMS
+            </Link>
+            <button
+              onClick={() => setQuickEnquiryOpen(true)}
+              className="px-3 py-1 bg-white text-[#374151] border border-white rounded-lg text-xs whitespace-nowrap"
+              aria-label="Quick Enquiry"
+            >
+              Quick Enquiry
+            </button>
+          </nav>
         </div>
 
         {/* Mobile Dropdown Menu */}

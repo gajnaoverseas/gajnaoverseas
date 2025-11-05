@@ -433,7 +433,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
 
   // ✅ Desktop version
   return (
-    <div className="absolute left-1/2 -translate-x-[57%] top-full w-[90vw] md:w-[80vw] max-h-[75vh] overflow-y-auto bg-white shadow-xl border border-[#562F23] ring-1 ring-[#562F23]/20 z-[9999] rounded-2xl hidden md:block">
+    <div className="absolute left-1/2 -translate-x-[57%] top-full w-[90vw] md:w-[80vw] max-h-[75vh] overflow-y-auto bg-white shadow-xl border border-[#562F23] ring-1 ring-[#562F23]/20 z-[9999] rounded-2xl hidden md:block -mt-1">
       <div ref={menuRef} className="max-w-7xl mx-auto p-8">
         {/* Header */}
         <div className="shadow-2xl text-coffee-brown p-4 mb-6 rounded-lg flex items-center border border-black  w-[85%] mx-auto  justify-center">
