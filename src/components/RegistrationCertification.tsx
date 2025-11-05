@@ -275,6 +275,7 @@ export default function RegistrationCertification() {
                     height={60}
                     className="w-9 h-10 object-contain"
                   />
+                  
                 </div>
                 {/* Right: seal + compact multi-line text */}
                 <div className="flex items-center justify-center gap-2">
