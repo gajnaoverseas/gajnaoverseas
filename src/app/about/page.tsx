@@ -2,6 +2,10 @@
 
 import Image from "next/image";
 import AboutBanner from "@/components/AboutBanner";
+import { FaLinkedin } from "react-icons/fa6";
+import Link from "next/link";
+
+
 
 export default function AboutUs() {
 
@@ -72,9 +76,10 @@ export default function AboutUs() {
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-col lg:flex-row-reverse gap-12 items-center">
               <div className="space-y-6">
-            
+
                 <p className="text-lg text-gray-700 leading-relaxed">
                   Priyavirat Singh, the{" "}
+     
                   <span className="font-bold text-coffee-brown">
                     Founder and Director
                   </span>{" "}
@@ -100,10 +105,11 @@ export default function AboutUs() {
                   className="rounded-full"
                 />
                 <p className="lg:text-2xl text-2xl font-bold text-coffee-brown lg:mt-6 mt-4">
-                  Priyavirat Singh
+                  Priyavirat Singh               <Link href="https://www.linkedin.com/in/priyaviratsingh/" target="_blank"><FaLinkedin className="inline-block w-15 h-15 text-blue-600">{' '}</FaLinkedin></Link>
                 </p>
                 <p className="lg:text-sm text-sm font-bold text-green-700  mt-2">
-                  Director at Gajna Overseas
+                  Director at Gajna Overseas 
+                  
                 </p>
                 <p className="lg:text-lg text-sm font-bold text-black  mt-1">
                   DIN No - 09373886
@@ -116,7 +122,7 @@ export default function AboutUs() {
 
 
       {/* Mentors Section */}
-        {/* <section ref={mentorsRef} className="py-16 bg-white">
+      {/* <section ref={mentorsRef} className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto text-center">
               <h2 className="text-4xl font-semibold text-coffee-brown mb-12 font-serif">
@@ -162,7 +168,7 @@ export default function AboutUs() {
               <div className="lg:col-span-2 relative overflow-hidden text-left">
                 <div className=" border border-white/20 rounded-2xl p-10 shadow-2xl">
                   <div className="flex items-center mb-6">
-                    
+
                     <h3 className="text-4xl font-bold text-white fonts">Our Vision</h3>
                   </div>
                   <p className="lg:text-xl text-white/90 leading-relaxed font-medium">
@@ -174,9 +180,9 @@ export default function AboutUs() {
 
               {/* Mission Card */}
               <div className="relative overflow-hidden">
-                <div className="bg-gradient-to-br from-emerald-600/20 to-teal-700/20 backdrop-blur-sm border border-white/20 rounded-2xl p-8 shadow-2xl h-full">
+                <div className="bg-transparent border border-white/20 rounded-2xl p-8 shadow-2xl h-full">
                   <div className="flex items-center mb-6 text-left">
-                    
+
                     <h3 className="text-3xl font-bold text-white">Our Mission</h3>
                   </div>
                   <div className="space-y-6 text-left">
@@ -184,9 +190,26 @@ export default function AboutUs() {
                       <div className="w-8 h-8 bg-emerald-400 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                         <span className="text-white font-bold text-sm">1</span>
                       </div>
-                      <p className="text-white/90 leading-relaxed lg:text-lg text-sm">
-                        To make business relations with Coffee Farmers adhering to Good Agricultural Practices (GAP), Coffee Estates implementing GAP, Co-op/FPOs implementing GAP, and Coffee curing works approved by Coffee Board Of India.
-                      </p>
+                      <ul className="text-white/90 leading-relaxed lg:text-lg text-sm space-y-3">
+                        <li className="flex items-start gap-3">
+                          <span className="text-[#40C6A6] text-xl leading-6">•</span>
+                          <span>To make business relations with coffee farmers adhering to Good Agricultural Practices (GAP).</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="text-[#40C6A6] text-xl leading-6">•</span>
+                          <span>Partnering with coffee estates adhering to Good Agricultural Practices (GAP).</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="text-[#40C6A6] text-xl leading-6">•</span>
+                          <span>Engaging with Co-ops and FPOs committed to GAP standards.</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="text-[#40C6A6] text-xl leading-6">•</span>
+                          <span>To work with coffee curing facilities approved by the Coffee Board of India.</span>
+                        </li>
+                      </ul>
+
+
                     </div>
                     <div className="flex items-start space-x-4">
                       <div className="w-8 h-8 bg-emerald-400 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
@@ -210,9 +233,9 @@ export default function AboutUs() {
 
               {/* Core Values Card */}
               <div className="relative overflow-hidden">
-                <div className="bg-gradient-to-br from-purple-600/20 to-indigo-700/20 backdrop-blur-sm border border-white/20 rounded-2xl p-8 shadow-2xl h-full">
+                <div className="bg-transparent backdrop-blur-sm border border-white/20 rounded-2xl p-8 shadow-2xl h-full">
                   <div className="flex items-center mb-6">
-                    
+
                     <h3 className="text-3xl font-bold text-white">Core Values</h3>
                   </div>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 text-left">
@@ -258,7 +281,7 @@ export default function AboutUs() {
       </section>
 
       {/* Business Partners Section */}
-      <section className="py-16 bg-gray-50">
+      {/* <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4 ">
         <div className="max-w-6xl mx-auto ">
           <h2 className="text-4xl font-bold text-coffee-brown text-center mb-12 ">
@@ -266,7 +289,7 @@ export default function AboutUs() {
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8 ">
-            {/* Digital Marketing Partners */}
+         
             <div className="bg-white p-8 rounded-lg shadow-lg">
               <h3 className="text-2xl font-bold text-coffee-brown mb-6 text-left">
                 Digital Marketing Partners
@@ -295,7 +318,7 @@ export default function AboutUs() {
               </div>
             </div>
 
-            {/* Chartered Accountants */}
+            
             <div className="bg-white p-8 rounded-lg shadow-lg">
               <h3 className="text-2xl font-bold text-coffee-brown mb-6 text-left">
                 Chartered Accountants
@@ -324,7 +347,7 @@ export default function AboutUs() {
               </div>
             </div>
 
-            {/* Logistics Partners */}
+         
             <div className="bg-white p-8 rounded-lg shadow-lg">
               <h3 className="text-2xl font-bold text-coffee-brown mb-6 text-center">
                 Logistics Partners
@@ -355,7 +378,7 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
-    </section>
+    </section> */}
     </div>
   );
 }

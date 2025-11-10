@@ -5,6 +5,8 @@ import { z } from 'zod';
 import { toast } from 'react-hot-toast';
 import ReCAPTCHA from 'react-google-recaptcha';
 import PhoneInput from 'react-phone-number-input';
+import type { CountryCode } from 'libphonenumber-js';
+import enLabels from 'react-phone-number-input/locale/en.json';
 import 'react-phone-number-input/style.css';
 import { contactFormSchema } from '@/lib/validation';
 import { CountryDropdown } from '@/components/CountryDropdown';
@@ -58,6 +60,21 @@ export default function GeneralContactForm({
   const [captchaError, setCaptchaError] = useState<string | null>(null);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
+  // Country sync helpers for PhoneInput <-> CountryDropdown
+  const COUNTRY_LABELS = enLabels as Record<string, string>;
+  const [phoneCountry, setPhoneCountry] = useState<CountryCode | undefined>('US' as CountryCode);
+  const getCountryNameFromCode = (code?: CountryCode) => (code ? COUNTRY_LABELS[code] || '' : '');
+  const getCountryCodeFromName = (name?: string): CountryCode | undefined => {
+    if (!name) return undefined;
+    const entry = Object.entries(COUNTRY_LABELS).find(([, label]) => label === name);
+    return (entry?.[0] as CountryCode) || undefined;
+  };
+  // Initialize phone country from initial or values.country when available
+  React.useEffect(() => {
+    const code = getCountryCodeFromName(values.country);
+    if (code) setPhoneCountry(code);
+  }, [values.country]);
+
 
 
   // Handle input blur for validation
@@ -107,6 +124,8 @@ export default function GeneralContactForm({
       ...prev,
       country
     }));
+    const code = getCountryCodeFromName(country);
+    if (code) setPhoneCountry(code);
     
     // Clear error when user selects a country
     if (errors.country) {
@@ -326,8 +345,15 @@ export default function GeneralContactForm({
           international
           countryCallingCodeEditable={true}
           defaultCountry="US"
+          country={phoneCountry}
           value={values.phone}
           onChange={handlePhoneChange}
+          onCountryChange={(code?: CountryCode) => {
+            setPhoneCountry(code);
+            const name = getCountryNameFromCode(code);
+            if (name) setValues(prev => ({ ...prev, country: name }));
+            if (errors.country) setErrors(prev => ({ ...prev, country: '' }));
+          }}
           countrySelectComponent={SearchableCountrySelect}
           className={`w-full ${errors.phone ? 'phone-input-error' : ''}`}
           style={{

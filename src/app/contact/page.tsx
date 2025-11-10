@@ -11,6 +11,8 @@ import {
   Send,
   Video,
   Smartphone,
+  Building2,
+  Globe,
 } from "lucide-react";
 import { BsWhatsapp } from "react-icons/bs";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -27,9 +29,9 @@ export default function ContactPage() {
       title: "Location",
       subtitle: "Visit Us",
       description:
-        "505, Park Royal Apartments, GH-80, Sector-56, Gurugram, Haryana, India",
+        "505, Park Royal Apartments, GH-80, Block C, Sector-56, Gurugram, Haryana, India",
       action: "Get Directions",
-      href: "https://www.google.com/maps/dir/?api=1&destination=Sector+56,+Gurugram,+Haryana,+India",
+      href: "https://www.google.com/maps/dir/?api=1&destination=Gajna+Overseas+(OPC)+Private+Limited,+505,+Park+Royal+Apartments,+GH-80,+Block+C,+Sector-56,+Gurugram,+Haryana,+India+122011",
     },
     {
       icon: Phone,
@@ -111,7 +113,7 @@ export default function ContactPage() {
           <div className="flex flex-col ">
             <Link
               href="/location"
-              className="w-full md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+              className="w-full md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col hover:scale-110 justify-center items-center hover:shadow-lg transition "
             >
               <div className="flex items-center justify-center text-[#6F4E37] ">
                 <MapPin className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw]" />
@@ -123,7 +125,7 @@ export default function ContactPage() {
 
             <Link
               href="/sms"
-              className="w-full md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+              className="w-full md:w-[15vw] hover:scale-110 h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
             >
               <div className="flex items-center justify-center text-[#6F4E37] ">
                 <Smartphone className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw]" />
@@ -139,7 +141,7 @@ export default function ContactPage() {
             <div className="flex flex-col md:flex-row ">
               <Link
                 href="/phone"
-                className="p-6 h-[150px] md:h-[20vh] w-full md:w-[20vw] bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+                className="p-6 h-[150px] hover:scale-110 md:h-[20vh] w-full md:w-[20vw] bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
               >
                 <Phone className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw] text-[#6F4E37]" />
                 <span className="mt-3 block text-sm md:text-[1.2vw] font-medium text-[#6F4E37] text-center">
@@ -149,7 +151,7 @@ export default function ContactPage() {
 
               <Link
                 href="/email"
-                className="p-6 h-[150px] md:h-[20vh] w-full md:w-[20vw] bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+                className="p-6 h-[150px] hover:scale-110 md:h-[20vh] w-full md:w-[20vw] bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
               >
                 <Mail className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw] text-[#6F4E37]" />
                 <span className="mt-3 block text-sm md:text-[1.2vw] font-medium text-[#6F4E37] text-center">
@@ -159,14 +161,14 @@ export default function ContactPage() {
             </div>
 
            
-              <h1 className="text-4xl md:text-7xl leading-tight font-bold text-white text-center font-serif p-6 h-[150px] md:h-[20vh] w-full md:w-[40vw]  bg-green-700 border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition">
+              <h1 className="text-4xl hover:scale-110 md:text-7xl leading-tight font-bold text-white text-center font-serif p-6 h-[150px] md:h-[20vh] w-full md:w-[40vw]  bg-green-700 border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition">
                 Contact Us
               </h1>
             
 
             <Link
               href="/video-conferencing"
-              className="h-[150px] md:h-[20vh] w-full bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+              className="h-[150px] hover:scale-110 md:h-[20vh] w-full bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
             >
               <Video className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw] text-[#6F4E37]" />
               <span className="mt-3 block text-sm md:text-[1.2vw] font-medium text-[#6F4E37] text-center">
@@ -179,7 +181,7 @@ export default function ContactPage() {
           <div className="flex flex-col ">
             <Link
               href="/enquiry"
-              className="w-full md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+              className="w-full hover:scale-110 md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
             >
               <MessageCircle className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw] text-[#6F4E37]" />
               <span className="mt-3 block text-sm md:text-[1.2vw] font-medium text-[#6F4E37] text-center">
@@ -189,7 +191,7 @@ export default function ContactPage() {
 
             <Link
               href="/whatsapp"
-              className="w-full md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
+              className="w-full hover:scale-110 md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
             >
               <BsWhatsapp className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw] text-[#6F4E37]" />
               <span className="mt-3 block text-sm md:text-[1.2vw] font-medium text-[#6F4E37] text-center">
@@ -416,16 +418,7 @@ export default function ContactPage() {
       {/* Main Contact Section */}
       <section className="py-16 bg-[url('/blog-bg.webp')] bg-cover bg-no-repeat">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <motion.h2
-              className="text-4xl md:text-6xl font-bold text-gray-900 mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              Contact With Us
-            </motion.h2>
-          </div>
+          
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left Side - Contact Details */}
@@ -435,7 +428,7 @@ export default function ContactPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-coffee-brown">
                 <h3 className="text-2xl font-bold text-gray-800 mb-6">
                   Contact Details
                 </h3>
@@ -443,7 +436,7 @@ export default function ContactPage() {
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-coffee-brown rounded-lg flex items-center justify-center">
-                      <Phone className="w-6 h-6 text-white" />
+                        <Building2 className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-800">
@@ -472,7 +465,7 @@ export default function ContactPage() {
                       <Map className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-800">Pin Code</h4>
+                      <h4 className="font-semibold text-gray-800">PIN Code</h4>
                       <p className="text-gray-600">122011.</p>
                     </div>
                   </div>
@@ -499,7 +492,7 @@ export default function ContactPage() {
 
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-coffee-brown rounded-lg flex items-center justify-center">
-                      <BsWhatsapp className="w-6 h-6 text-white" />
+                      <Globe className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-800">Website</h4>
@@ -509,12 +502,12 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 shadow-lg font-semibold text-xl">
-                Corporate Identity Number (CIN): U51909HR2021OPC098737
+              <div className="bg-white rounded-2xl p-8 shadow-lg font-semibold text-xl border border-coffee-brown">
+                Corporate Identity Number (CIN): <span className="text-gray-600 font-medium text-lg">U51909HR2021OPC098737</span>
               </div>
 
               {/* Connect With Us */}
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-coffee-brown">
                 <h3 className="text-2xl font-bold text-gray-800 mb-6">
                   Connect With Us
                 </h3>
@@ -576,7 +569,7 @@ export default function ContactPage() {
             {/* Right Side - Contact Form */}
             <motion.div
               id="contact-form"
-              className="bg-white rounded-2xl p-8 shadow-lg"
+              className="bg-white rounded-2xl p-8 shadow-lg  border border-coffee-brown"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -625,7 +618,7 @@ export default function ContactPage() {
             {/* Map Container */}
              <div className="relative h-96 md:h-[500px] w-full">
                <iframe
-                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.8234567890123!2d77.026344!3d28.457523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d229b1b1b1b1b%3A0x1b1b1b1b1b1b1b1b!2sSector%2056%2C%20Gurugram%2C%20Haryana%20122011!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                 src="https://www.google.com/maps?q=Gajna+Overseas+(OPC)+Private+Limited,+505,+Park+Royal+Apartments,+GH-80,+Block+C,+Sector-56,+Gurugram,+Haryana,+India+122011&output=embed"
                  width="100%"
                  height="100%"
                  style={{ border: 0 }}
@@ -648,9 +641,9 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-semibold text-gray-800 text-lg">Our Address</h3>
                       <p className="text-gray-600 leading-relaxed">
-                        505, Park Royal Apartments, GH-80,<br />
+                        505, Park Royal Apartments, GH-80, Block C,<br />
                         Sector-56, Gurugram, Haryana, India<br />
-                        Pin Code: 122011
+                        PIN Code: 122011
                       </p>
                     </div>
                   </div>
@@ -676,7 +669,7 @@ export default function ContactPage() {
               <div className="mt-6 pt-6 border-t border-gray-200">
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a
-                    href="https://www.google.com/maps/dir/?api=1&destination=Sector+56,+Gurugram,+Haryana,+India"
+                    href="https://www.google.com/maps/dir/?api=1&destination=Gajna+Overseas+(OPC)+Private+Limited,+505,+Park+Royal+Apartments,+GH-80,+Block+C,+Sector-56,+Gurugram,+Haryana,+India+122011"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium text-center transition-colors duration-300 flex items-center justify-center space-x-2"
@@ -699,7 +692,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-white">
+      <section id="frequently-asked-questions" className="py-16 bg-white scroll-mt-24">
         <div className="max-w-4xl mx-auto px-4">
           <motion.div
             className="text-center mb-12"

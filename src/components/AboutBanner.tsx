@@ -83,6 +83,7 @@ export default function AboutBanner() {
                   height={80}
                   className="w-16 h-16 object-contain"
                 /> */}
+                Know the company founder 
               </div>
               <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 {/* <Image 
@@ -92,6 +93,7 @@ export default function AboutBanner() {
                   height={80}
                   className="w-16 h-16 object-contain"
                 /> */}
+                , Company Vision 
               </div>
               
               {/* Row 2 */}
@@ -103,6 +105,7 @@ export default function AboutBanner() {
                   height={80}
                   className="w-14 h-14 object-contain"
                 /> */}
+                 Company Mission 
               </div>
               <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 {/* <Image 
@@ -112,6 +115,8 @@ export default function AboutBanner() {
                   height={80}
                   className="w-16 h-16 object-contain"
                 /> */}
+                 Company
+Values
               </div>
               
               {/* Row 3 */}
@@ -282,6 +287,7 @@ export default function AboutBanner() {
                   height={100}
                   className="w-[8vw] h-[8vw] object-contain"
                 /> */}
+                 Company Mission
               </div>
               <div className="w-[15vw] h-[30vh] p-6 bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
                 {/* <Image 
@@ -291,6 +297,7 @@ export default function AboutBanner() {
                   height={100}
                   className="w-[8vw] h-[8vw] object-contain"
                 /> */}
+                 Company Vision 
               </div>
             </div>
 
@@ -305,6 +312,7 @@ export default function AboutBanner() {
                     height={100}
                     className="w-[8vw] h-[8vw] object-contain"
                   /> */}
+               Coffee Sourcing Expert
                 </div>
                 <div className="p-6 h-[20vh] w-[20vw] bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
                   {/* <Image 
@@ -314,6 +322,7 @@ export default function AboutBanner() {
                     height={100}
                     className="w-[7vw] h-[7vw] object-contain"
                   /> */}
+                  Coffee Logistics Expert
                 </div>
               </div>
 
@@ -352,6 +361,8 @@ export default function AboutBanner() {
                   height={100}
                   className="w-[6vw] h-[7vw] object-contain rounded-2xl"
                 /> */}
+                Know the company founder 
+                
               </div>
             </div>
 
@@ -365,6 +376,8 @@ export default function AboutBanner() {
                   height={100}
                   className="w-[8vw] h-[8vw] object-contain"
                 /> */}
+                  Company
+Values
               </div>
               <div className="w-[15vw] h-[30vh] p-6 bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
                 {/* <Image 
@@ -374,6 +387,7 @@ export default function AboutBanner() {
                   height={100}
                   className="w-[8vw] h-[8vw] object-contain"
                 /> */}
+                Know the team
               </div>
             </div>
           </div>

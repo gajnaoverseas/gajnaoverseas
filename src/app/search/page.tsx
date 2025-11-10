@@ -157,7 +157,7 @@ export default function SearchCoffeeGradesPage({ searchParams }: { searchParams:
                 <input 
                   type="text" 
                   name="search" 
-                  placeholder="Search coffee grades..." 
+                  placeholder="Type the coffee grade name..." 
                   defaultValue={searchParams.search || ''}
                   className="flex lg:w-[400px] w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 "
                 />
@@ -172,7 +172,7 @@ export default function SearchCoffeeGradesPage({ searchParams }: { searchParams:
 
             {/* Right: Quick-select grade categories */}
             <div className="lg:pl-4 relative z-10 pointer-events-auto">
-              <p className="text-sm text-gray-700 mb-2">Select coffee grade category from below by clicking on it.</p>
+              <p className="text-lg text-black font-semibold mb-2">Select coffee grade category from below by clicking on it.</p>
               {/* All reset */}
               <div className="mb-3">
                 <Link 
@@ -221,6 +221,7 @@ export default function SearchCoffeeGradesPage({ searchParams }: { searchParams:
             </div>
           ) : (
             <>
+              <h1 className="text-3xl md:text-5xl font-semibold text-[#562F23] mb-2 text-center">{pageTitle}</h1>
               <p className="mb-4 text-gray-700">{filteredProducts.length} coffee grades found</p>
               <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredProducts.map((p) => (

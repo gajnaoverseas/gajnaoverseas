@@ -59,7 +59,7 @@ export default function GalleryPage() {
   return (
     <div className="lg:pt-32 pt-24 pb-16 px-4 md:px-8 max-w-7xl mx-auto lg:mt-24">
       <h1 className="text-3xl md:text-7xl font-serif text-coffee-brown text-center mb-8">
-        Our Gallery
+        Photo Gallery
       </h1>
 
 

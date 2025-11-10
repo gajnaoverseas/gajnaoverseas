@@ -426,7 +426,7 @@ export default function CoffeeSuppliersPage() {
               {/* Middle Row - Title */}
               <div className="col-span-3 bg-green-700 border-2 border-gray-300 rounded-lg p-8 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 <h1 className="text-3xl md:text-4xl font-bold text-white text-center font-serif">
-                  Become a Coffee Supplies with Us
+                  Become a Coffee Supplier with Us
                 </h1>
               </div>
               
@@ -474,7 +474,7 @@ export default function CoffeeSuppliersPage() {
 
               <div className="p-6 h-[20vh] w-[40vw] bg-green-700 border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <h1 className="text-4xl xl:text-6xl leading-tight font-bold text-white text-center font-serif">
-                     Become a Coffee Supplies with Us
+                     Become a Coffee Supplier with Us
                 </h1>
               </div>
 

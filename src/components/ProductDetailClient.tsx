@@ -128,153 +128,154 @@ export default function ProductDetailClient({ product }: Props) {
 
       {/* Right: specs */}
       <div className="mx-4 text-center">
-            <h2 className="text-2xl text-green-700 font-semibold mb-6 text-center">Quality Specifications</h2>
+        <h2 className="text-2xl text-green-700 font-semibold mb-6 text-center">Quality Specifications</h2>
         <div className="divide-y border rounded-xl overflow-hidden max-w-3xl mx-auto">
-    
-            <div className="px-4 py-3 flex justify-between items-center bg-amber-50">
-              <span className="text-gray-600 text-sm">Grade Designation</span>
-              <h3 className="text-sm text-black">{product.name}</h3>
+
+          <div className="px-4 py-3 flex justify-between items-center bg-amber-50">
+            <span className="text-gray-600 text-sm">Grade Designation</span>
+            <h3 className="text-sm text-black">{product.name}</h3>
+          </div>
+
+          {/* Specialty Coffee Line - Only for Mysore Nuggets Extra Bold and Robusta Kaapi Royale */}
+          {(product.slug === "mysore-nuggets-extra-bold" || product.slug === "robusta-kaapi-royale") && (
+            <div className="px-4 py-3 bg-green-50 border-l-4 border-green-500">
+              <p className="text-green-800 font-medium text-sm italic">
+                It is a grade-specific speciality coffee.
+              </p>
             </div>
-            
-            {/* Specialty Coffee Line - Only for Mysore Nuggets Extra Bold and Robusta Kaapi Royale */}
-            {(product.slug === "mysore-nuggets-extra-bold" || product.slug === "robusta-kaapi-royale") && (
-              <div className="px-4 py-3 bg-green-50 border-l-4 border-green-500">
-                <p className="text-green-800 font-medium text-sm italic">
-                  It is a grade-specific speciality coffee.
-                </p>
-              </div>
-            )}
-            
-            {/* Special line for process-specific specialty coffee (Monsooned Malabar) */}
-            {(product.slug === "monsooned-malabar-robusta-triage" || 
-              product.slug === "monsooned-malabar-aaa" || 
-              product.slug === "monsooned-malabar-aa" || 
-              product.slug === "monsooned-malabar-a" || 
-              product.slug === "monsooned-malabar-arabica-triage" || 
-              product.slug === "monsooned-malabar-robusta-pr") && (
+          )}
+
+          {/* Special line for process-specific specialty coffee (Monsooned Malabar) */}
+          {(product.slug === "monsooned-malabar-robusta-triage" ||
+            product.slug === "monsooned-malabar-aaa" ||
+            product.slug === "monsooned-malabar-aa" ||
+            product.slug === "monsooned-malabar-a" ||
+            product.slug === "monsooned-malabar-arabica-triage" ||
+            product.slug === "monsooned-malabar-robusta-pr") && (
               <div className="px-4 py-3 bg-blue-50 border-l-4 border-blue-500">
                 <p className="text-blue-800 font-medium text-sm italic">
                   It is a process-specific specialty coffee.
                 </p>
               </div>
             )}
-            <div className="px-4 py-3 flex justify-between items-center bg-white">
-              <span className="text-gray-600 text-sm">HSN Code</span>
-              <h3 className="text-sm text-black">090111</h3>
-            </div>
-            {product.specs.map((s, i) => {
-              // Render special tolerance block once at the correct position
-              if (i === toleranceBlockAt && tolData) {
-                return (
-                  <div
-                    key="tolerance-block"
-                    className="px-4 py-3 flex justify-between items-center"
-                  >
-                    <div className="text-base text-gray-700 mb-2">
-                      Tolerance
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      <div className="flex flex-col">
-                        <span className="text-gray-600 text-sm">
-                          {tolData.flatsLabel || "Flats (AB)"}
-                        </span>
-                        <span className="text-black font-medium text-sm ">
-                          {tolData.flatsValue}
-                        </span>
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-gray-600 text-sm">
-                          {tolData.pbLabel || "PB Triage"}
-                        </span>
-                        <span className="text-black font-medium text-sm ">
-                          {tolData.pbValue}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                );
-              }
-
-              // Skip individual specs if they are part of the tolerance block
-              if (
-                tolData &&
-                (i === iTolCombined || i === iFlats || i === iPB)
-              ) {
-                return null;
-              }
-
+          <div className="px-4 py-3 flex justify-between items-center bg-white">
+            <span className="text-gray-600 text-sm">HSN Code</span>
+            <h3 className="text-sm text-black">090111</h3>
+          </div>
+          {product.specs.map((s, i) => {
+            // Render special tolerance block once at the correct position
+            if (i === toleranceBlockAt && tolData) {
               return (
                 <div
-                  key={i}
-                  className={`flex items-start justify-between gap-4 px-4 py-2 text-sm ${(i + 2) % 2 === 0 ? 'bg-amber-50' : 'bg-white'}`}
+                  key="tolerance-block"
+                  className="px-4 py-3 flex justify-between items-center"
                 >
-                  <span className="text-gray-600">{s.label}</span>
-                  {s.label === "Sieve Standards" ? (
-                    <div className="text-right max-w-[70%]">
-                      <div className="flex items-start justify-start">
-                        <div className="text-gray-900 font-medium text-left">
-                          {typeof s.value === "string" &&
-                          s.value.includes("\n") ? (
-                            s.value.split("\n").map((point, idx) => (
-                              <div
-                                key={idx}
-                                className="flex items-start mb-1 last:mb-0"
-                              >
-                                <span className="mr-2">•</span>
-                                <span>{point.trim()}</span>
-                              </div>
-                            ))
-                          ) : (
-                            <span>{s.value}</span>
-                          )}
-                        </div>
-                      </div>
+                  <div className="text-base text-gray-700 mb-2">
+                    Tolerance
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="flex flex-col">
+                      <span className="text-gray-600 text-sm">
+                        {tolData.flatsLabel || "Flats (AB)"}
+                      </span>
+                      <span className="text-black font-medium text-sm ">
+                        {tolData.flatsValue}
+                      </span>
                     </div>
-                  ) : (
-                    <span className="text-gray-900 font-medium text-left max-w-[48%]">
-                      {s.value}
-                    </span>
-                  )}
+                    <div className="flex flex-col">
+                      <span className="text-gray-600 text-sm">
+                        {tolData.pbLabel || "PB Triage"}
+                      </span>
+                      <span className="text-black font-medium text-sm ">
+                        {tolData.pbValue}
+                      </span>
+                    </div>
+                  </div>
                 </div>
               );
-            })}
+            }
 
-            {/* Static Loadability and Packaging Information */}
-            <div className={`px-4 py-3 flex justify-between items-center text-sm ${(product.specs.length + 2) % 2 === 0 ? 'bg-amber-50' : 'bg-white'}`}>
-              <span className="text-gray-600">
-                Loadability in 20-Foot Container
-              </span>
-              <span className="text-gray-900  text-sm font-medium text-left max-w-[48%]">
-                320 bags of 60kg each
-              </span>
-            </div>
+            // Skip individual specs if they are part of the tolerance block
+            if (
+              tolData &&
+              (i === iTolCombined || i === iFlats || i === iPB)
+            ) {
+              return null;
+            }
 
-            <div className={`px-4 py-3 flex justify-between items-start gap-4 text-sm ${(product.specs.length + 3) % 2 === 0 ? 'bg-amber-50' : 'bg-white'}`}>
-              <span className="text-gray-600">Packaging</span>
-              <div className="max-w-[70%]">
-                <div className="text-gray-900 font-medium text-left   text-sm">
-                  <div className="mb-2 ">
-                    <span className="font-semibold">Outer:</span> Food-grade
-                    Jute Bags (IJIRA Bags)
+            return (
+              <div
+                key={i}
+                className={`flex items-start justify-between gap-4 px-4 py-2 text-sm ${(i + 2) % 2 === 0 ? 'bg-amber-50' : 'bg-white'}`}
+              >
+                <span className="text-gray-600">{s.label}</span>
+                {s.label === "Sieve Standards" ? (
+                  <div className="text-right max-w-[70%]">
+                    <div className="flex items-start justify-start">
+                      <div className="text-gray-900 font-medium text-left">
+                        {typeof s.value === "string" &&
+                          s.value.includes("\n") ? (
+                          s.value.split("\n").map((point, idx) => (
+                            <div
+                              key={idx}
+                              className="flex items-start mb-1 last:mb-0"
+                            >
+                              <span className="mr-2">•</span>
+                              <span>{point.trim()}</span>
+                            </div>
+                          ))
+                        ) : (
+                          <span>{s.value}</span>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                  <div className="">
-                    <span className="font-semibold">Inner:</span> GrainPro Bags
-                    / Ecotact Bags / Proharvest Bags
-                  </div>
+                ) : (
+                  <span className="text-gray-900 font-medium text-left max-w-[48%]">
+                    {s.value}
+                  </span>
+                )}
+              </div>
+            );
+          })}
+
+          {/* Moisture placed below Tolerance and above Loadability */}
+          <div className={`px-4 py-3 flex justify-between items-center text-sm ${(product.specs.length + 2) % 2 === 0 ? 'bg-amber-50' : 'bg-white'}`}>
+            <span className="text-gray-600">Moisture Standard</span>
+            <span className="text-gray-900 font-medium">12.5% Maximum</span>
+          </div>
+
+          {/* Static Loadability and Packaging Information */}
+          <div className={`px-4 py-3 flex justify-between items-center text-sm ${(product.specs.length + 3) % 2 === 0 ? 'bg-amber-50' : 'bg-white'}`}>
+            <span className="text-gray-600">
+              Loadability in 20-Foot Container
+            </span>
+            <span className="text-gray-900 text-sm font-medium text-left max-w-[48%]">
+              320 bags of 60kg each
+            </span>
+          </div>
+
+          <div className={`px-4 py-3 flex justify-between items-start gap-4 text-sm ${(product.specs.length + 4) % 2 === 0 ? 'bg-amber-50' : 'bg-white'}`}>
+            <span className="text-gray-600">Packaging</span>
+            <div className="max-w-[70%]">
+              <div className="text-gray-900 font-medium text-left text-sm">
+                <div className="mb-2">
+                  <span className="font-semibold">Outer:</span> Food-grade
+                  Jute Bags (IJIRA Bags)
+                </div>
+                <div>
+                  <span className="font-semibold">Inner:</span> GrainPro Bags
+                  / Ecotact Bags / Proharvest Bags
                 </div>
               </div>
             </div>
+          </div>
 
-             <div className={`px-4 py-3 flex justify-between items-center ${(product.specs.length + 4) % 2 === 0 ? 'bg-amber-50' : 'bg-white'}`}>
-              <span className="text-gray-600 text-sm">Moisture Standard</span>
-              <h3 className="text-sm text-black">12.5% Maximum</h3>
-            </div>
-         
         </div>
 
         {/* CTA */}
         <div className="mt-6 flex items-center justify-center gap-3 flex-col md:flex-row">
-          <div>
+          {/* <div>
             <button
               type="button"
               onClick={dec}
@@ -296,7 +297,7 @@ export default function ProductDetailClient({ product }: Props) {
             >
               +
             </button>
-          </div>
+          </div> */}
           <button
             className="ml-4 px-6 py-3 bg-[#7D4B3C] text-white rounded-full hover:bg-[#6e4236]"
             type="button"
@@ -314,9 +315,13 @@ export default function ProductDetailClient({ product }: Props) {
         <div className="fixed inset-0 bg-black bg-opacity-50 z-[10000] flex items-center justify-center p-4">
           <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between p-6 border-b">
-              <h2 className="text-xl font-semibold text-gray-900">
-                Product Enquiry
-              </h2>
+              <Image src="/logo.webp" alt="Gajna Overseas Private Limited" width={100} height={50} />
+              <div className="flex flex-col justify-center items-center text-center">
+                <h2 className="text-xl font-semibold text-gray-900">
+                  Gajna Overseas Private Limited
+                </h2>
+                <p>Exporter of Green Coffee Beans of Indian Origin</p>
+              </div>
               <button
                 onClick={() => setEnquiryModalOpen(false)}
                 className="text-gray-400 hover:text-gray-600 transition-colors"
@@ -330,7 +335,7 @@ export default function ProductDetailClient({ product }: Props) {
                 initial={{
                   subject: `Enquiry for ${product.name}`,
                   message: `I am interested in ${product.name}. Please provide more details about pricing, availability, and shipping.`,
-                  product: product.name,
+                  product: "Green Coffee Beans",
                   grade: product.name, // Using product name as grade for now
                   quantity: qty > 0 ? qty : undefined,
                 }}

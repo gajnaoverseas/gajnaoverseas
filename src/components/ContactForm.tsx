@@ -239,7 +239,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
       {/* Product Enquiry Context (when provided) */}
       {(values.product || values.grade) && (
         <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4">
-          <h3 className="text-lg font-medium text-green-600 mb-2">Green Coffee Beans</h3>
+          {/* <h3 className="text-lg font-medium text-green-600 mb-2">Green Coffee Beans</h3> */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
             {values.product && (
               <div>
@@ -422,7 +422,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
 
       <div>
         <label className="block text-sm font-medium text-gray-700">
-          Message <span className="text-red-500">*</span>
+          Your instructions <span className="text-red-500">*</span>
         </label>
         <textarea
           name="message"
@@ -433,7 +433,7 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
           className={`mt-1 block w-full rounded-md shadow-sm focus:border-amber-600 focus:ring-amber-600 ${
             errors.message ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300'
           }`}
-          placeholder="Please provide details about your enquiry"
+          placeholder="Please write your instructions here"
           required
         />
         {errors.message && <p className="text-sm text-red-600 mt-1 flex items-center"><span className="mr-1">⚠️</span>{errors.message}</p>}

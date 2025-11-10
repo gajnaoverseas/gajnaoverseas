@@ -34,7 +34,7 @@ export default function Footer() {
             </Link>
             
             {/* Newsletter Section */}
-            {/* <div className="mb-6">
+            <div className="mb-6">
               <h3 className="font-bold text-lg mb-2">Newsletter</h3>
               <p className="text-sm text-gray-200 mb-3">
                 Sign up with your email to join our mailing list
@@ -49,7 +49,7 @@ export default function Footer() {
                   Subscribe
                 </button>
               </div>
-            </div> */}
+            </div>
             
            <div className="flex justify-center md:justify-start space-x-4">
   <div className="text-center mb-16">
@@ -93,10 +93,11 @@ export default function Footer() {
                   About Us
                 </Link>
               </li> */}
+
               <li className="flex items-center">
                 <FaCheck className="mr-2" />
-                <Link href="/contact" className="hover:text-coffee-gold">
-                  Contact
+                <Link href="/contact#frequently-asked-questions" className="hover:text-coffee-gold">
+                  Frequently Asked Questions
                 </Link>
               </li>
               <li className="flex items-center">
@@ -105,20 +106,26 @@ export default function Footer() {
                   Product
                 </Link>
               </li>
+              <li className="flex items-center">
+                <FaCheck className="mr-2" />
+                <Link href="/sitemap" className="hover:text-coffee-gold">
+                  Sitemap
+                </Link>
+              </li>
               
             </ul>
           </div>
 
           {/* Other Links */}
           <div>
-            <h3 className="font-bold mb-4 text-xl md:text-2xl text-center md:text-left">Services</h3>
+            <h3 className="font-bold mb-4 text-xl md:text-2xl text-center md:text-left">Connect for Coffee Business</h3>
             <ul className="space-y-2">
-              <li className="flex items-center">
+              {/* <li className="flex items-center">
                 <FaCheck className="mr-2" />
                 <Link href="/disclaimer" className="hover:text-coffee-gold">
                   Disclaimer / Privacy Policy
                 </Link>
-              </li>
+              </li> */}
               <li className="flex items-center">
                 <FaCheck className="mr-2" />
                 <Link href="/contact" className="hover:text-coffee-gold">
@@ -131,12 +138,12 @@ export default function Footer() {
                   Trade enquiry
                 </Link>
               </li>
-              <li className="flex items-center">
+              {/* <li className="flex items-center">
                 <FaCheck className="mr-2" />
                 <Link href="/careers" className="hover:text-coffee-gold">
                   Careers (Work with us)
                 </Link>
-              </li>
+              </li> */}
               <li className="flex items-center">
                 <FaCheck className="mr-2" />
                 <Link
@@ -173,16 +180,26 @@ export default function Footer() {
               <div className="flex items-start space-x-3">
                 <FaLocationDot className="text-2xl md:text-3xl text-coffee-gold flex-shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-medium text-lg">Address</h4>
+                  <h4 className="font-medium text-lg">Registered Address</h4>
                   <p className="text-sm md:text-base text-gray-200 leading-relaxed">
                     505, Park Royal Apartments,<br/>
                     GH-80, Sector -56,<br/>
-                    Gurugram, Haryana, India
+                    Gurugram, Haryana, India ,
+                    <div>
+                      <h4 className="font-semibold text-white">PIN Code : 122011</h4>
+                      <p className="text-gray-600"></p>
+                    </div>
                   </p>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      {/* Copyright bar below footer content */}
+      <div className="mt-6 border-t border-white/20">
+        <div className="max-w-7xl mx-auto px-4 py-4 text-center text-lg text-white/90">
+          © {new Date().getFullYear()} Gajna Overseas Private Limited — All rights are reserved.
         </div>
       </div>
     </footer>

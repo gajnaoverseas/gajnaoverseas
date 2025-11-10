@@ -12,7 +12,7 @@ export interface BlogPost {
 const blogData: BlogPost[] = [
   {
     id: "coffee-plantations-in-india",
-    title: "Coffee Plantations in India and it's exports",
+    title: "Coffee Plantations in India",
     date: "June 23, 2025",
     excerpt:
       "Discover the rich history and current state of coffee plantations across India, and how they contribute to global exports.",
@@ -124,7 +124,7 @@ The historical significance of this region adds to the cultural value of Bababud
     date: "April 05, 2025",
     excerpt:
       "Explore the sustainable practice of intercropping in coffee plantations and its benefits for farmers and the environment.",
-    featureImage: "/blog/feature/images/intercropping-in-coffee-farming.webp",
+    featureImage: "/blog/feature/images/intercropping-1.webp",
     content: `
 # Intercropping in Coffee Farming
 
