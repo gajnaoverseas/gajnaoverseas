@@ -38,6 +38,12 @@ export default function Header() {
 
   const toggleMobileMenu = () => setMobileMenuOpen((s) => !s);
 
+  // Auto-close mobile menus when navigating to a new route
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setMobileMegaMenuOpen(false);
+  }, [pathname]);
+
   return (
     <header className="bg-white fixed w-full top-0 z-[9999] shadow-sm">
       <div>
@@ -189,6 +195,7 @@ export default function Header() {
               {/* Search Coffee Grades (mobile) */}
               <Link
                 href="/search"
+                onClick={() => setMobileMenuOpen(false)}
                 className={`flex items-center gap-2 text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 ${isActivePath("/search") ? "text-amber-200" : ""}`}
               >
                 <Search size={18} />
@@ -205,18 +212,21 @@ export default function Header() {
               </button>
               <Link
                 href="/registrations"
+                onClick={() => setMobileMenuOpen(false)}
                 className={`block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 ${isActivePath("/registrations") ? "text-amber-200" : ""}`}
               >
                 Registrations & Certificates
               </Link>
               <Link
                 href="/blog"
+                onClick={() => setMobileMenuOpen(false)}
                 className={`block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 ${isActivePath("/blog") ? "text-amber-200" : ""}`}
               >
                 Blogs
               </Link>
               <Link
                 href="/gallery"
+                onClick={() => setMobileMenuOpen(false)}
                 className={`block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 ${isActivePath("/gallery") ? "text-amber-200" : ""}`}
               >
                 Gallery
@@ -224,18 +234,21 @@ export default function Header() {
 
               <Link
                 href="/trade-enquiry"
+                onClick={() => setMobileMenuOpen(false)}
                 className={`block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 ${isActivePath("/trade-enquiry") ? "text-amber-200" : ""}`}
               >
                 Trade Enquiry
               </Link>
               <Link
                 href="/about"
+                onClick={() => setMobileMenuOpen(false)}
                 className={`block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 ${isActivePath("/about") ? "text-amber-200" : ""}`}
               >
                 About Us
               </Link>
               <Link
                 href="/contact"
+                onClick={() => setMobileMenuOpen(false)}
                 className={`block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 ${isActivePath("/contact") ? "text-amber-200" : ""}`}
               >
                 Contact Us
