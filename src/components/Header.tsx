@@ -37,7 +37,6 @@ export default function Header() {
     };
   }, [mobileMenuOpen]);
 
-  // Add pathname-based active state helper
   const pathname = usePathname();
   const isActivePath = (paths: string | string[]): boolean => {
     const current = pathname ?? "";
