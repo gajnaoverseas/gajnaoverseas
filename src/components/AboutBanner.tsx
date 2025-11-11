@@ -279,7 +279,7 @@ Values
           <div className="hidden lg:flex justify-center items-center">
             {/* Column 1 */}
             <div className="flex flex-col">
-              <div className="w-[15vw] h-[30vh] p-6 bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="w-[15vw] h-[30vh] p-6 text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
                 {/* <Image 
                   src="/registration/apeda.webp"
                   alt="APEDA Registration"
@@ -289,7 +289,7 @@ Values
                 /> */}
                  Company Mission
               </div>
-              <div className="w-[15vw] h-[30vh] p-6 bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="w-[15vw] h-[30vh] p-6 text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
                 {/* <Image 
                   src="/registration/7.webp"
                   alt="Certificate"
@@ -304,7 +304,7 @@ Values
             {/* Column 2 */}
             <div className="flex flex-col">
               <div className="flex flex-row">
-                <div className="p-6 h-[20vh] w-[20vw] bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <div className="p-6 h-[20vh] w-[20vw] text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
                   {/* <Image 
                     src="/registration/9.webp"
                     alt="Registration Certificate"
@@ -314,7 +314,7 @@ Values
                   /> */}
                Coffee Sourcing Expert
                 </div>
-                <div className="p-6 h-[20vh] w-[20vw] bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <div className="p-6 h-[20vh] w-[20vw] text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
                   {/* <Image 
                     src="/registration/ccri.webp"
                     alt="CCRI Certificate"
@@ -332,7 +332,7 @@ Values
                 </h1>
               </div>
 
-              <div className="h-[20vh] w-[40vw] bg-white border-2 border-gray-300 rounded-lg flex flex-row justify-center items-center gap-10 hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="h-[20vh] w-[40vw] text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-row justify-center items-center gap-10 hover:shadow-xl transition-all duration-300 hover:scale-105">
                 {/* <Image 
                   src="/registration/1.webp"
                   alt="Certificate 1"
@@ -368,7 +368,7 @@ Values
 
             {/* Column 3 */}
             <div className="flex flex-col">
-              <div className="w-[15vw] h-[30vh] p-6 bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="w-[15vw] h-[30vh] p-6 text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
                 {/* <Image 
                   src="/registration/ECGC.webp"
                   alt="ECGC Registration"
@@ -379,7 +379,7 @@ Values
                   Company
 Values
               </div>
-              <div className="w-[15vw] h-[30vh] p-6 bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="w-[15vw] h-[30vh] p-6 text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
                 {/* <Image 
                   src="/registration/6.webp"
                   alt="Registration Document"

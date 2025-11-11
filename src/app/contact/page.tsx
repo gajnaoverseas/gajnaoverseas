@@ -29,9 +29,9 @@ export default function ContactPage() {
       title: "Location",
       subtitle: "Visit Us",
       description:
-        "505, Park Royal Apartments, GH-80, Block C, Sector-56, Gurugram, Haryana, India",
+        "505, Park Royal Apartments, GH-80, Block E, Sector-56, Gurugram, Haryana, India",
       action: "Get Directions",
-      href: "https://www.google.com/maps/dir/?api=1&destination=Gajna+Overseas+(OPC)+Private+Limited,+505,+Park+Royal+Apartments,+GH-80,+Block+C,+Sector-56,+Gurugram,+Haryana,+India+122011",
+      href: "https://www.google.com/maps/dir/?api=1&destination=Gajna+Overseas+(OPC)+Private+Limited,+505,+Park+Royal+Apartments,+GH-80,+Block+E,+Sector-56,+Gurugram,+Haryana,+India+122011",
     },
     {
       icon: Phone,
@@ -641,7 +641,7 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-semibold text-gray-800 text-lg">Our Address</h3>
                       <p className="text-gray-600 leading-relaxed">
-                        505, Park Royal Apartments, GH-80, Block C,<br />
+                        505, Park Royal Apartments, GH-80, Block E,<br />
                         Sector-56, Gurugram, Haryana, India<br />
                         PIN Code: 122011
                       </p>
