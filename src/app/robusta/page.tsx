@@ -111,7 +111,7 @@ export default function RobustaPage() {
                         ))}
                       </div>
                       <div className="mt-4 flex items-center justify-between">
-                        <span className="text-sm font-medium text-orange-600">View Details</span>
+                        <span className="text-sm font-medium text-orange-600">View Specifications</span>
                         <svg className="w-4 h-4 text-orange-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
@@ -198,7 +198,7 @@ export default function RobustaPage() {
                         ))}
                       </div>
                       <div className="mt-4 flex items-center justify-between">
-                        <span className="text-sm font-medium text-yellow-600">View Details</span>
+                        <span className="text-sm font-medium text-yellow-600">View Specifications</span>
                         <svg className="w-4 h-4 text-yellow-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
@@ -244,7 +244,7 @@ export default function RobustaPage() {
                             ))}
                           </div>
                           <div className="mt-4 flex items-center justify-between">
-                            <span className="text-sm font-medium text-blue-600">View Details</span>
+                            <span className="text-sm font-medium text-blue-600">View Specifications</span>
                             <svg className="w-4 h-4 text-blue-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
@@ -284,7 +284,7 @@ export default function RobustaPage() {
                             ))}
                           </div>
                           <div className="mt-4 flex items-center justify-between">
-                            <span className="text-sm font-medium text-blue-600">View Details</span>
+                            <span className="text-sm font-medium text-blue-600">View Specifications</span>
                             <svg className="w-4 h-4 text-blue-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
@@ -330,7 +330,7 @@ export default function RobustaPage() {
                         ))}
                       </div>
                       <div className="mt-4 flex items-center justify-between">
-                        <span className="text-sm font-medium text-teal-600">View Details</span>
+                        <span className="text-sm font-medium text-teal-600">View Specifications</span>
                         <svg className="w-4 h-4 text-teal-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
