@@ -47,13 +47,13 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
         </div>
       </div>
       
-      <div className="max-w-4xl mx-auto px-4 py-12">
+      <div className="max-w-4xl mx-auto px-4 ">
         <div className="relative h-96 w-full mb-8 rounded-lg overflow-hidden">
           <Image 
             src={post.featureImage} 
             alt={post.title} 
             fill 
-            className="object-cover"
+            className="object-contain"
             priority
           />
         </div>

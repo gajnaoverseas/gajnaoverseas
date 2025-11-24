@@ -51,7 +51,7 @@ const bannerData: BannerSlide[] = [
      {
     title: "Diverse Ecosystem",
     background: "/banners/b9.webp", // Using placeholder until proper image is added
-    mobileBackground: "/banners/b5.webp",
+    mobileBackground: "/banners/b9.webp",
     description: "Diverse ecosystem with rich flora and fauna"
    },
    {

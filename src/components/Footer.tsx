@@ -32,7 +32,7 @@ export default function Footer() {
               /> */}
               {/* Gaina Overseas */}
             </Link>
-            
+
             {/* Newsletter Section */}
             <div className="mb-6">
               <h3 className="font-bold text-lg mb-2">Newsletter</h3>
@@ -50,30 +50,30 @@ export default function Footer() {
                 </button>
               </div>
             </div>
-            
-           <div className="flex justify-center md:justify-start space-x-4">
-  <div className="text-center mb-16">
-    <div className="flex justify-center space-x-2 flex-wrap gap-2">
-      {[
-        { icon: 'linkedin', component: Linkedin, href: 'https://www.linkedin.com/company/gajna-overseas-private-limited/about/?viewAsMember=true' },
-        { icon: 'whatsapp', component: BsWhatsapp, href: 'https://wa.me/9811789665' },
-      ].map((social, index) => {
-        const IconComponent = social.component;
-        return (
-          <a
-            key={social.icon}
-            href={social.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-14 h-14 bg-coffee-brown hover:bg-amber-700 rounded-full flex items-center justify-center text-white transition-all duration-300 shadow-lg"
-          >
-            <IconComponent className="w-6 h-6" />
-          </a>
-        );
-      })}
-    </div>
-  </div>
-</div>
+
+            <div className="flex justify-center md:justify-start space-x-4">
+              <div className="text-center mb-16">
+                <div className="flex justify-center space-x-2 flex-wrap gap-2">
+                  {[
+                    { icon: 'linkedin', component: Linkedin, href: 'https://www.linkedin.com/company/gajna-overseas-private-limited/about/?viewAsMember=true' },
+                    { icon: 'whatsapp', component: BsWhatsapp, href: 'https://wa.me/9811789665' },
+                  ].map((social, index) => {
+                    const IconComponent = social.component;
+                    return (
+                      <a
+                        key={social.icon}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-14 h-14 bg-coffee-brown hover:bg-amber-700 rounded-full flex items-center justify-center text-white transition-all duration-300 shadow-lg"
+                      >
+                        <IconComponent className="w-6 h-6" />
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
 
           </div>
 
@@ -112,7 +112,7 @@ export default function Footer() {
                   Sitemap
                 </Link>
               </li>
-              
+
             </ul>
           </div>
 
@@ -134,7 +134,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center">
                 <FaCheck className="mr-2" />
-                <Link href="/trade-enquire" className="hover:text-coffee-gold">
+                <Link href="/trade-enquiry" className="hover:text-coffee-gold">
                   Trade enquiry
                 </Link>
               </li>
@@ -182,8 +182,8 @@ export default function Footer() {
                 <div>
                   <h4 className="font-medium text-lg">Registered Address</h4>
                   <p className="text-sm md:text-base text-gray-200 leading-relaxed">
-                    505, Park Royal Apartments,<br/>
-                    GH-80, Sector -56,<br/>
+                    505, Park Royal Apartments,<br />
+                    GH-80, Sector -56,<br />
                     Gurugram, Haryana, India ,
                     <div>
                       <h4 className="font-semibold text-white">PIN Code : 122011</h4>

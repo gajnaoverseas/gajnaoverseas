@@ -155,7 +155,7 @@ export default function RobustaPage() {
                         ))}
                       </div>
                       <div className="mt-4 flex items-center justify-between">
-                        <span className="text-sm font-medium text-red-600">View Details</span>
+                        <span className="text-sm font-medium text-red-600">View Specifications</span>
                         <svg className="w-4 h-4 text-red-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
