@@ -155,7 +155,7 @@ export default function WhyChooseUs() {
               <span className="w-20 h-20 rounded-full text-2xl text-coffee-white inline-block bg-cover bg-center bg-no-repeat relative bg-[url('/coffee-beans/tri.webp')]">
                 <p className="mt-[20px] ml-5 font-bold text-[#445138] text-center">4</p>
               </span>
-              <span className="mr-10 align-middle">Documentation of Green Coffee Export</span>
+              <span className="mr-10 align-middle text-center">Documentation of Green Coffee Export</span>
             </span> 
           </p>
 

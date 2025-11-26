@@ -388,17 +388,7 @@ export default function ContactPage() {
             </span>
           </Link>
 
-          <Link
-            href="/sms"
-            className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
-          >
-            <div className="w-14 h-14 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-full flex items-center justify-center mb-3 group-hover:from-indigo-200 group-hover:to-indigo-300 transition-all duration-300">
-              <Smartphone className="w-7 h-7 text-[#6F4E37]" />
-            </div>
-            <span className="text-base font-medium text-[#6F4E37] text-center">
-              SMS
-            </span>
-          </Link>
+
 
           {/* <Link
             href="/trade-enquiry"
@@ -414,6 +404,19 @@ export default function ContactPage() {
             </span>
           </Link> */}
         </div>
+        <div className="mt-6">
+            <Link
+              href="/sms"
+              className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
+            >
+              <div className="w-14 h-14 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-full flex items-center justify-center mb-3 group-hover:from-indigo-200 group-hover:to-indigo-300 transition-all duration-300">
+                <Smartphone className="w-7 h-7 text-[#6F4E37]" />
+              </div>
+              <span className="text-base font-medium text-[#6F4E37] text-center">
+                SMS
+              </span>
+            </Link>
+          </div>
       </div>
 
       {/* Main Contact Section */}

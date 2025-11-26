@@ -150,7 +150,7 @@ export default function ProductsIndexPage({ searchParams }: { searchParams: { ca
   }
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white ">
       <section className="bg-[#F7F2EE] py-12 md:py-16 mt-40">
         <div className="max-w-6xl mx-auto px-4">
           <p className="text-sm text-black mb-2">
@@ -220,7 +220,7 @@ export default function ProductsIndexPage({ searchParams }: { searchParams: { ca
         </div>
       </section>
 
-      <section className="py-10">
+      <section className="py-10 ">
         <div className="max-w-6xl mx-auto px-4">
           {filteredProducts.length === 0 ? (
             <div className="text-center py-12">
