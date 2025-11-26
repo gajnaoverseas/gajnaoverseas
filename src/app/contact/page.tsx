@@ -303,9 +303,11 @@ export default function ContactPage() {
       </div>
 
       {/* Tablet Layout (sm to lg) - 2x3 Grid */}
-      <div className="hidden sm:block lg:hidden mt-80 px-16">
+      <div className="hidden sm:block lg:hidden mt-28 px-4 py-10">
         <div className="grid grid-cols-3 gap-4 max-w-4xl mx-auto">
-          {/* Row 1 */}
+          {/* Full-width title card on tablet */}
+
+          {/* Cards below the full-width title */}
           <Link
             href="/location"
             className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
@@ -318,12 +320,7 @@ export default function ContactPage() {
             </span>
           </Link>
 
-          <div className="bg-gradient-to-r from-green-700 to-green-800 rounded-xl shadow-lg p-6 flex flex-col items-center justify-center transform hover:scale-105 transition-all duration-300 h-40">
-            <h1 className="text-4xl font-bold text-white font-serif text-center leading-tight">
-              Contact Us
-            </h1>
-            <p className="text-green-100 mt-2 text-sm">Get in touch</p>
-          </div>
+
 
           <Link
             href="/phone"
@@ -337,7 +334,6 @@ export default function ContactPage() {
             </span>
           </Link>
 
-          {/* Row 2 */}
           <Link
             href="/email"
             className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
@@ -349,7 +345,12 @@ export default function ContactPage() {
               Email
             </span>
           </Link>
-
+          <div className="col-span-3 bg-gradient-to-r from-green-700 to-green-800 rounded-xl shadow-lg p-6 flex flex-col items-center justify-center transform hover:scale-105 transition-all duration-300 h-40">
+            <h1 className="text-4xl font-bold text-white font-serif text-center leading-tight">
+              Contact Us
+            </h1>
+            {/* <p className="text-green-100 mt-2 text-sm">Get in touch</p> */}
+          </div>
           <Link
             href="/video-conferencing"
             className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
@@ -399,7 +400,7 @@ export default function ContactPage() {
             </span>
           </Link>
 
-          <Link
+          {/* <Link
             href="/trade-enquiry"
             className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl border-2 border-amber-200 p-6 flex flex-col items-center justify-center h-40 hover:from-amber-100 hover:to-orange-100 transition-all duration-300 transform hover:scale-105 cursor-pointer"
           >
@@ -411,7 +412,7 @@ export default function ContactPage() {
             <span className="text-base font-medium text-amber-700 text-center">
               Trade Enquiry
             </span>
-          </Link>
+          </Link> */}
         </div>
       </div>
 
@@ -722,8 +723,8 @@ export default function ContactPage() {
                   <button
                     onClick={() => setOpenFaqIndex(isOpen ? null : index)}
                     className={`w-full px-6 py-4 text-left flex justify-between items-center transition-colors duration-300 ${isOpen
-                        ? "bg-coffee-brown text-white"
-                        : "bg-gray-50 text-gray-800 hover:bg-gray-100"
+                      ? "bg-coffee-brown text-white"
+                      : "bg-gray-50 text-gray-800 hover:bg-gray-100"
                       }`}
                   >
                     <span className="font-medium">{faq.question}</span>
