@@ -72,97 +72,79 @@ export default function AboutBanner() {
       <section className="pt-8 sm:pt-12 lg:pt-16 pb-2 sm:pb-2 lg:pb-16 mt-20 sm:mt-32 lg:mt-40 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Mobile Layout (sm and below) */}
-          <div className="block sm:hidden">
-            <div className="grid grid-cols-2 gap-3">
-              {/* Row 1 */}
-              <div className=" bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm text-center leading-tight text-[#562F23] font-medium">
-                {/* <Image 
-                  src="/registration/apeda.webp"
-                  alt="APEDA Registration"
-                  width={80}
-                  height={80}
-                  className="w-16 h-16 object-contain"
-                /> */}
+          <div className="block sm:hidden mt-12">
+           <div className="grid grid-cols-3 gap-4">
+              {/* Top Row */}
+              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex flex-col text-center items-center justify-center hover:shadow-lg transition-shadow duration-300">
+              
                 Company Mission 
+                <p className="text-white">Less</p>
               </div>
-              <div className=" bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm text-center leading-tight text-[#562F23] font-medium">
+              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 {/* <Image 
                   src="/registration/9.webp"
                   alt="Registration Certificate"
-                  width={80}
-                  height={80}
-                  className="w-16 h-16 object-contain"
+                  width={120}
+                  height={120}
+                  className="w-20 h-20 object-contain"
                 /> */}
                 Coffee Sourcing Expert
               </div>
-
-              {/* Row 2 */}
-              <div className=" bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm text-center leading-tight text-[#562F23] font-medium">
+              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 {/* <Image 
                   src="/registration/ccri.webp"
                   alt="CCRI Certificate"
-                  width={80}
-                  height={80}
-                  className="w-14 h-14 object-contain"
+                  width={120}
+                  height={120}
+                  className="w-18 h-18 object-contain"
                 /> */}
                 Coffee Logistics Expert
               </div>
-              <div className=" bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm text-center leading-tight text-[#562F23] font-medium">
+
+              {/* Middle Row - Title */}
+              <div className="col-span-3 bg-green-700 border-2 border-gray-300 rounded-lg p-8 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                <h1 className="text-3xl md:text-4xl font-bold text-white text-center font-serif">
+                  About Us
+                </h1>
+              </div>
+
+              {/* Bottom Row */}
+              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 {/* <Image 
                   src="/registration/ECGC.webp"
                   alt="ECGC Registration"
-                  width={80}
-                  height={80}
-                  className="w-16 h-16 object-contain"
+                  width={120}
+                  height={120}
+                  className="w-20 h-20 object-contain"
                 /> */}
                 Company Values
+                <p className="text-white">Less</p>
               </div>
-
-              {/* Row 3 */}
-              <div className="e bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm text-center leading-tight text-[#562F23] font-medium">
+              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 {/* <Image 
                   src="/registration/7.webp"
                   alt="Certificate"
-                  width={80}
-                  height={80}
-                  className="w-16 h-16 object-contain"
+                  width={120}
+                  height={120}
+                  className="w-20 h-20 object-contain"
                 /> */}
                 Know the team
               </div>
-              
-
-              {/* Row 4 - Bottom certificates in a single row */}
-              <div className=" bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm text-center leading-tight text-[#562F23] font-medium">
+              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 {/* <Image 
-                  src="/registration/1.webp"
-                  alt="Certificate 1"
-                  width={60}
-                  height={60}
-                  className="w-12 h-12 object-contain"
-                /> */}
-                {/* <Image 
-                  src="/registration/4.webp"
-                  alt="Certificate 4"
-                  width={60}
-                  height={60}
-                  className="w-12 h-12 object-contain"
-                />
-                <Image 
-                  src="/registration/3.webp"
-                  alt="Certificate 3"
-                  width={60}
-                  height={60}
-                  className="w-10 h-12 object-contain"
-                />
-                <Image 
-                  src="/registration/10.webp"
-                  alt="Certificate 2"
-                  width={1200}
-                  height={100}
-                  className="w-[6vw] h-[7vw] object-contain rounded-2xl"
+                  src="/registration/6.webp"
+                  alt="Registration Document"
+                  width={120}
+                  height={120}
+                  className="w-20 h-20 object-contain"
                 /> */}
                 Know the company founder
               </div>
+
+              {/* Bottom certificates row (hidden until assets are used) */}
+              {/* <div className="col-span-3 bg-white border-2 border-gray-300 rounded-lg p-2 flex justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
+                ...images here when available...
+              </div> */}
             </div>
           </div>
 

@@ -187,109 +187,110 @@ export default function RegistrationCertification() {
       {/* Responsive Registrations & Certificates Layout */}
       <section className="py-8 sm:py-12 lg:py-16 mt-20 sm:mt-32 lg:mt-40 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Mobile Layout (sm and below) */}
-          <div className="block sm:hidden">
-            <div className="grid grid-cols-2 gap-3">
-              {/* Row 1 */}
-              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+          {/* Mobile Layout (sm and below) — mirror Tablet Layout */}
+          <div className="block sm:hidden mt-10">
+            <div className="grid grid-cols-3 gap-4">
+              {/* Top Row */}
+              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/apeda.webp"
                   alt="APEDA Registration"
-                  width={80}
-                  height={80}
-                  className="w-16 h-16 object-contain"
+                  width={120}
+                  height={120}
+                  className="w-36 h-20 object-contain"
                 />
               </div>
-              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/9.webp"
                   alt="Registration Certificate"
-                  width={80}
-                  height={80}
-                  className="w-16 h-16 object-contain"
-                />
-              </div>
-
-              {/* Row 2 */}
-              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
-                <Image
-                  src="/registration/ccri.webp"
-                  alt="CCRI Certificate"
-                  width={80}
-                  height={80}
+                  width={120}
+                  height={120}
                   className="w-20 h-20 object-contain"
                 />
               </div>
-              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                <Image
+                  src="/registration/ccri.webp"
+                  alt="CCRI Certificate"
+                  width={120}
+                  height={120}
+                  className="w-20 h-20 object-contain"
+                />
+              </div>
+
+              {/* Middle Row - Title */}
+              <div className="col-span-3 bg-green-700 border-2 border-gray-300 rounded-lg p-8 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+                <h1 className="text-2xl md:text-4xl font-bold text-white text-center font-serif">
+                  Registrations & Certificates
+                </h1>
+              </div>
+
+              {/* Bottom Row */}
+              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/ECGC.webp"
                   alt="ECGC Registration"
-                  width={80}
-                  height={80}
-                  className="w-16 h-16 object-contain"
+                  width={120}
+                  height={120}
+                  className="w-20 h-20 object-contain"
                 />
               </div>
-
-              {/* Row 3 */}
-              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/7.webp"
                   alt="Certificate"
-                  width={80}
-                  height={80}
-                  className="w-16 h-16 object-contain"
+                  width={120}
+                  height={120}
+                  className="w-20 h-20 object-contain"
                 />
               </div>
-              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+              <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/6.webp"
                   alt="Registration Document"
-                  width={80}
-                  height={80}
-                  className="w-16 h-16 object-contain"
+                  width={120}
+                  height={120}
+                  className="w-36 h-20 object-contain"
                 />
               </div>
 
-              {/* Row 4 - Mobile-friendly two-column grid (logos + text) */}
-              <div className="col-span-2 bg-white border-2 border-gray-300 rounded-lg p-3 grid grid-cols-2 items-center gap-3 hover:shadow-lg transition-shadow duration-300">
-                {/* Left: three logos evenly spaced */}
-                <div className="flex items-center justify-between px-2">
-                  <Image
-                    src="/registration/1.webp"
-                    alt="Certificate 1"
-                    width={60}
-                    height={60}
-                    className="w-10 h-10 object-contain"
-                  />
-                  <Image
-                    src="/registration/4.webp"
-                    alt="Certificate 4"
-                    width={60}
-                    height={60}
-                    className="w-10 h-10 object-contain"
-                  />
-                  <Image
-                    src="/registration/3.webp"
-                    alt="Certificate 3"
-                    width={60}
-                    height={60}
-                    className="w-9 h-10 object-contain"
-                  />
-                  
-                </div>
-                {/* Right: seal + compact multi-line text */}
-                <div className="flex items-center justify-center gap-2">
-                  <Image
-                    src="/registration/10.webp"
-                    alt="Certificate 2"
-                    width={60}
-                    height={60}
-                    className="w-10 h-10 object-contain rounded-2xl"
-                  />
-                  <p className="text-xs text-black leading-snug">
-                    Directorate of Plant Protection, Quarantine & Storage
-                  </p>
-                </div>
+              {/* Bottom certificates row */}
+              <div className="col-span-1 bg-white border-2 border-gray-300 rounded-lg p-2 flex flex-col justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
+                <Image
+                  src="/registration/1.webp"
+                  alt="Certificate 1"
+                  width={100}
+                  height={100}
+                  className="w-24 h-24 object-contain"
+                />
+              </div>
+              <div className="col-span-1 bg-white border-2 border-gray-300 rounded-lg p-2 flex flex-col justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
+                <Image
+                  src="/registration/4.webp"
+                  alt="Certificate 4"
+                  width={100}
+                  height={100}
+                  className="w-36 h-36 object-contain"
+                />
+              </div>
+              <div className="col-span-1 bg-white border-2 border-gray-300 rounded-lg p-2 flex flex-col justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
+                <Image
+                  src="/registration/3.webp"
+                  alt="Certificate 3"
+                  width={100}
+                  height={100}
+                  className="w-36 h-36 object-contain"
+                />
+              </div>
+              <div className="col-span-3 bg-white border-2 border-gray-300 rounded-lg p-2 flex flex-col justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
+                <Image
+                  src="/registration/directorate.webp"
+                  alt="Certificate 2"
+                  width={1200}
+                  height={100}
+                  className="w-44 h-36 object-contain rounded-2xl"
+                />
               </div>
             </div>
           </div>
@@ -363,40 +364,41 @@ export default function RegistrationCertification() {
               </div>
 
               {/* Bottom certificates row */}
-              <div className="col-span-3 bg-white border-2 border-gray-300 rounded-lg p-2 flex justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
+              <div className="col-span-1 bg-white border-2 border-gray-300 rounded-lg p-2 flex flex-col justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/1.webp"
                   alt="Certificate 1"
                   width={100}
                   height={100}
-                  className="w-16 h-16 object-contain"
+                  className="w-24 h-24 object-contain"
                 />
+              </div>
+              <div className="col-span-1 bg-white border-2 border-gray-300 rounded-lg p-2 flex flex-col justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/4.webp"
                   alt="Certificate 4"
                   width={100}
                   height={100}
-                  className="w-16 h-16 object-contain"
+                  className="w-36 h-36 object-contain"
                 />
+              </div>
+              <div className="col-span-1 bg-white border-2 border-gray-300 rounded-lg p-2 flex flex-col justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/3.webp"
                   alt="Certificate 3"
                   width={100}
                   height={100}
-                  className="w-14 h-16 object-contain"
+                  className="w-36 h-36 object-contain"
                 />
-                <div>
-                  <Image
-                    src="/registration/directorate.webp"
-                    alt="Certificate 2"
-                    width={1200}
-                    height={100}
-                    className="w-[65vw] h-[10vh] object-contain rounded-2xl"
-                  />
-                  {/* <p className="text-center text-xs text-black">
-                    Directorate of Plant Protection, Quarantine & Storage
-                  </p> */}
-                </div>
+              </div>
+              <div className="col-span-3 bg-white border-2 border-gray-300 rounded-lg p-2 flex flex-col justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
+                <Image
+                  src="/registration/directorate.webp"
+                  alt="Certificate 2"
+                  width={1200}
+                  height={100}
+                  className="w-44 h-36 object-contain rounded-2xl"
+                />
               </div>
             </div>
           </div>
