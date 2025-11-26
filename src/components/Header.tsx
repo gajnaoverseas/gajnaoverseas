@@ -50,6 +50,10 @@ export default function Header() {
   useEffect(() => {
     setMobileMenuOpen(false);
     setMobileMegaMenuOpen(false);
+    // Also ensure all header overlays/modals are closed on navigation
+    setMegaMenuOpen(false);
+    setQuickEnquiryOpen(false);
+    setSupplierModalOpen(false);
   }, [pathname]);
 
   return (

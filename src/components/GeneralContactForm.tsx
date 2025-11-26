@@ -280,7 +280,7 @@ export default function GeneralContactForm({
 
   return (
     <div className=''>
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-3xl mx-auto ">
+    <form onSubmit={handleSubmit} className="space-y-6 max-w-3xl w-full mx-auto">
       {/* First Name and Last Name (side by side) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
         <div>
@@ -359,6 +359,8 @@ export default function GeneralContactForm({
           style={{
             '--PhoneInputCountryFlag-height': '1em',
             '--PhoneInput-color--focus': '#2563eb',
+            maxWidth: '100%',
+            overflow: 'hidden',
           } as React.CSSProperties}
         />
         {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
@@ -478,6 +480,7 @@ export default function GeneralContactForm({
         <ReCAPTCHA
           ref={recaptchaRef}
           sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+          size="compact"
           onChange={(value) => {
             setCaptchaValue(value);
             setCaptchaError(null);

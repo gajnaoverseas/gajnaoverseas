@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { getCountries, getCountryCallingCode } from 'react-phone-number-input/input';
 import type { CountryCode } from 'libphonenumber-js';
 import en from 'react-phone-number-input/locale/en.json';
@@ -26,7 +26,8 @@ export const SearchableCountrySelect: React.FC<SearchableCountrySelectProps> = (
   const dropdownRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const countries = getCountries();
+  // Memoize static data to avoid new references on each render
+  const countries = useMemo(() => getCountries(), []);
   const labels = en as Record<CountryCode, string>;
 
   // Filter countries based on search term
@@ -45,7 +46,8 @@ export const SearchableCountrySelect: React.FC<SearchableCountrySelectProps> = (
     } else {
       setFilteredCountries(countries);
     }
-  }, [searchTerm, countries, labels]);
+  // Only depend on searchTerm and the memoized countries list
+  }, [searchTerm, countries]);
 
   // Close dropdown when clicking outside
   useEffect(() => {

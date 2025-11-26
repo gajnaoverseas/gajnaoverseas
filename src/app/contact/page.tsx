@@ -105,9 +105,9 @@ export default function ContactPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-orange-50">
+    <main className="min-h-screen overflow-x-hidden bg-gradient-to-br from-amber-50 via-white to-orange-50">
       {/* Clean Contact Us Layout */}
-      <section className="py-16 mt-40 bg-white lg:block hidden">
+      <section className="py-16 mt-40 bg-white lg:block hidden ">
         <main className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-center items-center ">
           {/* column 1 */}
           <div className="flex flex-col ">
@@ -202,102 +202,82 @@ export default function ContactPage() {
         </main>
       </section>
 
-      {/* Mobile Layout (sm and below) - Single Column Grid */}
-      <div className="block sm:hidden mt-20">
-        <div className="grid grid-cols-1 gap-4">
-          {/* Contact Us Title Card - Mobile */}
-          <div className="bg-gradient-to-r from-green-700 to-green-800 rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-all duration-300">
-            <h1 className="text-3xl font-bold text-white font-serif">
-              Contact Us
-            </h1>
-            <p className="text-green-100 mt-2 text-sm">Get in touch with us</p>
+      {/* Mobile Layout (sm and below) - 3-column grid mirroring tablet */}
+      <div className="block sm:hidden mt-36 px-4 py-6">
+        <div className="grid grid-cols-3 gap-4 w-full max-w-md mx-auto">
+          {/* Row 1 */}
+          <Link
+            href="/location"
+            className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-32"
+          >
+            <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center mb-2 group-hover:from-green-200 group-hover:to-green-300 transition-all duration-300">
+              <MapPin className="w-6 h-6 text-[#6F4E37]" />
+            </div>
+            <span className="text-sm font-medium text-[#6F4E37] text-center">Location</span>
+          </Link>
+          <Link
+            href="/phone"
+            className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-32"
+          >
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mb-2 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
+              <Phone className="w-6 h-6 text-[#6F4E37]" />
+            </div>
+            <span className="text-sm font-medium text-[#6F4E37] text-center">Phone</span>
+          </Link>
+          <Link
+            href="/email"
+            className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-32"
+          >
+            <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full flex items-center justify-center mb-2 group-hover:from-purple-200 group-hover:to-purple-300 transition-all duration-300">
+              <Mail className="w-6 h-6 text-[#6F4E37]" />
+            </div>
+            <span className="text-sm font-medium text-[#6F4E37] text-center">Email</span>
+          </Link>
+
+          {/* Full-width title card */}
+          <div className="col-span-3 bg-gradient-to-r from-green-700 to-green-800 rounded-xl shadow-lg p-4 flex flex-col items-center justify-center transform hover:scale-105 transition-all duration-300 h-32 w-full">
+            <h1 className="text-2xl font-bold text-white font-serif text-center leading-tight">Contact Us</h1>
           </div>
 
-          {/* Contact Methods - Mobile */}
-          <div className="grid grid-cols-2 gap-3">
-            <Link
-              href="/location"
-              className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-lg hover:border-green-300 transition-all duration-300 group"
-            >
-              <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center mb-3 group-hover:from-green-200 group-hover:to-green-300 transition-all duration-300">
-                <MapPin className="w-6 h-6 text-[#6F4E37]" />
-              </div>
-              <span className="text-sm font-medium text-[#6F4E37] text-center">
-                Location
-              </span>
-            </Link>
-
-            <Link
-              href="/phone"
-              className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-lg hover:border-green-300 transition-all duration-300 group"
-            >
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mb-3 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
-                <Phone className="w-6 h-6 text-[#6F4E37]" />
-              </div>
-              <span className="text-sm font-medium text-[#6F4E37] text-center">
-                Phone
-              </span>
-            </Link>
-
-            <Link
-              href="/email"
-              className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-lg hover:border-green-300 transition-all duration-300 group"
-            >
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full flex items-center justify-center mb-3 group-hover:from-purple-200 group-hover:to-purple-300 transition-all duration-300">
-                <Mail className="w-6 h-6 text-[#6F4E37]" />
-              </div>
-              <span className="text-sm font-medium text-[#6F4E37] text-center">
-                Email
-              </span>
-            </Link>
-
-            <Link
-              href="/whatsapp"
-              className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-lg hover:border-green-300 transition-all duration-300 group"
-            >
-              <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center mb-3 group-hover:from-green-200 group-hover:to-green-300 transition-all duration-300">
-                <BsWhatsapp className="w-6 h-6 text-[#6F4E37]" />
-              </div>
-              <span className="text-sm font-medium text-[#6F4E37] text-center">
-                WhatsApp
-              </span>
-            </Link>
-
-            <Link
-              href="/enquiry"
-              className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-lg hover:border-green-300 transition-all duration-300 group"
-            >
-              <div className="w-12 h-12 bg-gradient-to-br from-orange-100 to-orange-200 rounded-full flex items-center justify-center mb-3 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
-                <MessageCircle className="w-6 h-6 text-[#6F4E37]" />
-              </div>
-              <span className="text-sm font-medium text-[#6F4E37] text-center">
-                Enquiry
-              </span>
-            </Link>
-
-            <Link
-              href="/sms"
-              className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-lg hover:border-green-300 transition-all duration-300 group"
-            >
-              <div className="w-12 h-12 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-full flex items-center justify-center mb-3 group-hover:from-indigo-200 group-hover:to-indigo-300 transition-all duration-300">
-                <Smartphone className="w-6 h-6 text-[#6F4E37]" />
-              </div>
-              <span className="text-sm font-medium text-[#6F4E37] text-center">
-                SMS
-              </span>
-            </Link>
-          </div>
-
+          {/* Row 2 */}
           <Link
             href="/video-conferencing"
-            className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-lg hover:border-green-300 transition-all duration-300 group"
+            className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-32"
           >
-            <div className="w-16 h-16 bg-gradient-to-br from-red-100 to-red-200 rounded-full flex items-center justify-center mb-4 group-hover:from-red-200 group-hover:to-red-300 transition-all duration-300">
-              <Video className="w-8 h-8 text-[#6F4E37]" />
+            <div className="w-12 h-12 bg-gradient-to-br from-red-100 to-red-200 rounded-full flex items-center justify-center mb-2 group-hover:from-red-200 group-hover:to-red-300 transition-all duration-300">
+              <Video className="w-6 h-6 text-[#6F4E37]" />
             </div>
-            <span className="text-base font-medium text-[#6F4E37] text-center">
-              Video Conferencing
-            </span>
+            <span className="text-sm font-medium text-[#6F4E37] text-center">Video Call</span>
+          </Link>
+          <Link
+            href="/whatsapp"
+            className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-32"
+          >
+            <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center mb-2 group-hover:from-green-200 group-hover:to-green-300 transition-all duration-300">
+              <BsWhatsapp className="w-6 h-6 text-[#6F4E37]" />
+            </div>
+            <span className="text-sm font-medium text-[#6F4E37] text-center">WhatsApp</span>
+          </Link>
+          <Link
+            href="/enquiry"
+            className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-32"
+          >
+            <div className="w-12 h-12 bg-gradient-to-br from-orange-100 to-orange-200 rounded-full flex items-center justify-center mb-2 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
+              <MessageCircle className="w-6 h-6 text-[#6F4E37]" />
+            </div>
+            <span className="text-sm font-medium text-[#6F4E37] text-center">Enquiry Form</span>
+          </Link>
+        </div>
+        {/* SMS card below the grid to match tablet layout structure */}
+        <div className="mt-6 w-full max-w-md mx-auto">
+          <Link
+            href="/sms"
+            className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-32"
+          >
+            <div className="w-12 h-12 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-full flex items-center justify-center mb-2 group-hover:from-indigo-200 group-hover:to-indigo-300 transition-all duration-300">
+              <Smartphone className="w-6 h-6 text-[#6F4E37]" />
+            </div>
+            <span className="text-sm font-medium text-[#6F4E37] text-center">SMS</span>
           </Link>
         </div>
       </div>
@@ -424,7 +404,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4">
 
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Left Side - Contact Details */}
             <motion.div
               className="space-y-8"
@@ -439,68 +419,68 @@ export default function ContactPage() {
 
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-coffee-brown rounded-lg flex items-center justify-center">
-                      <Building2 className="w-6 h-6 text-white" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-coffee-brown rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Building2 className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <h4 className="font-semibold text-gray-800">
                         Company Name
                       </h4>
-                      <p className="text-gray-600">Gajna Overseas Private Limited</p>
+                      <p className="text-gray-600 break-words">Gajna Overseas Private Limited</p>
                     </div>
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-coffee-brown rounded-lg flex items-center justify-center">
-                      <MapPin className="w-6 h-6 text-white" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-coffee-brown rounded-lg flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <h4 className="font-semibold text-gray-800">
                         Registered Address
                       </h4>
-                      <p className="text-gray-600">
+                      <p className="text-gray-600 break-words">
                         505, Park Royal Apartments, GH-80, Sector-56, Gurugram,
                         Haryana, India
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-coffee-brown rounded-lg flex items-center justify-center">
-                      <Map className="w-6 h-6 text-white" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-coffee-brown rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Map className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <h4 className="font-semibold text-gray-800">PIN Code</h4>
-                      <p className="text-gray-600">122011.</p>
+                      <p className="text-gray-600 break-words">122011.</p>
                     </div>
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-coffee-brown rounded-lg flex items-center justify-center">
-                      <Mail className="w-6 h-6 text-white" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-coffee-brown rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <h4 className="font-semibold text-gray-800">Email</h4>
-                      <p className="text-gray-600">priyavirat@zohomail.in</p>
+                      <p className="text-gray-600 break-words">priyavirat@zohomail.in</p>
                     </div>
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-coffee-brown rounded-lg flex items-center justify-center">
-                      <Phone className="w-6 h-6 text-white" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-coffee-brown rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <h4 className="font-semibold text-gray-800">Mobile No</h4>
-                      <p className="text-gray-600">+91 9811789665</p>
+                      <p className="text-gray-600 break-words">+91 9811789665</p>
                     </div>
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-coffee-brown rounded-lg flex items-center justify-center">
-                      <Globe className="w-6 h-6 text-white" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-coffee-brown rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Globe className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <h4 className="font-semibold text-gray-800">Website</h4>
-                      <p className="text-gray-600">www.gajnaoverseas.com</p>
+                      <p className="text-gray-600 break-words">www.gajnaoverseas.com</p>
                     </div>
                   </div>
                 </div>
