@@ -171,7 +171,7 @@ export default function SearchCoffeeGradesPage({ searchParams }: { searchParams:
 
   return (
     <main className="min-h-screen bg-white  ">
-      <section className="bg-[#F7F2EE] py-12 md:py-16 mt-40 ">
+      <section className="bg-[#F7F2EE] py-12 md:py-16 md:mt-40 mt-28">
         <div className="max-w-6xl mx-auto px-4">
           <p className="text-sm text-black mb-2">
             <Link href="/" className="hover:underline">Home</Link> › 

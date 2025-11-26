@@ -194,10 +194,10 @@ export default function Header() {
 
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="absolute top-full left-0 bg-coffee-brown z-40 w-80 shadow-lg">
+          <div className="absolute top-full left-0 bg-coffee-brown z-40 w-80 shadow-lg ">
             <div className="p-6">
               {/* Language switcher (mobile) */}
-              <div className="mb-4 bg-white rounded-lg p-3">
+              <div className="mb-4 ">
                 <LanguageSwitcher />
               </div>
               {/* Search Coffee Grades (mobile) */}
@@ -261,12 +261,13 @@ export default function Header() {
               >
                 Contact Us
               </Link>
-              <button
+              <Link
+                href="/coffee-suppliers"
                 onClick={() => setSupplierModalOpen(true)}
                 className="block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 w-full text-left"
               >
                 Become a Supplier with us
-              </button>
+              </Link>
               <button
                 onClick={() => {
                   setQuickEnquiryOpen(true);

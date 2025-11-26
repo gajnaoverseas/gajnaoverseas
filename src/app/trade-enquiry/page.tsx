@@ -627,7 +627,7 @@ const TradeEnquiryPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-8 px-4 sm:px-6 lg:px-8 mt-40">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-8 px-4 sm:px-6 lg:px-8 lg:mt-40 mt-24">
       <div className="max-w-4xl mx-auto mt-8">
         {/* Header */}
         <div className="mb-8">
