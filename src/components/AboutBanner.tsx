@@ -68,14 +68,14 @@ export default function AboutBanner() {
 
   return (
     <section ref={sectionRef} className="bg-gray-50 ">
-            {/* Responsive Registration & Certification Layout */}
+      {/* Responsive Registration & Certification Layout */}
       <section className="py-8 sm:py-12 lg:py-16 mt-20 sm:mt-32 lg:mt-40 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Mobile Layout (sm and below) */}
           <div className="block sm:hidden">
             <div className="grid grid-cols-2 gap-3">
               {/* Row 1 */}
-              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm">
                 {/* <Image 
                   src="/registration/apeda.webp"
                   alt="APEDA Registration"
@@ -83,9 +83,9 @@ export default function AboutBanner() {
                   height={80}
                   className="w-16 h-16 object-contain"
                 /> */}
-                Know the company founder 
+                Company Mission
               </div>
-              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm">
                 {/* <Image 
                   src="/registration/9.webp"
                   alt="Registration Certificate"
@@ -93,11 +93,11 @@ export default function AboutBanner() {
                   height={80}
                   className="w-16 h-16 object-contain"
                 /> */}
-                , Company Vision 
+                Coffee Sourcing Expert
               </div>
-              
+
               {/* Row 2 */}
-              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm">
                 {/* <Image 
                   src="/registration/ccri.webp"
                   alt="CCRI Certificate"
@@ -105,9 +105,9 @@ export default function AboutBanner() {
                   height={80}
                   className="w-14 h-14 object-contain"
                 /> */}
-                 Company Mission 
+                Coffee Logistics Expert
               </div>
-              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm">
                 {/* <Image 
                   src="/registration/ECGC.webp"
                   alt="ECGC Registration"
@@ -115,12 +115,13 @@ export default function AboutBanner() {
                   height={80}
                   className="w-16 h-16 object-contain"
                 /> */}
-                 Company
-Values
+                Company Vision
+                Company
+                Values
               </div>
-              
+
               {/* Row 3 */}
-              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm">
                 {/* <Image 
                   src="/registration/7.webp"
                   alt="Certificate"
@@ -128,8 +129,9 @@ Values
                   height={80}
                   className="w-16 h-16 object-contain"
                 /> */}
+                Know the team
               </div>
-              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
+              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300 text-sm">
                 {/* <Image 
                   src="/registration/6.webp"
                   alt="Registration Document"
@@ -137,10 +139,11 @@ Values
                   height={80}
                   className="w-16 h-16 object-contain"
                 /> */}
+                Company Vision
               </div>
-              
+
               {/* Row 4 - Bottom certificates in a single row */}
-              <div className="col-span-2 bg-white border-2 border-gray-300 rounded-lg p-4 flex justify-center items-center gap-6 hover:shadow-lg transition-shadow duration-300">
+              <div className="aspect-square bg-white border-2 border-gray-300 rounded-lg p-4 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 {/* <Image 
                   src="/registration/1.webp"
                   alt="Certificate 1"
@@ -169,6 +172,7 @@ Values
                   height={100}
                   className="w-[6vw] h-[7vw] object-contain rounded-2xl"
                 /> */}
+                Know the company founder
               </div>
             </div>
           </div>
@@ -185,6 +189,7 @@ Values
                   height={120}
                   className="w-20 h-20 object-contain"
                 /> */}
+                Company Mission
               </div>
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 {/* <Image 
@@ -194,6 +199,7 @@ Values
                   height={120}
                   className="w-20 h-20 object-contain"
                 /> */}
+                Coffee Sourcing Expert
               </div>
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 {/* <Image 
@@ -203,15 +209,16 @@ Values
                   height={120}
                   className="w-18 h-18 object-contain"
                 /> */}
+                Coffee Logistics Expert
               </div>
-              
+
               {/* Middle Row - Title */}
               <div className="col-span-3 bg-green-700 border-2 border-gray-300 rounded-lg p-8 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 <h1 className="text-3xl md:text-4xl font-bold text-white text-center font-serif">
                   About Us
                 </h1>
               </div>
-              
+
               {/* Bottom Row */}
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 {/* <Image 
@@ -221,6 +228,7 @@ Values
                   height={120}
                   className="w-20 h-20 object-contain"
                 /> */}
+                Company Values
               </div>
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 {/* <Image 
@@ -230,6 +238,7 @@ Values
                   height={120}
                   className="w-20 h-20 object-contain"
                 /> */}
+                Know the team
               </div>
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 {/* <Image 
@@ -239,8 +248,9 @@ Values
                   height={120}
                   className="w-20 h-20 object-contain"
                 /> */}
+                Know the company founder
               </div>
-              
+
               {/* Bottom certificates row */}
               <div className="col-span-3 bg-white border-2 border-gray-300 rounded-lg p-2 flex justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
                 {/* <Image 
@@ -287,7 +297,7 @@ Values
                   height={100}
                   className="w-[8vw] h-[8vw] object-contain"
                 /> */}
-                 Company Mission
+                Company Mission
               </div>
               <div className="w-[15vw] h-[30vh] p-6 text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
                 {/* <Image 
@@ -297,7 +307,7 @@ Values
                   height={100}
                   className="w-[8vw] h-[8vw] object-contain"
                 /> */}
-                 Company Vision 
+                Company Vision
               </div>
             </div>
 
@@ -312,7 +322,7 @@ Values
                     height={100}
                     className="w-[8vw] h-[8vw] object-contain"
                   /> */}
-               Coffee Sourcing Expert
+                  Coffee Sourcing Expert
                 </div>
                 <div className="p-6 h-[20vh] w-[20vw] text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
                   {/* <Image 
@@ -361,8 +371,8 @@ Values
                   height={100}
                   className="w-[6vw] h-[7vw] object-contain rounded-2xl"
                 /> */}
-                Know the company founder 
-                
+                Know the company founder
+
               </div>
             </div>
 
@@ -376,8 +386,8 @@ Values
                   height={100}
                   className="w-[8vw] h-[8vw] object-contain"
                 /> */}
-                  Company
-Values
+                Company
+                Values
               </div>
               <div className="w-[15vw] h-[30vh] p-6 text-coffee-brown font-bold bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
                 {/* <Image 
@@ -400,7 +410,7 @@ Values
 
         {/* Main Content */}
         <div ref={contentRef} className=" gap-12 mb-16">
-        
+
           {/* <div className="space-y-8">
             <div>
               <h2 className="text-3xl md:text-4xl text-center  font-bold text-coffee-brown mb-6">

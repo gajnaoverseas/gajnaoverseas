@@ -5,8 +5,6 @@ import AboutBanner from "@/components/AboutBanner";
 import { FaLinkedin } from "react-icons/fa6";
 import Link from "next/link";
 
-
-
 export default function AboutUs() {
 
 
