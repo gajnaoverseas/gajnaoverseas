@@ -253,13 +253,13 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
   // ✅ Mobile version
   if (isMobile) {
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 z-[9998] ">
+      <div className="fixed left-0 right-0 top-16  bottom-0 bg-black bg-opacity-40 z-[9998] md:hidden">
         <div
           ref={menuRef}
-          className="absolute top-0 left-0 w-full bg-white shadow-lg max-h-screen overflow-y-auto border-t-2 border-[#562F23]"
+          className="fixed left-0 right-0 top-16  bottom-0 w-full bg-white shadow-lg overflow-y-auto "
         >
           
-          <div className="p-4">
+          <div className="p-4 mt-6">
             {/* Header */}
             <div className="bg-gradient-to-r from-[#7D4B3C] to-[#61714D] text-white p-3 mb-4 rounded-lg flex items-center justify-center">
               <Image
