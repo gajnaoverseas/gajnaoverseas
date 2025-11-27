@@ -45,6 +45,9 @@ const TradeEnquiryModal: React.FC<TradeEnquiryModalProps> = ({ isOpen, onClose }
   const [captchaError, setCaptchaError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string[]>>({});
   const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const captchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "";
+  const isLocalhost = typeof window !== 'undefined' && /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
+  const captchaEnabled = Boolean(captchaSiteKey) && !isLocalhost;
   const [formData, setFormData] = useState<FormData>({
     // Company Details
     companyName: '',
@@ -90,8 +93,8 @@ const TradeEnquiryModal: React.FC<TradeEnquiryModalProps> = ({ isOpen, onClose }
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validate reCAPTCHA
-    if (!captchaValue) {
+    // Validate reCAPTCHA (only when enabled)
+    if (captchaEnabled && !captchaValue) {
       setCaptchaError('Please complete the reCAPTCHA verification');
       return;
     }
@@ -571,26 +574,28 @@ const TradeEnquiryModal: React.FC<TradeEnquiryModalProps> = ({ isOpen, onClose }
                   </div>
                 </div>
 
-                {/* reCAPTCHA */}
-                <div className="flex flex-col items-center mt-8">
-                  <ReCAPTCHA
-                    ref={recaptchaRef}
-                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
-                    onChange={(value) => {
-                      setCaptchaValue(value);
-                      setCaptchaError(null);
-                    }}
-                    onExpired={() => {
-                      setCaptchaValue(null);
-                      setCaptchaError("CAPTCHA has expired, please verify again");
-                    }}
-                    onErrored={() => {
-                      setCaptchaError("Error loading CAPTCHA, please refresh the page");
-                    }}
-                  />
-                  {captchaError && <p className="mt-2 text-sm text-red-600">{captchaError}</p>}
-                  <p className="text-xs text-gray-500 mt-2">This site is protected by reCAPTCHA.</p>
-                </div>
+                {/* reCAPTCHA (only when configured) */}
+                {captchaEnabled && (
+                  <div className="flex flex-col items-center mt-8">
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey={captchaSiteKey}
+                      onChange={(value) => {
+                        setCaptchaValue(value);
+                        setCaptchaError(null);
+                      }}
+                      onExpired={() => {
+                        setCaptchaValue(null);
+                        setCaptchaError("CAPTCHA has expired, please verify again");
+                      }}
+                      onErrored={() => {
+                        setCaptchaError("Error loading CAPTCHA, please refresh the page");
+                      }}
+                    />
+                    {captchaError && <p className="mt-2 text-sm text-red-600">{captchaError}</p>}
+                    <p className="text-xs text-gray-500 mt-2">This site is protected by reCAPTCHA.</p>
+                  </div>
+                )}
               </div>
             )}
           </form>

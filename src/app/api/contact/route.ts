@@ -21,16 +21,21 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: false, error: "Invalid JSON" }, { status: 400 });
   }
   
-  // Verify reCAPTCHA
+  // Verify reCAPTCHA (skip on localhost when secret is present but local dev)
   const captchaToken = body.captchaToken;
-  if (!captchaToken) {
-    return NextResponse.json({ success: false, error: "reCAPTCHA verification failed" }, { status: 400 });
-  }
+  const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+  const host = req.headers.get('host') || '';
+  const isLocalhost = /^(localhost|127\.0\.0\.1)(:\d+)?$/i.test(host);
+  const captchaEnabled = Boolean(recaptchaSecret) && !isLocalhost;
+  if (captchaEnabled) {
+    if (!captchaToken) {
+      return NextResponse.json({ success: false, error: "reCAPTCHA verification failed" }, { status: 400 });
+    }
   
   try {
     // Verify the captcha token with Google's reCAPTCHA API
     const recaptchaResponse = await fetch(
-      `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captchaToken}`,
+      `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecret}&response=${captchaToken}`,
       { method: "POST" }
     );
     
@@ -49,6 +54,8 @@ export async function POST(req: NextRequest) {
       { success: false, error: "reCAPTCHA verification error" },
       { status: 500 }
     );
+  }
+    log("reCAPTCHA disabled for local testing or missing secret; skipping verification", { host });
   }
 
   // Validate against schema
@@ -113,8 +120,9 @@ export async function POST(req: NextRequest) {
   const fullName = data.name || (data.firstName && data.lastName ? `${data.firstName} ${data.lastName}` : '');
   // Phone is already formatted with country code from PhoneInput component
   const formattedPhone = data.phone;
+  const subject = data.subject || "General Enquiry";
 
-  const plainText = `New contact form submission\n\nName: ${fullName}\nEmail: ${data.email}\nPhone: ${formattedPhone}\nCountry: ${data.country}\nPostal Code: ${data.postalCode}\nLinkedIn: ${data.linkedin}\nSubject: ${data.subject}\nMessage: ${data.message}${data.product ? `\n\nProduct Enquiry:\nProduct: ${data.product}` : ''}${data.grade ? `\nGrade: ${data.grade}` : ''}${data.quantity ? `\nQuantity: ${data.quantity} MT` : ''}\nConsent: ${data.consent ? "Yes" : "No"}`;
+  const plainText = `New contact form submission\n\nName: ${fullName}\nEmail: ${data.email}\nPhone: ${formattedPhone}\nCountry: ${data.country}\nPostal Code: ${data.postalCode}\nLinkedIn: ${data.linkedin}\nSubject: ${subject}\nMessage: ${data.message}${data.product ? `\n\nProduct Enquiry:\nProduct: ${data.product}` : ''}${data.grade ? `\nGrade: ${data.grade}` : ''}${data.quantity ? `\nQuantity: ${data.quantity} MT` : ''}\nConsent: ${data.consent ? "Yes" : "No"}`;
 
   const adminHtml = `
     ${baseStyles}

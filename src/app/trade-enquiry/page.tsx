@@ -78,10 +78,14 @@ const TradeEnquiryPage: React.FC = () => {
     }
   };
 
+  const captchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '';
+  const isLocalhost = typeof window !== 'undefined' && /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
+  const captchaEnabled = Boolean(captchaSiteKey) && !isLocalhost;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!captchaValue) {
+    if (captchaEnabled && !captchaValue) {
       setCaptchaError('Please complete the reCAPTCHA verification');
       return;
     }
@@ -686,11 +690,11 @@ const TradeEnquiryPage: React.FC = () => {
             {renderStepContent()}
             
             {/* reCAPTCHA - only show on last step */}
-            {currentStep === 3 && (
+            {currentStep === 3 && captchaEnabled && (
               <div className="mt-8 flex flex-col items-center">
                 <ReCAPTCHA
                   ref={recaptchaRef}
-                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''}
+                  sitekey={captchaSiteKey}
                   onChange={(value) => {
                     setCaptchaValue(value);
                     setCaptchaError(null);
@@ -734,7 +738,7 @@ const TradeEnquiryPage: React.FC = () => {
                 <button
                   type="submit"
                   className="flex items-center gap-2 px-8 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                  disabled={!captchaValue}
+                  disabled={captchaEnabled && !captchaValue}
                 >
                   Submit Enquiry
                 </button>

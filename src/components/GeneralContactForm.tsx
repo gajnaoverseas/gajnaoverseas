@@ -59,6 +59,10 @@ export default function GeneralContactForm({
   const [captchaValue, setCaptchaValue] = useState<string | null>(null);
   const [captchaError, setCaptchaError] = useState<string | null>(null);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
+  // Enable CAPTCHA only when a site key is provided and not on localhost
+  const captchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "";
+  const isLocalhost = typeof window !== 'undefined' && /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
+  const captchaEnabled = Boolean(captchaSiteKey) && !isLocalhost;
 
   // Country sync helpers for PhoneInput <-> CountryDropdown
   const COUNTRY_LABELS = enLabels as Record<string, string>;
@@ -208,8 +212,8 @@ export default function GeneralContactForm({
     setStatus('submitting');
     setServerError(null);
 
-    // Validate captcha
-    if (!captchaValue) {
+    // Validate captcha (only when enabled)
+    if (captchaEnabled && !captchaValue) {
       setCaptchaError('Please verify that you are not a robot');
       setStatus('idle');
       toast.error('Please complete the CAPTCHA verification');
@@ -279,8 +283,19 @@ export default function GeneralContactForm({
   };
 
   return (
-    <div className=''>
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-3xl w-full mx-auto">
+    <div className='relative'>
+    {status === 'submitting' && (
+      <div className="absolute inset-0 z-10 bg-white/70 backdrop-blur-sm flex items-center justify-center rounded-lg">
+        <div className="flex items-center gap-3 text-[#562F23]">
+          <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"></circle>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+          </svg>
+          <span className="font-medium">Sending your enquiry…</span>
+        </div>
+      </div>
+    )}
+    <form onSubmit={handleSubmit} className="space-y-6 max-w-3xl w-full mx-auto" aria-busy={status === 'submitting'}>
       {/* First Name and Last Name (side by side) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
         <div>
@@ -360,7 +375,6 @@ export default function GeneralContactForm({
             '--PhoneInputCountryFlag-height': '1em',
             '--PhoneInput-color--focus': '#2563eb',
             maxWidth: '100%',
-            overflow: 'hidden',
           } as React.CSSProperties}
         />
         {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
@@ -374,8 +388,7 @@ export default function GeneralContactForm({
         <CountryDropdown 
           selectedCountry={values.country}
           onSelectCountry={handleCountrySelect}
-          error={!!errors.country}
-          
+          error={!!errors.country}      
         />
         {errors.country && <p className="mt-1 text-sm text-red-600">{errors.country}</p>}
       </div>
@@ -475,27 +488,29 @@ export default function GeneralContactForm({
         </div>
       </div>
 
-      {/* reCAPTCHA */}
-      <div className="flex flex-col items-center">
-        <ReCAPTCHA
-          ref={recaptchaRef}
-          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
-          size="compact"
-          onChange={(value) => {
-            setCaptchaValue(value);
-            setCaptchaError(null);
-          }}
-          onExpired={() => {
-            setCaptchaValue(null);
-            setCaptchaError("CAPTCHA has expired, please verify again");
-          }}
-          onErrored={() => {
-            setCaptchaError("Error loading CAPTCHA, please refresh the page");
-          }}
-        />
-        {captchaError && <p className="mt-2 text-sm text-red-600">{captchaError}</p>}
-        <p className="text-xs text-gray-500 mt-2">This site is protected by reCAPTCHA.</p>
-      </div>
+      {/* reCAPTCHA (only when configured) */}
+      {captchaEnabled && (
+        <div className="flex flex-col items-center">
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            sitekey={captchaSiteKey}
+            size="compact"
+            onChange={(value) => {
+              setCaptchaValue(value);
+              setCaptchaError(null);
+            }}
+            onExpired={() => {
+              setCaptchaValue(null);
+              setCaptchaError("CAPTCHA has expired, please verify again");
+            }}
+            onErrored={() => {
+              setCaptchaError("Error loading CAPTCHA, please refresh the page");
+            }}
+          />
+          {captchaError && <p className="mt-2 text-sm text-red-600">{captchaError}</p>}
+          <p className="text-xs text-gray-500 mt-2">This site is protected by reCAPTCHA.</p>
+        </div>
+      )}
 
       {/* Submit Button */}
       <div className="flex justify-center">

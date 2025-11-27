@@ -40,6 +40,9 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
   const [serverError, setServerError] = useState<string | null>(null);
   const [captchaValue, setCaptchaValue] = useState<string | null>(null);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const captchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "";
+  const isLocalhost = typeof window !== 'undefined' && /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
+  const captchaEnabled = Boolean(captchaSiteKey) && !isLocalhost;
 
   // Add validation feedback on field blur
   const handleBlur = (fieldName: string) => {
@@ -168,8 +171,8 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
       return;
     }
     
-    // Check CAPTCHA
-    if (!captchaValue) {
+    // Check CAPTCHA (only when enabled)
+    if (captchaEnabled && !captchaValue) {
       toast.error('❌ Please complete the CAPTCHA verification', {
         duration: 4000,
         position: 'top-right',
@@ -459,14 +462,16 @@ export default function ContactForm({ initial, submitLabel = "Send Message", onS
       {errors.consent && <p className="text-sm text-red-600 mt-1 flex items-center"><span className="mr-1">⚠️</span>{errors.consent}</p>}
 
       {/* CAPTCHA */}
-      <div className="flex justify-center">
-        <ReCAPTCHA
-          ref={recaptchaRef}
-          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
-          onChange={(value) => setCaptchaValue(value)}
-          onExpired={() => setCaptchaValue(null)}
-        />
-      </div>
+      {captchaEnabled && (
+        <div className="flex justify-center">
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            sitekey={captchaSiteKey}
+            onChange={(value) => setCaptchaValue(value)}
+            onExpired={() => setCaptchaValue(null)}
+          />
+        </div>
+      )}
 
       <button
         type="submit"
