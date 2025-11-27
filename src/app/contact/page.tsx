@@ -13,6 +13,7 @@ import {
   Smartphone,
   Building2,
   Globe,
+  X,
 } from "lucide-react";
 import { BsWhatsapp } from "react-icons/bs";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -186,15 +187,15 @@ export default function ContactPage() {
 
           {/* column 3 */}
           <div className="flex flex-col ">
-            <Link
-              href="/enquiry"
+            <button
+              onClick={() => setIsEnquiryModalOpen(true)}
               className="w-full hover:scale-110 md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
             >
               <MessageCircle className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw] text-[#6F4E37]" />
               <span className="mt-3 block text-sm md:text-[1.2vw] font-medium text-[#6F4E37] text-center">
                 Enquiry Form
               </span>
-            </Link>
+            </button>
 
             <Link
               href="https://wa.me/919811789665"
@@ -271,15 +272,15 @@ export default function ContactPage() {
             </div>
             <span className="text-sm font-medium text-[#6F4E37] text-center">WhatsApp</span>
           </Link>
-          <Link
-            href="/enquiry"
+          <button
+            onClick={() => setIsEnquiryModalOpen(true)}
             className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-32"
           >
             <div className="w-12 h-12 bg-gradient-to-br from-orange-100 to-orange-200 rounded-full flex items-center justify-center mb-2 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
               <MessageCircle className="w-6 h-6 text-[#6F4E37]" />
             </div>
             <span className="text-sm font-medium text-[#6F4E37] text-center">Enquiry Form</span>
-          </Link>
+          </button>
         </div>
         {/* SMS card below the grid to match tablet layout structure */}
         <div className="mt-6 w-full max-w-md mx-auto">
@@ -373,8 +374,8 @@ export default function ContactPage() {
           </Link>
 
           {/* Row 3 - Centered */}
-          <Link
-            href="/enquiry"
+          <button
+            onClick={() => setIsEnquiryModalOpen(true)}
             className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
           >
             <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-full flex items-center justify-center mb-3 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
@@ -383,7 +384,7 @@ export default function ContactPage() {
             <span className="text-base font-medium text-[#6F4E37] text-center">
               Enquiry Form
             </span>
-          </Link>
+          </button>
 
 
 
@@ -787,6 +788,47 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      {/* Quick Enquiry Modal */}
+      {isEnquiryModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-[10000] flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="flex lg:flex-row flex-col items-center justify-between p-6 border-b">
+              <div className="flex flex-row justify-between items-center">
+                <Image src="/logo.webp" alt="Gajna Overseas Private Limited" width={100} height={50} />
+                <button
+                  onClick={() => setIsEnquiryModalOpen(false)}
+                  className="text-gray-400 hover:text-gray-600 transition-colors lg:hidden block"
+                  aria-label="Close modal"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+              <div className="flex flex-col justify-center items-center text-center">
+                <h2 className="text-xl font-semibold text-gray-900">
+                  Gajna Overseas Private Limited
+                </h2>
+                <p>Exporter of Green Coffee Beans of Indian Origin</p>
+              </div>
+              <button
+                onClick={() => setIsEnquiryModalOpen(false)}
+                className="text-gray-400 hover:text-gray-600 transition-colors hidden lg:block"
+                aria-label="Close modal"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            <div className="p-6 bg-[#15803D]/20">
+              <GeneralContactForm
+                initial={{ subject: "Quick Enquiry" }}
+                submitLabel="Send Enquiry"
+                onSuccess={() => setIsEnquiryModalOpen(false)}
+                isModal={true}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
