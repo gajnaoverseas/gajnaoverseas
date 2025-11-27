@@ -21,6 +21,7 @@ import Link from "next/link";
 
 export default function ContactPage() {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  const [isEnquiryModalOpen, setIsEnquiryModalOpen] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const contactMethods = [
@@ -116,7 +117,7 @@ export default function ContactPage() {
           {/* column 1 */}
           <div className="flex flex-col ">
             <Link
-              href="/https://www.google.com/maps/dir/?api=1&destination=Gajna+Overseas+(OPC)+Private+Limited,+505,+Park+Royal+Apartments,+GH-80,+Block+C,+Sector-56,+Gurugram,+Haryana,+India+122011"
+              href="https://www.google.com/maps/dir/?api=1&destination=Gajna+Overseas+(OPC)+Private+Limited,+505,+Park+Royal+Apartments,+GH-80,+Block+C,+Sector-56,+Gurugram,+Haryana,+India+122011"
               className="w-full md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col hover:scale-110 justify-center items-center hover:shadow-lg transition "
             >
               <div className="flex items-center justify-center text-[#6F4E37] ">
@@ -144,8 +145,7 @@ export default function ContactPage() {
           <div className="flex flex-col ">
             <div className="flex flex-col md:flex-row ">
               <Link
-                href="/contact"
-                onClick={() => setMobileMenuOpen(false)}
+                href="tel:+919811789665"
                 className="p-6 h-[150px] hover:scale-110 md:h-[20vh] w-full md:w-[20vw] bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
               >
                 <Phone className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw] text-[#6F4E37]" />
@@ -216,7 +216,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-3 gap-4 w-full max-w-md mx-auto">
           {/* Row 1 */}
           <Link
-            href="/https://www.google.com/maps/dir/?api=1&destination=Gajna+Overseas+(OPC)+Private+Limited,+505,+Park+Royal+Apartments,+GH-80,+Block+C,+Sector-56,+Gurugram,+Haryana,+India+122011"
+            href="https://www.google.com/maps/dir/?api=1&destination=Gajna+Overseas+(OPC)+Private+Limited,+505,+Park+Royal+Apartments,+GH-80,+Block+C,+Sector-56,+Gurugram,+Haryana,+India+122011"
             className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-32"
           >
             <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center mb-2 group-hover:from-green-200 group-hover:to-green-300 transition-all duration-300">
@@ -225,8 +225,7 @@ export default function ContactPage() {
             <span className="text-sm font-medium text-[#6F4E37] text-center">Location</span>
           </Link>
           <Link
-            href="/contact"
-            onClick={() => setMobileMenuOpen(false)}
+            href="tel:+919811789665"
             className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-32"
           >
             <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mb-2 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
@@ -263,8 +262,8 @@ export default function ContactPage() {
           </Link>
           <Link
             href="https://wa.me/919811789665"
-              target="_blank"
-              rel="noopener noreferrer"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-32"
           >
             <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center mb-2 group-hover:from-green-200 group-hover:to-green-300 transition-all duration-300">
@@ -303,7 +302,7 @@ export default function ContactPage() {
 
           {/* Cards below the full-width title */}
           <Link
-            href="/https://www.google.com/maps/dir/?api=1&destination=Gajna+Overseas+(OPC)+Private+Limited,+505,+Park+Royal+Apartments,+GH-80,+Block+C,+Sector-56,+Gurugram,+Haryana,+India+122011"
+            href="https://www.google.com/maps/dir/?api=1&destination=Gajna+Overseas+(OPC)+Private+Limited,+505,+Park+Royal+Apartments,+GH-80,+Block+C,+Sector-56,+Gurugram,+Haryana,+India+122011"
             className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
           >
             <div className="w-14 h-14 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center mb-3 group-hover:from-green-200 group-hover:to-green-300 transition-all duration-300">
@@ -317,8 +316,7 @@ export default function ContactPage() {
 
 
           <Link
-            href="/contact"
-            onClick={() => setMobileMenuOpen(false)}
+            href="tel:+919811789665"
             className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
           >
             <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mb-3 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
@@ -362,8 +360,8 @@ export default function ContactPage() {
 
           <Link
             href="https://wa.me/919811789665"
-              target="_blank"
-              rel="noopener noreferrer"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
           >
             <div className="w-14 h-14 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center mb-3 group-hover:from-green-200 group-hover:to-green-300 transition-all duration-300">

@@ -70,7 +70,7 @@ const certificationsData: Certification[] = [
     desc: "Registration-Cum-Membership Certificate",
     hasViewButton: true,
     certificateImages: [
-      "/certificates/Apeda RCMC.pdf",
+    "/certificates/Apeda RCMC.pdf",
     ],
   },
   //   {
