@@ -444,8 +444,18 @@ export default function Header() {
         {quickEnquiryOpen && (
           <div className="fixed inset-0 bg-black bg-opacity-50 z-[10000] flex items-center justify-center p-4">
             <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-              <div className="flex items-center justify-between p-6 border-b">
+              <div className="flex lg:flex-row flex-col items-center justify-between p-6 border-b">
+                <div className="flex flex-row justify-between items-center">
                 <Image src="/logo.webp" alt="Gajna Overseas Private Limited" width={100} height={50} />
+                 <button
+                  onClick={() => setQuickEnquiryOpen(false)}
+                  className="text-gray-400 hover:text-gray-600 transition-colors lg:hidden block"
+                  aria-label="Close modal"
+                >
+                  <X className="w-6 h-6" />
+                 
+                </button>
+                 </div>
                 <div className="flex flex-col justify-center items-center text-center">
                   <h2 className="text-xl font-semibold text-gray-900">
                     Gajna Overseas Private Limited
@@ -454,7 +464,7 @@ export default function Header() {
                 </div>
                 <button
                   onClick={() => setQuickEnquiryOpen(false)}
-                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                  className="text-gray-400 hover:text-gray-600 transition-colors hidden lg:block"
                   aria-label="Close modal"
                 >
                   <X className="w-6 h-6" />

@@ -104,6 +104,10 @@ export default function ContactPage() {
     },
   ];
 
+  function setMobileMenuOpen(arg0: boolean): void {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <main className="min-h-screen overflow-x-hidden bg-gradient-to-br from-amber-50 via-white to-orange-50">
       {/* Clean Contact Us Layout */}
@@ -112,7 +116,7 @@ export default function ContactPage() {
           {/* column 1 */}
           <div className="flex flex-col ">
             <Link
-              href="/location"
+              href="/https://www.google.com/maps/dir/?api=1&destination=Gajna+Overseas+(OPC)+Private+Limited,+505,+Park+Royal+Apartments,+GH-80,+Block+C,+Sector-56,+Gurugram,+Haryana,+India+122011"
               className="w-full md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col hover:scale-110 justify-center items-center hover:shadow-lg transition "
             >
               <div className="flex items-center justify-center text-[#6F4E37] ">
@@ -124,7 +128,7 @@ export default function ContactPage() {
             </Link>
 
             <Link
-              href="/sms"
+              href="sms:+919811789665"
               className="w-full md:w-[15vw] hover:scale-110 h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
             >
               <div className="flex items-center justify-center text-[#6F4E37] ">
@@ -140,7 +144,8 @@ export default function ContactPage() {
           <div className="flex flex-col ">
             <div className="flex flex-col md:flex-row ">
               <Link
-                href="/phone"
+                href="/contact"
+                onClick={() => setMobileMenuOpen(false)}
                 className="p-6 h-[150px] hover:scale-110 md:h-[20vh] w-full md:w-[20vw] bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
               >
                 <Phone className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw] text-[#6F4E37]" />
@@ -150,7 +155,7 @@ export default function ContactPage() {
               </Link>
 
               <Link
-                href="/email"
+                href="mailto:priyavirat@zohomail.in"
                 className="p-6 h-[150px] hover:scale-110 md:h-[20vh] w-full md:w-[20vw] bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
               >
                 <Mail className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw] text-[#6F4E37]" />
@@ -167,7 +172,9 @@ export default function ContactPage() {
 
 
             <Link
-              href="/video-conferencing"
+              href="https://meet.google.com/new"
+              target="_blank"
+              rel="noopener noreferrer"
               className="h-[150px] hover:scale-110 md:h-[20vh] w-full bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
             >
               <Video className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw] text-[#6F4E37]" />
@@ -190,7 +197,9 @@ export default function ContactPage() {
             </Link>
 
             <Link
-              href="/whatsapp"
+              href="https://wa.me/919811789665"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full hover:scale-110 md:w-[15vw] h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition "
             >
               <BsWhatsapp className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw] text-[#6F4E37]" />
@@ -207,7 +216,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-3 gap-4 w-full max-w-md mx-auto">
           {/* Row 1 */}
           <Link
-            href="/location"
+            href="/https://www.google.com/maps/dir/?api=1&destination=Gajna+Overseas+(OPC)+Private+Limited,+505,+Park+Royal+Apartments,+GH-80,+Block+C,+Sector-56,+Gurugram,+Haryana,+India+122011"
             className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-32"
           >
             <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center mb-2 group-hover:from-green-200 group-hover:to-green-300 transition-all duration-300">
@@ -216,7 +225,8 @@ export default function ContactPage() {
             <span className="text-sm font-medium text-[#6F4E37] text-center">Location</span>
           </Link>
           <Link
-            href="/phone"
+            href="/contact"
+            onClick={() => setMobileMenuOpen(false)}
             className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-32"
           >
             <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mb-2 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
@@ -225,7 +235,7 @@ export default function ContactPage() {
             <span className="text-sm font-medium text-[#6F4E37] text-center">Phone</span>
           </Link>
           <Link
-            href="/email"
+            href="mailto:priyavirat@zohomail.in"
             className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-32"
           >
             <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full flex items-center justify-center mb-2 group-hover:from-purple-200 group-hover:to-purple-300 transition-all duration-300">
@@ -241,7 +251,9 @@ export default function ContactPage() {
 
           {/* Row 2 */}
           <Link
-            href="/video-conferencing"
+            href="https://meet.google.com/new"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-32"
           >
             <div className="w-12 h-12 bg-gradient-to-br from-red-100 to-red-200 rounded-full flex items-center justify-center mb-2 group-hover:from-red-200 group-hover:to-red-300 transition-all duration-300">
@@ -250,7 +262,9 @@ export default function ContactPage() {
             <span className="text-sm font-medium text-[#6F4E37] text-center">Video Call</span>
           </Link>
           <Link
-            href="/whatsapp"
+            href="https://wa.me/919811789665"
+              target="_blank"
+              rel="noopener noreferrer"
             className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-32"
           >
             <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center mb-2 group-hover:from-green-200 group-hover:to-green-300 transition-all duration-300">
@@ -271,7 +285,7 @@ export default function ContactPage() {
         {/* SMS card below the grid to match tablet layout structure */}
         <div className="mt-6 w-full max-w-md mx-auto">
           <Link
-            href="/sms"
+            href="sms:+919811789665"
             className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-32"
           >
             <div className="w-12 h-12 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-full flex items-center justify-center mb-2 group-hover:from-indigo-200 group-hover:to-indigo-300 transition-all duration-300">
@@ -289,7 +303,7 @@ export default function ContactPage() {
 
           {/* Cards below the full-width title */}
           <Link
-            href="/location"
+            href="/https://www.google.com/maps/dir/?api=1&destination=Gajna+Overseas+(OPC)+Private+Limited,+505,+Park+Royal+Apartments,+GH-80,+Block+C,+Sector-56,+Gurugram,+Haryana,+India+122011"
             className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
           >
             <div className="w-14 h-14 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center mb-3 group-hover:from-green-200 group-hover:to-green-300 transition-all duration-300">
@@ -303,7 +317,8 @@ export default function ContactPage() {
 
 
           <Link
-            href="/phone"
+            href="/contact"
+            onClick={() => setMobileMenuOpen(false)}
             className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
           >
             <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mb-3 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
@@ -315,7 +330,7 @@ export default function ContactPage() {
           </Link>
 
           <Link
-            href="/email"
+            href="mailto:priyavirat@zohomail.in"
             className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
           >
             <div className="w-14 h-14 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full flex items-center justify-center mb-3 group-hover:from-purple-200 group-hover:to-purple-300 transition-all duration-300">
@@ -332,7 +347,9 @@ export default function ContactPage() {
             {/* <p className="text-green-100 mt-2 text-sm">Get in touch</p> */}
           </div>
           <Link
-            href="/video-conferencing"
+            href="https://meet.google.com/new"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
           >
             <div className="w-14 h-14 bg-gradient-to-br from-red-100 to-red-200 rounded-full flex items-center justify-center mb-3 group-hover:from-red-200 group-hover:to-red-300 transition-all duration-300">
@@ -344,7 +361,9 @@ export default function ContactPage() {
           </Link>
 
           <Link
-            href="/whatsapp"
+            href="https://wa.me/919811789665"
+              target="_blank"
+              rel="noopener noreferrer"
             className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
           >
             <div className="w-14 h-14 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center mb-3 group-hover:from-green-200 group-hover:to-green-300 transition-all duration-300">
@@ -385,18 +404,18 @@ export default function ContactPage() {
           </Link> */}
         </div>
         <div className="mt-6">
-            <Link
-              href="/sms"
-              className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
-            >
-              <div className="w-14 h-14 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-full flex items-center justify-center mb-3 group-hover:from-indigo-200 group-hover:to-indigo-300 transition-all duration-300">
-                <Smartphone className="w-7 h-7 text-[#6F4E37]" />
-              </div>
-              <span className="text-base font-medium text-[#6F4E37] text-center">
-                SMS
-              </span>
-            </Link>
-          </div>
+          <Link
+            href="sms:+919811789665"
+            className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
+          >
+            <div className="w-14 h-14 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-full flex items-center justify-center mb-3 group-hover:from-indigo-200 group-hover:to-indigo-300 transition-all duration-300">
+              <Smartphone className="w-7 h-7 text-[#6F4E37]" />
+            </div>
+            <span className="text-base font-medium text-[#6F4E37] text-center">
+              SMS
+            </span>
+          </Link>
+        </div>
       </div>
 
       {/* Main Contact Section */}
