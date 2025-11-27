@@ -62,6 +62,17 @@ const certificationsData: Certification[] = [
       "/certificates/Certificate - Coffee Exporters Training Programme.pdf",
     ],
   },
+  {
+    name: "Apeda RCMC",
+    logo: "/registration/apeda.webp",
+    alt: "Apeda RCMC logo",
+    title: "Apeda RCMC",
+    desc: "Registration-Cum-Membership Certificate",
+    hasViewButton: true,
+    certificateImages: [
+      "/certificates/Apeda RCMC.pdf",
+    ],
+  },
   //   {
   //   name: "Certificate of Participation, VIKRAYAM, Coffee Entrepreneurship",
   //   logo: "/logos/3.webp",
