@@ -215,7 +215,7 @@ export default function FloatingQuickEnquiry() {
                             type="text"
                             value={formData.name}
                             onChange={(e) => handleInputChange('name', e.target.value)}
-                            className={`w-full px-3 py-2 text-sm border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${errors.name ? 'border-red-400 bg-red-50' : 'border-gray-300'
+                            className={`w-full px-3 py-1 text-sm border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${errors.name ? 'border-red-400 bg-red-50' : 'border-gray-300'
                                 }`}
                             placeholder="Your first name"
                         />
@@ -229,7 +229,7 @@ export default function FloatingQuickEnquiry() {
                             type="email"
                             value={formData.email}
                             onChange={(e) => handleInputChange('email', e.target.value)}
-                            className={`w-full px-3 py-2 text-sm border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${errors.email ? 'border-red-400 bg-red-50' : 'border-gray-300'
+                            className={`w-full px-3 py-1 text-sm border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${errors.email ? 'border-red-400 bg-red-50' : 'border-gray-300'
                                 }`}
                             placeholder="your.email@example.com"
                         />
@@ -263,7 +263,7 @@ export default function FloatingQuickEnquiry() {
                             type="url"
                             value={formData.website}
                             onChange={(e) => handleInputChange('website', e.target.value)}
-                            className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                            className="w-full px-3 py-1 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                             placeholder="https://example.com"
                         />
                     </div>
@@ -286,7 +286,7 @@ export default function FloatingQuickEnquiry() {
                     <button
                         type="submit"
                         disabled={status === 'submitting'}
-                        className={`w-full py-2.5 text-white text-sm font-semibold rounded-lg transition-all ${status === 'submitting'
+                        className={`w-full py-2 text-white text-sm font-semibold rounded-lg transition-all ${status === 'submitting'
                             ? 'bg-gray-400 cursor-not-allowed'
                             : 'bg-green-700 hover:bg-green-800'
                             }`}
@@ -311,13 +311,13 @@ export default function FloatingQuickEnquiry() {
         .floating-phone-input .PhoneInput {
           border: 1px solid #d1d5db;
           border-radius: 0.5rem;
-          padding: 0.25rem 0.25rem 0.25rem 0.5rem;
+          padding: 0.15rem 0.15rem 0.15rem 0.5rem;
         }
         
         .floating-phone-input .PhoneInputInput {
           border: none !important;
           outline: none !important;
-          padding: 0.375rem 0.5rem !important;
+          padding: 0.25rem 0.5rem !important;
           font-size: 0.875rem !important;
         }
         
