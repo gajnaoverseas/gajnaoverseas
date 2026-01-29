@@ -2,11 +2,17 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { X, MessageCircle } from "lucide-react";
+import Image from "next/image"; // Moved to top
 import PhoneInput from 'react-phone-number-input';
 import type { CountryCode } from 'libphonenumber-js';
 import 'react-phone-number-input/style.css';
 import { toast } from 'react-hot-toast';
 import { SearchableCountrySelect } from '@/components/SearchableCountrySelect';
+
+// Wrapper to force upward direction
+const CountrySelectUp = (props: any) => (
+    <SearchableCountrySelect {...props} direction="up" />
+);
 
 interface FormData {
     name: string;
@@ -158,7 +164,7 @@ export default function FloatingQuickEnquiry() {
         return (
             <button
                 onClick={() => setIsVisible(true)}
-                className="fixed bottom-4 right-4 z-[9999] flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white px-4 py-3 rounded-full shadow-lg transition-all transform hover:scale-105 animate-in fade-in duration-300"
+                className="fixed bottom-24 right-4 z-[9999] flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white px-4 py-3 rounded-full shadow-lg transition-all transform hover:scale-105 animate-in fade-in duration-300"
                 aria-label="Open Quick Enquiry"
                 title="Quick Enquiry"
             >
@@ -169,56 +175,70 @@ export default function FloatingQuickEnquiry() {
     }
 
     return (
-        <div className="fixed bottom-4 right-4 z-[9999] w-[280px] sm:w-[300px]">
-            <div className="bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden animate-in slide-in-from-right duration-300">
+        <div className="fixed bottom-24 right-4 z-[9999] w-[280px] sm:w-[300px]">
+            <div className="bg-white rounded-xl shadow-2xl border border-gray-200 animate-in slide-in-from-right duration-300">
                 {/* Header with Close Button */}
-                <div className="bg-gradient-to-r from-green-700 to-green-800 p-3 relative">
-                    {/* Prominent Close Button */}
+                <div className="bg-gradient-to-r from-green-700 to-green-800 p-3 relative flex items-center justify-between rounded-t-xl">
+                    {/* Logo and Title */}
+                    <div className="flex items-center gap-2">
+                        <div className="bg-white p-1 rounded-md">
+                            <Image
+                                src="/newlogo.webp"
+                                alt="Gajna Logo"
+                                width={80}
+                                height={40}
+                                className="h-6 w-auto object-contain"
+                            />
+                        </div>
+                        <h3 className="text-white text-base font-bold">
+                            Quick Enquiry
+                        </h3>
+                    </div>
+
+                    {/* Prominent Close Button - Positioned absolute or flex */}
                     <button
                         onClick={handleClose}
-                        className="absolute -top-1 -right-1 w-8 h-8 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center transition-all transform hover:scale-110 z-10"
+                        className="w-7 h-7 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center transition-all transform hover:scale-110"
                         aria-label="Close form"
                         title="Close (reappears in 30 seconds)"
                     >
-                        <X className="w-5 h-5" strokeWidth={3} />
+                        <X className="w-4 h-4" strokeWidth={3} />
                     </button>
-
-                    {/* Centered Heading */}
-                    <h3 className="text-white text-base font-bold text-center pr-4">
-                        Quick Enquiry
-                    </h3>
                 </div>
 
                 {/* Compact Form */}
-                <form onSubmit={handleSubmit} className="p-3 space-y-2.5">
+                <form onSubmit={handleSubmit} className="p-3 space-y-3">
                     {/* Your Name */}
                     <div>
+                        <label className="block text-xs font-bold text-gray-700 mb-1">Your Name *</label>
                         <input
                             type="text"
                             value={formData.name}
                             onChange={(e) => handleInputChange('name', e.target.value)}
                             className={`w-full px-3 py-2 text-sm border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${errors.name ? 'border-red-400 bg-red-50' : 'border-gray-300'
                                 }`}
-                            placeholder="Your Name *"
+                            placeholder="Your first name"
                         />
                         {errors.name && <p className="text-xs text-red-500 mt-0.5">{errors.name}</p>}
                     </div>
 
                     {/* Your Email */}
                     <div>
+                        <label className="block text-xs font-bold text-gray-700 mb-1">Your Email *</label>
                         <input
                             type="email"
                             value={formData.email}
                             onChange={(e) => handleInputChange('email', e.target.value)}
                             className={`w-full px-3 py-2 text-sm border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${errors.email ? 'border-red-400 bg-red-50' : 'border-gray-300'
                                 }`}
-                            placeholder="Your Email *"
+                            placeholder="your.email@example.com"
                         />
                         {errors.email && <p className="text-xs text-red-500 mt-0.5">{errors.email}</p>}
                     </div>
 
                     {/* Your Mobile No with Country Flag */}
                     <div>
+                        <label className="block text-xs font-bold text-gray-700 mb-1">Your Mobile No *</label>
                         <div className={`floating-phone-input ${errors.phone ? 'phone-error' : ''}`}>
                             <PhoneInput
                                 international
@@ -229,7 +249,7 @@ export default function FloatingQuickEnquiry() {
                                 onChange={handlePhoneChange}
                                 onCountryChange={(code?: CountryCode) => setPhoneCountry(code)}
                                 countrySelectComponent={SearchableCountrySelect}
-                                placeholder="Your Mobile No *"
+                                placeholder="Enter phone number"
                                 className="w-full text-sm"
                             />
                         </div>
@@ -238,24 +258,26 @@ export default function FloatingQuickEnquiry() {
 
                     {/* Your Company Website */}
                     <div>
+                        <label className="block text-xs font-bold text-gray-700 mb-1">Your Company Website</label>
                         <input
                             type="url"
                             value={formData.website}
                             onChange={(e) => handleInputChange('website', e.target.value)}
                             className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                            placeholder="Your Company Website"
+                            placeholder="https://example.com"
                         />
                     </div>
 
                     {/* Your Message */}
                     <div>
+                        <label className="block text-xs font-bold text-gray-700 mb-1">Your Message *</label>
                         <textarea
                             value={formData.message}
                             onChange={(e) => handleInputChange('message', e.target.value)}
                             rows={2}
                             className={`w-full px-3 py-2 text-sm border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none ${errors.message ? 'border-red-400 bg-red-50' : 'border-gray-300'
                                 }`}
-                            placeholder="Your Message *"
+                            placeholder="How can we help you?"
                         />
                         {errors.message && <p className="text-xs text-red-500 mt-0.5">{errors.message}</p>}
                     </div>

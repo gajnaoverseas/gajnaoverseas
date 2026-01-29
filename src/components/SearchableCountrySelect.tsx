@@ -11,6 +11,7 @@ interface SearchableCountrySelectProps {
   onChange: (value: CountryCode | undefined) => void;
   className?: string;
   disabled?: boolean;
+  direction?: 'up' | 'down';
 }
 
 
@@ -18,7 +19,8 @@ export const SearchableCountrySelect: React.FC<SearchableCountrySelectProps> = (
   value,
   onChange,
   className = '',
-  disabled = false
+  disabled = false,
+  direction = 'down'
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -46,7 +48,7 @@ export const SearchableCountrySelect: React.FC<SearchableCountrySelectProps> = (
     } else {
       setFilteredCountries(countries);
     }
-  // Only depend on searchTerm and the memoized countries list
+    // Only depend on searchTerm and the memoized countries list
   }, [searchTerm, countries]);
 
   // Close dropdown when clicking outside
@@ -107,7 +109,7 @@ export const SearchableCountrySelect: React.FC<SearchableCountrySelectProps> = (
     <div className={`relative ${className}`} ref={dropdownRef}>
       <div
         className={`
-          flex items-center justify-between px-3 py-2 border border-gray-300 rounded-l-md bg-white cursor-pointer min-h-[42px] w-[120px]
+          flex items-center justify-between px-3 py-2 border border-gray-300 rounded-l-md bg-white cursor-pointer min-h-[42px] w-[140px]
           ${disabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-50'}
           ${isOpen ? 'border-blue-500 ring-1 ring-blue-500' : ''}
         `}
@@ -118,16 +120,16 @@ export const SearchableCountrySelect: React.FC<SearchableCountrySelectProps> = (
             <span className="text-lg flex-shrink-0">{getFlag(value)}</span>
           )}
           <span className="text-sm text-gray-700 truncate">
-            {value ? `+${getCountryCallingCode(value)}` : '+1'}
+            {value ? `${labels[value]} (+${getCountryCallingCode(value)})` : '+1'}
           </span>
         </div>
-        <ChevronDown 
-          className={`w-4 h-4 text-gray-400 transition-transform flex-shrink-0 ${isOpen ? 'rotate-180' : ''}`} 
+        <ChevronDown
+          className={`w-4 h-4 text-gray-400 transition-transform flex-shrink-0 ${isOpen ? 'rotate-180' : ''}`}
         />
       </div>
 
       {isOpen && (
-        <div className="absolute top-full left-0 w-[300px] z-50 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-hidden mt-1">
+        <div className={`absolute left-0 w-[300px] z-50 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-hidden ${direction === 'up' ? 'bottom-full mb-1' : 'top-full mt-1'}`}>
           <div className="p-2 border-b border-gray-200">
             <input
               ref={inputRef}
