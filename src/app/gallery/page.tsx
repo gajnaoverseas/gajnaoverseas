@@ -115,12 +115,10 @@ export default function GalleryPage() {
               return match ? parseInt(match[0], 10) : NaN;
             };
             const group1 = new Set([15, 16, 18, 22, 24]);
-            const group3 = new Set([70]);
             const group1Images = images.filter((img) => group1.has(getNumber(img)));
-            const group3Images = images.filter((img) => group3.has(getNumber(img)));
             const group2Images = images.filter((img) => {
               const n = getNumber(img);
-              return !group1.has(n) && !group3.has(n);
+              return !group1.has(n);
             });
             const renderGrid = (arr: string[]) => (
               <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -157,9 +155,9 @@ export default function GalleryPage() {
               <>
                 <div className="mt-8">
                   <h2 className="text-3xl md:text-4xl font-serif text-coffee-brown mb-2 text-center">
-                    Visit to Chikkamagaluru (Coffee Land of India)
+                    Visit to Chikkamagaluru - (Coffee Land of India)
                   </h2>
-                  <p className="text-center text-gray-700 mb-6">
+                  <p className="text-center text-gray-700 mb-6 tracking-wider">
                     Coffee Estate, CCRI – Central Coffee Research Institute (Balehonnur), Coffee Curing Works, Coffee Roasting Facility. <br/>(4th – 6th December 2025)
                   </p>
                   <p></p>
@@ -169,20 +167,12 @@ export default function GalleryPage() {
                   <h2 className="text-3xl md:text-4xl font-serif text-coffee-brown mb-2 text-center">
                     Kaapi Shastra
                   </h2>
-                  <p className="text-center text-gray-700 mb-6">
+                  <p className="text-center text-gray-700 mb-6 tracking-wider">
                     Training Programme on Coffee Roasting & Brewing conducted by Coffee Board of India <br/>(18th – 22nd August 2025)
                   </p>
                   {renderGrid(group2Images)}
                 </div>
-                <div className="mt-12">
-                  <h2 className="text-3xl md:text-4xl font-serif text-coffee-brown mb-2 text-center">
-                    Coffee &amp; Tea Asia Summit 2025 by RestaurantIndia.in
-                  </h2>
-                  <p className="text-center text-gray-700 mb-6">
-
-                  </p>
-                  {renderGrid(group3Images)}
-                </div>
+                
               </>
             );
           })()}

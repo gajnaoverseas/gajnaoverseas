@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export async function GET() {
   try {
     const galleryDir = path.join(process.cwd(), "public", "gallery");
@@ -29,4 +32,3 @@ export async function GET() {
     return NextResponse.json({ images: [], error: "Failed to list gallery" }, { status: 500 });
   }
 }
-
