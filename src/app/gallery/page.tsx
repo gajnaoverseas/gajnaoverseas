@@ -107,32 +107,85 @@ export default function GalleryPage() {
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-coffee-brown"></div>
         </div>
       ) : (
-        <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className="relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group"
-              onClick={() => openModal(image, index)}
-            >
-              <Image
-                src={image}
-                alt={`Gallery image ${index + 1}`}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
-                priority={index < 8}
-                loading={index < 8 ? "eager" : "lazy"}
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
-                <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                  <div className="bg-coffee-brown text-white px-4 py-2 rounded-full">
-                    View Image
-                  </div>
-                </div>
+        <>
+          {(() => {
+            const getNumber = (src: string) => {
+              const base = src.split("/").pop() || "";
+              const num = parseInt(base.split(".")[0], 10);
+              return num;
+            };
+            const group1 = new Set([16, 17, 19, 22, 24, 25]);
+            const group3 = new Set([56]);
+            const group1Images = images.filter((img) => group1.has(getNumber(img)));
+            const group3Images = images.filter((img) => group3.has(getNumber(img)));
+            const group2Images = images.filter((img) => {
+              const n = getNumber(img);
+              return !group1.has(n) && !group3.has(n);
+            });
+            const renderGrid = (arr: string[]) => (
+              <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {arr.map((image) => {
+                  const gi = images.indexOf(image);
+                  return (
+                    <div
+                      key={image}
+                      className="relative aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group"
+                      onClick={() => openModal(image, gi)}
+                    >
+                      <Image
+                        src={image}
+                        alt="Gallery image"
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        priority={gi < 8}
+                        loading={gi < 8 ? "eager" : "lazy"}
+                      />
+                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                        <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                          <div className="bg-coffee-brown text-white px-4 py-2 rounded-full">
+                            View Image
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            </div>
-          ))}
-        </div>
+            );
+            return (
+              <>
+                <div className="mt-8">
+                  <h2 className="text-3xl md:text-4xl font-serif text-coffee-brown mb-2 text-center">
+                    Visit to Chikkamagaluru (Coffee Land of India)
+                  </h2>
+                  <p className="text-center text-gray-700 mb-6">
+                    Coffee Estate, CCRI – Central Coffee Research Institute (Balehonnur), Coffee Curing Works, Coffee Roasting Facility. (4th – 6th December 2025)
+                  </p>
+                  {renderGrid(group1Images)}
+                </div>
+                <div className="mt-12">
+                  <h2 className="text-3xl md:text-4xl font-serif text-coffee-brown mb-2 text-center">
+                    Kaapi Shastra
+                  </h2>
+                  <p className="text-center text-gray-700 mb-6">
+                    Training Programme on Coffee Roasting & Brewing conducted by Coffee Board of India (18th – 22nd August 2025)
+                  </p>
+                  {renderGrid(group2Images)}
+                </div>
+                <div className="mt-12">
+                  <h2 className="text-3xl md:text-4xl font-serif text-coffee-brown mb-2 text-center">
+                    Coffee &amp; Tea Asia Summit 2025 by RestaurantIndia.in
+                  </h2>
+                  <p className="text-center text-gray-700 mb-6">
+
+                  </p>
+                  {renderGrid(group3Images)}
+                </div>
+              </>
+            );
+          })()}
+        </>
       )}
 
       {/* Image Modal */}
