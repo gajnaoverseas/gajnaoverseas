@@ -150,7 +150,7 @@ export async function POST(req: NextRequest) {
   ];
   if (data.country) plainParts.push(`Country: ${data.country}`);
   if (data.postalCode) plainParts.push(`Postal Code: ${data.postalCode}`);
-  if (data.linkedin) plainParts.push(`LinkedIn: ${data.linkedin}`);
+  if (data.linkedin) plainParts.push(`${isQuick ? 'Your Company Website' : 'LinkedIn'}: ${data.linkedin}`);
   plainParts.push(`Subject: ${subject}`);
   plainParts.push(`Message: ${data.message}`);
   if (data.product) plainParts.push("", "Product Enquiry:", `Product: ${data.product}`);
@@ -183,7 +183,7 @@ export async function POST(req: NextRequest) {
           ${row('Phone', formattedPhone)}
           ${data.country ? row('Country', data.country) : ''}
           ${data.postalCode ? row('Postal Code', data.postalCode) : ''}
-          ${row('LinkedIn', data.linkedin)}
+          ${data.linkedin ? row(isQuick ? 'Your Company Website' : 'LinkedIn', data.linkedin) : ''}
         </div>
 
         <div style="margin-bottom:20px; background:#f8fafc; border-radius:12px; padding:20px; border-left:4px solid #863B0E;">
