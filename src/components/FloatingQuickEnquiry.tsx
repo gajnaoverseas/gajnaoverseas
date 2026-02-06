@@ -8,6 +8,7 @@ import type { CountryCode } from 'libphonenumber-js';
 import 'react-phone-number-input/style.css';
 import { toast } from 'react-hot-toast';
 import { SearchableCountrySelect } from '@/components/SearchableCountrySelect';
+import ReCAPTCHA from "react-google-recaptcha";
 
 // Wrapper to force upward direction
 const CountrySelectUp = (props: any) => (
@@ -37,6 +38,12 @@ export default function FloatingQuickEnquiry() {
     const [status, setStatus] = useState<FormStatus>('idle');
     const [phoneCountry, setPhoneCountry] = useState<CountryCode | undefined>('US' as CountryCode);
     const reappearTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const recaptchaRef = useRef<ReCAPTCHA>(null);
+    const [captchaValue, setCaptchaValue] = useState<string | null>(null);
+    const [captchaError, setCaptchaError] = useState<string | null>(null);
+    const captchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '';
+    const isLocalhost = typeof window !== 'undefined' && /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
+    const captchaEnabled = Boolean(captchaSiteKey) && !isLocalhost;
 
     // Auto-reappear after 30 seconds when closed
     useEffect(() => {
@@ -111,6 +118,14 @@ export default function FloatingQuickEnquiry() {
             return;
         }
 
+        if (captchaEnabled && !captchaValue) {
+            setCaptchaError('Please verify that you are not a robot');
+            toast.error('Please complete the CAPTCHA verification');
+            return;
+        } else {
+            setCaptchaError(null);
+        }
+
         setStatus('submitting');
 
         try {
@@ -130,6 +145,7 @@ export default function FloatingQuickEnquiry() {
                     country: '',
                     postalCode: '',
                     consent: true,
+                    captchaToken: captchaValue
                 }),
             });
 
@@ -147,6 +163,11 @@ export default function FloatingQuickEnquiry() {
                     website: '',
                     message: ''
                 });
+
+                if (recaptchaRef.current) {
+                    recaptchaRef.current.reset();
+                }
+                setCaptchaValue(null);
 
                 // Redirect to Thank You page
                 window.location.href = '/thank-you';
@@ -281,6 +302,18 @@ export default function FloatingQuickEnquiry() {
                         />
                         {errors.message && <p className="text-xs text-red-500 mt-0.5">{errors.message}</p>}
                     </div>
+
+                    {captchaEnabled && (
+                        <div className="flex justify-center">
+                            <ReCAPTCHA
+                                ref={recaptchaRef}
+                                sitekey={captchaSiteKey}
+                                onChange={(value) => setCaptchaValue(value)}
+                                onExpired={() => setCaptchaValue(null)}
+                            />
+                        </div>
+                    )}
+                    {captchaError && <p className="text-xs text-red-500 mt-0.5">{captchaError}</p>}
 
                     {/* Submit Button */}
                     <button

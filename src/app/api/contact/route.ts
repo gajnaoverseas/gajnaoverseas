@@ -27,6 +27,7 @@ export async function POST(req: NextRequest) {
   const host = req.headers.get('host') || '';
   const isLocalhost = /^(localhost|127\.0\.0\.1)(:\d+)?$/i.test(host);
   const captchaEnabled = Boolean(recaptchaSecret) && !isLocalhost;
+  const isQuick = typeof body.subject === 'string' && body.subject.toLowerCase().includes('quick enquiry');
   if (captchaEnabled) {
     if (!captchaToken) {
       return NextResponse.json({ success: false, error: "reCAPTCHA verification failed" }, { status: 400 });
@@ -59,7 +60,24 @@ export async function POST(req: NextRequest) {
   }
 
   // Validate against schema
-  const parse = contactFormSchema.safeParse(body);
+  const quickEnquirySchema = z.object({
+    captchaToken: z.string().nullish(),
+    name: z.string().min(2).max(100).optional(),
+    firstName: z.string().min(1).max(50).optional(),
+    lastName: z.string().max(50).optional(),
+    email: z.string().email(),
+    phone: z.string().min(7).max(20),
+    message: z.string().min(10).max(5000),
+    subject: z.string().optional(),
+    linkedin: z.string().url().optional(),
+    consent: z.boolean().optional(),
+    product: z.string().optional(),
+    grade: z.string().optional(),
+    quantity: z.coerce.number().int().positive().optional(),
+    country: z.string().optional(),
+    postalCode: z.string().optional(),
+  });
+  const parse = (isQuick ? quickEnquirySchema.safeParse(body) : contactFormSchema.safeParse(body));
   if (!parse.success) {
     console.error("Validation failed:", JSON.stringify(parse.error.flatten(), null, 2));
     return NextResponse.json(
@@ -184,7 +202,7 @@ export async function POST(req: NextRequest) {
         <div style="font-size:14px; opacity:.95;">Gajna Overseas - Coffee Export Excellence</div>
       </div>
       <div style="padding:24px;">
-        <div style="font-size:16px; color:#1e293b; margin-bottom:12px;">Dear ${data.firstName},</div>
+        <div style="font-size:16px; color:#1e293b; margin-bottom:12px;">Dear ${data.firstName || fullName || 'Customer'},</div>
         <p style="line-height:1.6; margin-bottom:12px;">Thank you for contacting Gajna Overseas! We've successfully received your enquiry and our team will review it carefully.</p>
         <p style="line-height:1.6; margin-bottom:12px;">We typically respond within 24 hours during business days.</p>
         ${(data.product || data.grade) ? `<p style="line-height:1.6; margin-bottom:12px;">📋 <strong>Your Enquiry:</strong> ${data.product ? data.product : 'Coffee products'}${data.grade ? ` (${data.grade})` : ''}${data.quantity ? ` - Quantity: ${data.quantity} MT` : ''}</p>` : ''}
