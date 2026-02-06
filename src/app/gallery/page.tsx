@@ -111,11 +111,11 @@ export default function GalleryPage() {
           {(() => {
             const getNumber = (src: string) => {
               const base = src.split("/").pop() || "";
-              const num = parseInt(base.split(".")[0], 10);
-              return num;
+              const match = base.match(/^\d+/);
+              return match ? parseInt(match[0], 10) : NaN;
             };
-            const group1 = new Set([16, 17, 19, 22, 24, 25]);
-            const group3 = new Set([56]);
+            const group1 = new Set([15, 16, 18, 22, 24]);
+            const group3 = new Set([70]);
             const group1Images = images.filter((img) => group1.has(getNumber(img)));
             const group3Images = images.filter((img) => group3.has(getNumber(img)));
             const group2Images = images.filter((img) => {
@@ -160,8 +160,9 @@ export default function GalleryPage() {
                     Visit to Chikkamagaluru (Coffee Land of India)
                   </h2>
                   <p className="text-center text-gray-700 mb-6">
-                    Coffee Estate, CCRI – Central Coffee Research Institute (Balehonnur), Coffee Curing Works, Coffee Roasting Facility. (4th – 6th December 2025)
+                    Coffee Estate, CCRI – Central Coffee Research Institute (Balehonnur), Coffee Curing Works, Coffee Roasting Facility. <br/>(4th – 6th December 2025)
                   </p>
+                  <p></p>
                   {renderGrid(group1Images)}
                 </div>
                 <div className="mt-12">
@@ -169,7 +170,7 @@ export default function GalleryPage() {
                     Kaapi Shastra
                   </h2>
                   <p className="text-center text-gray-700 mb-6">
-                    Training Programme on Coffee Roasting & Brewing conducted by Coffee Board of India (18th – 22nd August 2025)
+                    Training Programme on Coffee Roasting & Brewing conducted by Coffee Board of India <br/>(18th – 22nd August 2025)
                   </p>
                   {renderGrid(group2Images)}
                 </div>

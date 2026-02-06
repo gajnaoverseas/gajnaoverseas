@@ -1,7 +1,5 @@
 # Gajna Website
-
 ## Setup Instructions
-
 ### Environment Variables
 
 Create a `.env.local` file in the root directory with the following variables:
@@ -14,7 +12,6 @@ EMAIL_DRY_RUN=true
 NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your-recaptcha-site-key
 RECAPTCHA_SECRET_KEY=your-recaptcha-secret-key
 ```
-
 ### Setting up reCAPTCHA
 
 The contact forms use Google reCAPTCHA v2 for spam protection. Follow these steps to set up your reCAPTCHA keys:
@@ -31,13 +28,11 @@ The contact forms use Google reCAPTCHA v2 for spam protection. Follow these step
    NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your-site-key
    RECAPTCHA_SECRET_KEY=your-secret-key
    ```
-
 ## Development
 
 ```bash
 npm run dev
 ```
-
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 Github push - git push gajnaoverseas main    
