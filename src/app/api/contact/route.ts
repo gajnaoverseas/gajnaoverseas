@@ -141,7 +141,23 @@ export async function POST(req: NextRequest) {
   const formattedPhone = data.phone;
   const subject = data.subject || "General Enquiry";
 
-  const plainText = `New contact form submission\n\nName: ${fullName}\nEmail: ${data.email}\nPhone: ${formattedPhone}\nCountry: ${data.country}\nPostal Code: ${data.postalCode}\nLinkedIn: ${data.linkedin}\nSubject: ${subject}\nMessage: ${data.message}${data.product ? `\n\nProduct Enquiry:\nProduct: ${data.product}` : ''}${data.grade ? `\nGrade: ${data.grade}` : ''}${data.quantity ? `\nQuantity: ${data.quantity} MT` : ''}\nConsent: ${data.consent ? "Yes" : "No"}`;
+  const plainParts = [
+    "New contact form submission",
+    "",
+    `Name: ${fullName}`,
+    `Email: ${data.email}`,
+    `Phone: ${formattedPhone}`,
+  ];
+  if (data.country) plainParts.push(`Country: ${data.country}`);
+  if (data.postalCode) plainParts.push(`Postal Code: ${data.postalCode}`);
+  if (data.linkedin) plainParts.push(`LinkedIn: ${data.linkedin}`);
+  plainParts.push(`Subject: ${subject}`);
+  plainParts.push(`Message: ${data.message}`);
+  if (data.product) plainParts.push("", "Product Enquiry:", `Product: ${data.product}`);
+  if (data.grade) plainParts.push(`Grade: ${data.grade}`);
+  if (data.quantity) plainParts.push(`Quantity: ${data.quantity} MT`);
+  plainParts.push(`Consent: ${data.consent ? "Yes" : "No"}`);
+  const plainText = plainParts.join("\n");
 
   const row = (label: string, value?: string) => `
     <div style="margin-bottom:15px; padding:12px 0; border-bottom:1px solid #e2e8f0;">
@@ -165,8 +181,8 @@ export async function POST(req: NextRequest) {
           ${row('Name', fullName)}
           ${row('Email', data.email)}
           ${row('Phone', formattedPhone)}
-          ${row('Country', data.country)}
-          ${row('Postal Code', data.postalCode)}
+          ${data.country ? row('Country', data.country) : ''}
+          ${data.postalCode ? row('Postal Code', data.postalCode) : ''}
           ${row('LinkedIn', data.linkedin)}
         </div>
 
