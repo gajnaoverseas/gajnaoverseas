@@ -196,7 +196,10 @@ export default function FloatingQuickEnquiry() {
     }
 
     return (
-        <div className="fixed bottom-24 right-4 z-[9999] w-[280px] sm:w-[300px]">
+        <div
+            className="fixed bottom-24 right-4 z-[9999]"
+            style={{ width: 'min(92vw, 340px)' }}
+        >
             <div className="bg-white rounded-xl shadow-2xl border border-gray-200 animate-in slide-in-from-right duration-300">
                 {/* Header with Close Button */}
                 <div className="bg-gradient-to-r from-green-700 to-green-800 p-3 relative flex items-center justify-between rounded-t-xl">
