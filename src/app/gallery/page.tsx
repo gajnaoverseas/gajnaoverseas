@@ -155,7 +155,7 @@ export default function GalleryPage() {
               <>
                 <div className="mt-8">
                   <h2 className="text-3xl md:text-4xl font-serif text-coffee-brown mb-2 text-center">
-                    Visit to Chikkamagaluru - (Coffee Land of India)
+                    Visit to Chikkamagaluru - Coffee Land of India
                   </h2>
                   <p className="text-center text-gray-700 mb-6 tracking-wider">
                     Coffee Estate, CCRI – Central Coffee Research Institute (Balehonnur), Coffee Curing Works, Coffee Roasting Facility. <br/>(4th – 6th December 2025)
