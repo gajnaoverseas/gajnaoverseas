@@ -114,7 +114,7 @@ export default function GalleryPage() {
               const match = base.match(/^\d+/);
               return match ? parseInt(match[0], 10) : NaN;
             };
-            const group1 = new Set([15, 16, 18, 22, 24]);
+            const group1 = new Set([15, 16, 18, 19, 21, 23, 24]);
             const group1Images = images.filter((img) => group1.has(getNumber(img)));
             const group2Images = images.filter((img) => {
               const n = getNumber(img);
