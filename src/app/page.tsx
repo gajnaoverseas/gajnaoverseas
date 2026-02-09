@@ -15,9 +15,10 @@ export default function Home() {
       <Hero />
       <CoffeeProducts />
       <WhyChooseUs />
-      <CoffeeRegions />
+     
       <EthicalSourcing />
       <SustainableCoffee />
+       <CoffeeRegions />
       <SpecialtyCoffee />
       <GITaggedCoffees />
       <KnowledgeHub />

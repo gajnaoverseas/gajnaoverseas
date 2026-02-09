@@ -1,6 +1,8 @@
 "use client";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type GITaggedCoffeeItem = {
     title: string;
@@ -131,13 +133,9 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
 
 const CoffeeCard = ({ coffee }: { coffee: GITaggedCoffeeItem }) => {
     return (
-        <motion.div
-            className="bg-white rounded-2xl p-6 md:p-8 shadow-sm"
+        <div
+            className="bg-white rounded-2xl p-6 md:p-8 shadow-sm min-w-full"
             style={{ border: `2px solid ${coffee.borderColor}` }}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5 }}
         >
             {/* Top Section: Image + Details */}
             <div className="flex flex-col items-center justify-center lg:px-20 md:flex-row gap-6 md:gap-36 mb-8">
@@ -149,7 +147,7 @@ const CoffeeCard = ({ coffee }: { coffee: GITaggedCoffeeItem }) => {
                             alt={coffee.imageAlt}
                             fill
                             className="object-contain"
-                            sizes="140px"
+                            sizes="240px"
                         />
                     </div>
                     <span className="mt-2 text-sm font-medium text-[#5D4037]">
@@ -206,24 +204,87 @@ const CoffeeCard = ({ coffee }: { coffee: GITaggedCoffeeItem }) => {
                     <p className="text-[#4A3225] text-base font-semibold leading-relaxed">{coffee.cupQuality}</p>
                 </div>
             </div>
-        </motion.div>
+        </div>
     );
 };
 
 export default function GITaggedCoffees() {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const totalItems = giTaggedCoffees.length;
+
+    const goToPrevious = () => {
+        setCurrentIndex((prev) => (prev === 0 ? totalItems - 1 : prev - 1));
+    };
+
+    const goToNext = () => {
+        setCurrentIndex((prev) => (prev === totalItems - 1 ? 0 : prev + 1));
+    };
+
+    const goToSlide = (index: number) => {
+        setCurrentIndex(index);
+    };
+
     return (
         <section className="py-16 md:py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4">
                 {/* Section Header */}
-               <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-coffee-brown mb-16 text-center">
-              
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-coffee-brown mb-16 text-center">
                     GI Registered Coffees of India
                 </h2>
 
-                <div className="space-y-8">
-                    {giTaggedCoffees.map((coffee, index) => (
-                        <CoffeeCard key={index} coffee={coffee} />
-                    ))}
+                {/* Carousel Container */}
+                <div className="relative">
+                    {/* Navigation Arrows */}
+                    <button
+                        onClick={goToPrevious}
+                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 z-10 bg-[#8B4513] hover:bg-[#6d3610] text-white p-3 rounded-full shadow-lg transition-colors"
+                        aria-label="Previous coffee"
+                    >
+                        <ChevronLeft className="w-6 h-6" />
+                    </button>
+
+                    <button
+                        onClick={goToNext}
+                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 z-10 bg-[#8B4513] hover:bg-[#6d3610] text-white p-3 rounded-full shadow-lg transition-colors"
+                        aria-label="Next coffee"
+                    >
+                        <ChevronRight className="w-6 h-6" />
+                    </button>
+
+                    {/* Carousel Content */}
+                    <div className="overflow-hidden">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={currentIndex}
+                                initial={{ opacity: 0, x: 100 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -100 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                <CoffeeCard coffee={giTaggedCoffees[currentIndex]} />
+                            </motion.div>
+                        </AnimatePresence>
+                    </div>
+
+                    {/* Dot Indicators */}
+                    <div className="flex justify-center gap-2 mt-8">
+                        {giTaggedCoffees.map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => goToSlide(index)}
+                                className={`w-3 h-3 rounded-full transition-colors ${index === currentIndex
+                                        ? "bg-[#8B4513]"
+                                        : "bg-[#D4A574] hover:bg-[#b8895a]"
+                                    }`}
+                                aria-label={`Go to slide ${index + 1}`}
+                            />
+                        ))}
+                    </div>
+
+                    {/* Slide Counter */}
+                    <p className="text-center mt-4 text-[#5D4037] font-medium">
+                        {currentIndex + 1} / {totalItems}
+                    </p>
                 </div>
             </div>
         </section>
