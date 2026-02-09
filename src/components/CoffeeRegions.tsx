@@ -5,7 +5,7 @@ import React from "react";
 
 export default function CoffeeRegions() {
   return (
-    <section className="relative py-16 md:py-20 bg-[#7a3b0e] overflow-hidden">
+    <section className="relative py-16 md:py-20 bg-gradient-to-br from-amber-900 to-amber-800 overflow-hidden border-t-2 border-white">
       {/* Decorative coffee bean - Top Left */}
       <Image
         src="/coffee-bean.webp"
