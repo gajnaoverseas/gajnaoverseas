@@ -50,14 +50,14 @@ const bannerData: BannerSlide[] = [
    },
      {
     title: "Diverse Ecosystem",
-    background: "/banners/b9.webp", // Using placeholder until proper image is added
-    mobileBackground: "/banners/elephant.webp",
+    background: "/banners/b11.webp", // Using placeholder until proper image is added
+    mobileBackground: "/banners/b11-mobile.webp",
     description: "Diverse ecosystem with rich flora and fauna"
    },
    {
     title: "Dense Beans",
-    background: "/banners/b11.webp", // Using placeholder until proper image is added   
-    mobileBackground: "/banners/b11.webp",
+    background: "/banners/b10.webp", // Using placeholder until proper image is added   
+    mobileBackground: "/banners/b10.webp",
     description: "Full-bodied, slightly acidic with exciting aroma"
    },
  ];
