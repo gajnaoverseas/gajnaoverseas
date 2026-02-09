@@ -6,6 +6,7 @@ import CoffeeRegions from "@/components/CoffeeRegions";
 import SustainableCoffee from "@/components/SustainableCoffee";
 import SpecialtyCoffee from "@/components/SpecialtyCoffee";
 import GITaggedCoffees from "@/components/GITaggedCoffees";
+import CoffeeGrowingRegions from "@/components/CoffeeGrowingRegions";
 import KnowledgeHub from "@/components/KnowledgeHub";
 // import Newsletter from '@/components/Newsletter';
 
@@ -18,8 +19,10 @@ export default function Home() {
       <EthicalSourcing />
       <SustainableCoffee />
       <CoffeeRegions />
+       <CoffeeGrowingRegions />
       <SpecialtyCoffee />
       <GITaggedCoffees />
+     
       <KnowledgeHub />
       {/* <Newsletter /> */}
     </main>
