@@ -2,8 +2,10 @@ import Hero from "@/components/Hero";
 import CoffeeProducts from "@/components/CoffeeProducts";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import EthicalSourcing from "@/components/EthicalSourcing";
-import Magazine from "@/components/Magazine";
+import CoffeeRegions from "@/components/CoffeeRegions";
 import SustainableCoffee from "@/components/SustainableCoffee";
+import SpecialtyCoffee from "@/components/SpecialtyCoffee";
+import GITaggedCoffees from "@/components/GITaggedCoffees";
 import KnowledgeHub from "@/components/KnowledgeHub";
 // import Newsletter from '@/components/Newsletter';
 
@@ -13,9 +15,11 @@ export default function Home() {
       <Hero />
       <CoffeeProducts />
       <WhyChooseUs />
+      <CoffeeRegions />
       <EthicalSourcing />
-      {/* <Magazine /> */}
       <SustainableCoffee />
+      <SpecialtyCoffee />
+      <GITaggedCoffees />
       <KnowledgeHub />
       {/* <Newsletter /> */}
     </main>

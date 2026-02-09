@@ -269,7 +269,7 @@ export default function Magazine() {
         </div>
 
         {/* Last 3 cards centered */}
-        <div className="grid grid-cols-3 gap-6 mt-6 w-full max-w-4xl mx-auto justify-items-center place-content-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 w-full max-w-4xl mx-auto justify-items-center place-content-center">
           {magazineImages.slice(10).map((magazine, index) => (
             <motion.div
               key={magazine.id}
