@@ -17,6 +17,7 @@ type GITaggedCoffeeItem = {
     cupQuality: string;
     imageSrc: string;
     imageAlt: string;
+    link?: string;
 };
 
 const giTaggedCoffees: GITaggedCoffeeItem[] = [
@@ -31,7 +32,8 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
         ],
         cupQuality: "In the cup the coffee is mild, mellow and neutral flavor.",
         imageSrc: "/svg/Monsooned Malabar.svg",
-        imageAlt: "Monsooned Malabar Arabica Coffee"
+        imageAlt: "Monsooned Malabar Arabica Coffee",
+        link: "/products/monsooned-malabar-arabica-coffee"
     },
     {
         title: "Monsooned Malabar Robusta Coffee",
@@ -44,7 +46,8 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
         ],
         cupQuality: "In the cup the coffee is mild, mellow and neutral flavor.",
         imageSrc: "/svg/Monsooned Malabar.svg",
-        imageAlt: "Monsooned Malabar Robusta Coffee"
+        imageAlt: "Monsooned Malabar Robusta Coffee",
+        link: "/products/monsooned-malabar-robusta-coffee"
     },
     {
         title: "Coorg Arabica Coffee",
@@ -59,7 +62,8 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
         ],
         cupQuality: "Pleasant Aroma, Balanced cup with mild acidity, Strong body with a hint of floral note.",
         imageSrc: "/svg/Coorg Arabica Coffee.png",
-        imageAlt: "Coorg Arabica Coffee"
+        imageAlt: "Coorg Arabica Coffee",
+        link: "/products/coorg-arabica-coffee"
     },
     {
         title: "Wayanaad Robusta Coffee",
@@ -73,7 +77,8 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
         ],
         cupQuality: "Soft to neutral cup, full bodied, malty and chocolatey note with light to medium flavour.",
         imageSrc: "/svg/Wayanaad.svg",
-        imageAlt: "Wayanaad Robusta Coffee"
+        imageAlt: "Wayanaad Robusta Coffee",
+        link: "/products/wayanaad-robusta-coffee"
     },
     {
         title: "Chikmagalur Arabica Coffee",
@@ -91,7 +96,8 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
         ],
         cupQuality: "Mild acidity and medium body with floral and a hint of citrus note of lemon grass",
         imageSrc: "/svg/Chikmagalur.svg",
-        imageAlt: "Chikmagalur Arabica Coffee"
+        imageAlt: "Chikmagalur Arabica Coffee",
+        link: "/products/chikmagalur-arabica-coffee"
     },
     {
         title: "Araku Valley Arabica Coffee",
@@ -109,7 +115,8 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
         ],
         cupQuality: "Light to medium body, pleasant acidity with citrus note of grape fruit with mild jaggary sweetness.",
         imageSrc: "/svg/Araku Valley.svg",
-        imageAlt: "Araku Valley Arabica Coffee"
+        imageAlt: "Araku Valley Arabica Coffee",
+        link: "/products/araku-valley-arabica-coffee"
     },
     {
         title: "Bababudangiris Arabica Coffee",
@@ -127,84 +134,95 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
         ],
         cupQuality: "Striking acidity with full body and sweetness with mild flavour and a balanced cup.",
         imageSrc: "/svg/Bababudangiris.svg",
-        imageAlt: "Bababudangiris Arabica Coffee"
+        imageAlt: "Bababudangiris Arabica Coffee",
+        link: "/products/bababudangiris-arabica-coffee"
     }
 ];
 
+import Link from "next/link";
+
+// ... (imports)
+
+// ... (types and data)
+
 const CoffeeCard = ({ coffee }: { coffee: GITaggedCoffeeItem }) => {
+    // const slug = coffee.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
     return (
-        <div
-            className="bg-white rounded-2xl p-6 md:p-8 shadow-sm min-w-full"
-            style={{ border: `2px solid ${coffee.borderColor}` }}
-        >
-            {/* Top Section: Image + Details */}
-            <div className="flex flex-col items-center justify-center lg:px-20 md:flex-row gap-6 md:gap-36 mb-8">
-                {/* Coffee Bag Image */}
-                <div className="flex-shrink-0 flex flex-col items-center">
-                    <div className="relative w-[240px] h-[250px]">
-                        <Image
-                            src={coffee.imageSrc}
-                            alt={coffee.imageAlt}
-                            fill
-                            className="object-contain"
-                            sizes="240px"
-                        />
+        <Link href={coffee.link || "#"} className="block min-w-full">
+            <div
+                className="bg-white rounded-2xl p-6 md:p-8 shadow-sm h-full transition-transform hover:scale-[1.01] duration-300"
+                style={{ border: `2px solid ${coffee.borderColor}` }}
+            >
+                {/* Top Section: Image + Details */}
+                <div className="flex flex-col items-center justify-center lg:px-20 md:flex-row gap-6 md:gap-36 mb-8">
+                    {/* Coffee Bag Image */}
+                    <div className="flex-shrink-0 flex flex-col items-center">
+                        <div className="relative w-[240px] h-[250px]">
+                            <Image
+                                src={coffee.imageSrc}
+                                alt={coffee.imageAlt}
+                                fill
+                                className="object-contain"
+                                sizes="240px"
+                            />
+                        </div>
+                        <span className="mt-2 text-sm font-medium text-[#5D4037]">
+                            {coffee.coffeeType}
+                        </span>
                     </div>
-                    <span className="mt-2 text-sm font-medium text-[#5D4037]">
-                        {coffee.coffeeType}
-                    </span>
+
+                    {/* Title and Details */}
+                    <div className="flex-1">
+                        <h3 className="text-2xl md:text-5xl font-bold text-[#8B4513] underline decoration-[#8B4513] underline-offset-4 mb-4">
+                            {coffee.title}
+                        </h3>
+
+                        <div className="space-y-2 text-[#2A1810]">
+                            <p>
+                                <span className="font-bold">GI Registration number:</span> {coffee.giNumber}
+                            </p>
+                            {coffee.coordinates && (
+                                <div>
+                                    <p>
+                                        <span className="font-bold">Coordinates:</span>{" "}
+                                        <span className="font-semibold">Latitude:</span> {coffee.coordinates.lat}
+                                    </p>
+                                    <p className="lg:ml-[106px]">
+                                        <span className="font-semibold">Longitude:</span> {coffee.coordinates.long}
+                                    </p>
+                                </div>
+                            )}
+                        </div>
+                    </div>
                 </div>
 
-                {/* Title and Details */}
-                <div className="flex-1">
-                    <h3 className="text-2xl md:text-5xl font-bold text-[#8B4513] underline decoration-[#8B4513] underline-offset-4 mb-4">
-                        {coffee.title}
-                    </h3>
+                {/* Bottom Section: Two Info Cards */}
+                <div className="grid md:grid-cols-2 gap-6">
+                    {/* Significance of Region */}
+                    <div className="bg-gradient-to-b from-white to-[#EEBA6C] rounded-xl p-5">
+                        <div className="mb-3">
+                            <Image src="/svg/IndiaMapIcon.svg" alt="" width={50} height={50} />
+                        </div>
+                        <h4 className="font-bold text-[#2A1810] text-lg mb-3">Significance of region:</h4>
+                        <ul className="list-disc pl-5 space-y-1 text-[#4A3225] text-base font-semibold leading-relaxed">
+                            {coffee.regionSignificance.map((item, i) => (
+                                <li key={i}>{item}</li>
+                            ))}
+                        </ul>
+                    </div>
 
-                    <div className="space-y-2 text-[#2A1810]">
-                        <p>
-                            <span className="font-bold">GI Registration number:</span> {coffee.giNumber}
-                        </p>
-                        {coffee.coordinates && (
-                            <div>
-                                <p>
-                                    <span className="font-bold">Coordinates:</span>{" "}
-                                    <span className="font-semibold">Latitude:</span> {coffee.coordinates.lat}
-                                </p>
-                                <p className="lg:ml-[106px]">
-                                    <span className="font-semibold">Longitude:</span> {coffee.coordinates.long}
-                                </p>
-                            </div>
-                        )}
+                    {/* Cup Quality */}
+                    <div className="bg-gradient-to-b from-white to-[#EEBA6C] rounded-xl p-5">
+                        <div className="mb-3">
+                            <Image src="/svg/Cup-Icon.svg" alt="" width={50} height={50} />
+                        </div>
+                        <h4 className="font-bold text-[#2A1810] text-lg mb-3">Cup quality:</h4>
+                        <p className="text-[#4A3225] text-base font-semibold leading-relaxed">{coffee.cupQuality}</p>
                     </div>
                 </div>
             </div>
-
-            {/* Bottom Section: Two Info Cards */}
-            <div className="grid md:grid-cols-2 gap-6">
-                {/* Significance of Region */}
-                <div className="bg-gradient-to-b from-white to-[#EEBA6C] rounded-xl p-5">
-                    <div className="mb-3">
-                        <Image src="/svg/IndiaMapIcon.svg" alt="" width={50} height={50} />
-                    </div>
-                    <h4 className="font-bold text-[#2A1810] text-lg mb-3">Significance of region:</h4>
-                    <ul className="list-disc pl-5 space-y-1 text-[#4A3225] text-base font-semibold leading-relaxed">
-                        {coffee.regionSignificance.map((item, i) => (
-                            <li key={i}>{item}</li>
-                        ))}
-                    </ul>
-                </div>
-
-                {/* Cup Quality */}
-                <div className="bg-gradient-to-b from-white to-[#EEBA6C] rounded-xl p-5">
-                    <div className="mb-3">
-                        <Image src="/svg/Cup-Icon.svg" alt="" width={50} height={50} />
-                    </div>
-                    <h4 className="font-bold text-[#2A1810] text-lg mb-3">Cup quality:</h4>
-                    <p className="text-[#4A3225] text-base font-semibold leading-relaxed">{coffee.cupQuality}</p>
-                </div>
-            </div>
-        </div>
+        </Link>
     );
 };
 
@@ -281,8 +299,8 @@ export default function GITaggedCoffees() {
                                 key={index}
                                 onClick={() => goToSlide(index)}
                                 className={`w-3 h-3 rounded-full transition-colors ${index === currentIndex
-                                        ? "bg-[#8B4513]"
-                                        : "bg-[#D4A574] hover:bg-[#b8895a]"
+                                    ? "bg-[#8B4513]"
+                                    : "bg-[#D4A574] hover:bg-[#b8895a]"
                                     }`}
                                 aria-label={`Go to slide ${index + 1}`}
                             />

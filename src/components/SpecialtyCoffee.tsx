@@ -15,6 +15,8 @@ type SpecialtyCoffeeItem = {
     descriptionColor?: string;
     beanPosition?: "left" | "right";
     labelColor?: string;
+    link?: string;
+    variants?: { name: string; link: string }[];
 };
 
 const specialtyCoffees: SpecialtyCoffeeItem[] = [
@@ -28,7 +30,8 @@ const specialtyCoffees: SpecialtyCoffeeItem[] = [
         imageAlt: "Mysore Nuggets Extra Bold",
         label: "Grade Specific Specialty Coffee",
         imagePosition: "left",
-        bgColor: "#91400E"
+        bgColor: "#91400E",
+        link: "/products/mysore-nuggets-extra-bold"
     },
     {
         title: "Robusta Kaapi Royale - Grade Specific",
@@ -44,7 +47,8 @@ const specialtyCoffees: SpecialtyCoffeeItem[] = [
         textColor: "#853B0E",
         descriptionColor: "black",
         beanPosition: "left",
-        labelColor: "#8B4513"
+        labelColor: "#8B4513",
+        link: "/products/robusta-kaapi-royale"
     },
     {
         title: "Monsooned Malabar - Process Specific",
@@ -57,16 +61,29 @@ const specialtyCoffees: SpecialtyCoffeeItem[] = [
         imageAlt: "Monsooned Malabar",
         label: "Process Specific Specialty Coffee",
         imagePosition: "left",
-        bgColor: "#91400E"
+        bgColor: "#91400E",
+        variants: [
+            { name: "Monsooned Malabar AAA", link: "/products/monsooned-malabar-aaa" },
+            { name: "Monsooned Malabar AA", link: "/products/monsooned-malabar-aa" },
+            { name: "Monsooned Malabar A", link: "/products/monsooned-malabar-a" },
+            { name: "Monsooned Malabar Arabica Triage", link: "/products/monsooned-malabar-arabica-triage" }
+        ]
     }
 ];
 
+import Link from "next/link";
+
+// ... (imports)
+
+// ... (types and data)
+
 const CoffeeCard = ({ coffee, index }: { coffee: SpecialtyCoffeeItem; index: number }) => {
     const isImageLeft = coffee.imagePosition === "left";
+    // const slug = coffee.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
-    return (
+    const CardContent = () => (
         <motion.div
-            className="relative rounded-2xl overflow-hidden shadow-xl"
+            className="relative rounded-2xl overflow-hidden shadow-xl transition-transform hover:scale-[1.01] duration-300"
             style={{ backgroundColor: coffee.bgColor || '#7a3b0e' }}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -116,6 +133,21 @@ const CoffeeCard = ({ coffee, index }: { coffee: SpecialtyCoffeeItem; index: num
                             {para}
                         </p>
                     ))}
+
+                    {/* Variants Links */}
+                    {coffee.variants && (
+                        <div className="mt-6 flex flex-wrap gap-3">
+                            {coffee.variants.map((variant, i) => (
+                                <Link
+                                    key={i}
+                                    href={variant.link}
+                                    className="px-4 py-2 bg-white/20 hover:bg-white/30 text-white text-sm font-medium rounded-full transition-colors backdrop-blur-sm border border-white/10"
+                                >
+                                    {variant.name}
+                                </Link>
+                            ))}
+                        </div>
+                    )}
                 </div>
 
                 {/* Decorative Coffee Bean */}
@@ -135,6 +167,16 @@ const CoffeeCard = ({ coffee, index }: { coffee: SpecialtyCoffeeItem; index: num
                 </div>
             </div>
         </motion.div>
+    );
+
+    if (coffee.variants) {
+        return <CardContent />;
+    }
+
+    return (
+        <Link href={coffee.link || "#"} className="block">
+            <CardContent />
+        </Link>
     );
 };
 

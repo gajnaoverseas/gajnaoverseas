@@ -19,10 +19,10 @@ export default function Home() {
       <EthicalSourcing />
       <SustainableCoffee />
       <CoffeeRegions />
-       <CoffeeGrowingRegions />
+      <CoffeeGrowingRegions />
       <SpecialtyCoffee />
       <GITaggedCoffees />
-     
+
       <KnowledgeHub />
       {/* <Newsletter /> */}
     </main>
