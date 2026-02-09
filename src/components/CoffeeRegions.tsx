@@ -24,7 +24,7 @@ export default function CoffeeRegions() {
           {/* Left: India Map */}
           <div className="relative w-full flex justify-center">
             <div className="relative w-full max-w-[500px] aspect-[6/7]">
-             <Image src="/svg/Map.svg" alt="" width={500} height={500} />
+              <Image src="/svg/Map.svg" alt="" width={500} height={500} />
             </div>
           </div>
 
@@ -93,7 +93,7 @@ export default function CoffeeRegions() {
         alt=""
         width={140}
         height={140}
-        className="hidden md:block absolute right-[720px] bottom-28  rotate-[12deg]"
+        className="hidden md:block absolute right-[43%] bottom-28 rotate-[12deg]"
       />
     </section>
   );
