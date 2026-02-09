@@ -33,7 +33,7 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
         cupQuality: "In the cup the coffee is mild, mellow and neutral flavor.",
         imageSrc: "/svg/Monsooned Malabar.svg",
         imageAlt: "Monsooned Malabar Arabica Coffee",
-        link: "/products/monsooned-malabar-arabica-coffee"
+        link: "/products?search=Monsooned+Malabar+Arabica"
     },
     {
         title: "Monsooned Malabar Robusta Coffee",
@@ -47,7 +47,7 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
         cupQuality: "In the cup the coffee is mild, mellow and neutral flavor.",
         imageSrc: "/svg/Monsooned Malabar.svg",
         imageAlt: "Monsooned Malabar Robusta Coffee",
-        link: "/products/monsooned-malabar-robusta-coffee"
+        link: "/products?search=Monsooned+Malabar+Robusta"
     },
     {
         title: "Coorg Arabica Coffee",
@@ -63,7 +63,7 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
         cupQuality: "Pleasant Aroma, Balanced cup with mild acidity, Strong body with a hint of floral note.",
         imageSrc: "/svg/Coorg Arabica Coffee.png",
         imageAlt: "Coorg Arabica Coffee",
-        link: "/products/coorg-arabica-coffee"
+        link: "/products?search=Coorg+Arabica"
     },
     {
         title: "Wayanaad Robusta Coffee",
@@ -78,7 +78,7 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
         cupQuality: "Soft to neutral cup, full bodied, malty and chocolatey note with light to medium flavour.",
         imageSrc: "/svg/Wayanaad.svg",
         imageAlt: "Wayanaad Robusta Coffee",
-        link: "/products/wayanaad-robusta-coffee"
+        link: "/products?search=Wayanaad+Robusta"
     },
     {
         title: "Chikmagalur Arabica Coffee",
@@ -97,7 +97,7 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
         cupQuality: "Mild acidity and medium body with floral and a hint of citrus note of lemon grass",
         imageSrc: "/svg/Chikmagalur.svg",
         imageAlt: "Chikmagalur Arabica Coffee",
-        link: "/products/chikmagalur-arabica-coffee"
+        link: "/products?search=Chikmagalur+Arabica"
     },
     {
         title: "Araku Valley Arabica Coffee",
@@ -116,7 +116,7 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
         cupQuality: "Light to medium body, pleasant acidity with citrus note of grape fruit with mild jaggary sweetness.",
         imageSrc: "/svg/Araku Valley.svg",
         imageAlt: "Araku Valley Arabica Coffee",
-        link: "/products/araku-valley-arabica-coffee"
+        link: "/products?search=Araku+Valley+Arabica"
     },
     {
         title: "Bababudangiris Arabica Coffee",
@@ -135,7 +135,7 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
         cupQuality: "Striking acidity with full body and sweetness with mild flavour and a balanced cup.",
         imageSrc: "/svg/Bababudangiris.svg",
         imageAlt: "Bababudangiris Arabica Coffee",
-        link: "/products/bababudangiris-arabica-coffee"
+        link: "/products?search=Bababudangiris+Arabica"
     }
 ];
 

@@ -43,7 +43,10 @@ export const products: Record<string, Product> = {
       },
       { label: "Sieve Standards", value: "No sieve requirement" },
       { label: "Garbling Status", value: "Clean Garbled" },
-      { label: "Tolerance", value: "Flats (AB): 2% by weight | PB Triage: 3% by weight" },
+      {
+        label: "Tolerance",
+        value: "Flats (AB): 2% by weight | PB Triage: 3% by weight",
+      },
       // { label: "Moisture Standard", value: "12.5% maximum" },
       // {
       //   label: "Loadability in 20-ft container",
@@ -72,10 +75,10 @@ export const products: Record<string, Product> = {
       { label: "Processing", value: "Washed Arabica – 'Plantation'" },
       {
         label: "Sieve Standards",
-        value:[
+        value: [
           "Minimum 90% by weight retention on a sieve with round holes of 6.6mm.",
-          "Not more than 1.5% by weight shall pass through a sieve with round holes of 6.00mm."
-          ].join("\n"),
+          "Not more than 1.5% by weight shall pass through a sieve with round holes of 6.00mm.",
+        ].join("\n"),
       },
       { label: "Garbling Status", value: "Clean Garbled" },
       { label: "Tolerance", value: "PB: 2% by weight | Triage: 2% by weight" },
@@ -99,7 +102,7 @@ export const products: Record<string, Product> = {
         label: "Sieve Standards",
         value: [
           "Minimum 75% by weight retention on sieve with round holes of 6.00mm (Screen 15)",
-          "Not more than 1.5% by weight shall pass through a sieve with round holes of 5.50mm (Screen 14)"
+          "Not more than 1.5% by weight shall pass through a sieve with round holes of 5.50mm (Screen 14)",
         ].join("\n"),
       },
       { label: "Garbling Status", value: "Clean Garbled" },
@@ -124,7 +127,7 @@ export const products: Record<string, Product> = {
         label: "Sieve Standards",
         value: [
           "Minimum 75% by weight retention on a sieve with round holes of 5.50mm (Screen 14)",
-          "100% by weight shall stand on a sieve with round holes of 5.00mm (Screen 13)"
+          "100% by weight shall stand on a sieve with round holes of 5.00mm (Screen 13)",
         ].join("\n"),
       },
       {
@@ -151,7 +154,8 @@ export const products: Record<string, Product> = {
       { label: "Processing", value: "Washed Arabica – 'Plantation'" },
       {
         label: "Sieve Standards",
-        value: "100% by weight retention on a sieve with round holes of 5.00mm (Screen 13)",
+        value:
+          "100% by weight retention on a sieve with round holes of 5.00mm (Screen 13)",
       },
       {
         label: "May include",
@@ -207,12 +211,15 @@ export const products: Record<string, Product> = {
       { label: "Coffee Type", value: "Arabica" },
       { label: "Processing", value: "Washed Arabica – 'Plantation'" },
       { label: "Grading", value: "Ungraded" },
-      { label: "Presence of Blacks/Browns/Bits", value: "Shall not contain more than 2% by weight" },
+      {
+        label: "Presence of Blacks/Browns/Bits",
+        value: "Shall not contain more than 2% by weight",
+      },
     ],
     related: ["plantation-a", "plantation-b", "plantation-c"],
     groupTitle: "Other Washed Arabica Grades",
   },
-  
+
   // Unwashed Arabica - Arabica Cherry
   "arabica-cherry-pb": {
     slug: "arabica-cherry-pb",
@@ -228,9 +235,16 @@ export const products: Record<string, Product> = {
       { label: "Processing", value: "Unwashed Arabica Cherry" },
       { label: "Sieve Standards", value: "No sieve requirement" },
       { label: "Garbling Status", value: "Clean Garbled" },
-      { label: "Tolerance", value: "Flats (AB): 2% by weight | PB Triage: 3% by weight" },
+      {
+        label: "Tolerance",
+        value: "Flats (AB): 2% by weight | PB Triage: 3% by weight",
+      },
     ],
-    related: ["arabica-cherry-ab", "arabica-cherry-c", "arabica-cherry-blacks-browns"],
+    related: [
+      "arabica-cherry-ab",
+      "arabica-cherry-c",
+      "arabica-cherry-blacks-browns",
+    ],
     groupTitle: "Other Unwashed Arabica Grades",
   },
   "arabica-cherry-ab": {
@@ -249,13 +263,17 @@ export const products: Record<string, Product> = {
         label: "Sieve Standards",
         value: [
           "Minimum 90% by weight retention on a sieve with round holes of 6.00mm (Screen 15)",
-          "Not more than 1.5% by weight shall pass through a sieve with round holes of 5.50mm (Screen 14)"
+          "Not more than 1.5% by weight shall pass through a sieve with round holes of 5.50mm (Screen 14)",
         ].join("\n"),
       },
       { label: "Garbling Status", value: "Clean Garbled" },
       { label: "Tolerance", value: "PB: 2% by weight | Triage: 3% by weight" },
     ],
-    related: ["arabica-cherry-pb", "arabica-cherry-c", "arabica-cherry-blacks-browns"],
+    related: [
+      "arabica-cherry-pb",
+      "arabica-cherry-c",
+      "arabica-cherry-blacks-browns",
+    ],
     groupTitle: "Other Unwashed Arabica Grades",
   },
   "arabica-cherry-c": {
@@ -274,15 +292,20 @@ export const products: Record<string, Product> = {
         label: "Sieve Standards",
         value: [
           "Minimum 75% by weight retention on a sieve with round holes of 5.50mm (Screen 14)",
-          "100% by weight shall stand on a sieve with round holes of 5.00mm (Screen 13)"
+          "100% by weight shall stand on a sieve with round holes of 5.00mm (Screen 13)",
         ].join("\n"),
       },
       {
         label: "May include",
-        value: "Triage, small whole beans of the prescribed sieve size, light beans, boat shaped beans and spotted beans (less than a quarter of a bean surface). It shall not contain more than 2% of Blacks/Browns or Bits."
+        value:
+          "Triage, small whole beans of the prescribed sieve size, light beans, boat shaped beans and spotted beans (less than a quarter of a bean surface). It shall not contain more than 2% of Blacks/Browns or Bits.",
       },
     ],
-    related: ["arabica-cherry-pb", "arabica-cherry-ab", "arabica-cherry-blacks-browns"],
+    related: [
+      "arabica-cherry-pb",
+      "arabica-cherry-ab",
+      "arabica-cherry-blacks-browns",
+    ],
     groupTitle: "Other Unwashed Arabica Grades",
   },
   "arabica-cherry-blacks-browns": {
@@ -299,11 +322,13 @@ export const products: Record<string, Product> = {
       { label: "Processing", value: "Unwashed Arabica Cherry" },
       {
         label: "Sieve Standards",
-        value: "100% by weight retention on a sieve with round holes of 5.00mm (Screen 13)."
+        value:
+          "100% by weight retention on a sieve with round holes of 5.00mm (Screen 13).",
       },
       {
         label: "May include",
-        value: "Black/dark brown beans, damaged beans such as bleached (spongy) beans, insect-damaged beans, spotted (more than a quarter of a bean surface) beans, fungal-damaged beans, sour and greens"
+        value:
+          "Black/dark brown beans, damaged beans such as bleached (spongy) beans, insect-damaged beans, spotted (more than a quarter of a bean surface) beans, fungal-damaged beans, sour and greens",
       },
     ],
     related: ["arabica-cherry-pb", "arabica-cherry-ab", "arabica-cherry-c"],
@@ -323,12 +348,14 @@ export const products: Record<string, Product> = {
       { label: "Processing", value: "Unwashed Arabica Cherry" },
       {
         label: "Sieve Standards",
-        value: "100% by weight shall pass through a sieve with Round holes of 5.00mm (Screen 13)."
+        value:
+          "100% by weight shall pass through a sieve with Round holes of 5.00mm (Screen 13).",
       },
       { label: "Garbling Status", value: "Ungarbled" },
       {
         label: "May contain",
-        value: "Broken beans of less than 1/3 of a bean size, Blacks/Browns and defective beans of the prescribed size"
+        value:
+          "Broken beans of less than 1/3 of a bean size, Blacks/Browns and defective beans of the prescribed size",
       },
     ],
     related: ["arabica-cherry-pb", "arabica-cherry-ab", "arabica-cherry-c"],
@@ -347,12 +374,15 @@ export const products: Record<string, Product> = {
       { label: "Coffee Type", value: "Arabica" },
       { label: "Processing", value: "Unwashed Arabica Cherry" },
       { label: "Grading", value: "Ungraded" },
-      { label: "Presence of Blacks/Browns/Bits", value: "Shall not contain more than 10% by weight" },
+      {
+        label: "Presence of Blacks/Browns/Bits",
+        value: "Shall not contain more than 10% by weight",
+      },
     ],
     related: ["arabica-cherry-pb", "arabica-cherry-ab", "arabica-cherry-c"],
     groupTitle: "Other Unwashed Arabica Grades",
   },
-  
+
   // Washed Robusta - Robusta Parchment
   "robusta-parchment-pb": {
     slug: "robusta-parchment-pb",
@@ -368,9 +398,16 @@ export const products: Record<string, Product> = {
       { label: "Processing", value: "Washed Robusta Parchment" },
       { label: "Sieve Standards", value: "No sieve requirement" },
       { label: "Garbling Status", value: "Clean Garbled" },
-      { label: "Tolerance", value: "Flats (AB): 2% by weight | PB Triage: 3% by weight" },
+      {
+        label: "Tolerance",
+        value: "Flats (AB): 2% by weight | PB Triage: 3% by weight",
+      },
     ],
-    related: ["robusta-parchment-ab", "robusta-parchment-c", "robusta-parchment-blacks-browns"],
+    related: [
+      "robusta-parchment-ab",
+      "robusta-parchment-c",
+      "robusta-parchment-blacks-browns",
+    ],
     groupTitle: "Other Washed Robusta Grades",
   },
   "robusta-parchment-ab": {
@@ -387,12 +424,17 @@ export const products: Record<string, Product> = {
       { label: "Processing", value: "Washed Robusta Parchment" },
       {
         label: "Sieve Standards",
-        value: "Minimum 90% by weight retention on a sieve with round holes of 6.00mm (Screen 15). Not more than 1.5% by weight shall pass through a sieve with round holes of 5.50mm (Screen 14)."
+        value:
+          "Minimum 90% by weight retention on a sieve with round holes of 6.00mm (Screen 15). Not more than 1.5% by weight shall pass through a sieve with round holes of 5.50mm (Screen 14).",
       },
       { label: "Garbling Status", value: "Clean Garbled" },
       { label: "Tolerance", value: "PB: 2% by weight | Triage: 3% by weight" },
     ],
-    related: ["robusta-parchment-pb", "robusta-parchment-c", "robusta-parchment-blacks-browns"],
+    related: [
+      "robusta-parchment-pb",
+      "robusta-parchment-c",
+      "robusta-parchment-blacks-browns",
+    ],
     groupTitle: "Other Washed Robusta Grades",
   },
   "robusta-parchment-c": {
@@ -409,14 +451,20 @@ export const products: Record<string, Product> = {
       { label: "Processing", value: "Washed Robusta Parchment" },
       {
         label: "Sieve Standards",
-        value: "Minimum 75% by weight retention on a sieve with round holes of 5.50mm (Screen 14). 100% by weight shall be retained on a sieve with round holes of 5.00mm (Screen 13)."
+        value:
+          "Minimum 75% by weight retention on a sieve with round holes of 5.50mm (Screen 14). 100% by weight shall be retained on a sieve with round holes of 5.00mm (Screen 13).",
       },
       {
         label: "May include",
-        value: "Triage small whole beans of the prescribed sieve size, light beans, boat-shaped beans and spotted beans (less than a quarter of a bean surface). It shall not contain more than 2% of Blacks/Browns or Bits."
+        value:
+          "Triage small whole beans of the prescribed sieve size, light beans, boat-shaped beans and spotted beans (less than a quarter of a bean surface). It shall not contain more than 2% of Blacks/Browns or Bits.",
       },
     ],
-    related: ["robusta-parchment-pb", "robusta-parchment-ab", "robusta-parchment-blacks-browns"],
+    related: [
+      "robusta-parchment-pb",
+      "robusta-parchment-ab",
+      "robusta-parchment-blacks-browns",
+    ],
     groupTitle: "Other Washed Robusta Grades",
   },
   "robusta-parchment-blacks-browns": {
@@ -433,14 +481,20 @@ export const products: Record<string, Product> = {
       { label: "Processing", value: "Washed Robusta Parchment" },
       {
         label: "Sieve Standards",
-        value: "100% by weight retention on a sieve with round holes of 5.00mm (Screen 13)."
+        value:
+          "100% by weight retention on a sieve with round holes of 5.00mm (Screen 13).",
       },
       {
         label: "May include",
-        value: "Blacks/ dark brown beans, damaged beans such as bleached (spongy) beans, insect-damaged beans, spotted (more than a quarter of a bean surface) beans, stinker and sour beans."
+        value:
+          "Blacks/ dark brown beans, damaged beans such as bleached (spongy) beans, insect-damaged beans, spotted (more than a quarter of a bean surface) beans, stinker and sour beans.",
       },
     ],
-    related: ["robusta-parchment-pb", "robusta-parchment-ab", "robusta-parchment-c"],
+    related: [
+      "robusta-parchment-pb",
+      "robusta-parchment-ab",
+      "robusta-parchment-c",
+    ],
     groupTitle: "Other Washed Robusta Grades",
   },
   "robusta-parchment-bits": {
@@ -457,15 +511,21 @@ export const products: Record<string, Product> = {
       { label: "Processing", value: "Washed Robusta Parchment" },
       {
         label: "Sieve Standards",
-        value: "100% by weight shall pass through a sieve with round holes of 5.00mm (Screen 13)."
+        value:
+          "100% by weight shall pass through a sieve with round holes of 5.00mm (Screen 13).",
       },
       { label: "Garbling Status", value: "Ungarbled" },
       {
         label: "May contain",
-        value: "Broken beans of less than 1/3 of a bean size, Blacks/Browns and defective beans of the prescribed size."
+        value:
+          "Broken beans of less than 1/3 of a bean size, Blacks/Browns and defective beans of the prescribed size.",
       },
     ],
-    related: ["robusta-parchment-pb", "robusta-parchment-ab", "robusta-parchment-c"],
+    related: [
+      "robusta-parchment-pb",
+      "robusta-parchment-ab",
+      "robusta-parchment-c",
+    ],
     groupTitle: "Other Washed Robusta Grades",
   },
   "robusta-parchment-bulk": {
@@ -481,12 +541,19 @@ export const products: Record<string, Product> = {
       { label: "Coffee Type", value: "Robusta" },
       { label: "Processing", value: "Washed Robusta Parchment" },
       { label: "Grading", value: "Ungraded" },
-      { label: "Presence of Blacks/Browns/Bits", value: "Shall not contain more than 2% by weight." },
+      {
+        label: "Presence of Blacks/Browns/Bits",
+        value: "Shall not contain more than 2% by weight.",
+      },
     ],
-    related: ["robusta-parchment-pb", "robusta-parchment-ab", "robusta-parchment-c"],
+    related: [
+      "robusta-parchment-pb",
+      "robusta-parchment-ab",
+      "robusta-parchment-c",
+    ],
     groupTitle: "Other Washed Robusta Grades",
   },
-  
+
   // Unwashed Robusta - Robusta Cherry
   "robusta-cherry-pb": {
     slug: "robusta-cherry-pb",
@@ -502,9 +569,16 @@ export const products: Record<string, Product> = {
       { label: "Processing", value: "Unwashed Robusta Cherry" },
       { label: "Sieve Standards", value: "No sieve requirement" },
       { label: "Garbling Status", value: "Clean Garbled" },
-      { label: "Tolerance", value: "Flats (AB): 2% by weight | PB Triage: 3% by weight" },
+      {
+        label: "Tolerance",
+        value: "Flats (AB): 2% by weight | PB Triage: 3% by weight",
+      },
     ],
-    related: ["robusta-cherry-ab", "robusta-cherry-c", "robusta-cherry-blacks-browns"],
+    related: [
+      "robusta-cherry-ab",
+      "robusta-cherry-c",
+      "robusta-cherry-blacks-browns",
+    ],
     groupTitle: "Other Unwashed Robusta Grades",
   },
   "robusta-cherry-ab": {
@@ -521,12 +595,17 @@ export const products: Record<string, Product> = {
       { label: "Processing", value: "Unwashed Robusta Cherry" },
       {
         label: "Sieve Standards",
-        value: "Minimum 90% by weight retention on a sieve with round holes of 6.00mm (Screen 15). Not more than 1.5% by weight shall pass through a sieve with round holes of 5.50mm (Screen-14)."
+        value:
+          "Minimum 90% by weight retention on a sieve with round holes of 6.00mm (Screen 15). Not more than 1.5% by weight shall pass through a sieve with round holes of 5.50mm (Screen-14).",
       },
       { label: "Garbling Status", value: "Clean Garbled" },
       { label: "Tolerance", value: "PB: 2% by weight | Triage: 3% by weight" },
     ],
-    related: ["robusta-cherry-pb", "robusta-cherry-c", "robusta-cherry-blacks-browns"],
+    related: [
+      "robusta-cherry-pb",
+      "robusta-cherry-c",
+      "robusta-cherry-blacks-browns",
+    ],
     groupTitle: "Other Unwashed Robusta Grades",
   },
   "robusta-cherry-c": {
@@ -543,14 +622,20 @@ export const products: Record<string, Product> = {
       { label: "Processing", value: "Unwashed Robusta Cherry" },
       {
         label: "Sieve Standards",
-        value: "Minimum 75% by weight retention on a sieve with round holes of 5.50mm (Screen 14). 100% by weight shall stand on a sieve with round holes of 5.00mm (Screen 13)."
+        value:
+          "Minimum 75% by weight retention on a sieve with round holes of 5.50mm (Screen 14). 100% by weight shall stand on a sieve with round holes of 5.00mm (Screen 13).",
       },
       {
         label: "May include",
-        value: "Triages small whole beans of the prescribed sieve size, light beans, boat-shaped beans and spotted beans (Less than a quarter of a bean surface). It shall not contain more than 2% of Blacks/Browns or Bits"
+        value:
+          "Triages small whole beans of the prescribed sieve size, light beans, boat-shaped beans and spotted beans (Less than a quarter of a bean surface). It shall not contain more than 2% of Blacks/Browns or Bits",
       },
     ],
-    related: ["robusta-cherry-pb", "robusta-cherry-ab", "robusta-cherry-blacks-browns"],
+    related: [
+      "robusta-cherry-pb",
+      "robusta-cherry-ab",
+      "robusta-cherry-blacks-browns",
+    ],
     groupTitle: "Other Unwashed Robusta Grades",
   },
   "robusta-cherry-blacks-browns": {
@@ -567,11 +652,13 @@ export const products: Record<string, Product> = {
       { label: "Processing", value: "Unwashed Robusta Cherry" },
       {
         label: "Sieve Standards",
-        value: "100% by weight retention on a sieve with round holes of 5.00mm (Screen 13)."
+        value:
+          "100% by weight retention on a sieve with round holes of 5.00mm (Screen 13).",
       },
       {
         label: "May include",
-        value: "Black/dark brown beans, damaged beans such as bleached (spongy) beans, insect-damaged beans, spotted (more than a quarter of a bean surface) beans, fungal-damaged beans, sour and greens."
+        value:
+          "Black/dark brown beans, damaged beans such as bleached (spongy) beans, insect-damaged beans, spotted (more than a quarter of a bean surface) beans, fungal-damaged beans, sour and greens.",
       },
     ],
     related: ["robusta-cherry-pb", "robusta-cherry-ab", "robusta-cherry-c"],
@@ -591,12 +678,14 @@ export const products: Record<string, Product> = {
       { label: "Processing", value: "Unwashed Robusta Cherry" },
       {
         label: "Sieve Standards",
-        value: "100% by weight shall pass through a sieve with round holes of 5.00mm (Screen 13)."
+        value:
+          "100% by weight shall pass through a sieve with round holes of 5.00mm (Screen 13).",
       },
       { label: "Garbling Status", value: "Ungarbled" },
       {
         label: "May contain",
-        value: "Broken beans of less than 1/3 of a bean in size, Blacks/Browns and defective beans of the prescribed size."
+        value:
+          "Broken beans of less than 1/3 of a bean in size, Blacks/Browns and defective beans of the prescribed size.",
       },
     ],
     related: ["robusta-cherry-pb", "robusta-cherry-ab", "robusta-cherry-c"],
@@ -615,7 +704,10 @@ export const products: Record<string, Product> = {
       { label: "Coffee Type", value: "Robusta" },
       { label: "Processing", value: "Unwashed Robusta Cherry" },
       { label: "Grading", value: "Ungraded" },
-      { label: "Presence of Black/Browns/Bits", value: "Shall not contain more than 10% by weight." },
+      {
+        label: "Presence of Black/Browns/Bits",
+        value: "Shall not contain more than 10% by weight.",
+      },
     ],
     related: ["robusta-cherry-pb", "robusta-cherry-ab", "robusta-cherry-c"],
     groupTitle: "Other Unwashed Robusta Grades",
@@ -650,9 +742,10 @@ export const products: Record<string, Product> = {
       { label: "Category", value: "Specialty Coffee" },
       { label: "Coffee Type", value: "Robusta" },
       { label: "Processing", value: "Monsooned" },
-      { 
-        label: "Sieve Standard", 
-        value: "Minimum 90% by weight retention on a sieve with round holes of 6.00mm (Screen 15)" 
+      {
+        label: "Sieve Standard",
+        value:
+          "Minimum 90% by weight retention on a sieve with round holes of 6.00mm (Screen 15)",
       },
       { label: "Tolerance", value: "BBB: 3% by weight" },
     ],
@@ -671,9 +764,9 @@ export const products: Record<string, Product> = {
       { label: "Category", value: "Miscellaneous Grade" },
       { label: "Coffee Type", value: "Liberica" },
       { label: "Grading", value: "Ungraded" },
-      { 
-        label: "Presence of Blacks/Browns/Bits", 
-        value: "Shall not contain more than 20% by weight" 
+      {
+        label: "Presence of Blacks/Browns/Bits",
+        value: "Shall not contain more than 20% by weight",
       },
     ],
     related: ["excelsia-bulk"],
@@ -691,15 +784,15 @@ export const products: Record<string, Product> = {
       { label: "Category", value: "Miscellaneous Grade" },
       { label: "Coffee Type", value: "Excelsia" },
       { label: "Grading", value: "Ungraded" },
-      { 
-        label: "Presence of Blacks/Browns/Bits", 
-        value: "Shall not contain more than 20% by weight" 
+      {
+        label: "Presence of Blacks/Browns/Bits",
+        value: "Shall not contain more than 20% by weight",
       },
     ],
     related: ["liberia-bulk"],
     groupTitle: "Miscellaneous Grades",
   },
-  
+
   // Premium Grades - Arabica
   "plantation-aa": {
     slug: "plantation-aa",
@@ -713,9 +806,10 @@ export const products: Record<string, Product> = {
       { label: "Category", value: "Premium Grade" },
       { label: "Coffee Type", value: "Arabica" },
       { label: "Processing", value: "Washed Arabica - 'Plantation'" },
-      { 
-        label: "Sieve Standard", 
-        value: "Minimum 90% by weight retention on a sieve with round holes of 7.10mm (Screen 18). 100% shall stand on a sieve with round holes of 6.65mm (Screen 17). The 10% beans passing through the sieve of 7.10mm and standing on the sieve of 6.65mm shall be whole beans." 
+      {
+        label: "Sieve Standard",
+        value:
+          "Minimum 90% by weight retention on a sieve with round holes of 7.10mm (Screen 18). 100% shall stand on a sieve with round holes of 6.65mm (Screen 17). The 10% beans passing through the sieve of 7.10mm and standing on the sieve of 6.65mm shall be whole beans.",
       },
       { label: "Garbling Status", value: "Clean garbled" },
       { label: "Tolerance", value: "PB: 2% by weight" },
@@ -735,12 +829,16 @@ export const products: Record<string, Product> = {
       { label: "Category", value: "Premium Grade" },
       { label: "Coffee Type", value: "Arabica" },
       { label: "Processing", value: "Washed Arabica - 'Plantation'" },
-      { 
-        label: "Sieve Standard", 
-        value: "100% by weight retention on a sieve with oblong holes of 4.75mm (Screen 12 oblong)." 
+      {
+        label: "Sieve Standard",
+        value:
+          "100% by weight retention on a sieve with oblong holes of 4.75mm (Screen 12 oblong).",
       },
       { label: "Garbling Status", value: "Clean garbled" },
-      { label: "Tolerance", value: "AB: 2% by weight | PB Triage: 2% by weight" },
+      {
+        label: "Tolerance",
+        value: "AB: 2% by weight | PB Triage: 2% by weight",
+      },
     ],
     related: ["plantation-aa"],
     groupTitle: "Premium Washed Arabica Grades",
@@ -757,9 +855,10 @@ export const products: Record<string, Product> = {
       { label: "Category", value: "Premium Grade" },
       { label: "Coffee Type", value: "Arabica" },
       { label: "Processing", value: "Unwashed Arabica Cherry" },
-      { 
-        label: "Sieve Standard", 
-        value: "Minimum 90% by weight retention on a sieve with round holes of 7.10mm (Screen 18). 100% retention on a sieve with round holes of 6.65mm (Screen 17)." 
+      {
+        label: "Sieve Standard",
+        value:
+          "Minimum 90% by weight retention on a sieve with round holes of 7.10mm (Screen 18). 100% retention on a sieve with round holes of 6.65mm (Screen 17).",
       },
       { label: "Garbling Status", value: "Clean garbled" },
       { label: "Tolerance", value: "PB: 2% by weight | Triage: 1% by weight" },
@@ -779,9 +878,10 @@ export const products: Record<string, Product> = {
       { label: "Category", value: "Premium Grade" },
       { label: "Coffee Type", value: "Arabica" },
       { label: "Processing", value: "Unwashed Arabica Cherry" },
-      { 
-        label: "Sieve Standard", 
-        value: "Minimum 90% by weight retention on a sieve with round holes of 6.65mm (Screen 17). 100% by weight shall stand on a sieve with round holes of 6.00 mm (Screen 15)." 
+      {
+        label: "Sieve Standard",
+        value:
+          "Minimum 90% by weight retention on a sieve with round holes of 6.65mm (Screen 17). 100% by weight shall stand on a sieve with round holes of 6.00 mm (Screen 15).",
       },
       { label: "Garbling Status", value: "Clean garbled" },
       { label: "Tolerance", value: "PB: 2% by weight | Triage: 2% by weight" },
@@ -801,17 +901,21 @@ export const products: Record<string, Product> = {
       { label: "Category", value: "Premium Grade" },
       { label: "Coffee Type", value: "Arabica" },
       { label: "Processing", value: "Unwashed Arabica Cherry" },
-      { 
-        label: "Sieve Standard", 
-        value: "100% by weight retention on a sieve with oblong holes of 4.75mm (Screen 12 oblong)." 
+      {
+        label: "Sieve Standard",
+        value:
+          "100% by weight retention on a sieve with oblong holes of 4.75mm (Screen 12 oblong).",
       },
       { label: "Garbling Status", value: "Clean garbled" },
-      { label: "Tolerance", value: "AB: 2% by weight | PB Triage: 2% by weight" },
+      {
+        label: "Tolerance",
+        value: "AB: 2% by weight | PB Triage: 2% by weight",
+      },
     ],
     related: ["arabica-cherry-aa", "arabica-cherry-a"],
     groupTitle: "Premium Unwashed Arabica Grades",
   },
-  
+
   // Premium Grades - Robusta
   "robusta-parchment-a": {
     slug: "robusta-parchment-a",
@@ -825,9 +929,10 @@ export const products: Record<string, Product> = {
       { label: "Category", value: "Premium Grade" },
       { label: "Coffee Type", value: "Robusta" },
       { label: "Processing", value: "Washed Robusta Parchment" },
-      { 
-        label: "Sieve Standard", 
-        value: "Minimum 90% by weight retention on a sieve with round holes of 6.65mm (Screen 17). 100% shall stand on a sieve with round holes of 6.00mm (Screen 15)." 
+      {
+        label: "Sieve Standard",
+        value:
+          "Minimum 90% by weight retention on a sieve with round holes of 6.65mm (Screen 17). 100% shall stand on a sieve with round holes of 6.00mm (Screen 15).",
       },
       { label: "Garbling Status", value: "Clean garbled" },
       { label: "Tolerance", value: "PB: 2% by weight | Triage: No tolerance" },
@@ -847,9 +952,10 @@ export const products: Record<string, Product> = {
       { label: "Category", value: "Premium Grade" },
       { label: "Coffee Type", value: "Robusta" },
       { label: "Processing", value: "Washed Robusta Parchment" },
-      { 
-        label: "Sieve Standard", 
-        value: "100% by weight retention on a sieve with oblong holes of 4.50mm (Screen 11 oblong)." 
+      {
+        label: "Sieve Standard",
+        value:
+          "100% by weight retention on a sieve with oblong holes of 4.50mm (Screen 11 oblong).",
       },
       { label: "Garbling Status", value: "Clean garbled" },
       { label: "Tolerance", value: "AB: 2% by weight | Triage: 2% by weight" },
@@ -869,9 +975,10 @@ export const products: Record<string, Product> = {
       { label: "Category", value: "Premium Grade" },
       { label: "Coffee Type", value: "Robusta" },
       { label: "Processing", value: "Unwashed Robusta Cherry" },
-      { 
-        label: "Sieve Standard", 
-        value: "Minimum 90% by weight retention on a sieve with round holes of 7.10mm (Screen 18). 100% retention on a sieve with round holes of 6.65mm (Screen 17)." 
+      {
+        label: "Sieve Standard",
+        value:
+          "Minimum 90% by weight retention on a sieve with round holes of 7.10mm (Screen 18). 100% retention on a sieve with round holes of 6.65mm (Screen 17).",
       },
       { label: "Garbling Status", value: "Clean garbled" },
       { label: "Tolerance", value: "PB: 2% by weight | Triage: 1% by weight" },
@@ -891,9 +998,10 @@ export const products: Record<string, Product> = {
       { label: "Category", value: "Premium Grade" },
       { label: "Coffee Type", value: "Robusta" },
       { label: "Processing", value: "Unwashed Robusta Cherry" },
-      { 
-        label: "Sieve Standard", 
-        value: "Minimum 90% by weight retention on a sieve with round holes of 6.65mm (Screen 17). 100% by weight shall stand on a sieve with round holes of 6.00mm (Screen 15)" 
+      {
+        label: "Sieve Standard",
+        value:
+          "Minimum 90% by weight retention on a sieve with round holes of 6.65mm (Screen 17). 100% by weight shall stand on a sieve with round holes of 6.00mm (Screen 15)",
       },
       { label: "Garbling Status", value: "Clean garbled" },
       { label: "Tolerance", value: "PB: 2% by weight | Triage: 2% by weight" },
@@ -913,17 +1021,21 @@ export const products: Record<string, Product> = {
       { label: "Category", value: "Premium Grade" },
       { label: "Coffee Type", value: "Robusta" },
       { label: "Processing", value: "Unwashed Robusta Cherry" },
-      { 
-        label: "Sieve Standard", 
-        value: "100% by weight retention on a sieve with oblong holes of 4.50mm (Screen 11 oblong)." 
+      {
+        label: "Sieve Standard",
+        value:
+          "100% by weight retention on a sieve with oblong holes of 4.50mm (Screen 11 oblong).",
       },
       { label: "Garbling Status", value: "Clean garbled" },
-      { label: "Tolerance", value: "AB: 2% by weight | PB Triage: 2% by weight" },
+      {
+        label: "Tolerance",
+        value: "AB: 2% by weight | PB Triage: 2% by weight",
+      },
     ],
     related: ["robusta-cherry-aa", "robusta-cherry-a"],
     groupTitle: "Premium Unwashed Robusta Grades",
   },
-  
+
   // Specialty Coffees
   "mysore-nuggets-extra-bold": {
     slug: "mysore-nuggets-extra-bold",
@@ -937,21 +1049,31 @@ export const products: Record<string, Product> = {
       { label: "Category", value: "Specialty Coffee" },
       { label: "Coffee Type", value: "Arabica" },
       { label: "Processing", value: "Washed Arabica Plantation" },
-      { 
-        label: "Region of Growth", 
-        value: "Shall be prepared from Plantation A coffee of Mysore, Coorg, Bababudan, Biligiris and Shevaroys." 
+      {
+        label: "Region of Growth",
+        value:
+          "Shall be prepared from Plantation A coffee of Mysore, Coorg, Bababudan, Biligiris and Shevaroys.",
       },
-      { 
-        label: "Sieve Standard", 
-        value: "Minimum 90% retention on a sieve with holes of 7.50mm (Screen 19). 100% retention on a sieve with holes of 6.65mm (Screen 17). The 10% beans passing through the sieve of 7.5mm and standing on the sieve of 6.65mm shall be whole beans." 
+      {
+        label: "Sieve Standard",
+        value:
+          "Minimum 90% retention on a sieve with holes of 7.50mm (Screen 19). 100% retention on a sieve with holes of 6.65mm (Screen 17). The 10% beans passing through the sieve of 7.5mm and standing on the sieve of 6.65mm shall be whole beans.",
       },
-      { label: "Processing/Garbling Standard", value: "Medium to well polished, clean garbled." },
-      { 
-        label: "Free from", 
-        value: "PB, Brokens (inclusive of Triage and Elephant beans) or any extraneous matter. Defectives including bleached and spongy beans, Blacks, Browns, insect-damaged beans, fungal-damaged beans and pulper cuts" 
+      {
+        label: "Processing/Garbling Standard",
+        value: "Medium to well polished, clean garbled.",
+      },
+      {
+        label: "Free from",
+        value:
+          "PB, Brokens (inclusive of Triage and Elephant beans) or any extraneous matter. Defectives including bleached and spongy beans, Blacks, Browns, insect-damaged beans, fungal-damaged beans and pulper cuts",
       },
     ],
-    related: ["monsooned-malabar-aaa", "monsooned-malabar-aa", "monsooned-malabar-arabica-triage"],
+    related: [
+      "monsooned-malabar-aaa",
+      "monsooned-malabar-aa",
+      "monsooned-malabar-arabica-triage",
+    ],
     groupTitle: "Specialty Coffees",
   },
   "robusta-kaapi-royale": {
@@ -966,26 +1088,35 @@ export const products: Record<string, Product> = {
       { label: "Category", value: "Specialty Coffee" },
       { label: "Coffee Type", value: "Robusta" },
       { label: "Processing", value: "Washed Robusta Parchment" },
-      { 
-        label: "Region of Growth", 
-        value: "Shall be prepared from Robusta Parchment AB Coffee of Mysore, Coorg, Travancore, Wayanad, Shevaroys, Pulneys and Bababudan Regions." 
+      {
+        label: "Region of Growth",
+        value:
+          "Shall be prepared from Robusta Parchment AB Coffee of Mysore, Coorg, Travancore, Wayanad, Shevaroys, Pulneys and Bababudan Regions.",
       },
-      { 
-        label: "Sieve Standard", 
-        value: "Minimum 90% retention on a sieve with holes of 6.70mm (Screen 17). 100% retention on a sieve with holes of 6.00mm (Screen 15). The 10% beans passing through the sieve of 6.70mm and standing on the sieve of 6.00mm shall be whole beans." 
+      {
+        label: "Sieve Standard",
+        value:
+          "Minimum 90% retention on a sieve with holes of 6.70mm (Screen 17). 100% retention on a sieve with holes of 6.00mm (Screen 15). The 10% beans passing through the sieve of 6.70mm and standing on the sieve of 6.00mm shall be whole beans.",
       },
-      { label: "Processing/Garbling Standard", value: "Medium to well polished, clean garbled." },
-      { 
-        label: "Free from", 
-        value: "PB, Brokens (inclusive of Triage and Elephant beans) or any extraneous matter. Defectives including bleached and spongy beans, unwashed beans, Blacks, Browns, insects-damaged beans, fungal-damaged beans and pulper cuts" 
+      {
+        label: "Processing/Garbling Standard",
+        value: "Medium to well polished, clean garbled.",
+      },
+      {
+        label: "Free from",
+        value:
+          "PB, Brokens (inclusive of Triage and Elephant beans) or any extraneous matter. Defectives including bleached and spongy beans, unwashed beans, Blacks, Browns, insects-damaged beans, fungal-damaged beans and pulper cuts",
       },
     ],
-    related: ["monsooned-malabar-robusta-pr", "monsooned-malabar-robusta-triage"],
+    related: [
+      "monsooned-malabar-robusta-pr",
+      "monsooned-malabar-robusta-triage",
+    ],
     groupTitle: "Specialty Coffees",
   },
   "monsooned-malabar-aaa": {
     slug: "monsooned-malabar-aaa",
-    name: "Monsooned Malabar AAA",
+    name: "Monsooned Malabar Arabica AAA",
     subtitle: "Monsooned Arabica",
     heroImage: "",
     gallery: [],
@@ -995,19 +1126,24 @@ export const products: Record<string, Product> = {
       { label: "Category", value: "Specialty Coffee" },
       { label: "Coffee Type", value: "Arabica" },
       { label: "Processing", value: "Monsooned" },
-      { 
-        label: "Sieve Standard", 
-        value: "Minimum 90% by weight retention on a sieve with round holes of 7.50 mm (Screen 19). Not more than 1.5% by weight shall pass through a sieve with round holes of 7.10mm (Screen 18)." 
+      {
+        label: "Sieve Standard",
+        value:
+          "Minimum 90% by weight retention on a sieve with round holes of 7.50 mm (Screen 19). Not more than 1.5% by weight shall pass through a sieve with round holes of 7.10mm (Screen 18).",
       },
       { label: "Garbling Status", value: "Clean garbled" },
       { label: "Tolerance", value: "Triage: Maximum 2% by weight | BBB: Nil" },
     ],
-    related: ["monsooned-malabar-aa", "monsooned-malabar-a", "monsooned-malabar-arabica-triage"],
+    related: [
+      "monsooned-malabar-aa",
+      "monsooned-malabar-a",
+      "monsooned-malabar-arabica-triage",
+    ],
     groupTitle: "Monsooned Coffees",
   },
   "monsooned-malabar-aa": {
     slug: "monsooned-malabar-aa",
-    name: "Monsooned Malabar AA",
+    name: "Monsooned Malabar Arabica AA",
     subtitle: "Monsooned Arabica",
     heroImage: "",
     gallery: [],
@@ -1017,19 +1153,24 @@ export const products: Record<string, Product> = {
       { label: "Category", value: "Specialty Coffee" },
       { label: "Coffee Type", value: "Arabica" },
       { label: "Processing", value: "Monsooned" },
-      { 
-        label: "Sieve Standard", 
-        value: "Minimum 90% by weight retention on a sieve with round holes of 7.10 mm (Screen 18). Not more than 1.5% by weight shall pass through a sieve with round holes of 6.70 mm (Screen 1)." 
+      {
+        label: "Sieve Standard",
+        value:
+          "Minimum 90% by weight retention on a sieve with round holes of 7.10 mm (Screen 18). Not more than 1.5% by weight shall pass through a sieve with round holes of 6.70 mm (Screen 1).",
       },
       { label: "Garbling Status", value: "Clean garbled" },
       { label: "Tolerance", value: "Triage: Maximum 2% by weight | BBB: Nil" },
     ],
-    related: ["monsooned-malabar-aaa", "monsooned-malabar-a", "monsooned-malabar-arabica-triage"],
+    related: [
+      "monsooned-malabar-aaa",
+      "monsooned-malabar-a",
+      "monsooned-malabar-arabica-triage",
+    ],
     groupTitle: "Monsooned Coffees",
   },
   "monsooned-malabar-a": {
     slug: "monsooned-malabar-a",
-    name: "Monsooned Malabar A",
+    name: "Monsooned Malabar Arabica A",
     subtitle: "Monsooned Arabica",
     heroImage: "",
     gallery: [],
@@ -1039,13 +1180,18 @@ export const products: Record<string, Product> = {
       { label: "Category", value: "Specialty Coffee" },
       { label: "Coffee Type", value: "Arabica" },
       { label: "Processing", value: "Monsooned" },
-      { 
-        label: "Sieve Standard", 
-        value: "Minimum 75% by weight retention on a sieve with round holes of 6.70mm (Screen 17). Not more than 1.5% by weight shall pass through a sieve with round holes of 6.00 mm (Screen 15)." 
+      {
+        label: "Sieve Standard",
+        value:
+          "Minimum 75% by weight retention on a sieve with round holes of 6.70mm (Screen 17). Not more than 1.5% by weight shall pass through a sieve with round holes of 6.00 mm (Screen 15).",
       },
       { label: "Tolerance", value: "Triage: Maximum 3% by weight | BBB: Nil" },
     ],
-    related: ["monsooned-malabar-aaa", "monsooned-malabar-aa", "monsooned-malabar-arabica-triage"],
+    related: [
+      "monsooned-malabar-aaa",
+      "monsooned-malabar-aa",
+      "monsooned-malabar-arabica-triage",
+    ],
     groupTitle: "Monsooned Coffees",
   },
   "monsooned-malabar-arabica-triage": {
@@ -1060,13 +1206,18 @@ export const products: Record<string, Product> = {
       { label: "Category", value: "Specialty Coffee" },
       { label: "Coffee Type", value: "Arabica" },
       { label: "Processing", value: "Monsooned" },
-      { 
-        label: "Sieve Standard", 
-        value: "Minimum 90% by weight retention on a sieve with round holes of 6.00mm (Screen 15)." 
+      {
+        label: "Sieve Standard",
+        value:
+          "Minimum 90% by weight retention on a sieve with round holes of 6.00mm (Screen 15).",
       },
       { label: "Tolerance", value: "BBB: 3%" },
     ],
-    related: ["monsooned-malabar-aaa", "monsooned-malabar-aa", "monsooned-malabar-a"],
+    related: [
+      "monsooned-malabar-aaa",
+      "monsooned-malabar-aa",
+      "monsooned-malabar-a",
+    ],
     groupTitle: "Monsooned Coffees",
   },
   "monsooned-malabar-robusta-pr": {
@@ -1081,9 +1232,10 @@ export const products: Record<string, Product> = {
       { label: "Category", value: "Specialty Coffee" },
       { label: "Coffee Type", value: "Robusta" },
       { label: "Processing", value: "Monsooned" },
-      { 
-        label: "Sieve Standard", 
-        value: "Minimum 90% by weight retention on a sieve with round holes of 7.10mm (Screen 18)." 
+      {
+        label: "Sieve Standard",
+        value:
+          "Minimum 90% by weight retention on a sieve with round holes of 7.10mm (Screen 18).",
       },
       { label: "Tolerance", value: "BBB: 3% by weight" },
     ],
