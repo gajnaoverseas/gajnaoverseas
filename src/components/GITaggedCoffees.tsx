@@ -30,7 +30,7 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
             "The coffee is processed during the intense South West Monsoon"
         ],
         cupQuality: "In the cup the coffee is mild, mellow and neutral flavor.",
-        imageSrc: "/mag/Anamalais copy(6).png",
+        imageSrc: "/svg/Monsooned Malabar.svg",
         imageAlt: "Monsooned Malabar Arabica Coffee"
     },
     {
@@ -43,7 +43,7 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
             "The coffee is processed during the intense South West Monsoon"
         ],
         cupQuality: "In the cup the coffee is mild, mellow and neutral flavor.",
-        imageSrc: "/mag/Anamalais copy(6).png",
+        imageSrc: "/svg/Monsooned Malabar.svg",
         imageAlt: "Monsooned Malabar Robusta Coffee"
     },
     {
@@ -58,7 +58,7 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
             "Unique place with many GI registered products"
         ],
         cupQuality: "Pleasant Aroma, Balanced cup with mild acidity, Strong body with a hint of floral note.",
-        imageSrc: "/mag/Coorg Arabica Coffee.png",
+        imageSrc: "/svg/Coorg Arabica Coffee.png",
         imageAlt: "Coorg Arabica Coffee"
     },
     {
@@ -72,7 +72,7 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
             "More than 90% small and tiny farmers"
         ],
         cupQuality: "Soft to neutral cup, full bodied, malty and chocolatey note with light to medium flavour.",
-        imageSrc: "/mag/Anamalais copy(5).png",
+        imageSrc: "/svg/Wayanaad.svg",
         imageAlt: "Wayanaad Robusta Coffee"
     },
     {
@@ -90,7 +90,7 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
             "Tigers, medicinal plants"
         ],
         cupQuality: "Mild acidity and medium body with floral and a hint of citrus note of lemon grass",
-        imageSrc: "/mag/Anamalais copy(4).png",
+        imageSrc: "/svg/Chikmagalur.svg",
         imageAlt: "Chikmagalur Arabica Coffee"
     },
     {
@@ -108,7 +108,7 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
             "Unique varieties grown at higher altitude"
         ],
         cupQuality: "Light to medium body, pleasant acidity with citrus note of grape fruit with mild jaggary sweetness.",
-        imageSrc: "/mag/Anamalais copy(1).png",
+        imageSrc: "/svg/Araku Valley.svg",
         imageAlt: "Araku Valley Arabica Coffee"
     },
     {
@@ -126,7 +126,7 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
             "Traditionally and popularly known as Giri coffee more than a century"
         ],
         cupQuality: "Striking acidity with full body and sweetness with mild flavour and a balanced cup.",
-        imageSrc: "/mag/Anamalais copy(2).png",
+        imageSrc: "/svg/Bababudangiris.svg",
         imageAlt: "Bababudangiris Arabica Coffee"
     }
 ];
@@ -141,7 +141,7 @@ const CoffeeCard = ({ coffee }: { coffee: GITaggedCoffeeItem }) => {
             <div className="flex flex-col items-center justify-center lg:px-20 md:flex-row gap-6 md:gap-36 mb-8">
                 {/* Coffee Bag Image */}
                 <div className="flex-shrink-0 flex flex-col items-center">
-                    <div className="relative w-[240px] h-[290px]">
+                    <div className="relative w-[240px] h-[250px]">
                         <Image
                             src={coffee.imageSrc}
                             alt={coffee.imageAlt}
@@ -227,30 +227,38 @@ export default function GITaggedCoffees() {
     return (
         <section className="py-16 md:py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4">
-                {/* Section Header */}
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-coffee-brown mb-16 text-center">
-                    GI Registered Coffees of India
-                </h2>
+                {/* Section Header with Navigation */}
+                <div className="flex flex-col md:flex-row items-center justify-between mb-12 gap-4">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-coffee-brown text-center md:text-left">
+                        GI Registered Coffees of India
+                    </h2>
+
+                    {/* Navigation Arrows */}
+                    <div className="flex items-center gap-4">
+                        <button
+                            onClick={goToPrevious}
+                            className="bg-[#8B4513] hover:bg-[#6d3610] text-white p-3 rounded-full shadow-lg transition-colors"
+                            aria-label="Previous coffee"
+                        >
+                            <ChevronLeft className="w-6 h-6" />
+                        </button>
+
+                        <span className="text-[#5D4037] font-medium min-w-[60px] text-center">
+                            {currentIndex + 1} / {totalItems}
+                        </span>
+
+                        <button
+                            onClick={goToNext}
+                            className="bg-[#8B4513] hover:bg-[#6d3610] text-white p-3 rounded-full shadow-lg transition-colors"
+                            aria-label="Next coffee"
+                        >
+                            <ChevronRight className="w-6 h-6" />
+                        </button>
+                    </div>
+                </div>
 
                 {/* Carousel Container */}
                 <div className="relative">
-                    {/* Navigation Arrows */}
-                    <button
-                        onClick={goToPrevious}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 z-10 bg-[#8B4513] hover:bg-[#6d3610] text-white p-3 rounded-full shadow-lg transition-colors"
-                        aria-label="Previous coffee"
-                    >
-                        <ChevronLeft className="w-6 h-6" />
-                    </button>
-
-                    <button
-                        onClick={goToNext}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 z-10 bg-[#8B4513] hover:bg-[#6d3610] text-white p-3 rounded-full shadow-lg transition-colors"
-                        aria-label="Next coffee"
-                    >
-                        <ChevronRight className="w-6 h-6" />
-                    </button>
-
                     {/* Carousel Content */}
                     <div className="overflow-hidden">
                         <AnimatePresence mode="wait">
@@ -280,11 +288,6 @@ export default function GITaggedCoffees() {
                             />
                         ))}
                     </div>
-
-                    {/* Slide Counter */}
-                    <p className="text-center mt-4 text-[#5D4037] font-medium">
-                        {currentIndex + 1} / {totalItems}
-                    </p>
                 </div>
             </div>
         </section>

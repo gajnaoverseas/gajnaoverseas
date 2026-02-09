@@ -14,6 +14,7 @@ type SpecialtyCoffeeItem = {
     textColor?: string;
     descriptionColor?: string;
     beanPosition?: "left" | "right";
+    labelColor?: string;
 };
 
 const specialtyCoffees: SpecialtyCoffeeItem[] = [
@@ -23,11 +24,11 @@ const specialtyCoffees: SpecialtyCoffeeItem[] = [
         description: [
             "This wonderful and exotic coffee is prepared from washed Arabicas grown in the regions of Chikmaglur, Coorg, Biligiris, Bababudangiris and Shevaroys. The beans are very large, uniformly bluish green in colour and have a clean, polished appearance. In the cup, the coffee exhibits full aroma, medium to good body, good acidity and fine flavour with a hint of spice."
         ],
-        imageSrc: "/mag/Anamalais copy(7).png",
+        imageSrc: "/svg/Mysore Nuggets.svg",
         imageAlt: "Mysore Nuggets Extra Bold",
         label: "Grade Specific Specialty Coffee",
         imagePosition: "left",
-        bgColor: "#7a3b0e"
+        bgColor: "#91400E"
     },
     {
         title: "Robusta Kaapi Royale - Grade Specific",
@@ -35,14 +36,15 @@ const specialtyCoffees: SpecialtyCoffeeItem[] = [
         description: [
             "Thanks to a unique washing process, Indian Washed Robustas are nearest in taste to that of Arabicas and make for great standalone brewed coffee. The beans appear to be bold, round with pointed ends and are gray to bluish gray in colour. These intensely aromatic coffees have a soft, mild taste with a chocolatey note."
         ],
-        imageSrc: "/mag/Anamalais copy(8).png",
+        imageSrc: "/svg/Robusta Kaapi Royale.svg",
         imageAlt: "Robusta Kaapi Royale",
         label: "Grade Specific Specialty Coffee",
         imagePosition: "right",
         bgColor: "#EEBA6C",
         textColor: "#853B0E",
         descriptionColor: "black",
-        beanPosition: "left"
+        beanPosition: "left",
+        labelColor: "#8B4513"
     },
     {
         title: "Monsooned Malabar - Process Specific",
@@ -51,11 +53,11 @@ const specialtyCoffees: SpecialtyCoffeeItem[] = [
             "Many years ago, coffee beans from India were accidentally 'monsocned' over a long voyage. Monsoon winds caused the beans to swell to one-and- a-half times their normal size and take on a purer, paler colour. Something magical seemed to have happened to the coffee... and consumers around Europe loved its unique flavour!",
             "India has perfected the art of deliberately \"monsooning\" coffee at special curing works along the Malabar Coast, creating the world's most exotic specialty coffee. In the cup, Monsooned Malabar has medium strength and a mild, mellow, sweetish taste."
         ],
-        imageSrc: "/mag/Anamalais copy(6).png",
+        imageSrc: "/svg/Monsooned Malabar.svg",
         imageAlt: "Monsooned Malabar",
         label: "Process Specific Specialty Coffee",
         imagePosition: "left",
-        bgColor: "#7a3b0e"
+        bgColor: "#91400E"
     }
 ];
 
@@ -83,7 +85,10 @@ const CoffeeCard = ({ coffee, index }: { coffee: SpecialtyCoffeeItem; index: num
                             sizes="320px"
                         />
                     </div>
-                    <p className="text-[#EEBA6C] text-sm font-medium mt-4 text-center">
+                    <p
+                        className="text-sm font-medium mt-4 text-center"
+                        style={{ color: coffee.labelColor || '#EEBA6C' }}
+                    >
                         {coffee.label}
                     </p>
                 </div>
