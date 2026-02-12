@@ -4,6 +4,7 @@ import clsx from "clsx";
 import "./globals.css";
 import ClientWrapper from "@/components/ClientWrapper";
 import { Analytics } from "@vercel/analytics/next"
+import Script from "next/script"
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -42,6 +43,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`relative ${lora.variable} ${playfair.variable}`}>
+      <head>
+        <meta name="google-site-verification" content="aZeTIAmU9-v_-YxId44bfEzULizzV21qxPzQslpCTfU" />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-LW2M2KG2CS"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-LW2M2KG2CS');
+          `}
+        </Script>
+      </head>
       <body className={clsx(dmSans.className, "antialiased bg-white")}>
         <Analytics />
         <ClientWrapper>
