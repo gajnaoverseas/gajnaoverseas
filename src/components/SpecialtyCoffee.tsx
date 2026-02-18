@@ -196,6 +196,11 @@ export default function SpecialtyCoffee() {
                     <p className="text-black font-semibold text-base md:text-lg max-w-6xl mx-auto leading-relaxed">
                         There are three specialty coffees of India, but scores do not have any implication on these three Indian specialty coffees.
                     </p>
+                    <ol className="mt-4 text-coffee-brown font-bold italic text-base max-w-xl mx-auto space-y-1 list-decimal list-inside text-left">
+                        <li>Mysore Nuggets Extra Bold - Its a Grade Specific Speciality Coffee</li>
+                        <li>Robusta Kaapi Royale - Its a Grade Specific Speciality Coffee</li>
+                        <li>Monsooned Malabar - Its a Process  Specific Speciality Coffee</li>
+                    </ol>
                 </motion.div>
 
                 {/* Specialty Coffee Cards - No gap between sections */}
