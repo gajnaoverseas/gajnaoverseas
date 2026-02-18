@@ -147,7 +147,7 @@ const CoffeeCard = ({ coffee }: { coffee: GITaggedCoffeeItem }) => {
     return (
         <Link href={coffee.link || "#"} className="block min-w-full">
             <div
-                className="bg-white rounded-2xl p-6 md:p-8 shadow-sm h-full transition-transform hover:scale-[1.01] duration-300"
+                className="bg-white rounded-2xl p-6 md:p-8 shadow-sm h-full"
                 style={{ border: `2px solid ${coffee.borderColor}` }}
             >
                 {/* Top Section: Image + Details */}
@@ -267,9 +267,9 @@ export default function GITaggedCoffees() {
                         <button
                             key={coffee.giNumber}
                             onClick={() => goToSlide(index)}
-                            className={`flex flex-col items-center gap-2 transition-all duration-300 cursor-pointer ${index === currentIndex
-                                ? "scale-110 opacity-100"
-                                : "opacity-60 hover:opacity-90"
+                            className={`flex flex-col items-center gap-2 transition-all duration-300 cursor-pointer rounded-xl p-2 ${index === currentIndex
+                                ? "scale-110 ring-2 ring-[#8B4513] bg-[#8B4513]/10"
+                                : ""
                                 }`}
                         >
                             <div className="relative w-[70px] h-[85px] md:w-[90px] md:h-[110px]">

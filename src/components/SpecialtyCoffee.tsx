@@ -191,7 +191,7 @@ export default function SpecialtyCoffee() {
                     transition={{ duration: 0.6 }}
                 >
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-coffee-brown mb-4">
-                        Specialty Coffee of India
+                        Specialty Coffees of India
                     </h2>
                     <p className="text-black font-semibold text-base md:text-lg max-w-6xl mx-auto leading-relaxed">
                         There are three specialty coffees of India, but scores do not have any implication on these three Indian specialty coffees.
