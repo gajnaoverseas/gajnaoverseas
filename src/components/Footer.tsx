@@ -6,6 +6,7 @@ import { IoCall } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
 import { Linkedin } from "lucide-react";
 import { BsWhatsapp } from "react-icons/bs";
+import NewsletterForm from "./NewsletterForm";
 // Removed framer-motion import to fix createContext error
 
 export default function Footer() {
@@ -13,24 +14,7 @@ export default function Footer() {
     <footer className="bg-coffee-brown text-white py-12 md:py-16">
       <div className="max-w-7xl mx-auto px-4">
         {/* Newsletter Strip */}
-        <div className="flex flex-col md:flex-row justify-between items-center mb-12 pb-8 border-b border-white/10 gap-6">
-          <div className="text-center md:text-left">
-            <h3 className="font-bold text-xl mb-1">Newsletter</h3>
-            <p className="text-sm text-gray-200">
-              Sign up with your email to join our mailing list
-            </p>
-          </div>
-          <div className="flex w-full md:w-auto gap-2">
-            <input
-              type="email"
-              placeholder="Enter your email address"
-              className="w-full md:w-64 px-4 py-2 text-sm text-gray-800 bg-white rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-coffee-gold focus:border-transparent"
-            />
-            <button className="px-6 py-2 text-sm bg-coffee-gold text-coffee-brown font-medium rounded hover:bg-amber-400 transition-colors duration-200 whitespace-nowrap">
-              Subscribe
-            </button>
-          </div>
-        </div>
+        <NewsletterForm />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo and Tagline */}
