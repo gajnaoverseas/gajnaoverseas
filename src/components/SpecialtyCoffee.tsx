@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 type SpecialtyCoffeeItem = {
     title: string;
@@ -21,7 +22,7 @@ type SpecialtyCoffeeItem = {
 
 const specialtyCoffees: SpecialtyCoffeeItem[] = [
     {
-        title: "Mysore Nuggets Extra Bold - Grade Specific",
+        title: "Mysore Nuggets Extra Bold",
         subtitle: "It is a rare, premium coffee that represents the best quality coffee from India.",
         description: [
             "This wonderful and exotic coffee is prepared from washed Arabicas grown in the regions of Chikmaglur, Coorg, Biligiris, Bababudangiris and Shevaroys. The beans are very large, uniformly bluish green in colour and have a clean, polished appearance. In the cup, the coffee exhibits full aroma, medium to good body, good acidity and fine flavour with a hint of spice."
@@ -34,7 +35,7 @@ const specialtyCoffees: SpecialtyCoffeeItem[] = [
         link: "/products/mysore-nuggets-extra-bold"
     },
     {
-        title: "Robusta Kaapi Royale - Grade Specific",
+        title: "Robusta Kaapi Royale",
         subtitle: "It is India's flagship Washed Robusta brand.",
         description: [
             "Thanks to a unique washing process, Indian Washed Robustas are nearest in taste to that of Arabicas and make for great standalone brewed coffee. The beans appear to be bold, round with pointed ends and are gray to bluish gray in colour. These intensely aromatic coffees have a soft, mild taste with a chocolatey note."
@@ -51,17 +52,21 @@ const specialtyCoffees: SpecialtyCoffeeItem[] = [
         link: "/products/robusta-kaapi-royale"
     },
     {
-        title: "Monsooned Malabar - Process Specific",
+        title: "Monsooned Malabar",
         subtitle: "The only monsooned coffee in the world",
         description: [
-            "Many years ago, coffee beans from India were accidentally 'monsocned' over a long voyage. Monsoon winds caused the beans to swell to one-and- a-half times their normal size and take on a purer, paler colour. Something magical seemed to have happened to the coffee... and consumers around Europe loved its unique flavour!",
-            "India has perfected the art of deliberately \"monsooning\" coffee at special curing works along the Malabar Coast, creating the world's most exotic specialty coffee. In the cup, Monsooned Malabar has medium strength and a mild, mellow, sweetish taste."
+            "Many years ago, coffee beans from India were accidentally 'monsooned' over a long voyage. Monsoon winds caused the beans to swell to one-and- a-half times their normal size and take on a purer, paler colour. Something magical seemed to have happened to the coffee... and consumers around Europe loved its unique flavour!",
+            "India has perfected the art of deliberately \"monsooning\" coffee at special curing works along the Malabar Coast.",
+            "Monsooned coffee or coffee beans 'swollen' with moisture from the air, is prepared at the curing works situated on the West coast of Southern India. Stored in specific warehouse, moist monsoon winds circulate around the coffee beans, making them swell in size and take on a mellowed but aggressive, musty flavour. This process yellows the bean and reduces the acidity, imparting a heavy, syrupy flatness reminiscent of aged coffees.",
+            "For preparing monsooned coffees, only dry processed Arabica and Robusta beans are used. The coffees are mainly used in blends to mellow and impart richness to rougher, more acidic coffees.",
+            "Creating the world's most exotic specialty coffee. In the cup, Monsooned Malabar has medium strength and a mild, mellow, sweetish taste."
         ],
         imageSrc: "/svg/Monsooned Malabar.svg",
         imageAlt: "Monsooned Malabar",
         label: "Process Specific Specialty Coffee",
         imagePosition: "left",
         bgColor: "#91400E",
+        beanPosition: "left",
         variants: [
             { name: "Monsooned Malabar AAA", link: "/products/monsooned-malabar-aaa" },
             { name: "Monsooned Malabar AA", link: "/products/monsooned-malabar-aa" },
@@ -71,19 +76,12 @@ const specialtyCoffees: SpecialtyCoffeeItem[] = [
     }
 ];
 
-import Link from "next/link";
-
-// ... (imports)
-
-// ... (types and data)
-
 const CoffeeCard = ({ coffee, index }: { coffee: SpecialtyCoffeeItem; index: number }) => {
     const isImageLeft = coffee.imagePosition === "left";
-    // const slug = coffee.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
     const CardContent = () => (
         <motion.div
-            className="relative rounded-2xl overflow-hidden shadow-xl transition-transform hover:scale-[1.01] duration-300"
+            className="relative overflow-hidden shadow-xl transition-transform hover:scale-[1.01] duration-300"
             style={{ backgroundColor: coffee.bgColor || '#7a3b0e' }}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -136,12 +134,12 @@ const CoffeeCard = ({ coffee, index }: { coffee: SpecialtyCoffeeItem; index: num
 
                     {/* Variants Links */}
                     {coffee.variants && (
-                        <div className="mt-6 flex flex-wrap gap-3">
+                        <div className="mt-6 flex flex-nowrap gap-3 overflow-x-auto">
                             {coffee.variants.map((variant, i) => (
                                 <Link
                                     key={i}
                                     href={variant.link}
-                                    className="px-4 py-2 bg-white/20 hover:bg-white/30 text-white text-sm font-medium rounded-full transition-colors backdrop-blur-sm border border-white/10"
+                                    className="px-3 py-2 bg-white/20 hover:bg-white/30 text-white text-sm font-medium rounded-full transition-colors backdrop-blur-sm border border-white/10 whitespace-nowrap"
                                 >
                                     {variant.name}
                                 </Link>
@@ -152,17 +150,17 @@ const CoffeeCard = ({ coffee, index }: { coffee: SpecialtyCoffeeItem; index: num
 
                 {/* Decorative Coffee Bean */}
                 <div
-                    className={`absolute bottom-4 lg:bottom-6 ${coffee.beanPosition === "left"
+                    className={`absolute -bottom-4 lg:-bottom-16 ${coffee.beanPosition === "left"
                         ? "left-4 lg:left-6"
                         : "right-4 lg:right-6"
                         }`}
                 >
                     <Image
-                        src="/coffee-beans/green.png"
+                        src="/coffee-beans/Coffee Bean unroasted Image.png"
                         alt=""
-                        width={60}
-                        height={60}
-                        className="opacity-80"
+                        width={240}
+                        height={240}
+                        className="opacity-80 "
                     />
                 </div>
             </div>
@@ -195,13 +193,13 @@ export default function SpecialtyCoffee() {
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-coffee-brown mb-4">
                         Specialty Coffee of India
                     </h2>
-                    <p className="text-black font-semibold text-base md:text-lg max-w-5xl mx-auto leading-relaxed">
+                    <p className="text-black font-semibold text-base md:text-lg max-w-6xl mx-auto leading-relaxed">
                         There are three specialty coffees of India, but scores do not have any implication on these three Indian specialty coffees.
                     </p>
                 </motion.div>
 
-                {/* Specialty Coffee Cards */}
-                <div className="space-y-8 lg:space-y-12">
+                {/* Specialty Coffee Cards - No gap between sections */}
+                <div className="space-y-0">
                     {specialtyCoffees.map((coffee, index) => (
                         <CoffeeCard key={coffee.title} coffee={coffee} index={index} />
                     ))}

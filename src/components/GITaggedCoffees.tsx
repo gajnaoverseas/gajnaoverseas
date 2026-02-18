@@ -3,6 +3,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 type GITaggedCoffeeItem = {
     title: string;
@@ -139,14 +140,9 @@ const giTaggedCoffees: GITaggedCoffeeItem[] = [
     }
 ];
 
-import Link from "next/link";
-
-// ... (imports)
-
-// ... (types and data)
-
 const CoffeeCard = ({ coffee }: { coffee: GITaggedCoffeeItem }) => {
-    // const slug = coffee.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+    const hasCoordinates = !!coffee.coordinates;
+    const gridCols = hasCoordinates ? "md:grid-cols-3" : "md:grid-cols-2";
 
     return (
         <Link href={coffee.link || "#"} className="block min-w-full">
@@ -182,23 +178,12 @@ const CoffeeCard = ({ coffee }: { coffee: GITaggedCoffeeItem }) => {
                             <p>
                                 <span className="font-bold">GI Registration number:</span> {coffee.giNumber}
                             </p>
-                            {coffee.coordinates && (
-                                <div>
-                                    <p>
-                                        <span className="font-bold">Coordinates:</span>{" "}
-                                        <span className="font-semibold">Latitude:</span> {coffee.coordinates.lat}
-                                    </p>
-                                    <p className="lg:ml-[106px]">
-                                        <span className="font-semibold">Longitude:</span> {coffee.coordinates.long}
-                                    </p>
-                                </div>
-                            )}
                         </div>
                     </div>
                 </div>
 
-                {/* Bottom Section: Two Info Cards */}
-                <div className="grid md:grid-cols-2 gap-6">
+                {/* Bottom Section: Info Cards */}
+                <div className={`grid ${gridCols} gap-6`}>
                     {/* Significance of Region */}
                     <div className="bg-gradient-to-b from-white to-[#EEBA6C] rounded-xl p-5">
                         <div className="mb-3">
@@ -220,6 +205,29 @@ const CoffeeCard = ({ coffee }: { coffee: GITaggedCoffeeItem }) => {
                         <h4 className="font-bold text-[#2A1810] text-lg mb-3">Cup quality:</h4>
                         <p className="text-[#4A3225] text-base font-semibold leading-relaxed">{coffee.cupQuality}</p>
                     </div>
+
+                    {/* Coordinates (only for coffees that have them) */}
+                    {hasCoordinates && (
+                        <div className="bg-gradient-to-b from-white to-[#EEBA6C] rounded-xl p-5">
+                            <div className="mb-3">
+                                {/* Compass/Coordinates icon */}
+                                <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="25" y1="2" x2="25" y2="48" stroke="#8B4513" strokeWidth="2.5" />
+                                    <line x1="2" y1="25" x2="48" y2="25" stroke="#8B4513" strokeWidth="2.5" />
+                                    <line x1="25" y1="2" x2="22" y2="8" stroke="#8B4513" strokeWidth="2.5" />
+                                    <line x1="25" y1="2" x2="28" y2="8" stroke="#8B4513" strokeWidth="2.5" />
+                                    <circle cx="25" cy="25" r="6" stroke="#8B4513" strokeWidth="2" fill="none" />
+                                </svg>
+                            </div>
+                            <h4 className="font-bold text-[#2A1810] text-lg mb-3">Coordinates:</h4>
+                            <p className="text-[#4A3225] text-base font-semibold leading-relaxed">
+                                <span className="font-bold">Latitude:</span> {coffee.coordinates!.lat}
+                            </p>
+                            <p className="text-[#4A3225] text-base font-semibold leading-relaxed mt-1">
+                                <span className="font-bold">Longitude:</span> {coffee.coordinates!.long}
+                            </p>
+                        </div>
+                    )}
                 </div>
             </div>
         </Link>
@@ -245,34 +253,38 @@ export default function GITaggedCoffees() {
     return (
         <section className="py-16 md:py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4">
-                {/* Section Header with Navigation */}
-                <div className="flex flex-col md:flex-row items-center justify-between mb-12 gap-4">
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-coffee-brown text-center md:text-left">
+                {/* Section Header */}
+                <div className="text-center mb-8">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-coffee-brown mb-6">
                         GI Registered Coffees of India
                     </h2>
+                </div>
 
-                    {/* Navigation Arrows */}
-                    <div className="flex items-center gap-4">
+                {/* GI Logos Row */}
+                <div className="flex flex-wrap justify-center items-end gap-6 md:gap-8 mb-12">
+                    {giTaggedCoffees.map((coffee, index) => (
                         <button
-                            onClick={goToPrevious}
-                            className="bg-[#8B4513] hover:bg-[#6d3610] text-white p-3 rounded-full shadow-lg transition-colors"
-                            aria-label="Previous coffee"
+                            key={coffee.giNumber}
+                            onClick={() => goToSlide(index)}
+                            className={`flex flex-col items-center gap-2 transition-all duration-300 cursor-pointer ${index === currentIndex
+                                    ? "scale-110 opacity-100"
+                                    : "opacity-60 hover:opacity-90"
+                                }`}
                         >
-                            <ChevronLeft className="w-6 h-6" />
+                            <div className="relative w-[70px] h-[85px] md:w-[90px] md:h-[110px]">
+                                <Image
+                                    src={coffee.imageSrc}
+                                    alt={coffee.imageAlt}
+                                    fill
+                                    className="object-contain"
+                                    sizes="90px"
+                                />
+                            </div>
+                            <span className="text-sm md:text-base font-semibold text-[#5D4037]">
+                                {coffee.giNumber}
+                            </span>
                         </button>
-
-                        <span className="text-[#5D4037] font-medium min-w-[60px] text-center">
-                            {currentIndex + 1} / {totalItems}
-                        </span>
-
-                        <button
-                            onClick={goToNext}
-                            className="bg-[#8B4513] hover:bg-[#6d3610] text-white p-3 rounded-full shadow-lg transition-colors"
-                            aria-label="Next coffee"
-                        >
-                            <ChevronRight className="w-6 h-6" />
-                        </button>
-                    </div>
+                    ))}
                 </div>
 
                 {/* Carousel Container */}
@@ -292,19 +304,27 @@ export default function GITaggedCoffees() {
                         </AnimatePresence>
                     </div>
 
-                    {/* Dot Indicators */}
-                    <div className="flex justify-center gap-2 mt-8">
-                        {giTaggedCoffees.map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => goToSlide(index)}
-                                className={`w-3 h-3 rounded-full transition-colors ${index === currentIndex
-                                    ? "bg-[#8B4513]"
-                                    : "bg-[#D4A574] hover:bg-[#b8895a]"
-                                    }`}
-                                aria-label={`Go to slide ${index + 1}`}
-                            />
-                        ))}
+                    {/* Navigation Below Cards */}
+                    <div className="flex items-center justify-center gap-4 mt-8">
+                        <button
+                            onClick={goToPrevious}
+                            className="bg-[#8B4513] hover:bg-[#6d3610] text-white p-3 rounded-full shadow-lg transition-colors"
+                            aria-label="Previous coffee"
+                        >
+                            <ChevronLeft className="w-6 h-6" />
+                        </button>
+
+                        <span className="text-[#5D4037] font-medium min-w-[60px] text-center">
+                            {currentIndex + 1} / {totalItems}
+                        </span>
+
+                        <button
+                            onClick={goToNext}
+                            className="bg-[#8B4513] hover:bg-[#6d3610] text-white p-3 rounded-full shadow-lg transition-colors"
+                            aria-label="Next coffee"
+                        >
+                            <ChevronRight className="w-6 h-6" />
+                        </button>
                     </div>
                 </div>
             </div>

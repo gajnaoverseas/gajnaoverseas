@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 
 type RegionCardItem = {
     name: string;
+    regionLabel: string;
     description: string;
     borderColor: string;
     titleColor: string;
@@ -18,6 +19,7 @@ type RegionCardItem = {
 const regions: RegionCardItem[] = [
     {
         name: "Anamalais",
+        regionLabel: "Anamalais (Tamil Nadu)",
         description: "Finely grown large Arabica beans",
         borderColor: "#00BCD4",
         titleColor: "#00BCD4",
@@ -30,9 +32,10 @@ const regions: RegionCardItem[] = [
     },
     {
         name: "Araku Valley",
+        regionLabel: "Araku Valley (Andhra Pradesh)",
         description: "Arabica plantations rejuvenated barren hills",
-        borderColor: "#E91E63",
-        titleColor: "#E91E63",
+        borderColor: "#ED0080",
+        titleColor: "#ED0080",
         elevation: "900-1100 m MSL",
         rainfall: "1000-1200 mm",
         coffeeType: "Arabica",
@@ -42,6 +45,7 @@ const regions: RegionCardItem[] = [
     },
     {
         name: "Bababudangiris",
+        regionLabel: "Bababudangiris (Karnataka)",
         description: "The birthplace of the Coffees of India!",
         borderColor: "#9C27B0",
         titleColor: "#9C27B0",
@@ -54,6 +58,7 @@ const regions: RegionCardItem[] = [
     },
     {
         name: "Brahmaputra",
+        regionLabel: "Brahmaputra",
         description: "The birthplace of the Coffees of India!",
         borderColor: "#F44336",
         titleColor: "#F44336",
@@ -66,9 +71,10 @@ const regions: RegionCardItem[] = [
     },
     {
         name: "Biligiris",
+        regionLabel: "Biligiris (Karnataka/Tamil Nadu)",
         description: "High-grown, full-bodied Arabicas",
-        borderColor: "#9C27B0",
-        titleColor: "#9C27B0",
+        borderColor: "#00904C",
+        titleColor: "#00904C",
         elevation: "1500-2000 m MSL",
         rainfall: "1100-1200 mm",
         coffeeType: "Arabica",
@@ -78,9 +84,10 @@ const regions: RegionCardItem[] = [
     },
     {
         name: "Coorg",
+        regionLabel: "Coorg (Karnataka)",
         description: "India's largest coffee region, with Arabicas and Robustas",
-        borderColor: "#4CAF50",
-        titleColor: "#4CAF50",
+        borderColor: "#95C22A",
+        titleColor: "#95C22A",
         elevation: "750-1100 m MSL",
         rainfall: "1000-2500 mm",
         coffeeType: "Arabica, Robusta",
@@ -90,6 +97,7 @@ const regions: RegionCardItem[] = [
     },
     {
         name: "Chikmagalur",
+        regionLabel: "Chikmagalur (Karnataka)",
         description: "Coffee country, with Arabicas & Robustas, pepper & spice",
         borderColor: "#FF9800",
         titleColor: "#FF9800",
@@ -102,9 +110,10 @@ const regions: RegionCardItem[] = [
     },
     {
         name: "Manjarabad",
+        regionLabel: "Manjarabad (Karnataka)",
         description: "Arabicas grown in gently sloping terrain",
-        borderColor: "#FF9800",
-        titleColor: "#FF9800",
+        borderColor: "#FFE600",
+        titleColor: "#FFE600",
         elevation: "900-1100 m MSL",
         rainfall: "1000-2500 mm",
         coffeeType: "Arabica, Robusta",
@@ -114,9 +123,10 @@ const regions: RegionCardItem[] = [
     },
     {
         name: "Nilgiris",
+        regionLabel: "Nilgiris (Tamil Nadu)",
         description: "Home to the best grown, slow ripened 'Kents' Arabica",
-        borderColor: "#3F51B5",
-        titleColor: "#3F51B5",
+        borderColor: "#0374BC",
+        titleColor: "#0374BC",
         elevation: "900-1400 m MSL",
         rainfall: "1600-2600 mm",
         coffeeType: "Arabica, Robusta",
@@ -126,9 +136,10 @@ const regions: RegionCardItem[] = [
     },
     {
         name: "Pulneys",
+        regionLabel: "Pulneys (Tamil Nadu)",
         description: "Finest quality high grown Arabicas S.795, Sin.9 and Cauvery",
-        borderColor: "#3F51B5",
-        titleColor: "#3F51B5",
+        borderColor: "#D3E173",
+        titleColor: "#D3E173",
         elevation: "600-2000 m MSL",
         rainfall: "1000-1600 mm",
         coffeeType: "Arabica",
@@ -138,9 +149,10 @@ const regions: RegionCardItem[] = [
     },
     {
         name: "Shevaroys",
+        regionLabel: "Shevaroys (Tamil Nadu)",
         description: "Very high grown Arabicas, S.795, Sin.9 and Cauvery",
-        borderColor: "#9C27B0",
-        titleColor: "#9C27B0",
+        borderColor: "#FFCB04",
+        titleColor: "#FFCB04",
         elevation: "900-1500 m MSL",
         rainfall: "800-1500 mm",
         coffeeType: "Arabica",
@@ -150,15 +162,29 @@ const regions: RegionCardItem[] = [
     },
     {
         name: "Travancore",
+        regionLabel: "Travancore (Kerala)",
         description: "Rain-nourished Robustas of the CxR variety",
-        borderColor: "#00BCD4",
-        titleColor: "#00BCD4",
+        borderColor: "#00AEEF",
+        titleColor: "#00AEEF",
         elevation: "400-1600 m MSL",
         rainfall: "2000-4000 mm",
         coffeeType: "Robusta",
         varieties: "S.274, CxR",
         intercrops: "Pepper, Banana, Ginger, Vegetables, Medicinal Plants",
         imageSrc: "/svg/Travancore.svg"
+    },
+    {
+        name: "Wayanad",
+        regionLabel: "Wayanad (Kerala)",
+        description: "Largest Robusta producing region",
+        borderColor: "#C41E3A",
+        titleColor: "#C41E3A",
+        elevation: "600-900 m MSL",
+        rainfall: "1100-1200 mm",
+        coffeeType: "Robusta",
+        varieties: "Peridenia, S.274, CxR",
+        intercrops: "Pepper, Banana, Ginger, Vegetables",
+        imageSrc: "/svg/Wayanaad.svg"
     }
 ];
 
@@ -190,6 +216,9 @@ const RegionCard = ({ region }: { region: RegionCardItem }) => {
 
                     {/* Heading */}
                     <div className="flex-1 flex flex-col justify-center">
+                        <p className="text-sm text-gray-600 mb-1">
+                            {region.regionLabel}
+                        </p>
                         <h3
                             className="text-lg font-bold"
                             style={{ color: region.titleColor }}
@@ -241,15 +270,70 @@ export default function CoffeeGrowingRegions() {
         <section className="py-16 md:py-20 bg-[#F5F5F5]">
             <div className="max-w-7xl mx-auto px-4">
                 {/* Section Header */}
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-coffee-brown mb-12 text-center">
-                    Region Cards
-                </h2>
+                <div className="text-center mb-14">
+                    {/* Logo + Heading */}
+                    <div className="flex items-center justify-center gap-4 mb-3">
+                        <Image
+                            src="/mag/coffeeofindia.webp"
+                            alt="Coffees of India Logo"
+                            width={60}
+                            height={70}
+                            className="object-contain"
+                        />
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-coffee-brown">
+                            Coffees of India
+                        </h2>
+                    </div>
+
+                    {/* Bulleted Subtext - single line, centered */}
+                    <ul className="flex items-center justify-center gap-6 md:gap-10 text-sm md:text-base text-gray-700 mb-6">
+                        <li className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-gray-700 inline-block" />
+                            Shade grown
+                        </li>
+                        <li className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-gray-700 inline-block" />
+                            Hand picked
+                        </li>
+                        <li className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-gray-700 inline-block" />
+                            Sundried
+                        </li>
+                    </ul>
+
+                    {/* Heading Paragraph 1 */}
+                    <p className="text-base md:text-lg font-bold italic text-coffee-brown max-w-5xl mx-auto mb-3">
+                        The coffees of India are a diverse range of 16 Coffees from 13 different coffee-growing regions.
+                    </p>
+
+                    {/* Heading Paragraph 2 */}
+                    <p className="text-sm md:text-base text-gray-700 max-w-5xl mx-auto mb-6">
+                        There are 13 regional varieties of Arabicas and Robustas and 3 specialty coffees.
+                    </p>
+
+                    {/* Bold specification line */}
+                    <p className="text-sm md:text-base font-bold text-gray-800 max-w-5xl mx-auto mb-3">
+                        Regional Logos of 13 different coffee growing regions in India with the specifications in terms of Altitude, Rainfall, etc.–
+                    </p>
+
+                    {/* Multi-line production practices paragraph */}
+                    <p className="text-sm md:text-base text-gray-700 max-w-5xl mx-auto leading-relaxed">
+                        Production practices in different coffee-growing regions are more or less the same. However, the microclimate in each region is unique due to changes in altitude, composition of shade trees and diversified crops. These will give small changes in the coffee cup quality.
+                    </p>
+                </div>
 
                 {/* Region Cards Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {regions.map((region, index) => (
+                    {regions.slice(0, -1).map((region, index) => (
                         <RegionCard key={index} region={region} />
                     ))}
+                </div>
+
+                {/* Last card centered */}
+                <div className="flex justify-center mt-6">
+                    <div className="w-full md:w-1/2 lg:w-1/3 px-0">
+                        <RegionCard region={regions[regions.length - 1]} />
+                    </div>
                 </div>
             </div>
         </section>
