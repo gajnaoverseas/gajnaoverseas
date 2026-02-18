@@ -254,8 +254,9 @@ export default function GITaggedCoffees() {
         <section className="py-16 md:py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4">
                 {/* Section Header */}
-                <div className="text-center mb-8">
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-coffee-brown mb-6">
+                <div className="text-center mb-8 flex justify-center items-center gap-4">
+                    <Image src="/gi.webp" alt="" width={50} height={50} />
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-coffee-brown ">
                         GI Registered Coffees of India
                     </h2>
                 </div>
@@ -267,8 +268,8 @@ export default function GITaggedCoffees() {
                             key={coffee.giNumber}
                             onClick={() => goToSlide(index)}
                             className={`flex flex-col items-center gap-2 transition-all duration-300 cursor-pointer ${index === currentIndex
-                                    ? "scale-110 opacity-100"
-                                    : "opacity-60 hover:opacity-90"
+                                ? "scale-110 opacity-100"
+                                : "opacity-60 hover:opacity-90"
                                 }`}
                         >
                             <div className="relative w-[70px] h-[85px] md:w-[90px] md:h-[110px]">
@@ -281,7 +282,7 @@ export default function GITaggedCoffees() {
                                 />
                             </div>
                             <span className="text-sm md:text-base font-semibold text-[#5D4037]">
-                                {coffee.giNumber}
+                                GI. No: {coffee.giNumber}
                             </span>
                         </button>
                     ))}

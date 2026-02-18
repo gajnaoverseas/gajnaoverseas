@@ -286,7 +286,7 @@ export default function CoffeeGrowingRegions() {
                     </div>
 
                     {/* Bulleted Subtext - single line, centered */}
-                    <ul className="flex items-center justify-center gap-6 md:gap-10 text-sm md:text-base text-gray-700 mb-6">
+                    <ul className="flex items-center justify-center gap-6 md:gap-10 text-sm md:text-base text-gray-700 mb-6  translate-x-10">
                         <li className="flex items-center gap-1.5">
                             <span className="w-1.5 h-1.5 rounded-full bg-gray-700 inline-block" />
                             Shade grown
@@ -322,16 +322,15 @@ export default function CoffeeGrowingRegions() {
                     </p>
                 </div>
 
-                {/* Region Cards Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {regions.slice(0, -1).map((region, index) => (
                         <RegionCard key={index} region={region} />
                     ))}
                 </div>
 
-                {/* Last card centered */}
+                {/* Last card centered with same width as grid columns */}
                 <div className="flex justify-center mt-6">
-                    <div className="w-full md:w-1/2 lg:w-1/3 px-0">
+                    <div className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
                         <RegionCard region={regions[regions.length - 1]} />
                     </div>
                 </div>

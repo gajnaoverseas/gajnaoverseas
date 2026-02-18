@@ -151,8 +151,8 @@ const CoffeeCard = ({ coffee, index }: { coffee: SpecialtyCoffeeItem; index: num
                 {/* Decorative Coffee Bean */}
                 <div
                     className={`hidden lg:block absolute ${coffee.beanPosition === "left"
-                        ? "left-4 lg:left-6 -bottom-4 lg:-bottom-28"
-                        : "right-4 lg:right-10 -bottom-4 lg:-bottom-32"
+                        ? "left-4 lg:left-6 -bottom-4 lg:-bottom-16"
+                        : "right-4 lg:right-10 -bottom-4 lg:-bottom-14"
                         }`}
                 >
                     <Image
