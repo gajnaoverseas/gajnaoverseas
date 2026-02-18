@@ -62,20 +62,22 @@ export default function CoffeeRegions() {
 
         {/* Bottom bullet points */}
         <div className="mt-16 max-w-6xl mx-auto">
-          <ul className="space-y-3 text-sm md:text-xl  text-white font-medium list-disc list-outside pl-5 leading-relaxed">
-            <li>
-              Coffee in India is grown in different geographical regions under varying degrees of altitude and rainfall.
-            </li>
-            <li>
-              These differences bring subtle but exciting variations to the flavor of Indian coffee.
-            </li>
-            <li>
-              13 regional coffees and 3 speciality coffees each one unique and distinct but all deliciously Indian.
-            </li>
-            <li>
-              Coffees of India are very well known for the micro-lots and estate branded coffees.
-            </li>
-          </ul>
+          <div className="rounded-xl bg-gradient-to-br from-[#853B0E] to-[#EEBA6C] border-[#EEBA6C] border-[1px] p-6 md:p-8 shadow-xl">
+            <ul className="space-y-3 text-sm md:text-xl text-white font-medium list-disc list-outside pl-5 leading-relaxed">
+              <li>
+                Coffee in India is grown in different geographical regions under varying degrees of altitude and rainfall.
+              </li>
+              <li>
+                These differences bring subtle but exciting variations to the flavor of Indian coffee.
+              </li>
+              <li>
+                13 regional coffees and 3 speciality coffees each one unique and distinct but all deliciously Indian.
+              </li>
+              <li>
+                Coffees of India are very well known for the micro-lots and estate branded coffees.
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
