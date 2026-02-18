@@ -106,7 +106,7 @@ export default function EthicalSourcing() {
       {/* Registrations & Certifications */}
       <div className="bg-white border-t-2 border-coffee-brown pt-6">
         <div className="max-w-7xl mx-auto px-4 py-8">
-         <h2 className="main-title text-center text-4xl md:text-6xl font-serif text-coffee-brown mb-20">
+          <h2 className="main-title text-center text-4xl md:text-6xl font-serif text-coffee-brown mb-20">
             Registrations & Certificates
           </h2>
 
@@ -152,14 +152,14 @@ export default function EthicalSourcing() {
                         }
                         return null;
                       })()}
-                       
+
                     </div>
-                     
+
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="-left-2 lg:-left-12" />
-              <CarouselNext className="-right-2 lg:-right-12 " />
+              <CarouselPrevious className="-left-4 lg:-left-16" />
+              <CarouselNext className="-right-4 lg:-right-16" />
             </Carousel>
           </div>
 
