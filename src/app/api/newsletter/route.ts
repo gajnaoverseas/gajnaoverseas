@@ -72,8 +72,8 @@ export async function POST(req: NextRequest) {
         <p style="font-size:15px; color:#374151; line-height:1.6; margin-bottom:16px;">You'll now receive updates on premium Indian coffee, industry insights, and special trade opportunities.</p>
 
         <div style="background:#fdf8f4; border:1px solid #e8d5c4; border-radius:12px; padding:24px; margin:24px 0; text-align:center;">
-          <div style="font-size:18px; font-weight:700; color:#863B0E; margin-bottom:8px;">🎁 Your Free Catalog</div>
-          <p style="font-size:15px; color:#374151; line-height:1.6; margin-bottom:20px;">Click on the link below to download your free catalog PDF</p>
+          <div style="font-size:18px; font-weight:700; color:#863B0E; margin-bottom:8px;">🎁 Your Free Gift here</div>
+
           <a href="${catalogLink}" style="display:inline-block; background:linear-gradient(135deg,#863B0E 0%, #61714D 100%); color:#ffffff; font-size:16px; font-weight:700; text-decoration:none; padding:14px 32px; border-radius:8px;">📥 Download Free Catalog PDF</a>
         </div>
 

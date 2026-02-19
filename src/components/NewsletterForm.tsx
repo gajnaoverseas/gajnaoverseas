@@ -43,7 +43,7 @@ export default function NewsletterForm() {
             <div className="text-center md:text-left">
                 <h3 className="font-bold text-xl mb-1">Newsletter</h3>
                 <p className="text-sm text-gray-200">
-                    Sign up with your email to join our mailing list
+                    Signup for our newsletter to receive your free guide to Coffees of India and it’s varieties.
                 </p>
             </div>
             <form onSubmit={handleSubmit} className="flex w-full md:w-auto gap-2">
