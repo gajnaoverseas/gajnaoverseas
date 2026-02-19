@@ -57,6 +57,9 @@ export async function POST(req: NextRequest) {
     </div>
   </div>`;
 
+  const catalogLink =
+    "https://drive.google.com/uc?export=download&id=1CfIFMb4qzqPouss2BORb6K-LkrtAew4Z";
+
   const subscriberHtml = `
   <div style="background:#f5f7fa; padding:24px;">
     <div style="max-width:680px; margin:0 auto; background:#ffffff; border-radius:12px; overflow:hidden; border:1px solid #e1e5e9;">
@@ -66,13 +69,14 @@ export async function POST(req: NextRequest) {
       </div>
       <div style="padding:24px;">
         <p style="font-size:16px; color:#1e293b; line-height:1.6; margin-bottom:16px;">Thank you for subscribing to the Gajna Overseas newsletter! ☕</p>
-        <p style="font-size:15px; color:#374151; line-height:1.6; margin-bottom:16px;">You'll now receive updates on:</p>
-        <ul style="margin:0 0 20px; padding-left:20px; line-height:2; color:#374151;">
-          <li>Premium Indian coffee offerings and new arrivals</li>
-          <li>Industry insights and coffee knowledge</li>
-          <li>Special trade opportunities and seasonal updates</li>
-          <li>Company news and events</li>
-        </ul>
+        <p style="font-size:15px; color:#374151; line-height:1.6; margin-bottom:16px;">You'll now receive updates on premium Indian coffee, industry insights, and special trade opportunities.</p>
+
+        <div style="background:#fdf8f4; border:1px solid #e8d5c4; border-radius:12px; padding:24px; margin:24px 0; text-align:center;">
+          <div style="font-size:18px; font-weight:700; color:#863B0E; margin-bottom:8px;">🎁 Your Free Catalog</div>
+          <p style="font-size:15px; color:#374151; line-height:1.6; margin-bottom:20px;">Click on the link below to download your free catalog PDF</p>
+          <a href="${catalogLink}" style="display:inline-block; background:linear-gradient(135deg,#863B0E 0%, #61714D 100%); color:#ffffff; font-size:16px; font-weight:700; text-decoration:none; padding:14px 32px; border-radius:8px;">📥 Download Free Catalog PDF</a>
+        </div>
+
         <div style="height:2px; background:linear-gradient(90deg,#863B0E 0%, #61714D 100%); margin:20px 0;"></div>
         <p style="text-align:center; color:#64748b; font-size:14px;">We respect your inbox and promise to send only valuable content.</p>
       </div>
@@ -123,7 +127,7 @@ export async function POST(req: NextRequest) {
       from: { name: "Gajna Overseas", address: user },
       to: email,
       subject: "Welcome to Gajna Overseas Newsletter! ☕",
-      text: `Thank you for subscribing to the Gajna Overseas newsletter!\n\nYou'll receive updates on premium Indian coffee, industry insights, and special trade opportunities.\n\n– Gajna Overseas\nhttps://gajnaoverseas.com`,
+      text: `Thank you for subscribing to the Gajna Overseas newsletter!\n\nYou'll receive updates on premium Indian coffee, industry insights, and special trade opportunities.\n\n🎁 Your Free Catalog\nClick on the link to download your free catalog PDF:\n${catalogLink}\n\n– Gajna Overseas\nhttps://gajnaoverseas.com`,
       html: subscriberHtml,
     });
 
