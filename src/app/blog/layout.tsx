@@ -29,7 +29,7 @@ export default function BlogLayout({
       {children}
       
       {/* Simple Footer for Blog Pages */}
-      <footer className="bg-coffee-brown text-white py-8">
+      {/* <footer className="bg-coffee-brown text-white py-8">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <p>&copy; 2024 Gajna Coffee. All rights reserved.</p>
           <div className="mt-4 space-x-4">
@@ -38,7 +38,7 @@ export default function BlogLayout({
             <Link href="/contact" className="hover:text-coffee-gold">Contact</Link>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </>
   );
 }
