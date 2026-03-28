@@ -56,6 +56,14 @@ export default function RootLayout({
 </Script>
       </head>
       <body className={clsx(dmSans.className, "antialiased bg-white")}>
+        <noscript>
+  <iframe
+    src="https://www.googletagmanager.com/ns.html?id=GTM-TP78S37C"
+    height="0"
+    width="0"
+    style={{ display: "none", visibility: "hidden" }}
+  ></iframe>
+</noscript>
         <Analytics />
         <ClientWrapper>
           {children}
