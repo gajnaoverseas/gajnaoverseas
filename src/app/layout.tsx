@@ -45,18 +45,15 @@ export default function RootLayout({
     <html lang="en" className={`relative ${lora.variable} ${playfair.variable}`}>
       <head>
         <meta name="google-site-verification" content="aZeTIAmU9-v_-YxId44bfEzULizzV21qxPzQslpCTfU" />
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-LW2M2KG2CS"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-LW2M2KG2CS');
-          `}
-        </Script>
+    <Script id="gtm-head" strategy="afterInteractive">
+  {`
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id=GTM-TP78S37C'+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TP78S37C');
+  `}
+</Script>
       </head>
       <body className={clsx(dmSans.className, "antialiased bg-white")}>
         <Analytics />
