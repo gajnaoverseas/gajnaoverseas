@@ -74,22 +74,31 @@ export default function Hero() {
             {/* Title with enhanced animation */}
             <h2 className=" text-4xl lg:text-6xl text-center lg:text-left font-serif font-bold mb-4 md:mb-6 text-white leading-tight">
               <AnimatePresence mode="wait">
-                {currentSlideData.title.split("\n").map((line, i) => (
-                  <motion.span
-                    key={`${currentSlide}-${i}`}
-                    className="block"
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -30 }}
-                    transition={{
-                      duration: 0.8,
-                      delay: i * 0.2,
-                      ease: [0.25, 0.46, 0.45, 0.94],
-                    }}
-                  >
-                    {line}
-                  </motion.span>
-                ))}
+                {/* Single keyed child per slide so mode="wait" can track exits
+                    correctly (a mapped list of children deadlocks AnimatePresence
+                    after a couple transitions and freezes the title). */}
+                <motion.span
+                  key={currentSlide}
+                  className="block"
+                  exit={{ opacity: 0, y: -30 }}
+                  transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                >
+                  {currentSlideData.title.split("\n").map((line, i) => (
+                    <motion.span
+                      key={i}
+                      className="block"
+                      initial={{ opacity: 0, y: 50 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 0.8,
+                        delay: i * 0.2,
+                        ease: [0.25, 0.46, 0.45, 0.94],
+                      }}
+                    >
+                      {line}
+                    </motion.span>
+                  ))}
+                </motion.span>
               </AnimatePresence>
             </h2>
 
