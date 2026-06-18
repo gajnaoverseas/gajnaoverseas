@@ -13,7 +13,7 @@ export default function BlogLayout({
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-2">
-              <Image src="/logo.webp" alt="Gajna Coffee" width={40} height={40} />
+              <Image src="/logo.webp" alt="Gajna Overseas Logo" width={40} height={40} />
               <span className="text-xl font-bold text-coffee-brown">Gajna Coffee</span>
             </Link>
             <nav className="hidden md:flex space-x-6">

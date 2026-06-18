@@ -9,7 +9,7 @@ export default function CoffeeRegions() {
       {/* Decorative coffee bean - Top Left */}
       <Image
         src="/coffee-beans/Coffee Bean unroasted Image.png"
-        alt=""
+        alt="Green Coffee Bean"
         width={240}
         height={120}
         className="hidden md:block absolute -left-24 top-8 opacity-40 rotate-12"
@@ -24,7 +24,7 @@ export default function CoffeeRegions() {
           {/* Left: India Map */}
           <div className="relative w-full flex justify-center">
             <div className="relative w-full max-w-[500px] aspect-[6/7]">
-              <Image src="/svg/Map.svg" alt="" width={500} height={500} />
+              <Image src="/svg/Map.svg" alt="Coffee Growing Regions of India" width={500} height={500} />
             </div>
           </div>
 
@@ -51,7 +51,7 @@ export default function CoffeeRegions() {
             <div className="hidden lg:block absolute -bottom-32 -translate-x-20">
               <Image
                 src="/coffee-beans/Coffee Bean unroasted Image.png"
-                alt="Coffee bean"
+                alt="Green Coffee Bean"
                 width={250}
                 height={250}
                 className=" -rotate-[6deg]"

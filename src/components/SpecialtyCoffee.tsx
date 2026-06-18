@@ -157,7 +157,7 @@ const CoffeeCard = ({ coffee, index }: { coffee: SpecialtyCoffeeItem; index: num
                 >
                     <Image
                         src="/coffee-beans/Coffee Bean unroasted Image.png"
-                        alt=""
+                        alt="Green Coffee Bean"
                         width={240}
                         height={240}
                         className="opacity-80"

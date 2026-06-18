@@ -34,7 +34,7 @@ export default function SustainableCoffee() {
             <div className="bg-white rounded-2xl px-8 py-4 shadow-2xl flex flex-col mb-4">
               <Image
                 src="/treeimage.webp"
-                alt="Sustainable Coffee Cultivation in India"
+                alt="Diagramatic representation of Two tier shade pattern in coffee plantation"
                 width={600}
                 height={400}
                 className="w-full h-auto rounded-lg "

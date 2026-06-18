@@ -671,7 +671,7 @@ export default function ContactPage() {
               <div className="mt-6 pt-6 border-t border-gray-200">
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a
-                    href="https://www.google.com/maps/dir/?api=1&destination=Gajna+Overseas+(OPC)+Private+Limited,+505,+Park+Royal+Apartments,+GH-80,+Block+C,+Sector-56,+Gurugram,+Haryana,+India+122011"
+                    href="https://www.google.com/maps/place/13%C2%B021'14.8%22N+75%C2%B045'50.8%22E/@13.3541051,75.7615281,17z/data=!3m1!4b1!4m4!3m3!8m2!3d13.3541051!4d75.764103?hl=en&entry=ttu&g_ep=EgoyMDI2MDYxMy4wIKXMDSoASAFQAw%3D%3D"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium text-center transition-colors duration-300 flex items-center justify-center space-x-2"
@@ -795,7 +795,7 @@ export default function ContactPage() {
           <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="flex lg:flex-row flex-col items-center justify-between p-6 border-b">
               <div className="flex flex-row justify-between items-center">
-                <Image src="/logo.webp" alt="Gajna Overseas Private Limited" width={100} height={50} />
+                <Image src="/logo.webp" alt="Gajna Overseas Logo" width={100} height={50} />
                 <button
                   onClick={() => setIsEnquiryModalOpen(false)}
                   className="text-gray-400 hover:text-gray-600 transition-colors lg:hidden block"

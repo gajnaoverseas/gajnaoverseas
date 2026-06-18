@@ -158,7 +158,7 @@ export default function GalleryPage() {
                     Visit to Chikkamagaluru - Coffee Land of India
                   </h2>
                   <p className="text-center text-gray-700 mb-6 tracking-wider">
-                    Coffee Estate, CCRI – Central Coffee Research Institute (Balehonnur), Coffee Curing Works, Coffee Roasting Facility. <br/>(4th – 6th December 2025)
+                    Coffee Estate, CCRI – Central Coffee Research Institute (Balehonnur), Coffee Curing Works, Coffee Roasting Facility. <br/>(4th – 6th December 2024)
                   </p>
                   <p></p>
                   {renderGrid(group1Images)}

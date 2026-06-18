@@ -81,7 +81,7 @@ export default function CoffeeProducts() {
                 >
                   <Image
                     src="/coffee-beans/arabica.webp"
-                    alt="Arabica Coffee"
+                    alt="Arabica Bean"
                     width={270}
                     height={200}
                     className="mb-4"
@@ -138,7 +138,7 @@ export default function CoffeeProducts() {
                 >
                   <Image
                     src="/coffee-beans/Robusta.webp"
-                    alt="Robusta Coffee"
+                    alt="Robusta Bean"
                     width={270}
                     height={200}
                     className="mb-4"

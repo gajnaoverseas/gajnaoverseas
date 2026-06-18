@@ -16,7 +16,7 @@ const PDF_CERTIFICATES = [
   {
     title: "Apeda RCMC",
     subtitle: "Agricultural & Processed Food Products Export Development Authority",
-    file: "/certificates/Apeda RCMC.pdf",
+    file: "/certificates/apeda_rcmc.pdf",
   },
   {
     title: "MSME Certificate",
@@ -194,7 +194,7 @@ export default function RegistrationCertification() {
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/apeda.webp"
-                  alt="APEDA Registration"
+                  alt="Logo Of APEDA"
                   width={120}
                   height={120}
                   className="w-36 h-20 object-contain"
@@ -203,7 +203,7 @@ export default function RegistrationCertification() {
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/9.webp"
-                  alt="Registration Certificate"
+                  alt="Logo Of MSME"
                   width={120}
                   height={120}
                   className="w-20 h-20 object-contain"
@@ -212,7 +212,7 @@ export default function RegistrationCertification() {
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/ccri.webp"
-                  alt="CCRI Certificate"
+                  alt="Logo Of CCRI"
                   width={120}
                   height={120}
                   className="w-20 h-20 object-contain"
@@ -230,7 +230,7 @@ export default function RegistrationCertification() {
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/ECGC.webp"
-                  alt="ECGC Registration"
+                  alt="Logo Of ECGC"
                   width={120}
                   height={120}
                   className="w-20 h-20 object-contain"
@@ -239,7 +239,7 @@ export default function RegistrationCertification() {
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/7.webp"
-                  alt="Certificate"
+                  alt="Logo Of FIEO"
                   width={120}
                   height={120}
                   className="w-20 h-20 object-contain"
@@ -248,7 +248,7 @@ export default function RegistrationCertification() {
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/6.webp"
-                  alt="Registration Document"
+                  alt="Logo Of DGFT"
                   width={120}
                   height={120}
                   className="w-36 h-20 object-contain"
@@ -259,7 +259,7 @@ export default function RegistrationCertification() {
               <div className="col-span-1 bg-white border-2 border-gray-300 rounded-lg p-2 flex flex-col justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/1.webp"
-                  alt="Certificate 1"
+                  alt="Logo Of Coffee Board Of India"
                   width={100}
                   height={100}
                   className="w-24 h-24 object-contain"
@@ -268,7 +268,7 @@ export default function RegistrationCertification() {
               <div className="col-span-1 bg-white border-2 border-gray-300 rounded-lg p-2 flex flex-col justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/4.webp"
-                  alt="Certificate 4"
+                  alt="Logo Of ICO"
                   width={100}
                   height={100}
                   className="w-36 h-36 object-contain"
@@ -277,7 +277,7 @@ export default function RegistrationCertification() {
               <div className="col-span-1 bg-white border-2 border-gray-300 rounded-lg p-2 flex flex-col justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/3.webp"
-                  alt="Certificate 3"
+                  alt="Logo Of AIC CCRI CED"
                   width={100}
                   height={100}
                   className="w-36 h-36 object-contain"
@@ -286,7 +286,7 @@ export default function RegistrationCertification() {
               <div className="col-span-3 bg-white border-2 border-gray-300 rounded-lg p-2 flex flex-col justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/directorate.webp"
-                  alt="Certificate 2"
+                  alt="Logo Of Directorate of PPQS"
                   width={1200}
                   height={100}
                   className="w-44 h-36 object-contain rounded-2xl"
@@ -302,7 +302,7 @@ export default function RegistrationCertification() {
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/apeda.webp"
-                  alt="APEDA Registration"
+                  alt="Logo of APEDA"
                   width={120}
                   height={120}
                   className="w-20 h-20 object-contain"
@@ -311,7 +311,7 @@ export default function RegistrationCertification() {
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/9.webp"
-                  alt="Registration Certificate"
+                  alt="Logo of MSME"
                   width={120}
                   height={120}
                   className="w-20 h-20 object-contain"
@@ -320,7 +320,7 @@ export default function RegistrationCertification() {
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/ccri.webp"
-                  alt="CCRI Certificate"
+                  alt="Logo of CCRI"
                   width={120}
                   height={120}
                   className="w-20 h-20 object-contain"
@@ -338,7 +338,7 @@ export default function RegistrationCertification() {
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/ECGC.webp"
-                  alt="ECGC Registration"
+                  alt="Logo of ECGC"
                   width={120}
                   height={120}
                   className="w-20 h-20 object-contain"
@@ -347,7 +347,7 @@ export default function RegistrationCertification() {
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/7.webp"
-                  alt="Certificate"
+                  alt="Logo of FIEO"
                   width={120}
                   height={120}
                   className="w-20 h-20 object-contain"
@@ -356,7 +356,7 @@ export default function RegistrationCertification() {
               <div className="aspect-[4/3] bg-white border-2 border-gray-300 rounded-lg p-6 flex items-center justify-center hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/6.webp"
-                  alt="Registration Document"
+                  alt="Logo of DGFT"
                   width={120}
                   height={120}
                   className="w-20 h-20 object-contain"
@@ -367,7 +367,7 @@ export default function RegistrationCertification() {
               <div className="col-span-1 bg-white border-2 border-gray-300 rounded-lg p-2 flex flex-col justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/1.webp"
-                  alt="Certificate 1"
+                  alt="Logo of Coffee Board Of India"
                   width={100}
                   height={100}
                   className="w-24 h-24 object-contain"
@@ -376,7 +376,7 @@ export default function RegistrationCertification() {
               <div className="col-span-1 bg-white border-2 border-gray-300 rounded-lg p-2 flex flex-col justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/4.webp"
-                  alt="Certificate 4"
+                  alt="Logo of ICO"
                   width={100}
                   height={100}
                   className="w-36 h-36 object-contain"
@@ -385,7 +385,7 @@ export default function RegistrationCertification() {
               <div className="col-span-1 bg-white border-2 border-gray-300 rounded-lg p-2 flex flex-col justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/3.webp"
-                  alt="Certificate 3"
+                  alt="Logo of AIC CCRI CED"
                   width={100}
                   height={100}
                   className="w-36 h-36 object-contain"
@@ -394,7 +394,7 @@ export default function RegistrationCertification() {
               <div className="col-span-3 bg-white border-2 border-gray-300 rounded-lg p-2 flex flex-col justify-center items-center gap-8 hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src="/registration/directorate.webp"
-                  alt="Certificate 2"
+                  alt="Logo of Directorate of PPQS"
                   width={1200}
                   height={100}
                   className="w-44 h-36 object-contain rounded-2xl"
@@ -410,7 +410,7 @@ export default function RegistrationCertification() {
               <div className="w-[15vw] h-[30vh] p-6 bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
                   src="/registration/apeda.webp"
-                  alt="APEDA Registration"
+                  alt="Logo of APEDA"
                   width={1200}
                   height={100}
                   className="w-[8vw] h-[8vw] object-contain"
@@ -419,7 +419,7 @@ export default function RegistrationCertification() {
               <div className="w-[15vw] h-[30vh] p-6 bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
                   src="/registration/7.webp"
-                  alt="Certificate"
+                  alt="Logo of FIEO"
                   width={1200}
                   height={100}
                   className="w-[8vw] h-[8vw] object-contain"
@@ -433,7 +433,7 @@ export default function RegistrationCertification() {
                 <div className="p-6 h-[20vh] w-[20vw] bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
                   <Image
                     src="/registration/9.webp"
-                    alt="Registration Certificate"
+                    alt="Logo of MSME"
                     width={1200}
                     height={100}
                     className="w-[8vw] h-[8vw] object-contain"
@@ -443,7 +443,7 @@ export default function RegistrationCertification() {
                   <div className="flex justify-center items-center flex-col">
                     <Image
                       src="/registration/10.webp"
-                      alt="Certificate 2"
+                      alt="Logo of Directorate of PPQS"
                       width={1200}
                       height={100}
                       className="w-[4vw] h-[5vw] object-contain rounded-2xl"
@@ -467,28 +467,28 @@ export default function RegistrationCertification() {
 
                 <Image
                   src="/registration/ccri.webp"
-                  alt="CCRI Certificate"
+                  alt="Logo of CCRI"
                   width={1200}
                   height={100}
                   className="w-[7vw] h-[7vw] object-contain"
                 />
                 <Image
                   src="/registration/1.webp"
-                  alt="Certificate 1"
+                  alt="Logo of Coffee Board Of India"
                   width={1200}
                   height={100}
                   className="w-[8vw] h-[8vw] object-contain"
                 />
                 <Image
                   src="/registration/3.webp"
-                  alt="Certificate 3"
+                  alt="Logo of AIC CCRI CED"
                   width={1200}
                   height={100}
                   className="w-[6vw] h-[7vw] object-contain"
                 />
                 <Image
                   src="/registration/4.webp"
-                  alt="Certificate 4"
+                  alt="Logo of ICO"
                   width={1200}
                   height={100}
                   className="w-[8vw] h-[8vw] object-contain"
@@ -501,7 +501,7 @@ export default function RegistrationCertification() {
               <div className="w-[15vw] h-[30vh] p-6 bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
                   src="/registration/ECGC.webp"
-                  alt="ECGC Registration"
+                  alt="Logo of ECGC"
                   width={1200}
                   height={100}
                   className="w-[8vw] h-[8vw] object-contain"
@@ -510,7 +510,7 @@ export default function RegistrationCertification() {
               <div className="w-[15vw] h-[30vh] p-6 bg-white border-2 border-gray-300 rounded-lg flex flex-col justify-center items-center hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
                   src="/registration/6.webp"
-                  alt="Registration Document"
+                  alt="Logo of DGFT"
                   width={1200}
                   height={100}
                   className="w-[8vw] h-[8vw] object-contain"

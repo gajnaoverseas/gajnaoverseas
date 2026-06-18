@@ -208,7 +208,7 @@ export default function FloatingQuickEnquiry() {
                         <div className="bg-white p-1 rounded-md">
                             <Image
                                 src="/newlogo.webp"
-                                alt="Gajna Logo"
+                                alt="Gajna Overseas Logo"
                                 width={80}
                                 height={40}
                                 className="h-6 w-auto object-contain"

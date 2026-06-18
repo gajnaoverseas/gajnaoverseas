@@ -264,7 +264,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
             <div className="bg-white text-coffee-brown p-3 mb-4 rounded-lg flex items-center justify-center border ">
               <Image
                 src="/registration/1.webp"
-                alt="Gajna Logo"
+                alt="Logo of Coffee Board Of India"
                 width={32}
                 height={32}
                 className="w-20 h-20 mr-2 bg-white rounded-full"
@@ -439,7 +439,7 @@ export default function MegaMenu({ isOpen, onClose, isMobile = false }: MegaMenu
         <div className="shadow-2xl text-coffee-brown p-4 mb-6 rounded-lg flex items-center border border-black  w-[85%] mx-auto  justify-center">
           <Image
             src="/logos/1.webp"
-            alt="Gajna Logo"
+            alt="Logo of Coffee Board Of India"
             width={40}
             height={40}
             className="w-20 h-24 mr-3"

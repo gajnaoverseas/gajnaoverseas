@@ -87,7 +87,7 @@ export default function Header() {
           <div className="hidden lg:block">
             <Image
               src="/logobean.webp"
-              alt="Small Logo"
+              alt="Gajna Overseas Brand Icon"
               width={50}
               height={50}
               className="w-12 h-12 lg:w-20 lg:h-20"
@@ -138,7 +138,7 @@ export default function Header() {
         <div className="md:hidden border-t border-gray-200 bg-[#15803D]">
           <nav className="flex items-center gap-2 px-4 py-2 overflow-x-auto">
             <Link
-              href="https://maps.google.com/?q=Gajna+Overseas"
+              href="https://www.google.com/maps/place/13%C2%B021'14.8%22N+75%C2%B045'50.8%22E/@13.3541111,75.7641111,17z/data=!3m1!4b1!4m4!3m3!8m2!3d13.3541111!4d75.7641111?hl=en&entry=ttu&g_ep=EgoyMDI2MDYxMy4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
               className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 whitespace-nowrap"
@@ -153,13 +153,13 @@ export default function Header() {
             >
               Call Us
             </Link>
-            <Link
+            <a
               href="mailto:priyavirat@zohomail.in"
               className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 whitespace-nowrap"
               aria-label="Send Us Email"
             >
               Send Us Email
-            </Link>
+            </a>
             <Link
               href="https://meet.google.com/new"
               target="_blank"
@@ -178,13 +178,13 @@ export default function Header() {
             >
               Chat With Us
             </Link>
-            <Link
+            {/* <Link
               href="sms:+919811789665"
               className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 whitespace-nowrap"
               aria-label="Send Us SMS"
             >
               Send Us SMS
-            </Link>
+            </Link> */}
           </nav>
         </div>
 
@@ -274,7 +274,7 @@ export default function Header() {
           <nav className="flex items-center justify-center px-6 py-1 bg-[#15803D]">
             <div className="flex flex-wrap justify-center items-center gap-2 lg:gap-4 xl:gap-6 font-semibold max-w-8xl mx-auto">
               <Link
-                href="https://maps.google.com/?q=Gajna+Overseas"
+                href="https://www.google.com/maps/place/13%C2%B021'14.8%22N+75%C2%B045'50.8%22E/@13.3541111,75.7641111,17z/data=!3m1!4b1!4m4!3m3!8m2!3d13.3541111!4d75.7641111?hl=en&entry=ttu&g_ep=EgoyMDI2MDYxMy4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
@@ -293,12 +293,12 @@ export default function Header() {
               >
                 Mobile
               </Link> */}
-              <Link
+              <a
                 href="mailto:priyavirat@zohomail.in"
                 className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 Send Us Email
-              </Link>
+              </a>
               <Link
                 href="https://meet.google.com/new"
                 target="_blank"
@@ -316,12 +316,12 @@ export default function Header() {
               >
                 Chat With Us
               </Link>
-              <Link
+              {/* <Link
                 href="sms:+919811789665"
                 className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 Send Us SMS
-              </Link>
+              </Link> */}
 
               <LanguageSwitcher />
               {/* Search Coffee Grades (desktop) */}

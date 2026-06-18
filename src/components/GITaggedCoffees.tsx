@@ -187,7 +187,7 @@ const CoffeeCard = ({ coffee }: { coffee: GITaggedCoffeeItem }) => {
                     {/* Significance of Region */}
                     <div className="bg-gradient-to-b from-white to-[#EEBA6C] rounded-xl p-5">
                         <div className="mb-3">
-                            <Image src="/svg/IndiaMapIcon.svg" alt="" width={50} height={50} />
+                            <Image src="/svg/IndiaMapIcon.svg" alt="Map of India" width={50} height={50} />
                         </div>
                         <h4 className="font-bold text-[#2A1810] text-lg mb-3">Significance of region:</h4>
                         <ul className="list-disc pl-5 space-y-1 text-[#4A3225] text-base font-semibold leading-relaxed">
@@ -200,7 +200,7 @@ const CoffeeCard = ({ coffee }: { coffee: GITaggedCoffeeItem }) => {
                     {/* Cup Quality */}
                     <div className="bg-gradient-to-b from-white to-[#EEBA6C] rounded-xl p-5">
                         <div className="mb-3">
-                            <Image src="/svg/Cup-Icon.svg" alt="" width={50} height={50} />
+                            <Image src="/svg/Cup-Icon.svg" alt="Coffee Cup" width={50} height={50} />
                         </div>
                         <h4 className="font-bold text-[#2A1810] text-lg mb-3">Cup quality:</h4>
                         <p className="text-[#4A3225] text-base font-semibold leading-relaxed">{coffee.cupQuality}</p>
@@ -255,7 +255,7 @@ export default function GITaggedCoffees() {
             <div className="max-w-7xl mx-auto px-4">
                 {/* Section Header */}
                 <div className="text-center mb-8 flex justify-center items-center gap-4">
-                    <Image src="/gi.webp" alt="" width={50} height={50} />
+                    <Image src="/gi.webp" alt="Geographical Indication Tag Logo" width={50} height={50} />
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-coffee-brown ">
                         GI Registered Coffees of India
                     </h2>

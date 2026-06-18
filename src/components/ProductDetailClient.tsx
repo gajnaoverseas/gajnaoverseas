@@ -318,7 +318,7 @@ export default function ProductDetailClient({ product }: Props) {
         <div className="fixed inset-0 bg-black bg-opacity-50 z-[10000] flex items-center justify-center p-4">
           <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between p-6 border-b">
-              <Image src="/logo.webp" alt="Gajna Overseas Private Limited" width={100} height={50} />
+              <Image src="/logo.webp" alt="Gajna Overseas Logo" width={100} height={50} />
               <div className="flex flex-col justify-center items-center text-center">
                 <h2 className="text-xl font-semibold text-gray-900">
                   Gajna Overseas Private Limited
