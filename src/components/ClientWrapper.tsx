@@ -97,7 +97,7 @@ const ClientWrapper: React.FC<ClientWrapperProps> = ({ children }) => {
             type="button"
             onClick={scrollToTop}
             aria-label="Back to top"
-            className={`${showScrollTop ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} fixed bottom-6 right-6 z-[10000] p-3 md:p-4 rounded-full bg-coffee-brown text-white shadow-lg hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-opacity duration-300`}
+            className={`${showScrollTop ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} fixed bottom-6 right-6 z-[10000] p-3 md:p-4 rounded-full bg-coffee-brown text-white border-2 border-white/60 shadow-[0_8px_24px_rgba(0,0,0,0.45)] hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-opacity duration-300`}
           >
             <ChevronUp className="w-6 h-6" />
           </button>

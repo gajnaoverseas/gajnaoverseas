@@ -82,7 +82,7 @@ export default function WhyChooseUs() {
       title: "Intelligent Packaging That\nPreserves Quality",
       subtitle: "We have a deep understanding\nof coffee-packaging",
       description:
-        "Our packaging solutions are designed with deep category knowledge — moisture-safe liners and eco-conscious options and  formats that safeguard bean integrity and aroma across long hauls.",
+        "Our packaging solutions are designed with deep category knowledge - moisture-safe liners and eco-conscious options and  formats that safeguard bean integrity and aroma across long hauls.",
       icon: "/why-choose-us/packaging-icon.png",
     },
     {

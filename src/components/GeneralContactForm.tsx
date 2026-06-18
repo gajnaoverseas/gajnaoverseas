@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo, useCallback } from 'react';
 import { z } from 'zod';
 import { toast } from 'react-hot-toast';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -65,19 +65,19 @@ export default function GeneralContactForm({
   const captchaEnabled = Boolean(captchaSiteKey) && !isLocalhost;
 
   // Country sync helpers for PhoneInput <-> CountryDropdown
-  const COUNTRY_LABELS = enLabels as Record<string, string>;
+  const COUNTRY_LABELS = useMemo(() => enLabels as Record<string, string>, []);
   const [phoneCountry, setPhoneCountry] = useState<CountryCode | undefined>('US' as CountryCode);
   const getCountryNameFromCode = (code?: CountryCode) => (code ? COUNTRY_LABELS[code] || '' : '');
-  const getCountryCodeFromName = (name?: string): CountryCode | undefined => {
+  const getCountryCodeFromName = useCallback((name?: string): CountryCode | undefined => {
     if (!name) return undefined;
     const entry = Object.entries(COUNTRY_LABELS).find(([, label]) => label === name);
     return (entry?.[0] as CountryCode) || undefined;
-  };
+  }, [COUNTRY_LABELS]);
   // Initialize phone country from initial or values.country when available
   React.useEffect(() => {
     const code = getCountryCodeFromName(values.country);
     if (code) setPhoneCountry(code);
-  }, [values.country]);
+  }, [values.country, getCountryCodeFromName]);
 
 
 

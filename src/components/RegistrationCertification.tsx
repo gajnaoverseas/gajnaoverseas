@@ -16,7 +16,7 @@ const PDF_CERTIFICATES = [
   {
     title: "Apeda RCMC",
     subtitle: "Agricultural & Processed Food Products Export Development Authority",
-    file: "/certificates/apeda_rcmc.pdf",
+    file: "/certificates/Apeda RCMC.pdf",
   },
   {
     title: "MSME Certificate",

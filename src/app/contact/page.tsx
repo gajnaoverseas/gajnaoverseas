@@ -641,11 +641,26 @@ export default function ContactPage() {
                       <MapPin className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-800 text-lg">Our Address</h3>
+                      <h3 className="font-semibold text-gray-800 text-lg">Registered Address</h3>
                       <p className="text-gray-600 leading-relaxed">
                         505, Park Royal Apartments, GH-80, Block E,<br />
                         Sector-56, Gurugram, Haryana, India<br />
                         PIN Code: 122011
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3">
+                    <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Building2 className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-800 text-lg">Branch Office</h3>
+                      <p className="text-gray-600 leading-relaxed">
+                        House No 29, Golf Club Road,<br />
+                        Village- Hale Balehalli, POST - Kaimara,<br />
+                        District- Chikkamagaluru, Karnataka<br />
+                        PIN Code: 577131
                       </p>
                     </div>
                   </div>

@@ -242,7 +242,7 @@ export default function AboutBanner() {
 
               <div className="prose prose-lg text-gray-700 leading-relaxed">
                 <p className="mb-6">
-                  At Gajna Overseas, quality isn&apos;t just a process — it&apos;s a
+                  At Gajna Overseas, quality isn&apos;t just a process - it&apos;s a
                   principle we uphold at every stage of our sourcing and export
                   operations. From sourcing coffee beans at estates practicing
                   Good Agricultural Practices (GAP) to handling, documentation,

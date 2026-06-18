@@ -407,7 +407,7 @@ export default function CoffeeSuppliersPage() {
  
       <section className="py-8  lg:py-16 mt-10  lg:mt-40 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Mobile Layout (sm and below) — mirror Tablet Layout */}
+          {/* Mobile Layout (sm and below) - mirror Tablet Layout */}
           <div className="block sm:hidden ">
             <div className="grid grid-cols-3 gap-4">
               {/* Top Row */}

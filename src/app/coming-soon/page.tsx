@@ -34,7 +34,7 @@ export default function ComingSoonPage() {
             <div className="p-6 md:p-8">
               <p className="text-gray-700 text-lg md:text-xl">
                 Our next page will feature curated content about our coffee grades
-                and sourcing — designed with the same care as our beans.
+                and sourcing - designed with the same care as our beans.
               </p>
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <Link

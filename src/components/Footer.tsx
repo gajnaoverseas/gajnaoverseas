@@ -180,6 +180,18 @@ export default function Footer() {
                   </p>
                 </div>
               </div>
+              <div className="flex items-start space-x-3">
+                <FaLocationDot className="text-2xl md:text-3xl text-coffee-gold flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-medium text-lg">Branch Office</h4>
+                  <p className="text-sm md:text-base text-gray-200 leading-relaxed">
+                    House No 29, Golf Club Road,<br />
+                    Village- Hale Balehalli, POST - Kaimara,<br />
+                    District- Chikkamagaluru, Karnataka ,
+                    <span className="block mt-1 font-semibold text-white">PIN Code : 577131</span>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -187,7 +199,7 @@ export default function Footer() {
       {/* Copyright bar below footer content */}
       <div className="mt-6 border-t border-white/20">
         <div className="max-w-7xl mx-auto px-4 py-4 text-center text-lg text-white/90">
-          © {new Date().getFullYear()} Gajna Overseas Private Limited — All rights are reserved.
+          © {new Date().getFullYear()} Gajna Overseas Private Limited - All rights are reserved.
         </div>
       </div>
     </footer>

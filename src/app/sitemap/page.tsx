@@ -3,7 +3,7 @@ import Link from "next/link";
 export const metadata = {
   title: "Sitemap | Gajna Overseas Private Limited",
   description:
-    "Browse all pages of Gajna Overseas — products, registrations, blog, gallery, enquiries, suppliers, and contact.",
+    "Browse all pages of Gajna Overseas - products, registrations, blog, gallery, enquiries, suppliers, and contact.",
 };
 
 export default function SitemapPage() {
@@ -34,7 +34,7 @@ export default function SitemapPage() {
         { label: "Trade Enquiry", href: "/trade-enquiry" },
         { label: "Become a Supplier", href: "/coffee-suppliers" },
         { label: "Contact Us", href: "/contact" },
-        { label: "FAQ — Contact Page", href: "/contact#frequently-asked-questions" },
+        { label: "FAQ - Contact Page", href: "/contact#frequently-asked-questions" },
         { label: "About Us", href: "/about" },
       ],
     },

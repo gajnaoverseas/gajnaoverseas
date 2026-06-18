@@ -45,7 +45,9 @@ export default function RootLayout({
     <html lang="en" className={`relative ${lora.variable} ${playfair.variable}`}>
       <head>
         <meta name="google-site-verification" content="aZeTIAmU9-v_-YxId44bfEzULizzV21qxPzQslpCTfU" />
-      <script
+      <Script
+        id="gtm-init"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

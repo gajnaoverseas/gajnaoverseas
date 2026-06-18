@@ -118,6 +118,7 @@ export default function CertificateViewer({ images, initialIndex = 0, onClose, t
                   }}
                   aria-label={`Go to page ${i + 1}`}
                 >
+                  {/* eslint-disable-next-line @next/next/no-img-element -- thumbnail in a custom zoom/measure viewer; next/image is unsuitable here */}
                   <img
                     src={src}
                     alt={`Certificate page ${i + 1}`}
@@ -215,6 +216,7 @@ export default function CertificateViewer({ images, initialIndex = 0, onClose, t
                   minHeight: baseSize.height > 0 ? baseSize.height * zoom : "auto",
                 }}
               >
+                {/* eslint-disable-next-line @next/next/no-img-element -- main image is measured via ref/naturalWidth for zoom; next/image is unsuitable here */}
                 <img
                   ref={imgRef}
                   onLoad={() => {

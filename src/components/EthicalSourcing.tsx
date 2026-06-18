@@ -97,7 +97,7 @@ export default function EthicalSourcing() {
           <p className="text-[#61714D] lg:text-2xl text-lg italic  max-w-4xl mx-auto text-left fade-in-text">
             We prioritize responsible sourcing by partnering only with growers
             who practice sustainable agriculture and uphold ethical labor
-            standards — protecting biodiversity, soil health, and the well-being
+            standards - protecting biodiversity, soil health, and the well-being
             of farming communities
           </p>
         </div>

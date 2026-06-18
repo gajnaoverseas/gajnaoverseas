@@ -30,7 +30,7 @@ export const SearchableCountrySelect: React.FC<SearchableCountrySelectProps> = (
 
   // Memoize static data to avoid new references on each render
   const countries = useMemo(() => getCountries(), []);
-  const labels = en as Record<CountryCode, string>;
+  const labels = useMemo(() => en as Record<CountryCode, string>, []);
 
   // Filter countries based on search term
   useEffect(() => {
@@ -48,8 +48,8 @@ export const SearchableCountrySelect: React.FC<SearchableCountrySelectProps> = (
     } else {
       setFilteredCountries(countries);
     }
-    // Only depend on searchTerm and the memoized countries list
-  }, [searchTerm, countries]);
+    // Only depend on searchTerm and the memoized countries/labels
+  }, [searchTerm, countries, labels]);
 
   // Close dropdown when clicking outside
   useEffect(() => {

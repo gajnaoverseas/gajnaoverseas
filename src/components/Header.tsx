@@ -4,23 +4,15 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 // Lazy-load heavy components to reduce header bundle size and speed up navigation
-const MegaMenuLazy = dynamic(() => import("@/components/MegaMenu"), {
-  ssr: false,
-  loading: () => (
-    <div className="absolute left-0 right-0 mx-auto p-4 text-sm text-gray-600">Loading menu…</div>
-  ),
-});
 const GeneralContactFormLazy = dynamic(() => import("@/components/GeneralContactForm"), {
   ssr: false,
 });
-import { ChevronDown, X, Search, Phone, Mail, MessageCircle } from "lucide-react";
+import { X, Search, Phone, Mail, MessageCircle } from "lucide-react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
-  const [mobileMegaMenuOpen, setMobileMegaMenuOpen] = useState(false);
 
   // Removed supplierModalOpen state
   const [supplierModalOpen, setSupplierModalOpen] = useState(false);
@@ -49,9 +41,7 @@ export default function Header() {
   // Auto-close mobile menus when navigating to a new route
   useEffect(() => {
     setMobileMenuOpen(false);
-    setMobileMegaMenuOpen(false);
     // Also ensure all header overlays/modals are closed on navigation
-    setMegaMenuOpen(false);
     setSupplierModalOpen(false);
   }, [pathname]);
 
@@ -205,15 +195,13 @@ export default function Header() {
                 <Search size={18} />
                 Search Coffee Grades
               </Link>
-              <button
-                onClick={() => {
-                  setMobileMegaMenuOpen(true);
-                  setMobileMenuOpen(false);
-                }}
-                className={`block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 w-full text-left ${isActivePath(["/products", "/arabica", "/robusta"]) ? "text-amber-200" : ""}`}
+              <Link
+                href="/products-menu"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block text-white text-lg font-medium py-3 border-b border-amber-700 hover:text-amber-200 ${isActivePath(["/products-menu", "/products", "/arabica", "/robusta"]) ? "text-amber-200" : ""}`}
               >
                 Products
-              </button>
+              </Link>
               <Link
                 href="/registrations"
                 onClick={() => setMobileMenuOpen(false)}
@@ -341,27 +329,12 @@ export default function Header() {
         {/* Desktop Primary Navigation (center) */}
         <nav className="hidden md:flex justify-center space-x-8 font-semibold relative">
           <div className="flex justify-center items-center gap-10 py-1">
-            {/* Products - open mega menu on hover/focus */}
-            <div
-              className=""
-              onMouseEnter={() => setMegaMenuOpen(true)}
+            <Link
+              href="/products-menu"
+              className={`block text-xl font-medium hover:bg-coffee-brown hover:text-white px-2 rounded-lg transition-colors ${isActivePath(["/products-menu", "/products", "/arabica", "/robusta"]) ? "bg-coffee-brown text-white" : "text-black"}`}
             >
-              <button
-                className={`text-xl font-medium hover:bg-coffee-brown hover:text-white hover:pl-[12px] hover:rounded-lg transition-colors flex flex-row items-center ${isActivePath(["/products", "/arabica", "/robusta"]) ? "bg-coffee-brown text-white pl-[12px] rounded-lg" : "text-black"}`}
-                onClick={() => setMegaMenuOpen(!megaMenuOpen)}
-              >
-                Products
-                <ChevronDown className={`ml-1 ${isActivePath(["/products", "/arabica", "/robusta"]) ? "text-white" : "text-coffee-brown hover:text-white"}`} />
-              </button>
-              {megaMenuOpen && (
-                <MegaMenuLazy
-                  isOpen={megaMenuOpen}
-                  onClose={() => setMegaMenuOpen(false)}
-                  isMobile={false}
-
-                />
-              )}
-            </div>
+              Products
+            </Link>
 
             <Link
               href="/registrations"
@@ -409,16 +382,6 @@ export default function Header() {
             </Link>
           </div>
         </nav>
-
-        {/* Mobile MegaMenu (modal-style) */}
-        <MegaMenuLazy
-          isOpen={mobileMegaMenuOpen}
-          onClose={() => setMobileMegaMenuOpen(false)}
-          isMobile={true}
-        />
-
-
-
 
       </div>
     </header>

@@ -35,7 +35,7 @@ export default function Hero() {
     }, 5000); // Change slide every 5 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [slides.length]);
 
   // Manual navigation
   const goToSlide = (index: number) => {
