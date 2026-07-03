@@ -174,13 +174,13 @@ export default function Header() {
             >
               Chat With Us
             </Link>
-            {/* <Link
+            <Link
               href="sms:+918123139610"
               className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 whitespace-nowrap"
               aria-label="Send Us SMS"
             >
               Send Us SMS
-            </Link> */}
+            </Link>
           </nav>
         </div>
 
