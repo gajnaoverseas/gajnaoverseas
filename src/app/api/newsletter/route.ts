@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
       </div>
       <div style="background:#f1f5f9; color:#64748b; text-align:center; padding:16px; border-top:1px solid #e2e8f0;">
         <div style="font-weight:700; color:#863B0E; margin-bottom:8px;">Gajna Overseas</div>
-        <div><a href="mailto:priyavirat@zohomail.in" style="color:#863B0E; text-decoration:none;">priyavirat@zohomail.in</a> | <a href="tel:+919811789665" style="color:#863B0E; text-decoration:none;">+91 9811789665</a></div>
+        <div><a href="mailto:priyavirat@zohomail.in" style="color:#863B0E; text-decoration:none;">priyavirat@zohomail.in</a> | <a href="tel:+918123139610" style="color:#863B0E; text-decoration:none;">+91 8123139610</a></div>
       </div>
     </div>
   </div>`;
@@ -83,7 +83,7 @@ export async function POST(req: NextRequest) {
       <div style="background:#f1f5f9; color:#64748b; text-align:center; padding:16px; border-top:1px solid #e2e8f0;">
         <div style="font-weight:700; color:#863B0E; margin-bottom:8px;">Gajna Overseas</div>
         <div><a href="https://gajnaoverseas.com" style="color:#863B0E; text-decoration:none;">gajnaoverseas.com</a></div>
-        <div style="margin-top:6px;"><a href="mailto:priyavirat@zohomail.in" style="color:#863B0E; text-decoration:none;">priyavirat@zohomail.in</a> | <a href="tel:+919811789665" style="color:#863B0E; text-decoration:none;">+91 9811789665</a></div>
+        <div style="margin-top:6px;"><a href="mailto:priyavirat@zohomail.in" style="color:#863B0E; text-decoration:none;">priyavirat@zohomail.in</a> | <a href="tel:+918123139610" style="color:#863B0E; text-decoration:none;">+91 8123139610</a></div>
       </div>
     </div>
   </div>`;

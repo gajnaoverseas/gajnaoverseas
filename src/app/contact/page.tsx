@@ -39,9 +39,9 @@ export default function ContactPage() {
       icon: Phone,
       title: "Phone",
       subtitle: "Call Us",
-      description: "+91 9811789665",
+      description: "+91 8123139610",
       action: "Call Now",
-      href: "tel:+919811789665",
+      href: "tel:+918123139610",
     },
     {
       icon: Mail,
@@ -65,7 +65,7 @@ export default function ContactPage() {
       subtitle: "Text Us",
       description: "Send us a text message for quick queries",
       action: "Send SMS",
-      href: "sms:+919811789665",
+      href: "sms:+918123139610",
     },
     {
       icon: Video,
@@ -86,7 +86,6 @@ export default function ContactPage() {
   ];
 
   const faqs = [
-
     {
       question: "How do I request samples?",
       answer:
@@ -97,7 +96,6 @@ export default function ContactPage() {
       answer:
         "We export various grades including Arabica (Plantation PB, A, B, C) and Robusta (Cherry, Parchment) varieties. Check our product catalog for complete details.",
     },
-
 
     {
       question: "Do you provide quality certificates?",
@@ -130,7 +128,7 @@ export default function ContactPage() {
             </Link>
 
             <Link
-              href="sms:+919811789665"
+              href="sms:+918123139610"
               className="w-full md:w-[15vw] hover:scale-110 h-[200px] md:h-[30vh] p-6 bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition rounded-[10px]"
             >
               <div className="flex items-center justify-center text-[#6F4E37] ">
@@ -146,7 +144,7 @@ export default function ContactPage() {
           <div className="flex flex-col ">
             <div className="flex flex-col md:flex-row ">
               <Link
-                href="tel:+919811789665"
+                href="tel:+918123139610"
                 className="p-6 h-[150px] hover:scale-110 md:h-[20vh] w-full md:w-[20vw] bg-white border-2 border-gray-300 flex flex-col justify-center items-center hover:shadow-lg transition rounded-[10px]"
               >
                 <Phone className="w-[32px] h-[32px] md:w-[2vw] md:h-[2vw] text-[#6F4E37]" />
@@ -166,11 +164,9 @@ export default function ContactPage() {
               </Link>
             </div>
 
-
             <h1 className="text-4xl hover:scale-110 md:text-7xl leading-tight font-bold text-white text-center font-serif p-6 h-[150px] md:h-[20vh] w-full md:w-[40vw]  bg-green-700 border-2 border-gray-300 rounded-[10px] flex flex-col justify-center items-center hover:shadow-lg transition">
               Contact Us
             </h1>
-
 
             <Link
               href="https://meet.google.com/new"
@@ -223,16 +219,20 @@ export default function ContactPage() {
             <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center mb-2 group-hover:from-green-200 group-hover:to-green-300 transition-all duration-300">
               <MapPin className="w-6 h-6 text-[#6F4E37]" />
             </div>
-            <span className="text-sm font-medium text-[#6F4E37] text-center">Location</span>
+            <span className="text-sm font-medium text-[#6F4E37] text-center">
+              Location
+            </span>
           </Link>
           <Link
-            href="tel:+919811789665"
+            href="tel:+918123139610"
             className="bg-white rounded-xl border-2 border-gray-200 p-4 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-32"
           >
             <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mb-2 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
               <Phone className="w-6 h-6 text-[#6F4E37]" />
             </div>
-            <span className="text-sm font-medium text-[#6F4E37] text-center">Phone</span>
+            <span className="text-sm font-medium text-[#6F4E37] text-center">
+              Phone
+            </span>
           </Link>
           <Link
             href="mailto:priyavirat@zohomail.in"
@@ -241,12 +241,16 @@ export default function ContactPage() {
             <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full flex items-center justify-center mb-2 group-hover:from-purple-200 group-hover:to-purple-300 transition-all duration-300">
               <Mail className="w-6 h-6 text-[#6F4E37]" />
             </div>
-            <span className="text-sm font-medium text-[#6F4E37] text-center">Email</span>
+            <span className="text-sm font-medium text-[#6F4E37] text-center">
+              Email
+            </span>
           </Link>
 
           {/* Full-width title card */}
           <div className="col-span-3 bg-gradient-to-r from-green-700 to-green-800 rounded-xl shadow-lg p-4 flex flex-col items-center justify-center transform hover:scale-105 transition-all duration-300 h-32 w-full">
-            <h1 className="text-2xl font-bold text-white font-serif text-center leading-tight">Contact Us</h1>
+            <h1 className="text-2xl font-bold text-white font-serif text-center leading-tight">
+              Contact Us
+            </h1>
           </div>
 
           {/* Row 2 */}
@@ -259,7 +263,9 @@ export default function ContactPage() {
             <div className="w-12 h-12 bg-gradient-to-br from-red-100 to-red-200 rounded-full flex items-center justify-center mb-2 group-hover:from-red-200 group-hover:to-red-300 transition-all duration-300">
               <Video className="w-6 h-6 text-[#6F4E37]" />
             </div>
-            <span className="text-sm font-medium text-[#6F4E37] text-center">Video Call</span>
+            <span className="text-sm font-medium text-[#6F4E37] text-center">
+              Video Call
+            </span>
           </Link>
           <Link
             href="https://wa.me/919811789665"
@@ -270,7 +276,9 @@ export default function ContactPage() {
             <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center mb-2 group-hover:from-green-200 group-hover:to-green-300 transition-all duration-300">
               <BsWhatsapp className="w-6 h-6 text-[#6F4E37]" />
             </div>
-            <span className="text-sm font-medium text-[#6F4E37] text-center">WhatsApp</span>
+            <span className="text-sm font-medium text-[#6F4E37] text-center">
+              WhatsApp
+            </span>
           </Link>
           <button
             onClick={() => setIsEnquiryModalOpen(true)}
@@ -279,19 +287,23 @@ export default function ContactPage() {
             <div className="w-12 h-12 bg-gradient-to-br from-orange-100 to-orange-200 rounded-full flex items-center justify-center mb-2 group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-300">
               <MessageCircle className="w-6 h-6 text-[#6F4E37]" />
             </div>
-            <span className="text-sm font-medium text-[#6F4E37] text-center">Enquiry Form</span>
+            <span className="text-sm font-medium text-[#6F4E37] text-center">
+              Enquiry Form
+            </span>
           </button>
         </div>
         {/* SMS card below the grid to match tablet layout structure */}
         <div className="mt-6 w-full max-w-md mx-auto">
           <Link
-            href="sms:+919811789665"
+            href="sms:+918123139610"
             className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-32"
           >
             <div className="w-12 h-12 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-full flex items-center justify-center mb-2 group-hover:from-indigo-200 group-hover:to-indigo-300 transition-all duration-300">
               <Smartphone className="w-6 h-6 text-[#6F4E37]" />
             </div>
-            <span className="text-sm font-medium text-[#6F4E37] text-center">SMS</span>
+            <span className="text-sm font-medium text-[#6F4E37] text-center">
+              SMS
+            </span>
           </Link>
         </div>
       </div>
@@ -314,10 +326,8 @@ export default function ContactPage() {
             </span>
           </Link>
 
-
-
           <Link
-            href="tel:+919811789665"
+            href="tel:+918123139610"
             className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
           >
             <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mb-3 group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-300">
@@ -386,8 +396,6 @@ export default function ContactPage() {
             </span>
           </button>
 
-
-
           {/* <Link
             href="/trade-enquiry"
             className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl border-2 border-amber-200 p-6 flex flex-col items-center justify-center h-40 hover:from-amber-100 hover:to-orange-100 transition-all duration-300 transform hover:scale-105 cursor-pointer"
@@ -404,7 +412,7 @@ export default function ContactPage() {
         </div>
         <div className="mt-6">
           <Link
-            href="sms:+919811789665"
+            href="sms:+918123139610"
             className="bg-white rounded-xl border-2 border-gray-200 p-6 flex flex-col items-center justify-center hover:shadow-xl hover:border-green-300 transition-all duration-300 group h-40"
           >
             <div className="w-14 h-14 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-full flex items-center justify-center mb-3 group-hover:from-indigo-200 group-hover:to-indigo-300 transition-all duration-300">
@@ -420,8 +428,6 @@ export default function ContactPage() {
       {/* Main Contact Section */}
       <section className="py-16 bg-[url('/blog-bg.webp')] bg-cover bg-no-repeat">
         <div className="max-w-7xl mx-auto px-4">
-
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Left Side - Contact Details */}
             <motion.div
@@ -444,7 +450,9 @@ export default function ContactPage() {
                       <h4 className="font-semibold text-gray-800">
                         Company Name
                       </h4>
-                      <p className="text-gray-600 break-words">Gajna Overseas Private Limited</p>
+                      <p className="text-gray-600 break-words">
+                        Gajna Overseas Private Limited
+                      </p>
                     </div>
                   </div>
 
@@ -478,7 +486,9 @@ export default function ContactPage() {
                     </div>
                     <div className="min-w-0">
                       <h4 className="font-semibold text-gray-800">Email</h4>
-                      <p className="text-gray-600 break-words">priyavirat@zohomail.in</p>
+                      <p className="text-gray-600 break-words">
+                        priyavirat@zohomail.in
+                      </p>
                     </div>
                   </div>
 
@@ -488,7 +498,9 @@ export default function ContactPage() {
                     </div>
                     <div className="min-w-0">
                       <h4 className="font-semibold text-gray-800">Mobile No</h4>
-                      <p className="text-gray-600 break-words">+91 9811789665</p>
+                      <p className="text-gray-600 break-words">
+                        +91 8123139610
+                      </p>
                     </div>
                   </div>
 
@@ -498,14 +510,19 @@ export default function ContactPage() {
                     </div>
                     <div className="min-w-0">
                       <h4 className="font-semibold text-gray-800">Website</h4>
-                      <p className="text-gray-600 break-words">www.gajnaoverseas.com</p>
+                      <p className="text-gray-600 break-words">
+                        www.gajnaoverseas.com
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className="bg-white rounded-2xl p-8 shadow-lg font-semibold text-xl border border-coffee-brown">
-                Corporate Identity Number (CIN): <span className="text-gray-600 font-medium text-lg">U51909HR2021OPC098737</span>
+                Corporate Identity Number (CIN):{" "}
+                <span className="text-gray-600 font-medium text-lg">
+                  U51909HR2021OPC098737
+                </span>
               </div>
 
               {/* Connect With Us */}
@@ -525,7 +542,7 @@ export default function ContactPage() {
                   </Link>
 
                   <Link
-                    href="tel:+919811789665"
+                    href="tel:+918123139610"
                     className="flex flex-col items-center p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors"
                   >
                     <Phone className="w-8 h-8 text-green-600 mb-2" />
@@ -535,7 +552,7 @@ export default function ContactPage() {
                   </Link>
 
                   <Link
-                    href="sms:+919811789665"
+                    href="sms:+918123139610"
                     className="flex flex-col items-center p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors"
                   >
                     <Smartphone className="w-8 h-8 text-purple-600 mb-2" />
@@ -607,7 +624,8 @@ export default function ContactPage() {
               Find Us Here
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Visit our office located in the heart of Gurugram, Haryana. We&apos;re easily accessible and ready to welcome you.
+              Visit our office located in the heart of Gurugram, Haryana.
+              We&apos;re easily accessible and ready to welcome you.
             </p>
           </motion.div>
 
@@ -641,10 +659,14 @@ export default function ContactPage() {
                       <MapPin className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-800 text-lg">Registered Address</h3>
+                      <h3 className="font-semibold text-gray-800 text-lg">
+                        Registered Address
+                      </h3>
                       <p className="text-gray-600 leading-relaxed">
-                        505, Park Royal Apartments, GH-80, Block E,<br />
-                        Sector-56, Gurugram, Haryana, India<br />
+                        505, Park Royal Apartments, GH-80, Block E,
+                        <br />
+                        Sector-56, Gurugram, Haryana, India
+                        <br />
                         PIN Code: 122011
                       </p>
                     </div>
@@ -655,11 +677,16 @@ export default function ContactPage() {
                       <Building2 className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-800 text-lg">Branch Office</h3>
+                      <h3 className="font-semibold text-gray-800 text-lg">
+                        Branch Office
+                      </h3>
                       <p className="text-gray-600 leading-relaxed">
-                        House No 29, Golf Club Road,<br />
-                        Village- Hale Balehalli, POST - Kaimara,<br />
-                        District- Chikkamagaluru, Karnataka<br />
+                        House No 29, Golf Club Road,
+                        <br />
+                        Village- Hale Balehalli, POST - Kaimara,
+                        <br />
+                        District- Chikkamagaluru, Karnataka
+                        <br />
                         PIN Code: 577131
                       </p>
                     </div>
@@ -672,9 +699,12 @@ export default function ContactPage() {
                       <Phone className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-800 text-lg">Contact Info</h3>
+                      <h3 className="font-semibold text-gray-800 text-lg">
+                        Contact Info
+                      </h3>
                       <p className="text-gray-600">
-                        Phone: +91 9811789665<br />
+                        Phone: +91 8123139610
+                        <br />
                         Email: priyavirat@zohomail.in
                       </p>
                     </div>
@@ -695,7 +725,7 @@ export default function ContactPage() {
                     <span>Get Directions</span>
                   </a>
                   <a
-                    href="tel:+919811789665"
+                    href="tel:+918123139610"
                     className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium text-center transition-colors duration-300 flex items-center justify-center space-x-2"
                   >
                     <Phone className="w-5 h-5" />
@@ -709,7 +739,10 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section id="frequently-asked-questions" className="py-16 bg-white scroll-mt-24">
+      <section
+        id="frequently-asked-questions"
+        className="py-16 bg-white scroll-mt-24"
+      >
         <div className="max-w-4xl mx-auto px-4">
           <motion.div
             className="text-center mb-12"
@@ -738,15 +771,17 @@ export default function ContactPage() {
                 >
                   <button
                     onClick={() => setOpenFaqIndex(isOpen ? null : index)}
-                    className={`w-full px-6 py-4 text-left flex justify-between items-center transition-colors duration-300 ${isOpen
-                      ? "bg-coffee-brown text-white"
-                      : "bg-gray-50 text-gray-800 hover:bg-gray-100"
-                      }`}
+                    className={`w-full px-6 py-4 text-left flex justify-between items-center transition-colors duration-300 ${
+                      isOpen
+                        ? "bg-coffee-brown text-white"
+                        : "bg-gray-50 text-gray-800 hover:bg-gray-100"
+                    }`}
                   >
                     <span className="font-medium">{faq.question}</span>
                     <svg
-                      className={`w-5 h-5 transform transition-transform duration-300 ${isOpen ? "rotate-180" : ""
-                        }`}
+                      className={`w-5 h-5 transform transition-transform duration-300 ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -810,7 +845,12 @@ export default function ContactPage() {
           <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="flex lg:flex-row flex-col items-center justify-between p-6 border-b">
               <div className="flex flex-row justify-between items-center">
-                <Image src="/logo.webp" alt="Gajna Overseas Logo" width={100} height={50} />
+                <Image
+                  src="/logo.webp"
+                  alt="Gajna Overseas Logo"
+                  width={100}
+                  height={50}
+                />
                 <button
                   onClick={() => setIsEnquiryModalOpen(false)}
                   className="text-gray-400 hover:text-gray-600 transition-colors lg:hidden block"

@@ -4,9 +4,12 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 // Lazy-load heavy components to reduce header bundle size and speed up navigation
-const GeneralContactFormLazy = dynamic(() => import("@/components/GeneralContactForm"), {
-  ssr: false,
-});
+const GeneralContactFormLazy = dynamic(
+  () => import("@/components/GeneralContactForm"),
+  {
+    ssr: false,
+  },
+);
 import { X, Search, Phone, Mail, MessageCircle } from "lucide-react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { usePathname } from "next/navigation";
@@ -68,7 +71,10 @@ export default function Header() {
 
           {/* Center Title (hidden on small) */}
           <nav className="hidden md:block flex-1 text-center">
-            <h2 className="text-lg md:text-2xl lg:text-4xl tracking-wide  font-semibold font-serif text-coffee-brown" style={{ wordSpacing: "4px" }}>
+            <h2
+              className="text-lg md:text-2xl lg:text-4xl tracking-wide  font-semibold font-serif text-coffee-brown"
+              style={{ wordSpacing: "4px" }}
+            >
               Exporter of Green Coffee Beans of Indian Origin
             </h2>
           </nav>
@@ -137,7 +143,7 @@ export default function Header() {
               Visit Us
             </Link>
             <Link
-              href="tel:+919811789665"
+              href="tel:+918123139610"
               className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 whitespace-nowrap"
               aria-label="Call Us"
             >
@@ -169,7 +175,7 @@ export default function Header() {
               Chat With Us
             </Link>
             {/* <Link
-              href="sms:+919811789665"
+              href="sms:+918123139610"
               className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 whitespace-nowrap"
               aria-label="Send Us SMS"
             >
@@ -252,7 +258,6 @@ export default function Header() {
               >
                 Become a Supplier with us
               </Link>
-
             </div>
           </div>
         )}
@@ -270,13 +275,13 @@ export default function Header() {
                 Visit Us
               </Link>
               <Link
-                href="tel:+919811789665"
+                href="tel:+918123139610"
                 className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 Call Us
               </Link>
               {/* <Link
-                href="tel:+919811789665"
+                href="tel:+918123139610"
                 className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 Mobile
@@ -305,7 +310,7 @@ export default function Header() {
                 Chat With Us
               </Link>
               {/* <Link
-                href="sms:+919811789665"
+                href="sms:+918123139610"
                 className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 Send Us SMS
@@ -321,8 +326,6 @@ export default function Header() {
                 <span className="text-sm">Search Coffee Grades</span>
               </Link>
             </div>
-
-
           </nav>
         </div>
 
@@ -382,7 +385,6 @@ export default function Header() {
             </Link>
           </div>
         </nav>
-
       </div>
     </header>
   );

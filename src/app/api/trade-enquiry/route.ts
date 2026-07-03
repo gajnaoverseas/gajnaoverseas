@@ -4,7 +4,10 @@ import { z } from "zod";
 
 // Basic server-side logging utility
 function log(message: string, meta?: unknown) {
-  console.log(`[trade-enquiry] ${new Date().toISOString()} - ${message}`, (meta ?? ""));
+  console.log(
+    `[trade-enquiry] ${new Date().toISOString()} - ${message}`,
+    meta ?? "",
+  );
 }
 
 const ADMIN_EMAIL = "PRIYAVIRAT@GMAIL.COM, priyavirat@zohomail.in";
@@ -21,81 +24,96 @@ const tradeEnquirySchema = z.object({
   companyEmail: z.string().email("Valid company email is required"),
   companyWebsite: z.string().optional(),
   companyLinkedIn: z.string().optional(),
-  
+
   // Contact Person
   contactName: z.string().min(1, "Contact person name is required"),
   contactLinkedIn: z.string().optional(),
   contactMobile: z.string().min(1, "Contact mobile is required"),
   contactEmail: z.string().email("Valid contact email is required"),
-  
+
   // Logistics Details
   coffeeGrade: z.string().min(1, "Coffee grade is required"),
   hsnCode: z.string().min(1, "HSN code is required"),
   estimatedQuantity: z.string().min(1, "Estimated quantity is required"),
-  packagingRequirements: z.string().min(1, "Packaging requirements are required"),
+  packagingRequirements: z
+    .string()
+    .min(1, "Packaging requirements are required"),
   portOfLoading: z.string().min(1, "Port of loading is required"),
   portOfDispatch: z.string().min(1, "Port of dispatch is required"),
   preshipmentAgency: z.string().optional(),
   preshipmentRequirements: z.string().optional(),
   deliveryDuration: z.string().min(1, "Delivery duration is required"),
-  
+
   captchaToken: z.string().min(1, "CAPTCHA verification is required"),
 });
 
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
   if (!body) {
-    return NextResponse.json({ success: false, error: "Invalid JSON" }, { status: 400 });
+    return NextResponse.json(
+      { success: false, error: "Invalid JSON" },
+      { status: 400 },
+    );
   }
-  
+
   // Verify reCAPTCHA (skip on localhost when no secret configured)
   const captchaToken = body.captchaToken;
   const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
-  const host = req.headers.get('host') || '';
+  const host = req.headers.get("host") || "";
   const isLocalhost = /^(localhost|127\.0\.0\.1)(:\d+)?$/i.test(host);
   const captchaEnabled = Boolean(recaptchaSecret) && !isLocalhost;
   if (captchaEnabled && !captchaToken) {
-    return NextResponse.json({ success: false, error: "reCAPTCHA verification failed" }, { status: 400 });
+    return NextResponse.json(
+      { success: false, error: "reCAPTCHA verification failed" },
+      { status: 400 },
+    );
   }
-  
+
   try {
     // Verify the captcha token with Google's reCAPTCHA API
     const recaptchaResponse = await fetch(
       `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecret}&response=${captchaToken}`,
-      { method: "POST" }
+      { method: "POST" },
     );
-    
+
     const recaptchaResult = await recaptchaResponse.json();
-    
+
     if (!recaptchaResult.success) {
       log("reCAPTCHA verification failed", recaptchaResult);
       return NextResponse.json(
         { success: false, error: "reCAPTCHA verification failed" },
-        { status: 400 }
+        { status: 400 },
       );
     }
   } catch (error) {
     log("reCAPTCHA verification error", error);
     return NextResponse.json(
       { success: false, error: "reCAPTCHA verification error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 
   if (!captchaEnabled) {
-    log("reCAPTCHA disabled for local testing or missing secret; skipping verification", { host });
+    log(
+      "reCAPTCHA disabled for local testing or missing secret; skipping verification",
+      { host },
+    );
   }
 
   // Validate against schema
   const parse = tradeEnquirySchema.safeParse(body);
   if (!parse.success) {
-    console.error('Validation failed:', parse.error.flatten());
-    console.error('Received body:', JSON.stringify(body, null, 2));
-    console.error('Company email value:', body.companyEmail);
-    console.error('Company email type:', typeof body.companyEmail);
+    console.error("Validation failed:", parse.error.flatten());
+    console.error("Received body:", JSON.stringify(body, null, 2));
+    console.error("Company email value:", body.companyEmail);
+    console.error("Company email type:", typeof body.companyEmail);
     return NextResponse.json(
-      { success: false, error: "Validation failed", issues: parse.error.flatten() },
-      { status: 422 }
+      {
+        success: false,
+        error: "Validation failed",
+        issues: parse.error.flatten(),
+      },
+      { status: 422 },
     );
   }
 
@@ -155,17 +173,17 @@ Company Name: ${data.companyName}
 Company Address: ${data.companyAddress}
 Country: ${data.countryName}
 Company Phone: ${data.companyPhone}
-Company Fax: ${data.companyFax || 'Not provided'}
-Company Mobile: ${data.companyMobile || 'Not provided'}
+Company Fax: ${data.companyFax || "Not provided"}
+Company Mobile: ${data.companyMobile || "Not provided"}
 Company Email: ${data.companyEmail}
-Company Website: ${data.companyWebsite || 'Not provided'}
-Company LinkedIn: ${data.companyLinkedIn || 'Not provided'}
+Company Website: ${data.companyWebsite || "Not provided"}
+Company LinkedIn: ${data.companyLinkedIn || "Not provided"}
 
 CONTACT PERSON:
 Name: ${data.contactName}
 Mobile: ${data.contactMobile}
 Email: ${data.contactEmail}
-LinkedIn: ${data.contactLinkedIn || 'Not provided'}
+LinkedIn: ${data.contactLinkedIn || "Not provided"}
 
 LOGISTICS DETAILS:
 Coffee Grade: ${data.coffeeGrade}
@@ -174,15 +192,15 @@ Estimated Quantity: ${data.estimatedQuantity}
 Packaging Requirements: ${data.packagingRequirements}
 Port of Loading: ${data.portOfLoading}
 Port of Dispatch: ${data.portOfDispatch}
-Pre-shipment Agency: ${data.preshipmentAgency || 'Not provided'}
-Pre-shipment Requirements: ${data.preshipmentRequirements || 'Not provided'}
+Pre-shipment Agency: ${data.preshipmentAgency || "Not provided"}
+Pre-shipment Requirements: ${data.preshipmentRequirements || "Not provided"}
 Delivery Duration: ${data.deliveryDuration}`;
 
   // Helper to render label/value rows with inline styles for better email client support
   const row = (label: string, value?: string) => `
     <div style="margin-bottom:10px; display:flex; align-items:flex-start; padding:8px 0; border-bottom:1px solid #e2e8f0;">
       <div style="color:#64748b; font-size:14px; font-weight:600; min-width:140px;">${label}:</div>
-      <div style="font-size:15px; color:#1e293b; flex:1;">${value || 'NA'}</div>
+      <div style="font-size:15px; color:#1e293b; flex:1;">${value || "NA"}</div>
     </div>
   `;
 
@@ -201,36 +219,36 @@ Delivery Duration: ${data.deliveryDuration}`;
 
         <div style="margin-bottom:20px; background:#f8fafc; border-radius:12px; padding:20px; border-left:4px solid #863B0E;">
           <div style="font-size:16px; font-weight:700; color:#863B0E; margin-bottom:12px;">Company Information</div>
-          ${row('Company Name', data.companyName)}
-          ${row('Address', data.companyAddress)}
-          ${row('Country', data.countryName)}
-          ${row('Phone', data.companyPhone)}
-          ${data.companyFax ? row('Fax', data.companyFax) : ''}
-          ${data.companyMobile ? row('Mobile', data.companyMobile) : ''}
-          ${row('Email', data.companyEmail)}
-          ${data.companyWebsite ? row('Website', data.companyWebsite) : ''}
-          ${data.companyLinkedIn ? row('LinkedIn', data.companyLinkedIn) : ''}
+          ${row("Company Name", data.companyName)}
+          ${row("Address", data.companyAddress)}
+          ${row("Country", data.countryName)}
+          ${row("Phone", data.companyPhone)}
+          ${data.companyFax ? row("Fax", data.companyFax) : ""}
+          ${data.companyMobile ? row("Mobile", data.companyMobile) : ""}
+          ${row("Email", data.companyEmail)}
+          ${data.companyWebsite ? row("Website", data.companyWebsite) : ""}
+          ${data.companyLinkedIn ? row("LinkedIn", data.companyLinkedIn) : ""}
         </div>
 
         <div style="margin-bottom:20px; background:#f8fafc; border-radius:12px; padding:20px; border-left:4px solid #863B0E;">
           <div style="font-size:16px; font-weight:700; color:#863B0E; margin-bottom:12px;">Contact Person</div>
-          ${row('Name', data.contactName)}
-          ${row('Mobile', data.contactMobile)}
-          ${row('Email', data.contactEmail)}
-          ${data.contactLinkedIn ? row('LinkedIn', data.contactLinkedIn) : ''}
+          ${row("Name", data.contactName)}
+          ${row("Mobile", data.contactMobile)}
+          ${row("Email", data.contactEmail)}
+          ${data.contactLinkedIn ? row("LinkedIn", data.contactLinkedIn) : ""}
         </div>
 
         <div style="margin-bottom:20px; background:#dcfce7; border:2px solid #16a34a; border-radius:15px; padding:20px;">
           <div style="font-size:16px; font-weight:700; color:#166534; margin-bottom:12px;">Logistics & Trade Details</div>
-          ${row('Coffee Grade', data.coffeeGrade)}
-          ${row('HSN Code', data.hsnCode)}
-          ${row('Quantity', data.estimatedQuantity)}
-          ${row('Port of Loading', data.portOfLoading)}
-          ${row('Port of Dispatch', data.portOfDispatch)}
-          ${row('Delivery Duration', data.deliveryDuration)}
-          ${row('Packaging', data.packagingRequirements)}
-          ${data.preshipmentAgency ? row('Pre-shipment Agency', data.preshipmentAgency) : ''}
-          ${data.preshipmentRequirements ? row('Pre-shipment Req', data.preshipmentRequirements) : ''}
+          ${row("Coffee Grade", data.coffeeGrade)}
+          ${row("HSN Code", data.hsnCode)}
+          ${row("Quantity", data.estimatedQuantity)}
+          ${row("Port of Loading", data.portOfLoading)}
+          ${row("Port of Dispatch", data.portOfDispatch)}
+          ${row("Delivery Duration", data.deliveryDuration)}
+          ${row("Packaging", data.packagingRequirements)}
+          ${data.preshipmentAgency ? row("Pre-shipment Agency", data.preshipmentAgency) : ""}
+          ${data.preshipmentRequirements ? row("Pre-shipment Req", data.preshipmentRequirements) : ""}
         </div>
 
         <div style="height:2px; background:linear-gradient(90deg,#863B0E 0%, #61714D 100%); margin:20px 0;"></div>
@@ -238,25 +256,38 @@ Delivery Duration: ${data.deliveryDuration}`;
       </div>
       <div style="background:#f1f5f9; color:#64748b; text-align:center; padding:16px; border-top:1px solid #e2e8f0;">
         <div style="font-weight:700; color:#863B0E; margin-bottom:8px;">Gajna Overseas</div>
-        <div><a href="mailto:priyavirat@zohomail.in" style="color:#863B0E; text-decoration:none;">priyavirat@zohomail.in</a> | <a href="tel:+919811789665" style="color:#863B0E; text-decoration:none;">+91 9811789665</a></div>
+        <div><a href="mailto:priyavirat@zohomail.in" style="color:#863B0E; text-decoration:none;">priyavirat@zohomail.in</a> | <a href="tel:+918123139610" style="color:#863B0E; text-decoration:none;">+91 8123139610</a></div>
       </div>
     </div>
   </div>
   `;
 
-  const DRY_RUN = process.env.EMAIL_DRY_RUN === "true" || ((!user || !pass) && process.env.NODE_ENV !== "production");
+  const DRY_RUN =
+    process.env.EMAIL_DRY_RUN === "true" ||
+    ((!user || !pass) && process.env.NODE_ENV !== "production");
 
   if ((!user || !pass) && DRY_RUN) {
     log("EMAIL DRY RUN: Missing SMTP env; emails will be logged instead.");
-    console.log("ADMIN EMAIL (DRY RUN)", { to: ADMIN_EMAIL, subject: `🚢 New Trade Enquiry from ${data.companyName}`, text: plainText, htmlPreview: adminHtml.slice(0, 180) + "..." });
-    return NextResponse.json({ success: true, message: "Trade enquiry submitted successfully (Dry Run)" });
+    console.log("ADMIN EMAIL (DRY RUN)", {
+      to: ADMIN_EMAIL,
+      subject: `🚢 New Trade Enquiry from ${data.companyName}`,
+      text: plainText,
+      htmlPreview: adminHtml.slice(0, 180) + "...",
+    });
+    return NextResponse.json({
+      success: true,
+      message: "Trade enquiry submitted successfully (Dry Run)",
+    });
   }
 
   if (!user || !pass) {
     log("Missing SMTP credentials");
     return NextResponse.json(
-      { success: false, error: "Server configuration error: Missing SMTP credentials" },
-      { status: 500 }
+      {
+        success: false,
+        error: "Server configuration error: Missing SMTP credentials",
+      },
+      { status: 500 },
     );
   }
 
@@ -275,13 +306,22 @@ Delivery Duration: ${data.deliveryDuration}`;
       html: adminHtml,
     });
 
-    log("Trade enquiry email sent successfully", { company: data.companyName, email: data.companyEmail });
-    return NextResponse.json({ success: true, message: "Trade enquiry submitted successfully" });
+    log("Trade enquiry email sent successfully", {
+      company: data.companyName,
+      email: data.companyEmail,
+    });
+    return NextResponse.json({
+      success: true,
+      message: "Trade enquiry submitted successfully",
+    });
   } catch (error) {
     log("Failed to send trade enquiry email", error);
     return NextResponse.json(
-      { success: false, error: `Failed to send email: ${error instanceof Error ? error.message : String(error)}` },
-      { status: 500 }
+      {
+        success: false,
+        error: `Failed to send email: ${error instanceof Error ? error.message : String(error)}`,
+      },
+      { status: 500 },
     );
   }
 }

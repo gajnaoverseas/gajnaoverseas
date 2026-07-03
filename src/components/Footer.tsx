@@ -19,7 +19,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo and Tagline */}
           <div className="col-span-1 md:col-span-2 lg:col-span-1">
-            <Link href="/" className="text-white font-bold text-xl md:text-2xl mb-4 flex justify-center md:justify-start items-center">
+            <Link
+              href="/"
+              className="text-white font-bold text-xl md:text-2xl mb-4 flex justify-center md:justify-start items-center"
+            >
               <Image
                 src="/newlogo.webp"
                 alt="Gaina Overseas Logo"
@@ -37,14 +40,20 @@ export default function Footer() {
               {/* Gaina Overseas */}
             </Link>
 
-
-
             <div className="flex justify-center md:justify-start space-x-4">
               <div className="text-center mb-16">
                 <div className="flex justify-center space-x-2 flex-wrap gap-2">
                   {[
-                    { icon: 'linkedin', component: Linkedin, href: 'https://www.linkedin.com/company/gajna-overseas-private-limited/about/?viewAsMember=true' },
-                    { icon: 'whatsapp', component: BsWhatsapp, href: 'https://wa.me/9811789665' },
+                    {
+                      icon: "linkedin",
+                      component: Linkedin,
+                      href: "https://www.linkedin.com/company/gajna-overseas-private-limited/about/?viewAsMember=true",
+                    },
+                    {
+                      icon: "whatsapp",
+                      component: BsWhatsapp,
+                      href: "https://wa.me/9811789665",
+                    },
                   ].map((social, index) => {
                     const IconComponent = social.component;
                     return (
@@ -62,12 +71,13 @@ export default function Footer() {
                 </div>
               </div>
             </div>
-
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-bold mb-4 text-xl md:text-2xl text-center md:text-left">Quick Links</h3>
+            <h3 className="font-bold mb-4 text-xl md:text-2xl text-center md:text-left">
+              Quick Links
+            </h3>
             <ul className="space-y-2">
               <li className="flex items-center">
                 <FaCheck className="mr-2" />
@@ -84,7 +94,10 @@ export default function Footer() {
 
               <li className="flex items-center">
                 <FaCheck className="mr-2" />
-                <Link href="/contact#frequently-asked-questions" className="hover:text-coffee-gold">
+                <Link
+                  href="/contact#frequently-asked-questions"
+                  className="hover:text-coffee-gold"
+                >
                   Frequently Asked Questions
                 </Link>
               </li>
@@ -100,13 +113,14 @@ export default function Footer() {
                   Sitemap
                 </Link>
               </li>
-
             </ul>
           </div>
 
           {/* Other Links */}
           <div>
-            <h3 className="font-bold mb-4 text-xl md:text-2xl text-center md:text-left">Connect for Coffee Business</h3>
+            <h3 className="font-bold mb-4 text-xl md:text-2xl text-center md:text-left">
+              Connect for Coffee Business
+            </h3>
             <ul className="space-y-2">
               {/* <li className="flex items-center">
                 <FaCheck className="mr-2" />
@@ -147,7 +161,9 @@ export default function Footer() {
 
           {/* Contact Information */}
           <div>
-            <h3 className="font-bold mb-4 text-xl md:text-2xl text-center md:text-left">Contact Us</h3>
+            <h3 className="font-bold mb-4 text-xl md:text-2xl text-center md:text-left">
+              Contact Us
+            </h3>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
                 <IoIosMailOpen className="text-2xl md:text-3xl text-coffee-gold flex-shrink-0 mt-1" />
@@ -162,7 +178,9 @@ export default function Footer() {
                 <IoCall className="text-2xl md:text-3xl text-coffee-gold flex-shrink-0 mt-1" />
                 <div>
                   <h4 className="font-medium text-lg">Call Us</h4>
-                  <p className="text-sm md:text-base text-gray-200">+91 9811789665</p>
+                  <p className="text-sm md:text-base text-gray-200">
+                    +91 8123139610
+                  </p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
@@ -170,11 +188,17 @@ export default function Footer() {
                 <div>
                   <h4 className="font-medium text-lg">Registered Address</h4>
                   <p className="text-sm md:text-base text-gray-200 leading-relaxed">
-                    505, Park Royal Apartments,<br />
-                    GH-80, Sector -56,<br />
+                    <b>Gajna Overseas (OPC) Private Limited</b>
+                    <br />
+                    505, Park Royal Apartments,
+                    <br />
+                    GH-80, Sector -56,
+                    <br />
                     Gurugram, Haryana, India ,
                     <div>
-                      <h4 className="font-semibold text-white">PIN Code : 122011</h4>
+                      <h4 className="font-semibold text-white">
+                        PIN Code : 122011
+                      </h4>
                       <p className="text-gray-600"></p>
                     </div>
                   </p>
@@ -185,10 +209,14 @@ export default function Footer() {
                 <div>
                   <h4 className="font-medium text-lg">Branch Office</h4>
                   <p className="text-sm md:text-base text-gray-200 leading-relaxed">
-                    House No 29, Golf Club Road,<br />
-                    Village- Hale Balehalli, POST - Kaimara,<br />
+                    House No 29, Golf Club Road,
+                    <br />
+                    Village- Hale Balehalli, POST - Kaimara,
+                    <br />
                     District- Chikkamagaluru, Karnataka ,
-                    <span className="block mt-1 font-semibold text-white">PIN Code : 577131</span>
+                    <span className="block mt-1 font-semibold text-white">
+                      PIN Code : 577131
+                    </span>
                   </p>
                 </div>
               </div>
@@ -199,7 +227,8 @@ export default function Footer() {
       {/* Copyright bar below footer content */}
       <div className="mt-6 border-t border-white/20">
         <div className="max-w-7xl mx-auto px-4 py-4 text-center text-lg text-white/90">
-          © {new Date().getFullYear()} Gajna Overseas Private Limited - All rights are reserved.
+          © {new Date().getFullYear()} Gajna Overseas Private Limited - All
+          rights are reserved.
         </div>
       </div>
     </footer>

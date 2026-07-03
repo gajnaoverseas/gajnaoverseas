@@ -5,7 +5,7 @@ import { contactFormSchema } from "@/lib/validation";
 
 // Basic server-side logging utility
 function log(message: string, meta?: unknown) {
-  console.log(`[contact] ${new Date().toISOString()} - ${message}`,(meta ?? ""));
+  console.log(`[contact] ${new Date().toISOString()} - ${message}`, meta ?? "");
 }
 
 // Read SMTP credentials from environment variables
@@ -18,45 +18,56 @@ const ADMIN_EMAIL = "PRIYAVIRAT@GMAIL.COM, priyavirat@zohomail.in";
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
   if (!body) {
-    return NextResponse.json({ success: false, error: "Invalid JSON" }, { status: 400 });
+    return NextResponse.json(
+      { success: false, error: "Invalid JSON" },
+      { status: 400 },
+    );
   }
-  
+
   // Verify reCAPTCHA (skip on localhost when secret is present but local dev)
   const captchaToken = body.captchaToken;
   const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
-  const host = req.headers.get('host') || '';
+  const host = req.headers.get("host") || "";
   const isLocalhost = /^(localhost|127\.0\.0\.1)(:\d+)?$/i.test(host);
   const captchaEnabled = Boolean(recaptchaSecret) && !isLocalhost;
-  const isQuick = typeof body.subject === 'string' && body.subject.toLowerCase().includes('quick enquiry');
+  const isQuick =
+    typeof body.subject === "string" &&
+    body.subject.toLowerCase().includes("quick enquiry");
   if (captchaEnabled) {
     if (!captchaToken) {
-      return NextResponse.json({ success: false, error: "reCAPTCHA verification failed" }, { status: 400 });
-    }
-  
-  try {
-    // Verify the captcha token with Google's reCAPTCHA API
-    const recaptchaResponse = await fetch(
-      `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecret}&response=${captchaToken}`,
-      { method: "POST" }
-    );
-    
-    const recaptchaResult = await recaptchaResponse.json();
-    
-    if (!recaptchaResult.success) {
-      log("reCAPTCHA verification failed", recaptchaResult);
       return NextResponse.json(
         { success: false, error: "reCAPTCHA verification failed" },
-        { status: 400 }
+        { status: 400 },
       );
     }
-  } catch (error) {
-    log("reCAPTCHA verification error", error);
-    return NextResponse.json(
-      { success: false, error: "reCAPTCHA verification error" },
-      { status: 500 }
+
+    try {
+      // Verify the captcha token with Google's reCAPTCHA API
+      const recaptchaResponse = await fetch(
+        `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecret}&response=${captchaToken}`,
+        { method: "POST" },
+      );
+
+      const recaptchaResult = await recaptchaResponse.json();
+
+      if (!recaptchaResult.success) {
+        log("reCAPTCHA verification failed", recaptchaResult);
+        return NextResponse.json(
+          { success: false, error: "reCAPTCHA verification failed" },
+          { status: 400 },
+        );
+      }
+    } catch (error) {
+      log("reCAPTCHA verification error", error);
+      return NextResponse.json(
+        { success: false, error: "reCAPTCHA verification error" },
+        { status: 500 },
+      );
+    }
+    log(
+      "reCAPTCHA disabled for local testing or missing secret; skipping verification",
+      { host },
     );
-  }
-    log("reCAPTCHA disabled for local testing or missing secret; skipping verification", { host });
   }
 
   // Validate against schema
@@ -77,12 +88,21 @@ export async function POST(req: NextRequest) {
     country: z.string().optional(),
     postalCode: z.string().optional(),
   });
-  const parse = (isQuick ? quickEnquirySchema.safeParse(body) : contactFormSchema.safeParse(body));
+  const parse = isQuick
+    ? quickEnquirySchema.safeParse(body)
+    : contactFormSchema.safeParse(body);
   if (!parse.success) {
-    console.error("Validation failed:", JSON.stringify(parse.error.flatten(), null, 2));
+    console.error(
+      "Validation failed:",
+      JSON.stringify(parse.error.flatten(), null, 2),
+    );
     return NextResponse.json(
-      { success: false, error: "Validation failed", issues: parse.error.flatten() },
-      { status: 422 }
+      {
+        success: false,
+        error: "Validation failed",
+        issues: parse.error.flatten(),
+      },
+      { status: 422 },
     );
   }
 
@@ -136,7 +156,11 @@ export async function POST(req: NextRequest) {
   `;
 
   // Get full name from either name field or firstName + lastName fields
-  const fullName = data.name || (data.firstName && data.lastName ? `${data.firstName} ${data.lastName}` : '');
+  const fullName =
+    data.name ||
+    (data.firstName && data.lastName
+      ? `${data.firstName} ${data.lastName}`
+      : "");
   // Phone is already formatted with country code from PhoneInput component
   const formattedPhone = data.phone;
   const subject = data.subject || "General Enquiry";
@@ -150,10 +174,14 @@ export async function POST(req: NextRequest) {
   ];
   if (data.country) plainParts.push(`Country: ${data.country}`);
   if (data.postalCode) plainParts.push(`Postal Code: ${data.postalCode}`);
-  if (data.linkedin) plainParts.push(`${isQuick ? 'Your Company Website' : 'LinkedIn'}: ${data.linkedin}`);
+  if (data.linkedin)
+    plainParts.push(
+      `${isQuick ? "Your Company Website" : "LinkedIn"}: ${data.linkedin}`,
+    );
   plainParts.push(`Subject: ${subject}`);
   plainParts.push(`Message: ${data.message}`);
-  if (data.product) plainParts.push("", "Product Enquiry:", `Product: ${data.product}`);
+  if (data.product)
+    plainParts.push("", "Product Enquiry:", `Product: ${data.product}`);
   if (data.grade) plainParts.push(`Grade: ${data.grade}`);
   if (data.quantity) plainParts.push(`Quantity: ${data.quantity} MT`);
   plainParts.push(`Consent: ${data.consent ? "Yes" : "No"}`);
@@ -162,7 +190,7 @@ export async function POST(req: NextRequest) {
   const row = (label: string, value?: string) => `
     <div style="margin-bottom:15px; padding:12px 0; border-bottom:1px solid #e2e8f0;">
       <div style="color:#64748b; font-size:13px; font-weight:600; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px;">${label}:</div>
-      <div style="font-size:15px; color:#1e293b; line-height:1.6; word-wrap:break-word; word-break:break-word; overflow-wrap:break-word; max-width:100%;">${value || 'NA'}</div>
+      <div style="font-size:15px; color:#1e293b; line-height:1.6; word-wrap:break-word; word-break:break-word; overflow-wrap:break-word; max-width:100%;">${value || "NA"}</div>
     </div>
   `;
 
@@ -178,34 +206,38 @@ export async function POST(req: NextRequest) {
 
         <div style="margin-bottom:20px; background:#f8fafc; border-radius:12px; padding:20px; border-left:4px solid #863B0E;">
           <div style="font-size:16px; font-weight:700; color:#863B0E; margin-bottom:12px;">Contact Information</div>
-          ${row('Name', fullName)}
-          ${row('Email', data.email)}
-          ${row('Phone', formattedPhone)}
-          ${data.country ? row('Country', data.country) : ''}
-          ${data.postalCode ? row('Postal Code', data.postalCode) : ''}
-          ${data.linkedin ? row(isQuick ? 'Your Company Website' : 'LinkedIn', data.linkedin) : ''}
+          ${row("Name", fullName)}
+          ${row("Email", data.email)}
+          ${row("Phone", formattedPhone)}
+          ${data.country ? row("Country", data.country) : ""}
+          ${data.postalCode ? row("Postal Code", data.postalCode) : ""}
+          ${data.linkedin ? row(isQuick ? "Your Company Website" : "LinkedIn", data.linkedin) : ""}
         </div>
 
         <div style="margin-bottom:20px; background:#f8fafc; border-radius:12px; padding:20px; border-left:4px solid #863B0E;">
           <div style="font-size:16px; font-weight:700; color:#863B0E; margin-bottom:12px;">Enquiry Details</div>
-          ${row('Subject', subject)}
-          ${row('Message', data.message.replace(/\n/g, '<br/>'))}
+          ${row("Subject", subject)}
+          ${row("Message", data.message.replace(/\n/g, "<br/>"))}
         </div>
 
-        ${(data.product || data.grade || data.quantity) ? `
+        ${
+          data.product || data.grade || data.quantity
+            ? `
         <div style="margin-bottom:20px; background:#fef3c7; border:2px solid #f59e0b; border-radius:15px; padding:20px;">
           <div style="color:#92400e; font-weight:700; font-size:16px; margin-bottom:12px;">☕ Product Enquiry Details</div>
-          ${data.product ? row('Product', data.product) : ''}
-          ${data.grade ? row('Grade', data.grade) : ''}
-          ${data.quantity ? row('Quantity', `${data.quantity} MT`) : ''}
-        </div>` : ''}
+          ${data.product ? row("Product", data.product) : ""}
+          ${data.grade ? row("Grade", data.grade) : ""}
+          ${data.quantity ? row("Quantity", `${data.quantity} MT`) : ""}
+        </div>`
+            : ""
+        }
 
         <div style="height:2px; background:linear-gradient(90deg,#863B0E 0%, #61714D 100%); margin:20px 0;"></div>
         <p style="text-align:center; color:#64748b;">This email was sent automatically from your website</p>
       </div>
       <div style="background:#f1f5f9; color:#64748b; text-align:center; padding:16px; border-top:1px solid #e2e8f0;">
         <div style="font-weight:700; color:#863B0E; margin-bottom:8px;">Gajna Overseas</div>
-        <div><a href="mailto:priyavirat@zohomail.in" style="color:#863B0E; text-decoration:none;">priyavirat@zohomail.in</a> | <a href="tel:+919811789665" style="color:#863B0E; text-decoration:none;">+91 9811789665</a></div>
+        <div><a href="mailto:priyavirat@zohomail.in" style="color:#863B0E; text-decoration:none;">priyavirat@zohomail.in</a> | <a href="tel:+918123139610" style="color:#863B0E; text-decoration:none;">+91 8123139610</a></div>
       </div>
     </div>
   </div>`;
@@ -218,15 +250,15 @@ export async function POST(req: NextRequest) {
         <div style="font-size:14px; opacity:.95;">Gajna Overseas - Coffee Export Excellence</div>
       </div>
       <div style="padding:24px;">
-        <div style="font-size:16px; color:#1e293b; margin-bottom:12px;">Dear ${data.firstName || fullName || 'Customer'},</div>
+        <div style="font-size:16px; color:#1e293b; margin-bottom:12px;">Dear ${data.firstName || fullName || "Customer"},</div>
         <p style="line-height:1.6; margin-bottom:12px;">Thank you for contacting Gajna Overseas! We've successfully received your enquiry and our team will review it carefully.</p>
         <p style="line-height:1.6; margin-bottom:12px;">We typically respond within 24 hours during business days.</p>
-        ${(data.product || data.grade) ? `<p style="line-height:1.6; margin-bottom:12px;">📋 <strong>Your Enquiry:</strong> ${data.product ? data.product : 'Coffee products'}${data.grade ? ` (${data.grade})` : ''}${data.quantity ? ` - Quantity: ${data.quantity} MT` : ''}</p>` : ''}
+        ${data.product || data.grade ? `<p style="line-height:1.6; margin-bottom:12px;">📋 <strong>Your Enquiry:</strong> ${data.product ? data.product : "Coffee products"}${data.grade ? ` (${data.grade})` : ""}${data.quantity ? ` - Quantity: ${data.quantity} MT` : ""}</p>` : ""}
 
         <div style="margin-top:16px; background:#f8fafc; border-radius:12px; padding:20px; border-left:4px solid #863B0E;">
           <div style="font-size:16px; font-weight:700; color:#863B0E; margin-bottom:12px;">Your Message Summary</div>
-          ${row('Subject', subject)}
-          ${row('Message', data.message.replace(/\n/g, '<br/>'))}
+          ${row("Subject", subject)}
+          ${row("Message", data.message.replace(/\n/g, "<br/>"))}
         </div>
 
         <div style="height:2px; background:linear-gradient(90deg,#863B0E 0%, #61714D 100%); margin:20px 0;"></div>
@@ -242,24 +274,39 @@ export async function POST(req: NextRequest) {
       </div>
       <div style="background:#f1f5f9; color:#64748b; text-align:center; padding:16px; border-top:1px solid #e2e8f0;">
         <div style="font-weight:700; color:#863B0E; margin-bottom:8px;">Gajna Overseas</div>
-        <div><a href="mailto:priyavirat@zohomail.in" style="color:#863B0E; text-decoration:none;">priyavirat@zohomail.in</a> | <a href="tel:+919811789665" style="color:#863B0E; text-decoration:none;">+91 9811789665</a></div>
+        <div><a href="mailto:priyavirat@zohomail.in" style="color:#863B0E; text-decoration:none;">priyavirat@zohomail.in</a> | <a href="tel:+918123139610" style="color:#863B0E; text-decoration:none;">+91 8123139610</a></div>
         <p style="margin-top:10px; font-size:11px; opacity:.6;">If you didn't send this enquiry, please ignore this email.</p>
       </div>
     </div>
   </div>`;
 
-  const DRY_RUN = process.env.EMAIL_DRY_RUN === "true" || ((!user || !pass) && process.env.NODE_ENV !== "production");
+  const DRY_RUN =
+    process.env.EMAIL_DRY_RUN === "true" ||
+    ((!user || !pass) && process.env.NODE_ENV !== "production");
 
   if ((!user || !pass) && DRY_RUN) {
     log("EMAIL DRY RUN: Missing SMTP env; emails will be logged instead.");
-    console.log("ADMIN EMAIL (DRY RUN)", { to: ADMIN_EMAIL, subject: `[Contact] ${data.subject}`, text: plainText, htmlPreview: adminHtml.slice(0, 180) + "..." });
-    console.log("USER EMAIL (DRY RUN)", { to: data.email, subject: "We got your message", text: `Hi ${data.firstName},\n\nThank you for contacting us. We'll be in touch soon.`, htmlPreview: userHtml.slice(0, 180) + "..." });
+    console.log("ADMIN EMAIL (DRY RUN)", {
+      to: ADMIN_EMAIL,
+      subject: `[Contact] ${data.subject}`,
+      text: plainText,
+      htmlPreview: adminHtml.slice(0, 180) + "...",
+    });
+    console.log("USER EMAIL (DRY RUN)", {
+      to: data.email,
+      subject: "We got your message",
+      text: `Hi ${data.firstName},\n\nThank you for contacting us. We'll be in touch soon.`,
+      htmlPreview: userHtml.slice(0, 180) + "...",
+    });
     return NextResponse.json({ success: true, dryRun: true });
   }
 
   if (!user || !pass) {
     log("Missing SMTP environment variables");
-    return NextResponse.json({ success: false, error: "Server not configured" }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: "Server not configured" },
+      { status: 500 },
+    );
   }
 
   const transporter = nodemailer.createTransport({
@@ -291,6 +338,12 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: true });
   } catch (err) {
     log("Email send failed", err);
-    return NextResponse.json({ success: false, error: `Failed to send email: ${err instanceof Error ? err.message : String(err)}` }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        error: `Failed to send email: ${err instanceof Error ? err.message : String(err)}`,
+      },
+      { status: 500 },
+    );
   }
 }
