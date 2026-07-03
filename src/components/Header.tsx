@@ -309,12 +309,12 @@ export default function Header() {
               >
                 Chat With Us
               </Link>
-              {/* <Link
+              <Link
                 href="sms:+918123139610"
                 className="px-3 py-1 bg-white border border-gray-300 rounded-lg text-xs text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 Send Us SMS
-              </Link> */}
+              </Link>
 
               <LanguageSwitcher />
               {/* Search Coffee Grades (desktop) */}
