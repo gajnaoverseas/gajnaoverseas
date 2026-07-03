@@ -188,7 +188,7 @@ export default function Footer() {
                 <div>
                   <h4 className="font-medium text-lg">Registered Address</h4>
                   <p className="text-sm md:text-base text-gray-200 leading-relaxed">
-                    <b>Gajna Overseas (OPC) Private Limited</b>
+                    <b>Gajna Overseas Private Limited</b>
                     <br />
                     505, Park Royal Apartments,
                     <br />
